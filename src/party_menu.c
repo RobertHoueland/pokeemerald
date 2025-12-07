@@ -5854,6 +5854,7 @@ static void TryMutationAfterLevelUp(u8 taskId)
         }
         else
         {
+            RemoveLevelUpStatsWindow();
             GetMonNickname(&gPlayerParty[gPartyMenu.slotId], gStringVar1);
             StringExpandPlaceholders(gStringVar4, gText_MonMutated);
             DisplayPartyMenuMessage(gStringVar4, TRUE);
@@ -5881,6 +5882,10 @@ static void Task_DoMutation(u8 taskId)
         {
         case MUTATION_CHOSEN_HP:
             StringExpandPlaceholders(gStringVar4, gText_MutationStatsHp);
+            DisplayPartyPokemonHPCheck(mon, &sPartyMenuBoxes[gPartyMenu.slotId], 1);
+            DisplayPartyPokemonMaxHPCheck(mon, &sPartyMenuBoxes[gPartyMenu.slotId], 1);
+            DisplayPartyPokemonHPBarCheck(mon, &sPartyMenuBoxes[gPartyMenu.slotId]);
+            UpdatePartyMonHPBar(sPartyMenuBoxes[gPartyMenu.slotId].monSpriteId, mon);
             break;
         case MUTATION_CHOSEN_ATK:
             StringExpandPlaceholders(gStringVar4, gText_MutationStatsAttack);
@@ -5901,9 +5906,6 @@ static void Task_DoMutation(u8 taskId)
             StringExpandPlaceholders(gStringVar4, gText_MutationType);
             break;
         case MUTATION_CHOSEN_ABILITY:
-            //u8 ability = GetMonData(mon, MON_DATA_ABILITY_NUM);
-            //StringCopy(gStringVar2, gAbilitiesInfo[ability].name);
-            StringCopy(gStringVar2, COMPOUND_STRING("TEMP"));
             StringExpandPlaceholders(gStringVar4, gText_MutationAbility);
             break;
         case MUTATION_CHOSEN_NATURE:
@@ -5913,6 +5915,9 @@ static void Task_DoMutation(u8 taskId)
             break;
         case MUTATION_CHOSEN_SHINY:
             StringExpandPlaceholders(gStringVar4, gText_MutationShiny);
+            break;
+        case MUTATION_CHOSEN_POKERUS:
+            StringExpandPlaceholders(gStringVar4, gText_MutationPokerus);
             break;
         case MUTATION_CHOSEN_MOVE:
             u16 randomMove = (Random() % MOVES_COUNT) + 1;
@@ -5927,7 +5932,6 @@ static void Task_DoMutation(u8 taskId)
             else if (result == MON_HAS_MAX_MOVES)
             {
                 gMoveToLearn = randomMove;
-                RemoveLevelUpStatsWindow();
                 DisplayMonNeedsToReplaceMove(taskId);
                 return;
             }
