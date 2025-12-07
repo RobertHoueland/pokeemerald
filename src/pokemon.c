@@ -1130,7 +1130,8 @@ void CreateBoxMon(struct BoxPokemon *boxMon, u16 species, u8 level, u8 fixedIV, 
     SetBoxMonData(boxMon, MON_DATA_POKEBALL, &value);
     SetBoxMonData(boxMon, MON_DATA_OT_GENDER, &gSaveBlock2Ptr->playerGender);
 
-    enum Type teraType = (boxMon->personality & 0x1) == 0 ? GetSpeciesType(species, 0) : GetSpeciesType(species, 1);
+    //enum Type teraType = (boxMon->personality & 0x1) == 0 ? GetSpeciesType(species, 0) : GetSpeciesType(species, 1);
+    enum Type teraType = TYPE_MYSTERY;
     SetBoxMonData(boxMon, MON_DATA_TERA_TYPE, &teraType);
 
     if (fixedIV < USE_RANDOM_IVS)
@@ -1696,6 +1697,8 @@ static u16 CalculateBoxMonChecksumReencrypt(struct BoxPokemon *boxMon)
 
 enum Mutation DoMutation(struct Pokemon *mon)
 {
+    u16 species = GetMonData(mon, MON_DATA_SPECIES, NULL);
+
     switch (Random32() % NUM_POSSIBLE_MUTATIONS)
     {
     case MUTATION_STAT:
@@ -1704,14 +1707,22 @@ enum Mutation DoMutation(struct Pokemon *mon)
         IncrementMonTotalMutations(mon);
         return statMutation;
     case MUTATION_TYPE:
-        //u8 newType = Random() % NUMBER_OF_MON_TYPES;
-        
+        //u16 species = GetMonData(mon, MON_DATA_SPECIES, NULL);
+        enum Type newType;
+        enum Type currType0 = GetSpeciesType(species, 0);
+        enum Type currType1 = GetSpeciesType(species, 1);
+        enum Type currTeraType = GetMonData(mon, MON_DATA_TERA_TYPE, NULL);
+        do
+        {
+            newType = (enum Type)((Random32() % NUMBER_OF_MON_TYPES)  + 1);
+        } while (newType == currType0 || newType == currType1 || newType == currTeraType ||
+                 newType == TYPE_MYSTERY || newType == TYPE_STELLAR);
+        // Add as a tera type, used as a "3rd type" in battle
+        SetMonData(mon, MON_DATA_TERA_TYPE, &newType);
         IncrementMonTotalMutations(mon);
         return MUTATION_CHOSEN_TYPE;
     case MUTATION_ABILITY:
-        //u8 currentAbility = GetMonAbility(mon);
-        //SetMonData(mon, MON_DATA_ABILITY_NUM, &newAbility);
-
+    
         IncrementMonTotalMutations(mon);
         return MUTATION_CHOSEN_ABILITY;
     case MUTATION_NATURE:
@@ -1721,7 +1732,7 @@ enum Mutation DoMutation(struct Pokemon *mon)
         do
         {
             newNature = Random32();
-        } while (currNature == GetNatureFromPersonality(newNature) || 
+        } while (currNature == GetNatureFromPersonality(newNature) ||
                  currHiddenNature == GetNatureFromPersonality(newNature));
         SetMonData(mon, MON_DATA_HIDDEN_NATURE, &newNature);
         CalculateMonStats(mon);

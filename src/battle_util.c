@@ -10259,6 +10259,10 @@ void GetBattlerTypes(u32 battler, bool32 ignoreTera, enum Type types[static 3])
     types[1] = gBattleMons[battler].types[1];
     types[2] = gBattleMons[battler].types[2];
 
+    // Tera type is treated as 3rd type for mutations
+    enum Type teraType = GetBattlerTeraType(battler);
+    types[2] = teraType;
+
     // Roost.
     if (!isTera && gDisableStructs[battler].roostActive)
     {
