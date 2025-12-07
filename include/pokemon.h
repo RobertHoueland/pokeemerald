@@ -133,15 +133,15 @@ struct PokemonSubstruct0
     u16 species:11; // 2047 species.
     enum Type teraType:5; // 30 types.
     u16 heldItem:10; // 1023 items.
-    u16 unused_02:6;
+    u16 mutation0:6;
     u32 experience:21;
     u32 nickname11:8; // 11th character of nickname.
-    u32 unused_04:3;
+    u32 mutation1:3;
     u8 ppBonuses;
     u8 friendship;
     u16 pokeball:6; // 63 balls.
     u16 nickname12:8; // 12th character of nickname.
-    u16 unused_0A:2;
+    u16 mutation2:2;
 };
 
 struct PokemonSubstruct1
@@ -151,9 +151,9 @@ struct PokemonSubstruct1
     u16 move2:11; // 2047 moves.
     u16 evolutionTracker2:5;
     u16 move3:11; // 2047 moves.
-    u16 unused_04:5;
+    u16 mutation3:5;
     u16 move4:11; // 2047 moves.
-    u16 unused_06:3;
+    u16 mutation4:3;
     u16 hyperTrainedHP:1;
     u16 hyperTrainedAttack:1;
     u8 pp1:7; // 127 PP.
@@ -216,7 +216,7 @@ struct PokemonSubstruct3
     u32 earthRibbon:1;    // Given to teams that have beaten Mt. Battle's 100-battle challenge in Colosseum/XD.
     u32 worldRibbon:1;    // Distributed during Pokémon Festa '04 and '05 to tournament winners.
     u32 isShadow:1;
-    u32 unused_0B:1;
+    u32 mutation5:1;
     u32 abilityNum:2;
 
     // The functionality of this bit changed in FRLG:
@@ -266,14 +266,14 @@ struct BoxPokemon
     u8 isEgg:1;
     u8 blockBoxRS:1; // Unused, but Pokémon Box Ruby & Sapphire will refuse to deposit a Pokémon with this flag set.
     u8 daysSinceFormChange:3; // 7 days.
-    u8 unused_13:1;
+    u8 mutation6:1;
     u8 otName[PLAYER_NAME_LENGTH];
     u8 markings:4;
     u8 compressedStatus:4;
     u16 checksum;
     u16 hpLost:14; // 16383 HP.
     u16 shinyModifier:1;
-    u16 unused_1E:1;
+    u16 mutation7:1;
 
     union
     {
@@ -655,6 +655,35 @@ struct Fusion
     enum FusionExtraMoveHandling extraMoveHandling;
 };
 
+// Roll for a mutation
+enum PossibleMutations
+{
+    MUTATION_STAT,
+    MUTATION_TYPE,
+    MUTATION_ABILITY,
+    MUTATION_NATURE,
+    MUTATION_MOVE,
+    MUTATION_ATTEMPT_SHINY,
+    NUM_POSSIBLE_MUTATIONS
+};
+
+// The actual chosen mutation
+enum Mutation
+{
+    MUTATION_CHOSEN_NONE,
+    MUTATION_CHOSEN_HP,
+    MUTATION_CHOSEN_ATK,
+    MUTATION_CHOSEN_DEF,
+    MUTATION_CHOSEN_SPATK,
+    MUTATION_CHOSEN_SPDEF,
+    MUTATION_CHOSEN_SPEED,
+    MUTATION_CHOSEN_TYPE,
+    MUTATION_CHOSEN_ABILITY,
+    MUTATION_CHOSEN_NATURE,
+    MUTATION_CHOSEN_MOVE,
+    MUTATION_CHOSEN_SHINY
+};
+
 extern const struct Fusion *const gFusionTablePointers[NUM_SPECIES];
 
 #if P_FUSION_FORMS
@@ -667,6 +696,8 @@ extern const u16 gKyuremBlackSwapMoveTable[][2];
 #endif //P_FAMILY_ZEKROM
 #endif //P_FAMILY_KYUREM
 #endif //P_FUSION_FORMS
+
+#define MAX_MUTATIONS 49  // memory cap
 
 #define NUM_UNOWN_FORMS 28
 
@@ -727,6 +758,14 @@ bool8 ShouldIgnoreDeoxysForm(u8 caseId, u8 battler);
 u16 GetUnionRoomTrainerPic(void);
 enum TrainerClassID GetUnionRoomTrainerClass(void);
 void CreateEnemyEventMon(void);
+enum Mutation DoMutation(struct Pokemon *mon);
+enum Mutation MutateStat(struct Pokemon *mon);
+u32 ReadStatMutationPacked(const struct Pokemon *mon);
+void WriteStatMutationPacked(struct Pokemon *mon, u32 packed);
+u8 GetMonStatMutationCount(const struct Pokemon *mon, u8 statIndex);
+void IncrementMonStatMutation(struct Pokemon *mon, u8 statIndex);
+u8 GetMonTotalMutations(const struct Pokemon *mon);
+void IncrementMonTotalMutations(struct Pokemon *mon);
 void CalculateMonStats(struct Pokemon *mon);
 void BoxMonToMon(const struct BoxPokemon *src, struct Pokemon *dest);
 u8 GetLevelFromMonExp(struct Pokemon *mon);

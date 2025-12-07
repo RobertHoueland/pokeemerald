@@ -1694,6 +1694,206 @@ static u16 CalculateBoxMonChecksumReencrypt(struct BoxPokemon *boxMon)
     return checksum;
 }
 
+enum Mutation DoMutation(struct Pokemon *mon)
+{
+    switch (Random32() % NUM_POSSIBLE_MUTATIONS)
+    {
+    case MUTATION_STAT:
+        enum Mutation statMutation = MutateStat(mon);
+        CalculateMonStats(mon);
+        IncrementMonTotalMutations(mon);
+        return statMutation;
+    case MUTATION_TYPE:
+        //u8 newType = Random() % NUMBER_OF_MON_TYPES;
+        
+        IncrementMonTotalMutations(mon);
+        return MUTATION_CHOSEN_TYPE;
+    case MUTATION_ABILITY:
+        //u8 currentAbility = GetMonAbility(mon);
+        //SetMonData(mon, MON_DATA_ABILITY_NUM, &newAbility);
+
+        IncrementMonTotalMutations(mon);
+        return MUTATION_CHOSEN_ABILITY;
+    case MUTATION_NATURE:
+        u8 currNature = GetNature(mon);
+        u8 currHiddenNature = GetMonData(mon, MON_DATA_HIDDEN_NATURE, NULL);
+        u32 newNature;
+        do
+        {
+            newNature = Random32();
+        } while (currNature == GetNatureFromPersonality(newNature) || 
+                 currHiddenNature == GetNatureFromPersonality(newNature));
+        SetMonData(mon, MON_DATA_HIDDEN_NATURE, &newNature);
+        CalculateMonStats(mon);
+        IncrementMonTotalMutations(mon);
+        return MUTATION_CHOSEN_NATURE;
+    case MUTATION_MOVE:
+        // Handle after returning
+        IncrementMonTotalMutations(mon);
+        return MUTATION_CHOSEN_MOVE;
+    case MUTATION_ATTEMPT_SHINY:
+        if (Random() % 50 == 0) // 2% chance
+        {
+            // Turn shiny
+
+            IncrementMonTotalMutations(mon);
+            return MUTATION_CHOSEN_SHINY;
+        }
+        // fallthrough otherwise
+    default:
+        return MUTATION_CHOSEN_NONE;
+    }
+}
+
+enum Mutation MutateStat(struct Pokemon *mon)
+{
+    enum Stat chosenStat = STAT_HP;
+    u8 statMutCount = 0;
+    u8 stats[NUM_STATS];
+
+    for (u8 i = 0; i < NUM_STATS; ++i)
+    {
+        stats[i] = i;
+    }
+    // Pick random stats without replacement, stop on first non-maxed stat
+    for (u8 i = 0; i < NUM_STATS; ++i)
+    {
+        u8 pick = Random32() % (NUM_STATS - i);
+        chosenStat = (enum Stat)stats[pick];
+        statMutCount = GetMonStatMutationCount(mon, chosenStat);
+
+        // Each stat can only be mutated 7 times for memory reasons
+        if (statMutCount < 7)
+        {
+            break;
+        }
+
+        // Remove chosen index from the pool by replacing it with the last unpicked
+        stats[pick] = stats[NUM_STATS - 1 - i];
+    }
+
+    // All stats are maxxed
+    if (statMutCount >= 7)
+    {
+        return MUTATION_CHOSEN_NONE;
+    }
+    
+    IncrementMonStatMutation(mon, chosenStat);
+
+    switch (chosenStat)
+    {
+    case STAT_HP:
+        return MUTATION_CHOSEN_HP;
+    case STAT_ATK:
+        return MUTATION_CHOSEN_ATK;
+    case STAT_DEF:
+        return MUTATION_CHOSEN_DEF;
+    case STAT_SPATK:
+        return MUTATION_CHOSEN_SPATK;
+    case STAT_SPDEF:
+        return MUTATION_CHOSEN_SPDEF;
+    case STAT_SPEED:
+        return MUTATION_CHOSEN_SPEED;
+    default:
+        return MUTATION_CHOSEN_NONE;
+    }
+}
+
+// Unused bit fields were reused to store mutation data.
+u32 ReadStatMutationPacked(const struct Pokemon *mon)
+{
+    struct BoxPokemon *box = (struct BoxPokemon *)&mon->box;
+    DecryptBoxMon(box);
+
+    // Reads packed 18 bits (3 bits for each of the 6 stats).
+    u32 v = 0;
+    v |= (mon->box.secure.substructs[0].type0.mutation0 & 0x3F);             // bits 0..5
+    v |= (u32)(mon->box.secure.substructs[0].type0.mutation1 & 0x7) << 6;    // bits 6..8
+    v |= (u32)(mon->box.secure.substructs[0].type0.mutation2 & 0x3) << 9;    // bits 9..10
+    v |= (u32)(mon->box.secure.substructs[1].type1.mutation3 & 0x1F) << 11;  // bits 11..15
+    v |= (u32)(mon->box.secure.substructs[1].type1.mutation4 & 0x7) << 16;   // bits 16..18
+    v |= (u32)(mon->box.secure.substructs[3].type3.mutation5 & 0x1) << 19;
+    v |= (u32)(mon->box.mutation6 & 0x1) << 20;
+    v |= (u32)(mon->box.mutation7 & 0x1) << 21;
+    
+    EncryptBoxMon(box);
+
+    return v & 0x1FFFFF; // 21 bits mask
+}
+
+void WriteStatMutationPacked(struct Pokemon *mon, u32 packed)
+{
+    struct BoxPokemon *box = &mon->box;
+    DecryptBoxMon(box);
+
+    mon->box.secure.substructs[0].type0.mutation0 = packed & 0x3F;           // bits 0..5
+    mon->box.secure.substructs[0].type0.mutation1 = (packed >> 6) & 0x7;     // bits 6..8
+    mon->box.secure.substructs[0].type0.mutation2 = (packed >> 9) & 0x3;     // bits 9..10
+    mon->box.secure.substructs[1].type1.mutation3 = (packed >> 11) & 0x1F;   // bits 11..15
+    mon->box.secure.substructs[1].type1.mutation4 = (packed >> 16) & 0x7;    // bits 16..18
+    mon->box.secure.substructs[3].type3.mutation5 = (packed >> 19) & 0x1;    // bit 19
+    mon->box.mutation6 = (packed >> 20) & 0x1;                               // bit 20
+    mon->box.mutation7 = (packed >> 21) & 0x1;                               // bit 21
+
+    box->checksum = CalculateBoxMonChecksumReencrypt(box);
+}
+
+u8 GetMonStatMutationCount(const struct Pokemon *mon, u8 statIndex)
+{
+    // Get mutation count for a specific stat
+    if (statIndex >= NUM_STATS)
+    {
+        return 0;
+    }
+    u32 packed = ReadStatMutationPacked(mon);
+    return (packed >> (statIndex * 3)) & 0x7;
+}
+
+void IncrementMonStatMutation(struct Pokemon *mon, u8 statIndex)
+{
+    // Increment per-stat counter (cap at 7)
+    if (statIndex >= NUM_STATS)
+    {
+        return;
+    }
+    u32 packed = ReadStatMutationPacked(mon);
+    u32 shift = statIndex * 3;
+    u32 cnt = (packed >> shift) & 0x7;
+    if (cnt < 7)
+    {
+        cnt++;
+    }
+    packed = (packed & ~(0x7u << shift)) | (cnt << shift);
+    WriteStatMutationPacked(mon, packed);
+}
+
+u8 GetMonTotalMutations(const struct Pokemon *mon)
+{
+    // Get total mutations = sum(per-stat 3-bit counters) + extraMutations
+    u32 packed = ReadStatMutationPacked(mon);
+    u8 sum = 0;
+    for (int s = 0; s < NUM_STATS; ++s)
+    {
+        sum += (packed >> (s * 3)) & 0x7;
+    }
+    // extra mutations stored in bits 18..20
+    sum += (packed >> 18) & 0x7;
+    return sum;
+}
+
+void IncrementMonTotalMutations(struct Pokemon *mon)
+{
+    u32 packed = ReadStatMutationPacked(mon);
+    u32 extra = (packed >> 18) & 0x7;
+    if (extra < 0x7)
+    {
+        extra++;
+    }
+    // write back extra into bits 18..20
+    packed = (packed & ~(0x7u << 18)) | (extra << 18);
+    WriteStatMutationPacked(mon, packed);
+}
+
 void CalculateMonStats(struct Pokemon *mon)
 {
     s32 oldMaxHP = GetMonData(mon, MON_DATA_MAX_HP, NULL);
@@ -1704,6 +1904,9 @@ void CalculateMonStats(struct Pokemon *mon)
     s32 newMaxHP;
 
     u8 nature = GetMonData(mon, MON_DATA_HIDDEN_NATURE, NULL);
+
+    s8 mutScalar = (level / 10) + 1;
+    s8 mutInc = mutScalar * 4;
 
     SetMonData(mon, MON_DATA_LEVEL, &level);
 
@@ -1733,6 +1936,12 @@ void CalculateMonStats(struct Pokemon *mon)
         n = ModifyStatByNature(nature, n, i);
         if (B_FRIENDSHIP_BOOST == TRUE)
             n = n + ((n * 10 * friendship) / (MAX_FRIENDSHIP * 100));
+        // Apply mutation bonuses
+        u8 statMutCount = GetMonStatMutationCount(mon, i);
+        if (statMutCount > 0)
+        {
+            n += mutInc * statMutCount;
+        }
         SetMonData(mon, MON_DATA_MAX_HP + i, &n);
     }
 

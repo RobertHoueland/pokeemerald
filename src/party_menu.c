@@ -420,6 +420,8 @@ static void Task_HandleStopLearningMoveYesNoInput(u8);
 static void Task_TryLearningNextMoveAfterText(u8);
 static void BufferMonStatsToTaskData(struct Pokemon *, s16 *);
 static void UpdateMonDisplayInfoAfterRareCandy(u8, struct Pokemon *);
+static void TryMutationAfterLevelUp(u8 taskId);
+static void Task_DoMutation(u8 taskId);
 static void Task_DisplayLevelUpStatsPg1(u8);
 static void DisplayLevelUpStatsPg1(u8);
 static void Task_DisplayLevelUpStatsPg2(u8);
@@ -5841,6 +5843,109 @@ static void UpdateMonDisplayInfoAfterRareCandy(u8 slot, struct Pokemon *mon)
     ScheduleBgCopyTilemapToVram(0);
 }
 
+static void TryMutationAfterLevelUp(u8 taskId)
+{
+    if (WaitFanfare(FALSE) && IsPartyMenuTextPrinterActive() != TRUE && ((JOY_NEW(A_BUTTON)) || (JOY_NEW(B_BUTTON))))
+    {
+        u8 totalMutations = GetMonTotalMutations(&gPlayerParty[gPartyMenu.slotId]);
+        if (totalMutations >=  MAX_MUTATIONS)
+        {
+            gTasks[taskId].func = Task_TryLearnNewMoves;
+        }
+        else
+        {
+            GetMonNickname(&gPlayerParty[gPartyMenu.slotId], gStringVar1);
+            StringExpandPlaceholders(gStringVar4, gText_MonMutated);
+            DisplayPartyMenuMessage(gStringVar4, TRUE);
+            ScheduleBgCopyTilemapToVram(2);
+            gTasks[taskId].func = Task_DoMutation;
+        }
+    }
+}
+
+static void Task_DoMutation(u8 taskId)
+{
+    struct Pokemon *mon = &gPlayerParty[gPartyMenu.slotId];
+    GetMonNickname(&gPlayerParty[gPartyMenu.slotId], gStringVar1);
+
+    if ((JOY_NEW(A_BUTTON)) || (JOY_NEW(B_BUTTON)))
+    {
+        u8 successfulMutation = TRUE;
+        enum Mutation mutationType = MUTATION_CHOSEN_NONE;
+        while (mutationType == MUTATION_CHOSEN_NONE)
+        {
+            mutationType = DoMutation(mon);
+        }
+
+        switch (mutationType)
+        {
+        case MUTATION_CHOSEN_HP:
+            StringExpandPlaceholders(gStringVar4, gText_MutationStatsHp);
+            break;
+        case MUTATION_CHOSEN_ATK:
+            StringExpandPlaceholders(gStringVar4, gText_MutationStatsAttack);
+            break;
+        case MUTATION_CHOSEN_DEF:
+            StringExpandPlaceholders(gStringVar4, gText_MutationStatsDefense);
+            break;
+        case MUTATION_CHOSEN_SPATK:
+            StringExpandPlaceholders(gStringVar4, gText_MutationStatsSpAtk);
+            break;
+        case MUTATION_CHOSEN_SPDEF:
+            StringExpandPlaceholders(gStringVar4, gText_MutationStatsSpDef);;
+            break;
+        case MUTATION_CHOSEN_SPEED:
+            StringExpandPlaceholders(gStringVar4, gText_MutationStatsSpd);
+            break;
+        case MUTATION_CHOSEN_TYPE:
+            StringExpandPlaceholders(gStringVar4, gText_MutationType);
+            break;
+        case MUTATION_CHOSEN_ABILITY:
+            //u8 ability = GetMonData(mon, MON_DATA_ABILITY_NUM);
+            //StringCopy(gStringVar2, gAbilitiesInfo[ability].name);
+            StringCopy(gStringVar2, COMPOUND_STRING("TEMP"));
+            StringExpandPlaceholders(gStringVar4, gText_MutationAbility);
+            break;
+        case MUTATION_CHOSEN_NATURE:
+            u8 nature = GetMonData(mon, MON_DATA_HIDDEN_NATURE);
+            StringCopy(gStringVar2, gNaturesInfo[nature].name);
+            StringExpandPlaceholders(gStringVar4, gText_MutationNature);
+            break;
+        case MUTATION_CHOSEN_SHINY:
+            StringExpandPlaceholders(gStringVar4, gText_MutationShiny);
+            break;
+        case MUTATION_CHOSEN_MOVE:
+            u16 randomMove = (Random() % MOVES_COUNT) + 1;
+            u16 result = GiveMoveToMon(mon, randomMove);
+            if (result == randomMove)
+            {
+                // Learned immediately
+                StringCopy(gStringVar2, GetMoveName(randomMove));
+                StringExpandPlaceholders(gStringVar4, gText_PkmnLearnedMove3); 
+                gPartyMenu.data1 = randomMove;
+            }
+            else if (result == MON_HAS_MAX_MOVES)
+            {
+                gMoveToLearn = randomMove;
+                RemoveLevelUpStatsWindow();
+                DisplayMonNeedsToReplaceMove(taskId);
+                return;
+            }
+            break;
+        case MUTATION_CHOSEN_NONE:
+        default:
+            successfulMutation = FALSE;
+            break;
+        }
+
+        if (successfulMutation == TRUE)
+        {
+            DisplayPartyMenuMessage(gStringVar4, TRUE);
+            gTasks[taskId].func = Task_TryLearnNewMoves;
+        }
+    }
+}
+
 static void Task_DisplayLevelUpStatsPg1(u8 taskId)
 {
     if (WaitFanfare(FALSE) && IsPartyMenuTextPrinterActive() != TRUE && ((JOY_NEW(A_BUTTON)) || (JOY_NEW(B_BUTTON))))
@@ -5858,7 +5963,7 @@ static void Task_DisplayLevelUpStatsPg2(u8 taskId)
         PlaySE(SE_SELECT);
         DisplayLevelUpStatsPg2(taskId);
         sInitialLevel += 1; // so the Pokemon doesn't learn a move meant for its previous level
-        gTasks[taskId].func = Task_TryLearnNewMoves;
+        gTasks[taskId].func = TryMutationAfterLevelUp;
     }
 }
 

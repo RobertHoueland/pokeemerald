@@ -2415,4 +2415,17 @@ extern const u8 gText_CannotSendMonToBoxHM[];
 extern const u8 gText_CannotSendMonToBoxActive[];
 extern const u8 gText_CannotSendMonToBoxPartner[];
 
+// Mutations
+extern const u8 gText_MonMutated[];
+extern const u8 gText_MutationStatsHp[];
+extern const u8 gText_MutationStatsAttack[];
+extern const u8 gText_MutationStatsDefense[];
+extern const u8 gText_MutationStatsSpAtk[];
+extern const u8 gText_MutationStatsSpDef[];
+extern const u8 gText_MutationStatsSpd[];
+extern const u8 gText_MutationType[];
+extern const u8 gText_MutationAbility[];
+extern const u8 gText_MutationNature[];
+extern const u8 gText_MutationShiny[];
+
 #endif // GUARD_STRINGS_H
