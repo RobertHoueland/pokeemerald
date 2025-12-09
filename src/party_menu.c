@@ -2889,10 +2889,32 @@ static void SetPartyMonFieldSelectionActions(struct Pokemon *mons, u8 slotId)
         {
             if (GetMonData(&mons[slotId], i + MON_DATA_MOVE1) == FieldMove_GetMoveId(j))
             {
-                AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, j + MENU_FIELD_MOVES);
+                // If Mon already knows FLY and the HM is in the bag, prevent it from being added to action list
+                if (FieldMove_GetMoveId(j) != MOVE_FLY || !CheckBagHasItem(ITEM_HM_FLY, 1)){
+                    // If Mon already knows FLASH and the HM is in the bag, prevent it from being added to action list
+                    if (FieldMove_GetMoveId(j) != MOVE_FLASH || !CheckBagHasItem(ITEM_HM_FLASH, 1)){ 
+                        AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, j + MENU_FIELD_MOVES);
+                    }
+                }
                 break;
             }
         }
+    }
+
+    // If Mon can learn HM and action list has space, add to action list
+    if (sPartyMenuInternal->numActions < 5 &&
+        (CanTeachMove(&mons[slotId], MOVE_FLY) == CAN_LEARN_MOVE || 
+         CanTeachMove(&mons[slotId], MOVE_FLY) == ALREADY_KNOWS_MOVE) &&
+        CheckBagHasItem(ITEM_HM_FLY, 1))
+    {
+        AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, 5 + MENU_FIELD_MOVES);
+    }
+    if (sPartyMenuInternal->numActions < 5 &&
+        (CanTeachMove(&mons[slotId], MOVE_FLASH) == CAN_LEARN_MOVE || 
+         CanTeachMove(&mons[slotId], MOVE_FLASH) == ALREADY_KNOWS_MOVE) &&
+        CheckBagHasItem(ITEM_HM_FLASH, 1))
+    {
+        AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, 1 + MENU_FIELD_MOVES);
     }
 
     if (!InBattlePike())
@@ -5470,6 +5492,45 @@ bool8 BoxMonKnowsMove(struct BoxPokemon *boxMon, u16 move)
     return FALSE;
 }
 
+u8 MoveToHM(u16 move)
+{
+    u16 item;
+    switch (move)
+    {
+    case MOVE_SECRET_POWER:
+        item = ITEM_TM43;
+        break;
+    case MOVE_CUT:
+        item = ITEM_HM01;
+        break;
+    case MOVE_FLY:
+        item = ITEM_HM02;
+        break;
+    case MOVE_SURF:
+        item = ITEM_HM03;
+        break;
+    case MOVE_STRENGTH:
+        item = ITEM_HM04;
+        break;
+    case MOVE_FLASH:
+        item = ITEM_HM05;
+        break;
+    case MOVE_ROCK_SMASH:
+        item = ITEM_HM06;
+        break;
+    case MOVE_WATERFALL:
+        item = ITEM_HM07;
+        break;
+    case MOVE_DIVE:
+        item = ITEM_HM08;
+        break;
+    default:
+        item = 0;
+        break;
+    }
+    return item;
+}
+
 static void DisplayLearnMoveMessage(const u8 *str)
 {
     StringExpandPlaceholders(gStringVar4, str);
@@ -5852,7 +5913,7 @@ static void TryMutationAfterLevelUp(u8 taskId)
         {
             gTasks[taskId].func = Task_TryLearnNewMoves;
         }
-        else
+        else //if (Random32() % 4 == 0) // 25% chance
         {
             RemoveLevelUpStatsWindow();
             GetMonNickname(&gPlayerParty[gPartyMenu.slotId], gStringVar1);
@@ -5913,14 +5974,8 @@ static void Task_DoMutation(u8 taskId)
             StringCopy(gStringVar2, gNaturesInfo[nature].name);
             StringExpandPlaceholders(gStringVar4, gText_MutationNature);
             break;
-        case MUTATION_CHOSEN_SHINY:
-            StringExpandPlaceholders(gStringVar4, gText_MutationShiny);
-            break;
-        case MUTATION_CHOSEN_POKERUS:
-            StringExpandPlaceholders(gStringVar4, gText_MutationPokerus);
-            break;
         case MUTATION_CHOSEN_MOVE:
-            u16 randomMove = (Random() % MOVES_COUNT) + 1;
+            u16 randomMove = (Random32() % MOVES_COUNT - 1) + 1;
             u16 result = GiveMoveToMon(mon, randomMove);
             if (result == randomMove)
             {
@@ -5935,6 +5990,12 @@ static void Task_DoMutation(u8 taskId)
                 DisplayMonNeedsToReplaceMove(taskId);
                 return;
             }
+            break;
+        case MUTATION_CHOSEN_SHINY:
+            StringExpandPlaceholders(gStringVar4, gText_MutationShiny);
+            break;
+        case MUTATION_CHOSEN_POKERUS:
+            StringExpandPlaceholders(gStringVar4, gText_MutationPokerus);
             break;
         case MUTATION_CHOSEN_NONE:
         default:

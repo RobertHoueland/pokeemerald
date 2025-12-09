@@ -115,7 +115,7 @@ extern const struct SpriteTemplate gAncientPowerRockSpriteTemplate;
 enum {
     COPYRIGHT_INITIALIZE,
     COPYRIGHT_EMULATOR_BLEND,
-    COPYRIGHT_START_FADE = 140,
+    COPYRIGHT_START_FADE = 30,
     COPYRIGHT_START_INTRO,
 };
 
@@ -1127,7 +1127,7 @@ static u8 SetUpCopyrightScreen(void)
         CreateTask(Task_HandleExpansionIntro, 0);
 #else
         CreateTask(Task_Scene1_Load, 0);
-        SetMainCallback2(MainCB2_Intro);
+        SetMainCallback2(CB2_InitTitleScreen);
 #endif
         if (gMultibootProgramStruct.gcmb_field_2 != 0)
         {

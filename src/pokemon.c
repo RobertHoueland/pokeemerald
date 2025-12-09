@@ -1737,7 +1737,7 @@ enum Mutation DoMutation(struct Pokemon *mon)
         enum Type currTeraType = GetMonData(mon, MON_DATA_TERA_TYPE, NULL);
         do
         {
-            newType = (enum Type)((Random32() % NUMBER_OF_MON_TYPES)  + 1);
+            newType = (enum Type)((Random32() % NUMBER_OF_MON_TYPES - 1)  + 1);
         } while (newType == currType0 || newType == currType1 || newType == currTeraType ||
                  newType == TYPE_MYSTERY || newType == TYPE_STELLAR);
         // Add as a tera type, used as a "3rd type" in battle
@@ -1776,11 +1776,13 @@ enum Mutation DoMutation(struct Pokemon *mon)
         IncrementMonTotalMutations(mon);
         return MUTATION_CHOSEN_MOVE;
     case MUTATION_ATTEMPT_SHINY:
+        u8 isShiny = GetMonData(mon, MON_DATA_IS_SHINY, NULL);
         u8 hasPokerus = GetMonData(mon, MON_DATA_POKERUS, NULL);
-        if (Random() % 50 == 0) // 2% chance
+        if (Random() % 50 == 0 && !isShiny) // 2% chance
         {
             // Turn shiny
-
+            isShiny = TRUE;
+            SetMonData(mon, MON_DATA_IS_SHINY, &isShiny);
             IncrementMonTotalMutations(mon);
             return MUTATION_CHOSEN_SHINY;
         }

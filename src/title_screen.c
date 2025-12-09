@@ -683,12 +683,8 @@ static void MainCB2(void)
 // Shine the Pokémon logo two more times, and fade in the version banner
 static void Task_TitleScreenPhase1(u8 taskId)
 {
-    // Skip to next phase when A, B, Start, or Select is pressed
-    if (JOY_NEW(A_B_START_SELECT) || gTasks[taskId].tSkipToNext)
-    {
-        gTasks[taskId].tSkipToNext = TRUE;
-        gTasks[taskId].tCounter = 0;
-    }
+    gTasks[taskId].tSkipToNext = TRUE;
+    gTasks[taskId].tCounter = 0;
 
     if (gTasks[taskId].tCounter != 0)
     {
@@ -733,12 +729,8 @@ static void Task_TitleScreenPhase2(u8 taskId)
 {
     u32 yPos;
 
-    // Skip to next phase when A, B, Start, or Select is pressed
-    if (JOY_NEW(A_B_START_SELECT) || gTasks[taskId].tSkipToNext)
-    {
-        gTasks[taskId].tSkipToNext = TRUE;
-        gTasks[taskId].tCounter = 0;
-    }
+    gTasks[taskId].tSkipToNext = TRUE;
+    gTasks[taskId].tCounter = 0;
 
     if (gTasks[taskId].tCounter != 0)
     {

@@ -59,6 +59,7 @@
 #include "window.h"
 #include "list_menu.h"
 #include "malloc.h"
+#include "constants/items.h"
 #include "constants/event_objects.h"
 #include "constants/map_types.h"
 
@@ -2300,16 +2301,19 @@ bool8 ScrCmd_checkfieldmove(struct ScriptContext *ctx)
         return FALSE;
 
     move = FieldMove_GetMoveId(fieldMove);
-    for (u32 i = 0; i < PARTY_SIZE; i++)
+    if (CheckBagHasItem(MoveToHM(move), 1))
     {
-        u16 species = GetMonData(&gPlayerParty[i], MON_DATA_SPECIES, NULL);
-        if (!species)
-            break;
-        if (!GetMonData(&gPlayerParty[i], MON_DATA_IS_EGG) && MonKnowsMove(&gPlayerParty[i], move) == TRUE)
+        for (u32 i = 0; i < PARTY_SIZE; i++)
         {
-            gSpecialVar_Result = i;
-            gSpecialVar_0x8004 = species;
-            break;
+            u16 species = GetMonData(&gPlayerParty[i], MON_DATA_SPECIES, NULL);
+            if (!species)
+                break;
+            if (!GetMonData(&gPlayerParty[i], MON_DATA_IS_EGG) && CanLearnTeachableMove(species, move))
+            {
+                gSpecialVar_Result = i;
+                gSpecialVar_0x8004 = species;
+                break;
+            }
         }
     }
 

@@ -354,6 +354,7 @@ static void Task_ExitDoor(u8 taskId)
         {
             u8 objEventId;
             SetPlayerVisibility(TRUE);
+            UnlockPlayerFieldControls();
             objEventId = GetObjectEventIdByLocalIdAndMap(LOCALID_PLAYER, 0, 0);
             ObjectEventSetHeldMovement(&gObjectEvents[objEventId], MOVEMENT_ACTION_WALK_NORMAL_DOWN);
             task->tState = 2;
@@ -379,7 +380,6 @@ static void Task_ExitDoor(u8 taskId)
         }
         break;
     case 4:
-        UnlockPlayerFieldControls();
         DestroyTask(taskId);
         break;
     }
@@ -691,7 +691,7 @@ void Task_WarpAndLoadMap(u8 taskId)
     case 1:
         if (!PaletteFadeActive())
         {
-            if (task->data[1] == 0)
+            if (task->data[1] == 0) // Shorten the delay
             {
                 ClearMirageTowerPulseBlendEffect();
                 task->data[1] = 1;

@@ -77,6 +77,7 @@
 #include "constants/songs.h"
 #include "constants/trainer_hill.h"
 #include "constants/weather.h"
+#include "constants/items.h"
 
 STATIC_ASSERT((B_FLAG_FOLLOWERS_DISABLED == 0 || OW_FOLLOWERS_ENABLED), FollowersFlagAssignedWithoutEnablingThem);
 
@@ -183,6 +184,7 @@ static void TransitionMapMusic(void);
 static u8 GetAdjustedInitialTransitionFlags(struct InitialPlayerAvatarState *playerStruct, u16 metatileBehavior, enum MapType mapType);
 static u8 GetAdjustedInitialDirection(struct InitialPlayerAvatarState *playerStruct, u8 transitionFlags, u16 metatileBehavior, enum MapType mapType);
 static u16 GetCenterScreenMetatileBehavior(void);
+static bool8 CanLearnFlashInParty(void);
 
 static void *sUnusedOverworldCallback;
 static u8 sPlayerLinkStates[MAX_LINK_PLAYERS];
@@ -1041,6 +1043,19 @@ static u16 GetCenterScreenMetatileBehavior(void)
     return MapGridGetMetatileBehaviorAt(gSaveBlock1Ptr->pos.x + MAP_OFFSET, gSaveBlock1Ptr->pos.y + MAP_OFFSET);
 }
 
+static bool8 CanLearnFlashInParty(void)
+{
+    for (u8 i = 0; i < PARTY_SIZE; i++)
+    {
+        u16 species = GetMonData(&gPlayerParty[i], MON_DATA_SPECIES, NULL);
+        if (!GetMonData(&gPlayerParty[i], MON_DATA_SPECIES, NULL))
+            break;
+        if (!GetMonData(&gPlayerParty[i], MON_DATA_IS_EGG) && CanLearnTeachableMove(species, MOVE_FLASH))
+            return TRUE;
+    }
+    return FALSE;
+}
+
 bool32 Overworld_IsBikingAllowed(void)
 {
     if (!gMapHeader.allowCycling)
@@ -1055,6 +1070,9 @@ bool32 Overworld_IsBikingAllowed(void)
 // Flash level of 8 is fully black
 void SetDefaultFlashLevel(void)
 {
+    if (CheckBagHasItem(ITEM_HM05, 1) && CanLearnFlashInParty())
+        FlagSet(FLAG_SYS_USE_FLASH);
+
     if (!gMapHeader.cave)
         gSaveBlock1Ptr->flashLevel = 0;
     else if (FlagGet(FLAG_SYS_USE_FLASH))
