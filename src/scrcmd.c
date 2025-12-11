@@ -2301,7 +2301,7 @@ bool8 ScrCmd_checkfieldmove(struct ScriptContext *ctx)
         return FALSE;
 
     move = FieldMove_GetMoveId(fieldMove);
-    if (CheckBagHasItem(MoveToHM(move), 1))
+    if (gSpecialVar_Result == PARTY_SIZE && (CheckBagHasItem(ITEM_HM08, 1)))
     {
         for (u32 i = 0; i < PARTY_SIZE; i++)
         {
