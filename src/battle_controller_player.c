@@ -61,6 +61,8 @@ extern const u8 gText_MutationAbility[];
 extern const u8 gText_MutationNature[];
 extern const u8 gText_MutationShiny[];
 extern const u8 gText_MutationPokerus[];
+extern const u8 BattleScript_AskToLearnMove[];
+extern const u8 BattleScript_LearnedNewMove[];
 
 static void PlayerHandleLoadMonSprite(u32 battler);
 static void PlayerHandleDrawTrainerPic(u32 battler);
@@ -1553,7 +1555,7 @@ static void Task_BattleLvlUpMutationCheck(u8 taskId)
     {
         gTasks[taskId].func = Task_SetControllerToWaitForString;
     }
-    else
+    else //if (Random32() % 4 == 0) // 25% chance
     {
         GetMonNickname(mon, gStringVar1);
         StringExpandPlaceholders(gStringVar4, gText_MonMutated);
@@ -1569,7 +1571,7 @@ static void Task_BattleDoMutation(u8 taskId)
         u8 monId = gTasks[taskId].tExpTask_monId;
         struct Pokemon *mon = &gPlayerParty[monId];
         u8 successfulMutation = TRUE;
-        enum Mutation mutationType = MUTATION_CHOSEN_NONE;
+        enum Mutation mutationType = MUTATION_CHOSEN_MOVE;
         
         while (mutationType == MUTATION_CHOSEN_NONE)
         {
@@ -1607,20 +1609,41 @@ static void Task_BattleDoMutation(u8 taskId)
             StringCopy(gStringVar2, gNaturesInfo[nature].name);
             StringExpandPlaceholders(gStringVar4, gText_MutationNature);
             break;
+        case MUTATION_CHOSEN_MOVE:
+            gStringVar4[0] = EOS; // no printing, move learning is all in scripts
+            u16 randomMove = (Random32() % (MOVES_COUNT - 1)) + 1;
+            u16 result = GiveMoveToMon(mon, randomMove);
+            if (result == randomMove)
+            {
+                // Learned immediately
+                gMoveToLearn = randomMove;
+                BattleScriptCall(BattleScript_LearnedNewMove);
+            }
+            else if (result == MON_HAS_MAX_MOVES)
+            {
+                gMoveToLearn = randomMove;
+                BattleScriptCall(BattleScript_AskToLearnMove);
+                gTasks[taskId].func = Task_SetControllerToWaitForString;
+            }
+            break;
         case MUTATION_CHOSEN_SHINY:
+            u8 battler = gTasks[taskId].tExpTask_battler;
+            if (IsDoubleBattle() == TRUE && monId == gBattlerPartyIndexes[BATTLE_PARTNER(battler)])
+                battler ^= BIT_FLANK;
+            // Refresh sprite if this mon is active in battle
+            if (monId == gBattlerPartyIndexes[battler])
+            {
+                // Reload sprite with shiny palette
+                BattleLoadMonSpriteGfx(mon, battler);
+                // Reset shiny anim flags and play animation
+                gBattleSpritesDataPtr->healthBoxesData[battler].triedShinyMonAnim = FALSE;
+                gBattleSpritesDataPtr->healthBoxesData[battler].finishedShinyMonAnim = FALSE;
+                TryShinyAnimation(battler, mon);
+            }
             StringExpandPlaceholders(gStringVar4, gText_MutationShiny);
             break;
         case MUTATION_CHOSEN_POKERUS:
             StringExpandPlaceholders(gStringVar4, gText_MutationPokerus);
-            break;
-        case MUTATION_CHOSEN_MOVE:
-            u16 randomMove = (Random() % MOVES_COUNT) + 1;
-            u16 result = GiveMoveToMon(mon, randomMove);
-            // else if (result == MON_HAS_MAX_MOVES)
-            // {
-            //     // For now, skip move replacement in battle
-            //     StringExpandPlaceholders(gStringVar4, gText_MutationStatsHp);
-            // }
             break;
         case MUTATION_CHOSEN_NONE:
         default:
