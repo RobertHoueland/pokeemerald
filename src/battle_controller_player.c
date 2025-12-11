@@ -1557,6 +1557,7 @@ static void Task_BattleLvlUpMutationCheck(u8 taskId)
     }
     else //if (Random32() % 4 == 0) // 25% chance
     {
+        PlayFanfare(MUS_OBTAIN_ITEM);
         GetMonNickname(mon, gStringVar1);
         StringExpandPlaceholders(gStringVar4, gText_MonMutated);
         BattlePutTextOnWindow(gStringVar4, B_WIN_MSG);
@@ -1571,7 +1572,7 @@ static void Task_BattleDoMutation(u8 taskId)
         u8 monId = gTasks[taskId].tExpTask_monId;
         struct Pokemon *mon = &gPlayerParty[monId];
         u8 successfulMutation = TRUE;
-        enum Mutation mutationType = MUTATION_CHOSEN_MOVE;
+        enum Mutation mutationType = MUTATION_CHOSEN_NONE;
         
         while (mutationType == MUTATION_CHOSEN_NONE)
         {

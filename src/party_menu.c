@@ -5916,6 +5916,7 @@ static void TryMutationAfterLevelUp(u8 taskId)
         else //if (Random32() % 4 == 0) // 25% chance
         {
             RemoveLevelUpStatsWindow();
+            PlayFanfare(MUS_OBTAIN_ITEM);
             GetMonNickname(&gPlayerParty[gPartyMenu.slotId], gStringVar1);
             StringExpandPlaceholders(gStringVar4, gText_MonMutated);
             DisplayPartyMenuMessage(gStringVar4, TRUE);

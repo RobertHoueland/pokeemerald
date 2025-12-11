@@ -1780,6 +1780,7 @@ enum Mutation DoMutation(struct Pokemon *mon)
         u8 hasPokerus = GetMonData(mon, MON_DATA_POKERUS, NULL);
         if (Random() % 50 == 0 && !isShiny) // 2% chance
         {
+            PlayFanfare(MUS_SLOTS_JACKPOT);
             // Turn shiny
             isShiny = TRUE;
             SetMonData(mon, MON_DATA_IS_SHINY, &isShiny);
