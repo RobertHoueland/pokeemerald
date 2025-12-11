@@ -834,8 +834,14 @@ static void PlayerNotOnBikeMoving(u8 direction, u16 heldKeys)
         }
         else
         {
-            // speed 2 is fast, same speed as running
-            PlayerWalkFast(direction);
+            if (gSaveBlock2Ptr->optionsMoveSpeed == OPTIONS_MOVE_SPEED_FAST)
+            {
+                PlayerWalkFaster(direction);
+            }
+            else
+            {
+                PlayerWalkFast(direction);
+            }
         }
         return;
     }

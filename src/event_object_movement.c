@@ -216,6 +216,7 @@ const struct ObjectEventGraphicsInfo *SpeciesToGraphicsInfo(u32 species, bool32 
 static bool8 NpcTakeStep(struct Sprite *);
 static bool8 AreElevationsCompatible(u8, u8);
 static void CopyObjectGraphicsInfoToSpriteTemplate_WithMovementType(u16 graphicsId, u16 movementType, struct SpriteTemplate *spriteTemplate, const struct SubspriteTable **subspriteTables);
+static bool8 IsPlayerMoveSpeedFast(void);
 
 static u16 GetGraphicsIdForMon(u32 species, bool32 shiny, bool32 female);
 static u16 GetUnownSpecies(struct Pokemon *mon);
@@ -1835,6 +1836,11 @@ static void CopyObjectGraphicsInfoToSpriteTemplate_WithMovementType(u16 graphics
 static void UNUSED MakeSpriteTemplateFromObjectEventTemplate(const struct ObjectEventTemplate *objectEventTemplate, struct SpriteTemplate *spriteTemplate, const struct SubspriteTable **subspriteTables)
 {
     CopyObjectGraphicsInfoToSpriteTemplate_WithMovementType(objectEventTemplate->graphicsId, objectEventTemplate->movementType, spriteTemplate, subspriteTables);
+}
+
+static bool8 IsPlayerMoveSpeedFast(void)
+{
+    return gSaveBlock2Ptr->optionsMoveSpeed == OPTIONS_MOVE_SPEED_FAST;
 }
 
 // Loads information from graphicsId, with shininess separate
@@ -6896,8 +6902,16 @@ static void InitMovementNormal(struct ObjectEvent *objectEvent, struct Sprite *s
 
 static void StartRunningAnim(struct ObjectEvent *objectEvent, struct Sprite *sprite, u8 direction)
 {
-    InitNpcForMovement(objectEvent, sprite, direction, MOVE_SPEED_FAST_1);
-    SetStepAnimHandleAlternation(objectEvent, sprite, GetRunningDirectionAnimNum(objectEvent->facingDirection));
+    if (IsPlayerMoveSpeedFast())
+    {
+        InitNpcForMovement(objectEvent, sprite, direction, MOVE_SPEED_FASTER);
+        SetStepAnimHandleAlternation(objectEvent, sprite, GetMoveDirectionFasterAnimNum(objectEvent->facingDirection));
+    }
+    else
+    {
+        InitNpcForMovement(objectEvent, sprite, direction, MOVE_SPEED_FAST_1);
+        SetStepAnimHandleAlternation(objectEvent, sprite, GetRunningDirectionAnimNum(objectEvent->facingDirection));
+    }
 }
 
 static bool8 UpdateMovementNormal(struct ObjectEvent *objectEvent, struct Sprite *sprite)
@@ -7114,7 +7128,12 @@ bool8 MovementAction_WalkNormalDiagonalUpRight_Step1(struct ObjectEvent *objectE
 
 bool8 MovementAction_WalkNormalDiagonalDownLeft_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite)
 {
-    InitMovementNormal(objectEvent, sprite, DIR_SOUTHWEST, MOVE_SPEED_NORMAL);
+    u8 speed = MOVE_SPEED_NORMAL;
+    if (IsPlayerMoveSpeedFast())
+    {
+        speed = MOVE_SPEED_FAST_1;
+    }
+    InitMovementNormal(objectEvent, sprite, DIR_SOUTHWEST, speed);
     return MovementAction_WalkNormalDiagonalDownLeft_Step1(objectEvent, sprite);
 }
 
@@ -7130,7 +7149,12 @@ bool8 MovementAction_WalkNormalDiagonalDownLeft_Step1(struct ObjectEvent *object
 
 bool8 MovementAction_WalkNormalDiagonalDownRight_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite)
 {
-    InitMovementNormal(objectEvent, sprite, DIR_SOUTHEAST, MOVE_SPEED_NORMAL);
+    u8 speed = MOVE_SPEED_NORMAL;
+    if (IsPlayerMoveSpeedFast())
+    {
+        speed = MOVE_SPEED_FAST_1;
+    }
+    InitMovementNormal(objectEvent, sprite, DIR_SOUTHEAST, speed);
     return MovementAction_WalkNormalDiagonalDownRight_Step1(objectEvent, sprite);
 }
 
@@ -7146,7 +7170,12 @@ bool8 MovementAction_WalkNormalDiagonalDownRight_Step1(struct ObjectEvent *objec
 
 bool8 MovementAction_WalkNormalDown_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite)
 {
-    InitMovementNormal(objectEvent, sprite, DIR_SOUTH, MOVE_SPEED_NORMAL);
+    u8 speed = MOVE_SPEED_NORMAL;
+    if (IsPlayerMoveSpeedFast())
+    {
+        speed = MOVE_SPEED_FAST_1;
+    }
+    InitMovementNormal(objectEvent, sprite, DIR_SOUTH, speed);
     return MovementAction_WalkNormalDown_Step1(objectEvent, sprite);
 }
 
@@ -7162,7 +7191,12 @@ bool8 MovementAction_WalkNormalDown_Step1(struct ObjectEvent *objectEvent, struc
 
 bool8 MovementAction_WalkNormalUp_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite)
 {
-    InitMovementNormal(objectEvent, sprite, DIR_NORTH, MOVE_SPEED_NORMAL);
+    u8 speed = MOVE_SPEED_NORMAL;
+    if (IsPlayerMoveSpeedFast())
+    {
+        speed = MOVE_SPEED_FAST_1;
+    }
+    InitMovementNormal(objectEvent, sprite, DIR_NORTH, speed);
     return MovementAction_WalkNormalUp_Step1(objectEvent, sprite);
 }
 
@@ -7178,10 +7212,15 @@ bool8 MovementAction_WalkNormalUp_Step1(struct ObjectEvent *objectEvent, struct 
 
 bool8 MovementAction_WalkNormalLeft_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite)
 {
+    u8 speed = MOVE_SPEED_NORMAL;
+    if (IsPlayerMoveSpeedFast())
+    {
+        speed = MOVE_SPEED_FAST_1;
+    }
     if (objectEvent->directionOverwrite)
-        InitMovementNormal(objectEvent, sprite, objectEvent->directionOverwrite, MOVE_SPEED_NORMAL);
+        InitMovementNormal(objectEvent, sprite, objectEvent->directionOverwrite, speed);
     else
-        InitMovementNormal(objectEvent, sprite, DIR_WEST, MOVE_SPEED_NORMAL);
+        InitMovementNormal(objectEvent, sprite, DIR_WEST, speed);
     return MovementAction_WalkNormalLeft_Step1(objectEvent, sprite);
 }
 
@@ -7197,10 +7236,15 @@ bool8 MovementAction_WalkNormalLeft_Step1(struct ObjectEvent *objectEvent, struc
 
 bool8 MovementAction_WalkNormalRight_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite)
 {
+    u8 speed = MOVE_SPEED_NORMAL;
+    if (IsPlayerMoveSpeedFast())
+    {
+        speed = MOVE_SPEED_FAST_1;
+    }
     if (objectEvent->directionOverwrite)
-        InitMovementNormal(objectEvent, sprite, objectEvent->directionOverwrite, MOVE_SPEED_NORMAL);
+        InitMovementNormal(objectEvent, sprite, objectEvent->directionOverwrite, speed);
     else
-        InitMovementNormal(objectEvent, sprite, DIR_EAST, MOVE_SPEED_NORMAL);
+        InitMovementNormal(objectEvent, sprite, DIR_EAST, speed);
     return MovementAction_WalkNormalRight_Step1(objectEvent, sprite);
 }
 

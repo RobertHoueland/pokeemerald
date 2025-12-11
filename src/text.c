@@ -317,6 +317,12 @@ static const u8 sTextScrollSpeeds[] =
     [OPTIONS_TEXT_SPEED_INSTANT] = 6,
 };
 
+static const u8 sTextMoveSpeeds[] = 
+{
+    [OPTIONS_MOVE_SPEED_DEFAULT] = 1,
+    [OPTIONS_MOVE_SPEED_FAST]    = 2,
+};
+
 static const u16 sFontBoldJapaneseGlyphs[] = INCBIN_U16("graphics/fonts/bold.hwjpnfont");
 
 static void SetFontsPointer(const struct FontInfo *fonts)
