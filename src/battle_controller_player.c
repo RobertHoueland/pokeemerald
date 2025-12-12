@@ -1550,18 +1550,38 @@ static void Task_BattleLvlUpMutationCheck(u8 taskId)
     u8 monId = gTasks[taskId].tExpTask_monId;
     struct Pokemon *mon = &gPlayerParty[monId];
     u8 totalMutations = GetMonTotalMutations(mon);
-    
-    if (totalMutations >= MAX_MUTATIONS)
+
+    if (totalMutations < MAX_MUTATIONS)
     {
-        gTasks[taskId].func = Task_SetControllerToWaitForString;
-    }
-    else //if (Random32() % 4 == 0) // 25% chance
-    {
+        u8 level = GetMonData(mon, MON_DATA_LEVEL);
+        u8 numMutations = GetMonTotalMutations(mon);
+        u8 denominator = 4;
+        u8 chance = 1;  // default 25% chance of mutation
+        u8 expected = level / 4;
+        u8 deficit = expected - numMutations;  // catch up mechanic
+        //
+        //TRAINER_CLASS_TEAM_AQUA TRAINER_CLASS_TEAM_MAGMA TRAINER_CLASS_AQUAADMIN TRAINER_CLASS_MAGMA_ADMIN TRAINER_CLASS_AQUA_LEADER TRAINER_CLASS_MAGMA_LEADER
+        //chance = 2
+        //TRAINER_CLASS_RIVAL TRAINER_CLASS_LEADER
+        //chance = 3
+        //TRAINER_CLASS_ELITE_FOUR CTRAINER_CLASS_HAMPION
+        //chance = 4
+        //
+        if (deficit >= 4)
+            chance = 3;  // 75%
+        if (deficit >=2)
+            chance = 2;  // 50%
+        //if (Random32() % denominator <= chance)
+        // Do mutation...
         PlayFanfare(MUS_OBTAIN_ITEM);
         GetMonNickname(mon, gStringVar1);
         StringExpandPlaceholders(gStringVar4, gText_MonMutated);
         BattlePutTextOnWindow(gStringVar4, B_WIN_MSG);
         gTasks[taskId].func = Task_BattleDoMutation;
+    }
+    else 
+    {
+        gTasks[taskId].func = Task_SetControllerToWaitForString;
     }
 }
 

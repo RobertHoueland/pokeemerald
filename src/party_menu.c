@@ -5909,12 +5909,20 @@ static void TryMutationAfterLevelUp(u8 taskId)
     if (WaitFanfare(FALSE) && IsPartyMenuTextPrinterActive() != TRUE && ((JOY_NEW(A_BUTTON)) || (JOY_NEW(B_BUTTON))))
     {
         u8 totalMutations = GetMonTotalMutations(&gPlayerParty[gPartyMenu.slotId]);
-        if (totalMutations >=  MAX_MUTATIONS)
+        if (totalMutations < MAX_MUTATIONS)
         {
-            gTasks[taskId].func = Task_TryLearnNewMoves;
-        }
-        else //if (Random32() % 4 == 0) // 25% chance
-        {
+            u8 level = GetMonData(&gPlayerParty[gPartyMenu.slotId], MON_DATA_LEVEL);
+            u8 numMutations = GetMonTotalMutations(&gPlayerParty[gPartyMenu.slotId]);
+            u8 denominator = 4;
+            u8 chance = 1;  // default 25% chance of mutation
+            u8 expected = level / 4;
+            u8 deficit = expected - numMutations;  // catch up mechanic
+            if (deficit >= 4)
+                chance = 3;  // 75%
+            if (deficit >=2)
+                chance = 2;  // 50%
+            //if (Random32() % denominator <= chance)
+            // Do mutation...
             RemoveLevelUpStatsWindow();
             PlayFanfare(MUS_OBTAIN_ITEM);
             GetMonNickname(&gPlayerParty[gPartyMenu.slotId], gStringVar1);
@@ -5922,6 +5930,10 @@ static void TryMutationAfterLevelUp(u8 taskId)
             DisplayPartyMenuMessage(gStringVar4, TRUE);
             ScheduleBgCopyTilemapToVram(2);
             gTasks[taskId].func = Task_DoMutation;
+        }
+        else
+        {
+            gTasks[taskId].func = Task_TryLearnNewMoves;
         }
     }
 }
