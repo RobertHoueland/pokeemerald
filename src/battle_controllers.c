@@ -2937,7 +2937,7 @@ void BtlController_HandleBattleAnimation(u32 battler)
 
 u32 Rogue_GetBattleSpeedScale(bool32 forHealthbar)
 {
-    u8 battleSceneOption = VarGet(B_BATTLE_SPEED);
+    u8 battleSceneOption = gSaveBlock2Ptr->optionsBattleSpeed;
 
     // Hold L to slow down
     if(JOY_HELD(L_BUTTON))

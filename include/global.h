@@ -610,6 +610,7 @@ struct SaveBlock2
     /*0x624*/ u16 contestLinkResults[CONTEST_CATEGORIES_COUNT][CONTESTANT_COUNT];
     /*0x64C*/ struct BattleFrontier frontier;
     u8 optionsMoveSpeed; // OPTIONS_MOVE_SPEED_[DEFAULT/FAST]
+    u8 optionsBattleSpeed; // OPTIONS_BATTLE_SCENE_[1X/2X/3X/4X]
 }; // sizeof=0xF2C
 
 extern struct SaveBlock2 *gSaveBlock2Ptr;

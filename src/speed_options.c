@@ -22,20 +22,23 @@
 #define tMenuSelection data[0]
 #define tTextSpeed data[1]
 #define tMoveSpeed data[2]
+#define tBattleSpeed data[3]
 
 // Define menu item indices
 enum
 {
     SPEEDMENU_TEXTSPEED,
     SPEEDMENU_MOVESPEED,
+    SPEEDMENU_BATTLESPEED,
     SPEEDMENU_BACK,
     SPEEDMENU_COUNT
 };
 
 // Define Y positions for menu items
-#define YPOS_TEXTSPEED  (SPEEDMENU_TEXTSPEED * 16)
-#define YPOS_MOVESPEED  (SPEEDMENU_MOVESPEED * 16)
-#define YPOS_BACK       (SPEEDMENU_BACK * 16)
+#define YPOS_TEXTSPEED   (SPEEDMENU_TEXTSPEED * 16)
+#define YPOS_MOVESPEED   (SPEEDMENU_MOVESPEED * 16)
+#define YPOS_BATTLESPEED (SPEEDMENU_BATTLESPEED * 16)
+#define YPOS_BACK        (SPEEDMENU_BACK * 16)
 
 // Function declarations
 static void Task_SpeedOptionsMenuFadeIn(u8 taskId);
@@ -46,6 +49,8 @@ static u8 TextSpeed_ProcessInput(u8 selection);
 static void TextSpeed_DrawChoices(u8 selection);
 static u8 MoveSpeed_ProcessInput(u8 selection);
 static void MoveSpeed_DrawChoices(u8 selection);
+static u8 BattleSpeed_ProcessInput(u8 selection);
+static void BattleSpeed_DrawChoices(u8 selection);
 static void DrawHeaderText(void);
 static void DrawSpeedOptionMenuTexts(void);
 static void DrawBgWindowFrames(void);
@@ -53,9 +58,10 @@ static void DrawBgWindowFrames(void);
 // Define menu item names
 static const u8 *const sSpeedOptionMenuItemsNames[SPEEDMENU_COUNT] =
 {
-    [SPEEDMENU_TEXTSPEED] = COMPOUND_STRING("TEXT SPEED"),
-    [SPEEDMENU_MOVESPEED] = COMPOUND_STRING("MOVEMENT SPEED"),
-    [SPEEDMENU_BACK]      = COMPOUND_STRING("BACK"),
+    [SPEEDMENU_TEXTSPEED]   = COMPOUND_STRING("TEXT SPEED"),
+    [SPEEDMENU_MOVESPEED]   = COMPOUND_STRING("MOVEMENT SPEED"),
+    [SPEEDMENU_BATTLESPEED] = COMPOUND_STRING("BATTLE SPEED"),
+    [SPEEDMENU_BACK]        = COMPOUND_STRING("BACK"),
 };
 
 static const u8 gText_Option[]             = _("OPTION");
@@ -64,6 +70,10 @@ static const u8 gText_TextSpeedMid[]       = _("{COLOR GREEN}{SHADOW LIGHT_GREEN
 static const u8 gText_TextSpeedFast[]      = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}ZOOM");
 static const u8 gText_MoveSpeedDefault[]   = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}DEFAULT");
 static const u8 gText_MoveSpeedFast[]      = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}FAST");
+static const u8 gText_BattleSpeed1[]       = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}1X");
+static const u8 gText_BattleSpeed2[]       = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}2X");
+static const u8 gText_BattleSpeed3[]       = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}3X");
+static const u8 gText_BattleSpeed4[]       = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}4X");
 
 // Use same window templates and BG templates as main option menu
 extern const struct WindowTemplate sOptionMenuWinTemplates[];
@@ -170,9 +180,11 @@ void CB2_InitSpeedOptionsMenu(void)
         gTasks[taskId].tMenuSelection = 0;
         gTasks[taskId].tTextSpeed = gSaveBlock2Ptr->optionsTextSpeed;
         gTasks[taskId].tMoveSpeed = gSaveBlock2Ptr->optionsMoveSpeed;
+        gTasks[taskId].tBattleSpeed = gSaveBlock2Ptr->optionsBattleSpeed;
 
         TextSpeed_DrawChoices(gTasks[taskId].tTextSpeed);
         MoveSpeed_DrawChoices(gTasks[taskId].tMoveSpeed);
+        BattleSpeed_DrawChoices(gTasks[taskId].tBattleSpeed);
         HighlightSpeedOptionMenuItem(gTasks[taskId].tMenuSelection);
 
         CopyWindowToVram(WIN_OPTIONS, COPYWIN_FULL);
@@ -202,6 +214,7 @@ static void Task_SpeedOptionsMenuProcessInput(u8 taskId)
             // Save the speed option values and return to main menu
             gSaveBlock2Ptr->optionsTextSpeed = gTasks[taskId].tTextSpeed;
             gSaveBlock2Ptr->optionsMoveSpeed = gTasks[taskId].tMoveSpeed;
+            gSaveBlock2Ptr->optionsBattleSpeed = gTasks[taskId].tBattleSpeed;
             
             BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
             gTasks[taskId].func = Task_SpeedOptionsMenuFadeOut;
@@ -212,6 +225,7 @@ static void Task_SpeedOptionsMenuProcessInput(u8 taskId)
         // Save the speed option values and return to main menu
         gSaveBlock2Ptr->optionsTextSpeed = gTasks[taskId].tTextSpeed;
         gSaveBlock2Ptr->optionsMoveSpeed = gTasks[taskId].tMoveSpeed;
+        gSaveBlock2Ptr->optionsBattleSpeed = gTasks[taskId].tBattleSpeed;
         
         BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
         gTasks[taskId].func = Task_SpeedOptionsMenuFadeOut;
@@ -251,6 +265,13 @@ static void Task_SpeedOptionsMenuProcessInput(u8 taskId)
 
             if (previousOption != gTasks[taskId].tMoveSpeed)
                 MoveSpeed_DrawChoices(gTasks[taskId].tMoveSpeed);
+            break;
+        case SPEEDMENU_BATTLESPEED:
+            previousOption = gTasks[taskId].tBattleSpeed;
+            gTasks[taskId].tBattleSpeed = BattleSpeed_ProcessInput(gTasks[taskId].tBattleSpeed);
+
+            if (previousOption != gTasks[taskId].tBattleSpeed)
+                BattleSpeed_DrawChoices(gTasks[taskId].tBattleSpeed);
             break;
         default:
             return;
@@ -347,6 +368,58 @@ static void MoveSpeed_DrawChoices(u8 selection)
 
     DrawOptionMenuChoice(gText_MoveSpeedDefault, 104, YPOS_MOVESPEED, styles[0]);
     DrawOptionMenuChoice(gText_MoveSpeedFast, GetStringRightAlignXOffset(FONT_NORMAL, gText_MoveSpeedFast, 198), YPOS_MOVESPEED, styles[1]);
+}
+
+static u8 BattleSpeed_ProcessInput(u8 selection)
+{
+    if (JOY_NEW(DPAD_RIGHT))
+    {
+        if (selection < 3)
+            selection++;
+        else
+            selection = 0;
+
+        sArrowPressed = TRUE;
+    }
+    if (JOY_NEW(DPAD_LEFT))
+    {
+        if (selection != 0)
+            selection--;
+        else
+            selection = 3;
+
+        sArrowPressed = TRUE;
+    }
+    return selection;
+}
+
+static void BattleSpeed_DrawChoices(u8 selection)
+{
+    u8 styles[4];
+    s32 width1, width2, width3, width4, x1, x2, x3, totalWidth, spacing;
+
+    styles[0] = 0;
+    styles[1] = 0;
+    styles[2] = 0;
+    styles[3] = 0;
+    styles[selection] = 1;
+
+    width1 = GetStringWidth(FONT_NORMAL, gText_BattleSpeed1, 0);
+    width2 = GetStringWidth(FONT_NORMAL, gText_BattleSpeed2, 0);
+    width3 = GetStringWidth(FONT_NORMAL, gText_BattleSpeed3, 0);
+    width4 = GetStringWidth(FONT_NORMAL, gText_BattleSpeed4, 0);
+
+    totalWidth = width1 + width2 + width3 + width4;
+    spacing = (198 - 104 - totalWidth) / 3;
+
+    x1 = 104;
+    x2 = x1 + width1 + spacing;
+    x3 = x2 + width2 + spacing;
+
+    DrawOptionMenuChoice(gText_BattleSpeed1, 104, YPOS_BATTLESPEED, styles[0]);
+    DrawOptionMenuChoice(gText_BattleSpeed2, x2, YPOS_BATTLESPEED, styles[1]);
+    DrawOptionMenuChoice(gText_BattleSpeed3, x3, YPOS_BATTLESPEED, styles[2]);
+    DrawOptionMenuChoice(gText_BattleSpeed4, GetStringRightAlignXOffset(FONT_NORMAL, gText_BattleSpeed4, 198), YPOS_BATTLESPEED, styles[3]);
 }
 
 static void DrawHeaderText(void)

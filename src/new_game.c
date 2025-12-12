@@ -97,11 +97,12 @@ static void SetDefaultOptions(void)
 {
     gSaveBlock2Ptr->optionsTextSpeed = OPTIONS_TEXT_SPEED_FAST;
     gSaveBlock2Ptr->optionsWindowFrameType = 0;
-    gSaveBlock2Ptr->optionsSound = OPTIONS_SOUND_STEREO; // because we're removing this option from view atm, stereo default is probably preferred
+    gSaveBlock2Ptr->optionsSound = OPTIONS_SOUND_STEREO;
     gSaveBlock2Ptr->optionsBattleStyle = OPTIONS_BATTLE_STYLE_SHIFT;
     gSaveBlock2Ptr->optionsBattleSceneOff = FALSE;
     gSaveBlock2Ptr->regionMapZoom = FALSE;
     gSaveBlock2Ptr->optionsMoveSpeed = OPTIONS_MOVE_SPEED_FAST;
+    gSaveBlock2Ptr->optionsBattleSpeed = OPTIONS_BATTLE_SCENE_3X;
 }
 
 static void ClearPokedexFlags(void)
