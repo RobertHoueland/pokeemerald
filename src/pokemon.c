@@ -1764,9 +1764,8 @@ enum Mutation DoMutation(struct Pokemon *mon)
         u32 newNature;
         do
         {
-            newNature = Random32();
-        } while (currNature == GetNatureFromPersonality(newNature) ||
-                 currHiddenNature == GetNatureFromPersonality(newNature));
+            newNature = Random32() % NUM_NATURES;
+        } while (currNature == newNature || currHiddenNature == newNature);
         // Add as a "hidden nature" like mints do
         SetMonData(mon, MON_DATA_HIDDEN_NATURE, &newNature);
         CalculateMonStats(mon);
@@ -1779,7 +1778,10 @@ enum Mutation DoMutation(struct Pokemon *mon)
     case MUTATION_ATTEMPT_SHINY:
         u8 isShiny = GetMonData(mon, MON_DATA_IS_SHINY, NULL);
         u8 hasPokerus = GetMonData(mon, MON_DATA_POKERUS, NULL);
-        if (Random() % 50 == 0 && !isShiny) // 2% chance
+        u32 totalRerolls = 0;
+        if (CheckBagHasItem(ITEM_SHINY_CHARM, 1))
+            totalRerolls += I_SHINY_CHARM_ADDITIONAL_ROLLS;
+        if (Random() % 50 <= totalRerolls && !isShiny) // 2% base, 6% with shiny charm
         {
             PlayFanfare(MUS_SLOTS_JACKPOT);
             // Turn shiny
@@ -1788,7 +1790,7 @@ enum Mutation DoMutation(struct Pokemon *mon)
             IncrementMonTotalMutations(mon);
             return MUTATION_CHOSEN_SHINY;
         }
-        else if (Random() % 150 == 0 && !hasPokerus) // 0.66% chance
+        else if (Random() % 150 == 0 && !hasPokerus) // 0.66%
         {
             // Gain Pokerus
             u8 pokerus = TRUE;

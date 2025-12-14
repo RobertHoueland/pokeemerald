@@ -1564,14 +1564,14 @@ static void Task_BattleLvlUpMutationCheck(u8 taskId)
         //chance = 2
         //TRAINER_CLASS_RIVAL TRAINER_CLASS_LEADER
         //chance = 3
-        //TRAINER_CLASS_ELITE_FOUR CTRAINER_CLASS_HAMPION
+        //TRAINER_CLASS_ELITE_FOUR TRAINER_CLASS_CHAMPION
         //chance = 4
         //
         if (deficit >= 4)
             chance = 3;  // 75%
         if (deficit >=2)
             chance = 2;  // 50%
-        //if (Random32() % denominator <= chance)
+        //if (Random32() % denominator <= min(chance, 4))
         // Do mutation...
         PlayFanfare(MUS_OBTAIN_ITEM);
         GetMonNickname(mon, gStringVar1);

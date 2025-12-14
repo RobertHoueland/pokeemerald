@@ -69,6 +69,7 @@ enum SWSHSkillsPageState
     SKILL_STATE_STATS,
     SKILL_STATE_IVS,
     SKILL_STATE_EVS,
+    SKILL_STATE_MUTS,
 };
 
 #define PSS_BUFFER_SIZE 0x400
@@ -98,8 +99,9 @@ enum SWSHSkillsPageState
 #define PSS_LABEL_WINDOW_PROMPT_IVS 10
 #define PSS_LABEL_WINDOW_PROMPT_EVS 11
 #define PSS_LABEL_WINDOW_PROMPT_STATS 12
+#define PSS_LABEL_WINDOW_PROMPT_MUTS 13
 
-#define PSS_LABEL_WINDOW_END 13
+#define PSS_LABEL_WINDOW_END 14
 
 // Dynamic fields for the Pokémon Info page
 #define PSS_DATA_WINDOW_INFO_ITEM 0
@@ -211,6 +213,12 @@ static EWRAM_DATA struct PokemonSummaryScreenData
         u8 evSpatk;
         u8 evSpdef;
         u8 evSpeed; // 0x56
+        u8 mutHp;
+        u8 mutAtk;
+        u8 mutDef;
+        u8 mutSpatk;
+        u8 mutSpdef;
+        u8 mutSpeed; // 0x62
     } summary;
     u16 bg3TilemapBuffers[PSS_BUFFER_SIZE];
     u16 bg2TilemapBuffers[PSS_PAGE_COUNT][PSS_BUFFER_SIZE];
@@ -407,6 +415,7 @@ static const u8 sText_SpDef_Title[]                 = _("Sp. Def");
 static const u8 sText_Speed_Title[]                 = _("Speed");
 static const u8 sText_ViewIVs[]                     = _("View IV");
 static const u8 sText_ViewEVs[]                     = _("View EV");
+static const u8 sText_ViewMuts[]                    = _("View Mutations");
 static const u8 sText_ViewStats[]                   = _("View Stats");
 static const u8 sText_Exp[]                         = _("Exp.");
 static const u8 sText_NextLv[]                        = _("Next Lv.");
@@ -594,6 +603,15 @@ static const struct WindowTemplate sSummaryTemplate[] =
         .height = 2,
         .paletteNum = 6,
         .baseBlock = 277,
+    },
+    [PSS_LABEL_WINDOW_PROMPT_MUTS] = {
+        .bg = 0,
+        .tilemapLeft = 20,
+        .tilemapTop = 18,
+        .width = 10,
+        .height = 2,
+        .paletteNum = 6,
+        .baseBlock = 297,
     },
     // // Changed to print label inside PSS_DATA_WINDOW_EXP_NEXT_LEVEL
     // [PSS_LABEL_WINDOW_POKEMON_SKILLS_EXP] = {
@@ -2232,6 +2250,14 @@ static bool8 ExtractMonDataToSummaryStruct(struct Pokemon *mon)
         sum->evSpdef = GetMonData(mon, MON_DATA_SPDEF_EV);
         sum->evSpeed = GetMonData(mon, MON_DATA_SPEED_EV);
         break;
+    case 6:
+        sum->mutHp = GetMonStatMutationCount(mon, STAT_HP);
+        sum->mutAtk = GetMonStatMutationCount(mon, STAT_ATK);
+        sum->mutDef = GetMonStatMutationCount(mon, STAT_DEF);
+        sum->mutSpatk = GetMonStatMutationCount(mon, STAT_SPATK);
+        sum->mutSpdef = GetMonStatMutationCount(mon, STAT_SPDEF);
+        sum->mutSpeed = GetMonStatMutationCount(mon, STAT_SPEED);
+        break;
     default:
         sum->ribbonCount = GetMonData(mon, MON_DATA_RIBBON_COUNT);        
         sum->teraType = GetMonData(mon, MON_DATA_TERA_TYPE);
@@ -2315,6 +2341,9 @@ static void ChangeSummaryState(s16 *data, u8 taskId)
         tSkillsState = SKILL_STATE_EVS;
         break;
     case SKILL_STATE_EVS:
+        tSkillsState = SKILL_STATE_MUTS;
+        break;
+    case SKILL_STATE_MUTS:
         tSkillsState = SKILL_STATE_STATS;
         break;
     }
@@ -2337,6 +2366,10 @@ static void DrawNextSkillsButtonPrompt(u8 mode)
             break;
         case SKILL_STATE_EVS:
             ClearWindowTilemap(PSS_LABEL_WINDOW_PROMPT_EVS);
+            PutWindowTilemap(PSS_LABEL_WINDOW_PROMPT_MUTS);
+            break;
+        case SKILL_STATE_MUTS:
+            ClearWindowTilemap(PSS_LABEL_WINDOW_PROMPT_MUTS);
             PutWindowTilemap(PSS_LABEL_WINDOW_PROMPT_STATS);
             break;
     }
@@ -3524,6 +3557,13 @@ static void PrintPageNamesAndStats(void)
         PrintButtonIcon(PSS_LABEL_WINDOW_PROMPT_EVS, BUTTON_A, iconXPos, 4);
         PrintTextOnWindowWithFont(PSS_LABEL_WINDOW_PROMPT_EVS, sText_ViewEVs, stringXPos, 0, 0, 1, FONT_SMALL);
 
+        stringXPos = GetStringRightAlignXOffset(FONT_SHORT_NARROW, sText_ViewMuts, skillsLabelWidth) - 2;
+        iconXPos = stringXPos - 11;
+        if (iconXPos < 0)
+            iconXPos = 0;
+        PrintButtonIcon(PSS_LABEL_WINDOW_PROMPT_MUTS, BUTTON_A, iconXPos, 4);
+        PrintTextOnWindowWithFont(PSS_LABEL_WINDOW_PROMPT_MUTS, sText_ViewMuts, stringXPos, 0, 0, 1, FONT_SMALL);
+
         stringXPos = GetStringRightAlignXOffset(FONT_SHORT_NARROW, sText_ViewStats, skillsLabelWidth) - 2;
         iconXPos = stringXPos - 11;
         if (iconXPos < 0)
@@ -3589,6 +3629,7 @@ static void ClearPageWindowTilemaps(u8 page)
             ClearWindowTilemap(PSS_LABEL_WINDOW_PROMPT_STATS);
             ClearWindowTilemap(PSS_LABEL_WINDOW_PROMPT_EVS);
             ClearWindowTilemap(PSS_LABEL_WINDOW_PROMPT_IVS);
+            ClearWindowTilemap(PSS_LABEL_WINDOW_PROMPT_MUTS);
         }
         break;
     case PSS_PAGE_BATTLE_MOVES:
@@ -4121,6 +4162,14 @@ static void BufferAndPrintStats_HandleState(u8 mode)
         spA = sMonSummaryScreen->summary.evSpatk;
         spD = sMonSummaryScreen->summary.evSpdef;
         spe = sMonSummaryScreen->summary.evSpeed;
+        break;
+    case SKILL_STATE_MUTS:
+        hp = sMonSummaryScreen->summary.mutHp;
+        atk = sMonSummaryScreen->summary.mutAtk;
+        def = sMonSummaryScreen->summary.mutDef;
+        spA = sMonSummaryScreen->summary.mutSpatk;
+        spD = sMonSummaryScreen->summary.mutSpdef;
+        spe = sMonSummaryScreen->summary.mutSpeed;
         break;
     }
 

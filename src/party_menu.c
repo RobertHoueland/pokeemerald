@@ -5934,7 +5934,7 @@ static void TryMutationAfterLevelUp(u8 taskId)
                 chance = 3;  // 75%
             if (deficit >=2)
                 chance = 2;  // 50%
-            //if (Random32() % denominator <= chance)
+            //if (Random32() % denominator <= min(chance, 4))
             // Do mutation...
             RemoveLevelUpStatsWindow();
             PlayFanfare(MUS_OBTAIN_ITEM);
