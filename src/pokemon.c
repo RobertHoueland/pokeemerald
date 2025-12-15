@@ -1778,13 +1778,13 @@ enum Mutation DoMutation(struct Pokemon *mon)
     case MUTATION_ATTEMPT_SHINY:
         u8 isShiny = GetMonData(mon, MON_DATA_IS_SHINY, NULL);
         u8 hasPokerus = GetMonData(mon, MON_DATA_POKERUS, NULL);
-        u32 totalRerolls = 0;
+        u32 totalRolls = 0;
         if (CheckBagHasItem(ITEM_SHINY_CHARM, 1))
-            totalRerolls += I_SHINY_CHARM_ADDITIONAL_ROLLS;
-        if (Random() % 50 <= totalRerolls && !isShiny) // 2% base, 6% with shiny charm
+            totalRolls += I_SHINY_CHARM_ADDITIONAL_ROLLS;
+        if (Random() % 50 <= totalRolls && !isShiny) // 2% base, 6% with shiny charm
         {
-            PlayFanfare(MUS_SLOTS_JACKPOT);
             // Turn shiny
+            PlaySE(SE_SHINY);
             isShiny = TRUE;
             SetMonData(mon, MON_DATA_IS_SHINY, &isShiny);
             IncrementMonTotalMutations(mon);
@@ -1958,6 +1958,19 @@ void IncrementMonTotalMutations(struct Pokemon *mon)
     // write back extra into bits 18..20
     packed = (packed & ~(0x7u << 18)) | (extra << 18);
     WriteStatMutationPacked(mon, packed);
+}
+
+u16 GetPartyTotalMutations(void)
+{
+    u16 total = 0;
+    s32 i;
+
+    for (i = 0; i < PARTY_SIZE; i++)
+    {
+        total += GetMonTotalMutations(&gPlayerParty[i]);
+    }
+
+    return total;
 }
 
 void CalculateMonStats(struct Pokemon *mon)

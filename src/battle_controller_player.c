@@ -1644,7 +1644,6 @@ static void Task_BattleDoMutation(u8 taskId)
             {
                 gMoveToLearn = randomMove;
                 BattleScriptCall(BattleScript_AskToLearnMove);
-                gTasks[taskId].func = Task_SetControllerToWaitForString;
             }
             break;
         case MUTATION_CHOSEN_SHINY:
@@ -1675,8 +1674,8 @@ static void Task_BattleDoMutation(u8 taskId)
         if (successfulMutation == TRUE)
         {
             BattlePutTextOnWindow(gStringVar4, B_WIN_MSG);
-            gTasks[taskId].func = Task_SetControllerToWaitForString;
         }
+        gTasks[taskId].func = Task_SetControllerToWaitForString;
     }
 }
 
