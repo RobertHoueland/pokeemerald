@@ -5921,15 +5921,19 @@ static void TryMutationAfterLevelUp(u8 taskId)
 {
     if (WaitFanfare(FALSE) && IsPartyMenuTextPrinterActive() != TRUE && ((JOY_NEW(A_BUTTON)) || (JOY_NEW(B_BUTTON))))
     {
-        u8 totalMutations = GetMonTotalMutations(&gPlayerParty[gPartyMenu.slotId]);
-        if (totalMutations < MAX_MUTATIONS)
+        struct Pokemon *mon = &gPlayerParty[gPartyMenu.slotId];
+        u8 totalMutations = GetMonTotalMutations(mon);
+        u16 item = GetMonData(mon, MON_DATA_HELD_ITEM);
+
+        if (totalMutations < MAX_MUTATIONS && item != ITEM_GENE_LOCK)
         {
-            u8 level = GetMonData(&gPlayerParty[gPartyMenu.slotId], MON_DATA_LEVEL);
-            u8 numMutations = GetMonTotalMutations(&gPlayerParty[gPartyMenu.slotId]);
+            u8 level = GetMonData(mon, MON_DATA_LEVEL);
+            u8 numMutations = GetMonTotalMutations(mon);
             u8 denominator = 4;
             u8 chance = 1;  // default 25% chance of mutation
+            // catch up mechanic
             u8 expected = level / 4;
-            u8 deficit = expected - numMutations;  // catch up mechanic
+            u8 deficit = expected - numMutations;
             if (deficit >= 4)
                 chance = 3;  // 75%
             if (deficit >=2)
@@ -5938,7 +5942,7 @@ static void TryMutationAfterLevelUp(u8 taskId)
             // Do mutation...
             RemoveLevelUpStatsWindow();
             PlayFanfare(MUS_OBTAIN_ITEM);
-            GetMonNickname(&gPlayerParty[gPartyMenu.slotId], gStringVar1);
+            GetMonNickname(mon, gStringVar1);
             StringExpandPlaceholders(gStringVar4, gText_MonMutated);
             DisplayPartyMenuMessage(gStringVar4, TRUE);
             ScheduleBgCopyTilemapToVram(2);

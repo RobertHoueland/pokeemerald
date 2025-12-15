@@ -15057,6 +15057,42 @@ const struct Item gItemsInfo[] =
         .iconPic = gItemIcon_PokeshiDoll,
         .iconPalette = gItemIconPalette_PokeshiDoll,
     },
+
+    [ITEM_MUTATION_SHARD] = 
+    {
+        .name = ITEM_NAME("Mutation Shard"),
+        .pluralName = ITEM_PLURAL_NAME("Mutation Shards"),
+        .price = 5000,
+        .description = COMPOUND_STRING(
+            "Boosts chances of\n"
+            "a Pokémon mutating\n"
+            "upon level-up."),
+        .pocket = POCKET_ITEMS,
+        .sortType = ITEM_TYPE_HELD_ITEM,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .flingPower = 30,
+        .iconPic = gItemIcon_DynamaxCandy,
+        .iconPalette = gItemIconPalette_DynamaxCandy,
+    },
+
+    [ITEM_GENE_LOCK] = 
+    {
+        .name = ITEM_NAME("Gene Lock"),
+        .pluralName = ITEM_PLURAL_NAME("Gene Locks"),
+        .price = 2000,
+        .description = COMPOUND_STRING(
+            "Prevents future\n"
+            "mutations while\n"
+            "held."),
+        .pocket = POCKET_ITEMS,
+        .sortType = ITEM_TYPE_HELD_ITEM,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .flingPower = 30,
+        .iconPic = gItemIcon_AbilityPatch,
+        .iconPalette = gItemIconPalette_AbilityPatch,
+    },
 };
 
 #undef ITEM_NAME

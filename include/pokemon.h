@@ -767,6 +767,7 @@ u8 GetMonStatMutationCount(const struct Pokemon *mon, u8 statIndex);
 void IncrementMonStatMutation(struct Pokemon *mon, u8 statIndex);
 u8 GetMonTotalMutations(const struct Pokemon *mon);
 void IncrementMonTotalMutations(struct Pokemon *mon);
+u16 GetPartyTotalMutations(void);
 void CalculateMonStats(struct Pokemon *mon);
 void BoxMonToMon(const struct BoxPokemon *src, struct Pokemon *dest);
 u8 GetLevelFromMonExp(struct Pokemon *mon);

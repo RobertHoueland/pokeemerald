@@ -1550,15 +1550,17 @@ static void Task_BattleLvlUpMutationCheck(u8 taskId)
     u8 monId = gTasks[taskId].tExpTask_monId;
     struct Pokemon *mon = &gPlayerParty[monId];
     u8 totalMutations = GetMonTotalMutations(mon);
+    u16 item = GetMonData(mon, MON_DATA_HELD_ITEM);
 
-    if (totalMutations < MAX_MUTATIONS)
+    if (totalMutations < MAX_MUTATIONS && item != ITEM_GENE_LOCK)
     {
         u8 level = GetMonData(mon, MON_DATA_LEVEL);
         u8 numMutations = GetMonTotalMutations(mon);
         u8 denominator = 4;
         u8 chance = 1;  // default 25% chance of mutation
+        // catch up mechanic
         u8 expected = level / 4;
-        u8 deficit = expected - numMutations;  // catch up mechanic
+        u8 deficit = expected - numMutations;
         //
         //TRAINER_CLASS_TEAM_AQUA TRAINER_CLASS_TEAM_MAGMA TRAINER_CLASS_AQUAADMIN TRAINER_CLASS_MAGMA_ADMIN TRAINER_CLASS_AQUA_LEADER TRAINER_CLASS_MAGMA_LEADER
         //chance = 2
