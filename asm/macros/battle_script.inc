@@ -2464,3 +2464,12 @@
 	.byte \gen
 	.4byte \jumpInstr
 	.endm
+
+	.macro lvluptrymutation
+	callnative BS_LvlUpMutationCheck
+	.endm
+
+	.macro dobattlemutation battler:req
+	callnative BS_DoMutation
+	.byte \battler
+	.endm

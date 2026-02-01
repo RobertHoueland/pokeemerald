@@ -663,6 +663,7 @@ enum PossibleMutations
     MUTATION_ABILITY,
     MUTATION_NATURE,
     MUTATION_MOVE,
+    MUTATION_FORM,
     MUTATION_ATTEMPT_SHINY,
     NUM_POSSIBLE_MUTATIONS
 };
@@ -681,6 +682,7 @@ enum Mutation
     MUTATION_CHOSEN_ABILITY,
     MUTATION_CHOSEN_NATURE,
     MUTATION_CHOSEN_MOVE,
+    MUTATION_CHOSEN_FORM,
     MUTATION_CHOSEN_SHINY,
     MUTATION_CHOSEN_POKERUS
 };
@@ -960,5 +962,7 @@ struct Pokemon *GetSavedPlayerPartyMon(u32 index);
 u8 *GetSavedPlayerPartyCount(void);
 void SavePlayerPartyMon(u32 index, struct Pokemon *mon);
 bool32 IsSpeciesOfType(u32 species, enum Type type);
+bool32 IsSpeciesRegionalForm(u32 species);
+bool32 SpeciesHasRegionalForm(u32 species);
 
 #endif // GUARD_POKEMON_H

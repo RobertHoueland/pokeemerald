@@ -4752,6 +4752,12 @@ BattleScript_LevelUp::
 	printstring STRINGID_PKMNGREWTOLV
 	setbyte sLVLBOX_STATE, 0
 	drawlvlupbox
+	lvluptrymutation
+	jumpifbyte CMP_NOT_EQUAL, gBattleCommunication, TRUE, BattleScript_SkipMutation
+	fanfare MUS_OBTAIN_ITEM
+	printstring STRINGID_MONMUTATED
+	dobattlemutation BS_SCRIPTING
+BattleScript_SkipMutation:
 	handlelearnnewmove BattleScript_LearnedNewMove, BattleScript_LearnMoveReturn, TRUE
 	goto BattleScript_AskToLearnMove
 BattleScript_TryLearnMoveLoop::

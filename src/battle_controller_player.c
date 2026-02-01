@@ -49,21 +49,6 @@
 #include "test/battle.h"
 #include "test/test_runner_battle.h"
 
-extern const u8 gText_MonMutated[];
-extern const u8 gText_MutationStatsHp[];
-extern const u8 gText_MutationStatsAttack[];
-extern const u8 gText_MutationStatsDefense[];
-extern const u8 gText_MutationStatsSpAtk[];
-extern const u8 gText_MutationStatsSpDef[];
-extern const u8 gText_MutationStatsSpd[];
-extern const u8 gText_MutationType[];
-extern const u8 gText_MutationAbility[];
-extern const u8 gText_MutationNature[];
-extern const u8 gText_MutationShiny[];
-extern const u8 gText_MutationPokerus[];
-extern const u8 BattleScript_AskToLearnMove[];
-extern const u8 BattleScript_LearnedNewMove[];
-
 static void PlayerHandleLoadMonSprite(u32 battler);
 static void PlayerHandleDrawTrainerPic(u32 battler);
 static void PlayerHandleTrainerSlide(u32 battler);
@@ -105,8 +90,6 @@ static void Task_PrepareToGiveExpWithExpBar(u8);
 static void Task_SetControllerToWaitForString(u8);
 static void Task_GiveExpWithExpBar(u8);
 static void Task_UpdateLvlInHealthbox(u8);
-static void Task_BattleLvlUpMutationCheck(u8 taskId);
-static void Task_BattleDoMutation(u8 taskId);
 static void PrintLinkStandbyMsg(void);
 
 static void ReloadMoveNames(u32 battler);
@@ -1540,143 +1523,6 @@ static void Task_UpdateLvlInHealthbox(u8 taskId)
         else
             UpdateHealthboxAttribute(gHealthboxSpriteIds[battler], &gPlayerParty[monIndex], HEALTHBOX_ALL);
 
-        // Check for mutations after level up
-        gTasks[taskId].func = Task_BattleLvlUpMutationCheck;
-    }
-}
-
-static void Task_BattleLvlUpMutationCheck(u8 taskId)
-{
-    u8 monId = gTasks[taskId].tExpTask_monId;
-    struct Pokemon *mon = &gPlayerParty[monId];
-    u8 totalMutations = GetMonTotalMutations(mon);
-    u16 item = GetMonData(mon, MON_DATA_HELD_ITEM);
-
-    if (totalMutations < MAX_MUTATIONS && item != ITEM_GENE_LOCK)
-    {
-        u8 level = GetMonData(mon, MON_DATA_LEVEL);
-        u8 numMutations = GetMonTotalMutations(mon);
-        u8 denominator = 4;
-        u8 chance = 1;  // default 25% chance of mutation
-        // catch up mechanic
-        u8 expected = level / 4;
-        u8 deficit = expected - numMutations;
-        //
-        //TRAINER_CLASS_TEAM_AQUA TRAINER_CLASS_TEAM_MAGMA TRAINER_CLASS_AQUAADMIN TRAINER_CLASS_MAGMA_ADMIN TRAINER_CLASS_AQUA_LEADER TRAINER_CLASS_MAGMA_LEADER
-        //chance = 2
-        //TRAINER_CLASS_RIVAL TRAINER_CLASS_LEADER
-        //chance = 3
-        //TRAINER_CLASS_ELITE_FOUR TRAINER_CLASS_CHAMPION
-        //chance = 4
-        //
-        if (deficit >= 4)
-            chance = 3;  // 75%
-        if (deficit >=2)
-            chance = 2;  // 50%
-        //if (Random32() % denominator <= min(chance, 4))
-        // Do mutation...
-        PlayFanfare(MUS_OBTAIN_ITEM);
-        GetMonNickname(mon, gStringVar1);
-        StringExpandPlaceholders(gStringVar4, gText_MonMutated);
-        BattlePutTextOnWindow(gStringVar4, B_WIN_MSG);
-        gTasks[taskId].func = Task_BattleDoMutation;
-    }
-    else 
-    {
-        gTasks[taskId].func = Task_SetControllerToWaitForString;
-    }
-}
-
-static void Task_BattleDoMutation(u8 taskId)
-{
-    if (JOY_NEW(A_BUTTON) || JOY_NEW(B_BUTTON))
-    {
-        u8 monId = gTasks[taskId].tExpTask_monId;
-        struct Pokemon *mon = &gPlayerParty[monId];
-        u8 successfulMutation = TRUE;
-        enum Mutation mutationType = MUTATION_CHOSEN_NONE;
-        
-        while (mutationType == MUTATION_CHOSEN_NONE)
-        {
-            mutationType = DoMutation(mon);
-        }
-
-        switch (mutationType)
-        {
-        case MUTATION_CHOSEN_HP:
-            StringExpandPlaceholders(gStringVar4, gText_MutationStatsHp);
-            break;
-        case MUTATION_CHOSEN_ATK:
-            StringExpandPlaceholders(gStringVar4, gText_MutationStatsAttack);
-            break;
-        case MUTATION_CHOSEN_DEF:
-            StringExpandPlaceholders(gStringVar4, gText_MutationStatsDefense);
-            break;
-        case MUTATION_CHOSEN_SPATK:
-            StringExpandPlaceholders(gStringVar4, gText_MutationStatsSpAtk);
-            break;
-        case MUTATION_CHOSEN_SPDEF:
-            StringExpandPlaceholders(gStringVar4, gText_MutationStatsSpDef);
-            break;
-        case MUTATION_CHOSEN_SPEED:
-            StringExpandPlaceholders(gStringVar4, gText_MutationStatsSpd);
-            break;
-        case MUTATION_CHOSEN_TYPE:
-            StringExpandPlaceholders(gStringVar4, gText_MutationType);
-            break;
-        case MUTATION_CHOSEN_ABILITY:
-            StringExpandPlaceholders(gStringVar4, gText_MutationAbility);
-            break;
-        case MUTATION_CHOSEN_NATURE:
-            u8 nature = GetMonData(mon, MON_DATA_HIDDEN_NATURE);
-            StringCopy(gStringVar2, gNaturesInfo[nature].name);
-            StringExpandPlaceholders(gStringVar4, gText_MutationNature);
-            break;
-        case MUTATION_CHOSEN_MOVE:
-            gStringVar4[0] = EOS; // no printing, move learning is all in scripts
-            u16 randomMove = (Random32() % (MOVES_COUNT - 1)) + 1;
-            u16 result = GiveMoveToMon(mon, randomMove);
-            if (result == randomMove)
-            {
-                // Learned immediately
-                gMoveToLearn = randomMove;
-                BattleScriptCall(BattleScript_LearnedNewMove);
-            }
-            else if (result == MON_HAS_MAX_MOVES)
-            {
-                gMoveToLearn = randomMove;
-                BattleScriptCall(BattleScript_AskToLearnMove);
-            }
-            break;
-        case MUTATION_CHOSEN_SHINY:
-            u8 battler = gTasks[taskId].tExpTask_battler;
-            if (IsDoubleBattle() == TRUE && monId == gBattlerPartyIndexes[BATTLE_PARTNER(battler)])
-                battler ^= BIT_FLANK;
-            // Refresh sprite if this mon is active in battle
-            if (monId == gBattlerPartyIndexes[battler])
-            {
-                // Reload sprite with shiny palette
-                BattleLoadMonSpriteGfx(mon, battler);
-                // Reset shiny anim flags and play animation
-                gBattleSpritesDataPtr->healthBoxesData[battler].triedShinyMonAnim = FALSE;
-                gBattleSpritesDataPtr->healthBoxesData[battler].finishedShinyMonAnim = FALSE;
-                TryShinyAnimation(battler, mon);
-            }
-            StringExpandPlaceholders(gStringVar4, gText_MutationShiny);
-            break;
-        case MUTATION_CHOSEN_POKERUS:
-            StringExpandPlaceholders(gStringVar4, gText_MutationPokerus);
-            break;
-        case MUTATION_CHOSEN_NONE:
-        default:
-            successfulMutation = FALSE;
-            break;
-        }
-
-        if (successfulMutation == TRUE)
-        {
-            BattlePutTextOnWindow(gStringVar4, B_WIN_MSG);
-        }
         gTasks[taskId].func = Task_SetControllerToWaitForString;
     }
 }

@@ -2426,6 +2426,7 @@ extern const u8 gText_MutationStatsSpd[];
 extern const u8 gText_MutationType[];
 extern const u8 gText_MutationAbility[];
 extern const u8 gText_MutationNature[];
+extern const u8 gText_MutationForm[];
 extern const u8 gText_MutationShiny[];
 extern const u8 gText_MutationPokerus[];
 

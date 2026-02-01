@@ -1775,6 +1775,38 @@ enum Mutation DoMutation(struct Pokemon *mon)
         // Handle in return function
         IncrementMonTotalMutations(mon);
         return MUTATION_CHOSEN_MOVE;
+    case MUTATION_FORM:
+        if (SpeciesHasRegionalForm(species) && !IsSpeciesRegionalForm(species))
+        {
+            const u16 *formTable = GetSpeciesFormTable(species);
+            u16 formCount = 0;
+            u16 regionalFormCount = 0;
+            u16 regionalForms[4];
+            // Count and collect # of regional forms
+            for (formCount = 0; formTable[formCount] != FORM_SPECIES_END; formCount++)
+            {
+                if (IsSpeciesRegionalForm(formTable[formCount]))
+                {
+                    regionalForms[regionalFormCount++] = formTable[formCount];
+                }
+            }
+            // Select a random form if any were found
+            if (regionalFormCount > 0)
+            {
+                u16 randomForm = regionalForms[Random() % regionalFormCount];
+                SetMonData(mon, MON_DATA_SPECIES, &randomForm);
+                CalculateMonStats(mon);
+            }
+            else
+            {
+                return MUTATION_CHOSEN_NONE;
+            }
+        }
+        else
+        {
+            return MUTATION_CHOSEN_NONE;
+        }
+        return MUTATION_CHOSEN_FORM;
     case MUTATION_ATTEMPT_SHINY:
         u8 isShiny = GetMonData(mon, MON_DATA_IS_SHINY, NULL);
         u8 hasPokerus = GetMonData(mon, MON_DATA_POKERUS, NULL);
@@ -1784,10 +1816,10 @@ enum Mutation DoMutation(struct Pokemon *mon)
         if (Random() % 50 <= totalRolls && !isShiny) // 2% base, 6% with shiny charm
         {
             // Turn shiny
-            PlaySE(SE_SHINY);
             isShiny = TRUE;
             SetMonData(mon, MON_DATA_IS_SHINY, &isShiny);
             IncrementMonTotalMutations(mon);
+            // handle sound effect in return function
             return MUTATION_CHOSEN_SHINY;
         }
         else if (Random() % 150 == 0 && !hasPokerus) // 0.66%

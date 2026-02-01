@@ -5994,6 +5994,8 @@ static void Task_DoMutation(u8 taskId)
             StringExpandPlaceholders(gStringVar4, gText_MutationStatsSpd);
             break;
         case MUTATION_CHOSEN_TYPE:
+            u8 teraType = GetMonData(mon, MON_DATA_TERA_TYPE);
+            StringCopy(gStringVar2, gTypesInfo[teraType].name);
             StringExpandPlaceholders(gStringVar4, gText_MutationType);
             break;
         case MUTATION_CHOSEN_ABILITY:
@@ -6018,10 +6020,13 @@ static void Task_DoMutation(u8 taskId)
             {
                 gMoveToLearn = randomMove;
                 DisplayMonNeedsToReplaceMove(taskId);
-                return;
             }
             break;
+        case MUTATION_CHOSEN_FORM:
+            StringExpandPlaceholders(gStringVar4, gText_MutationForm);
+            break;
         case MUTATION_CHOSEN_SHINY:
+            PlaySE(SE_SHINY);
             StringExpandPlaceholders(gStringVar4, gText_MutationShiny);
             break;
         case MUTATION_CHOSEN_POKERUS:

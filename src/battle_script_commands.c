@@ -75,6 +75,9 @@
 #include "load_save.h"
 #include "test/test_runner_battle.h"
 
+extern const u8 BattleScript_LearnedNewMove[];
+extern const u8 BattleScript_AskToLearnMove[];
+
 // table to avoid ugly powing on gba (courtesy of doesnt)
 // this returns (i^2.5)/4
 // the quarters cancel so no need to re-quadruple them in actual calculation
@@ -18037,4 +18040,163 @@ void BS_JumpIfGenConfigLowerThan(void)
         gBattlescriptCurrInstr = cmd->jumpInstr;
     else
         gBattlescriptCurrInstr = cmd->nextInstr;
+}
+
+u8 CalculateMutationChances(struct Pokemon *mon)
+{
+    u8 chance = 1;
+    
+    // TODO: Higher chance for tougher opponents
+    //TRAINER_CLASS_TEAM_AQUA TRAINER_CLASS_TEAM_MAGMA TRAINER_CLASS_AQUAADMIN TRAINER_CLASS_MAGMA_ADMIN TRAINER_CLASS_AQUA_LEADER TRAINER_CLASS_MAGMA_LEADER
+    //chance += 1;
+    //TRAINER_CLASS_RIVAL TRAINER_CLASS_LEADER
+    //chance += 2;
+    //TRAINER_CLASS_ELITE_FOUR TRAINER_CLASS_CHAMPION
+    //chance += 3;
+
+    // catch up mechanic
+    u8 level = GetMonData(mon, MON_DATA_LEVEL);
+    u8 numMutations = GetMonTotalMutations(mon);
+    u8 expected = level / 4;
+    u8 deficit = expected - numMutations;
+    if (deficit >= 4)
+        // 4 or more mutations behind expected
+        chance += 2;
+    else if (deficit >=2)
+        // only 2 or 3 mutations behind expected
+        chance += 1;
+
+    return chance;
+}
+
+void BS_LvlUpMutationCheck(void)
+{
+    NATIVE_ARGS();
+    u32 monId = gBattleStruct->expGetterMonId;
+    struct Pokemon *mon = &gPlayerParty[monId];
+    u8 totalMutations = GetMonTotalMutations(mon);
+    u16 item = GetMonData(mon, MON_DATA_HELD_ITEM);
+
+    // track if mutation will happen
+    gBattleCommunication[0] = FALSE;
+
+    if (totalMutations < MAX_MUTATIONS && item != ITEM_GENE_LOCK)
+    {
+        u8 denominator = 4;  // default 25% chance
+        u8 chance = CalculateMutationChances(mon);
+
+        if (Random32() % denominator <= min(chance, 4))
+        {
+            // mutation occurs
+            gBattleCommunication[0] = TRUE;
+        }
+        gBattleCommunication[0] = TRUE; /* DEBUG */
+    }
+
+    gBattlescriptCurrInstr = cmd->nextInstr;
+}
+
+void BS_DoMutation(void)
+{
+    // Handle mutation in mid battle level up...
+    NATIVE_ARGS(u8 battler);
+    
+    u32 monId = gBattleStruct->expGetterMonId;
+    struct Pokemon *mon = &gPlayerParty[monId];
+    u32 battler = GetBattlerForBattleScript(cmd->battler);
+
+    enum Mutation mutationType = MUTATION_CHOSEN_NONE;
+    while (mutationType == MUTATION_CHOSEN_NONE)
+    {
+        mutationType = DoMutation(mon);
+    }
+
+    switch (mutationType)
+    {
+    case MUTATION_CHOSEN_HP:
+        PrepareStringBattle(STRINGID_MUTSTATSHP, battler);
+        break;
+    case MUTATION_CHOSEN_ATK:
+        PrepareStringBattle(STRINGID_MUTSTATSATT, battler);
+        break;
+    case MUTATION_CHOSEN_DEF:
+        PrepareStringBattle(STRINGID_MUTSTATSDEF, battler);
+        break;
+    case MUTATION_CHOSEN_SPATK:
+        PrepareStringBattle(STRINGID_MUTSTATSSPATK, battler);
+        break;
+    case MUTATION_CHOSEN_SPDEF:
+        PrepareStringBattle(STRINGID_MUTSTATSSPDEF, battler);
+        break;
+    case MUTATION_CHOSEN_SPEED:
+        PrepareStringBattle(STRINGID_MUTSTATSSPD, battler);
+        break;
+    case MUTATION_CHOSEN_TYPE:
+        u8 teraType = GetMonData(mon, MON_DATA_TERA_TYPE);
+        PREPARE_TYPE_BUFFER(gBattleTextBuff1, teraType);
+        PrepareStringBattle(STRINGID_MUTTYPE, battler);
+        break;
+    case MUTATION_CHOSEN_ABILITY:
+        PrepareStringBattle(STRINGID_MUTABILITY, battler);
+        break;
+    case MUTATION_CHOSEN_NATURE:
+        u8 nature = GetMonData(mon, MON_DATA_HIDDEN_NATURE);
+        StringCopy(gBattleTextBuff1, gNaturesInfo[nature].name);
+        PrepareStringBattle(STRINGID_MUTNATURE, battler);
+        break;
+    case MUTATION_CHOSEN_MOVE:
+        u16 randomMove = (Random32() % (MOVES_COUNT - 1)) + 1;
+        u16 result = GiveMoveToMon(mon, randomMove);
+        gMoveToLearn = randomMove;
+        if (result == randomMove)
+        {
+            // Learned immediately
+            BattleScriptPush(cmd->nextInstr);
+            gBattlescriptCurrInstr = BattleScript_LearnedNewMove;
+            return; // this is needed
+        }
+        else if (result == MON_HAS_MAX_MOVES)
+        {
+            // Ask to replace a move
+            BattleScriptPush(cmd->nextInstr);
+            gBattlescriptCurrInstr = BattleScript_AskToLearnMove;
+            return; // this is needed
+        }
+        break;
+    case MUTATION_CHOSEN_FORM:
+        if (monId == gBattlerPartyIndexes[gBattlerAttacker])
+        {
+            // Reload sprite with regional form
+            u32 battler = gBattlerAttacker;
+            BattleLoadMonSpriteGfx(mon, battler);
+            u8 spriteId = gBattlerSpriteIds[battler];
+            if (spriteId != SPRITE_NONE)
+            {
+                FreeSpriteOamMatrix(&gSprites[spriteId]);
+                DestroySpriteAndFreeResources(&gSprites[spriteId]);
+                CreateBattlerSprite(battler);
+            }
+            UpdateHealthboxAttribute(gHealthboxSpriteIds[battler], mon, HEALTHBOX_ALL);
+        }
+        PrepareStringBattle(STRINGID_MUTFORM, battler);
+        break;
+    case MUTATION_CHOSEN_SHINY:
+        if (monId == gBattlerPartyIndexes[gBattlerAttacker])
+        {
+            // Reload sprite with shiny palette
+            BattleLoadMonSpriteGfx(mon, gBattlerAttacker);
+            gBattleSpritesDataPtr->healthBoxesData[gBattlerAttacker].triedShinyMonAnim = FALSE;
+            gBattleSpritesDataPtr->healthBoxesData[gBattlerAttacker].finishedShinyMonAnim = FALSE;
+            TryShinyAnimation(gBattlerAttacker, mon);
+        }
+        PrepareStringBattle(STRINGID_MUTSHINY, battler);
+        break;
+    case MUTATION_CHOSEN_POKERUS:
+        PrepareStringBattle(STRINGID_MUTPOKERUS, battler);
+        break;
+    default:
+        break;
+    }
+
+    gBattlescriptCurrInstr = cmd->nextInstr;
 }

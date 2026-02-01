@@ -873,6 +873,19 @@ const u8 *const gBattleStringsTable[STRINGID_COUNT] =
     [STRINGID_POWERCONSTRUCTPRESENCEOFMANY]         = COMPOUND_STRING("You sense the presence of many!"),
     [STRINGID_POWERCONSTRUCTTRANSFORM]              = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} transformed into its Complete Forme!"),
     [STRINGID_ABILITYSHIELDPROTECTS]                = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX}'s Ability is protected by the effects of its {B_LAST_ITEM}!"),
+    [STRINGID_MONMUTATED]                           = COMPOUND_STRING("Oh?\n{B_ATK_NAME_WITH_PREFIX} is undergoing a mutation!\p"),
+    [STRINGID_MUTSTATSHP]                           = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} feels heartier!\p"),
+    [STRINGID_MUTSTATSATT]                          = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} feels stronger!\p"),
+    [STRINGID_MUTSTATSDEF]                          = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} hardened its stance!\p"),
+    [STRINGID_MUTSTATSSPATK]                        = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} flared up!\p"),
+    [STRINGID_MUTSTATSSPDEF]                        = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} steadied its focus!\p"),
+    [STRINGID_MUTSTATSSPD]                          = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} feels quicker!\p"),
+    [STRINGID_MUTTYPE]                              = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX}'s cells restructured!\nIt exhibits the {B_BUFF1} type!\p"),
+    [STRINGID_MUTABILITY]                           = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX}'s biology was altered...\nIts hidden ability manifested!\p"),
+    [STRINGID_MUTNATURE]                            = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} shows a new temperament!\nIt looks so {B_BUFF1}\p"),
+    [STRINGID_MUTFORM]                              = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} adapted to a distant region!\nA new form emerged!\p"),
+    [STRINGID_MUTSHINY]                             = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} sparkles brightly!{WAIT_SE}{PAUSE 127}\p"),
+    [STRINGID_MUTPOKERUS]                           = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} is infected with a virus!\p"),
 };
 
 const u16 gTrainerUsedItemStringIds[] =
