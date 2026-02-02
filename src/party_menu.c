@@ -5629,6 +5629,10 @@ static void Task_LearnNextMoveOrClosePartyMenu(u8 taskId)
         {
             Task_TryLearningNextMove(taskId);
         }
+        else if (gPartyMenu.learnMoveState == 3)
+        {
+            Task_TryLearnNewMoves(taskId);
+        }
         else
         {
             if (gPartyMenu.learnMoveState == 2) // never occurs
@@ -5749,6 +5753,8 @@ static void Task_HandleStopLearningMove(u8 taskId)
     {
         if (gPartyMenu.learnMoveState == 1)
             gTasks[taskId].func = Task_TryLearningNextMoveAfterText;
+        else if (gPartyMenu.learnMoveState == 3)
+            gTasks[taskId].func = Task_TryLearnNewMoves;
         else
             gTasks[taskId].func = Task_ClosePartyMenuAfterText;
     }
@@ -5774,7 +5780,7 @@ static void Task_HandleStopLearningMoveYesNoInput(u8 taskId)
         StringCopy(gStringVar2, GetMoveName(gPartyMenu.data1));
         StringExpandPlaceholders(gStringVar4, gText_MoveNotLearned);
         DisplayPartyMenuMessage(gStringVar4, TRUE);
-        if (gPartyMenu.learnMoveState == 1)
+        if (gPartyMenu.learnMoveState == 1 || gPartyMenu.learnMoveState == 3)
         {
             gTasks[taskId].func = Task_TryLearningNextMoveAfterText;
         }
@@ -5927,26 +5933,41 @@ static void TryMutationAfterLevelUp(u8 taskId)
 
         if (totalMutations < MAX_MUTATIONS && item != ITEM_GENE_LOCK)
         {
+            u8 denominator = 8;  // default 25% chance
+            u8 chance = 2;
+
+            if (item == ITEM_MUTATION_SHARD)
+            {
+                chance += 2;
+            }
+
+            // catch up mechanic
             u8 level = GetMonData(mon, MON_DATA_LEVEL);
             u8 numMutations = GetMonTotalMutations(mon);
-            u8 denominator = 4;
-            u8 chance = 1;  // default 25% chance of mutation
-            // catch up mechanic
             u8 expected = level / 4;
             u8 deficit = expected - numMutations;
             if (deficit >= 4)
-                chance = 3;  // 75%
-            if (deficit >=2)
-                chance = 2;  // 50%
-            //if (Random32() % denominator <= min(chance, 4))
-            // Do mutation...
-            RemoveLevelUpStatsWindow();
-            PlayFanfare(MUS_OBTAIN_ITEM);
-            GetMonNickname(mon, gStringVar1);
-            StringExpandPlaceholders(gStringVar4, gText_MonMutated);
-            DisplayPartyMenuMessage(gStringVar4, TRUE);
-            ScheduleBgCopyTilemapToVram(2);
-            gTasks[taskId].func = Task_DoMutation;
+                // 4 or more mutations behind expected
+                chance += 2;
+            else if (deficit >=2)
+                // only 2 or 3 mutations behind expected
+                chance += 1;
+
+            if (Random32() % denominator <= min(chance, 8))
+            {
+                // mutation occurs
+                RemoveLevelUpStatsWindow();
+                PlayFanfare(MUS_OBTAIN_ITEM);
+                GetMonNickname(mon, gStringVar1);
+                StringExpandPlaceholders(gStringVar4, gText_MonMutated);
+                DisplayPartyMenuMessage(gStringVar4, TRUE);
+                ScheduleBgCopyTilemapToVram(2);
+                gTasks[taskId].func = Task_DoMutation;
+            }
+            else
+            {
+                gTasks[taskId].func = Task_TryLearnNewMoves;
+            }
         }
         else
         {
@@ -6018,8 +6039,11 @@ static void Task_DoMutation(u8 taskId)
             }
             else if (result == MON_HAS_MAX_MOVES)
             {
+                // FIXME: attempts to learn evolution move before evolve animation
                 gMoveToLearn = randomMove;
+                gPartyMenu.learnMoveState = 3;
                 DisplayMonNeedsToReplaceMove(taskId);
+                return;  // this is needed
             }
             break;
         case MUTATION_CHOSEN_FORM:
@@ -6041,8 +6065,8 @@ static void Task_DoMutation(u8 taskId)
         if (successfulMutation == TRUE)
         {
             DisplayPartyMenuMessage(gStringVar4, TRUE);
-            gTasks[taskId].func = Task_TryLearnNewMoves;
         }
+        gTasks[taskId].func = Task_TryLearnNewMoves;
     }
 }
 

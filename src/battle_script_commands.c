@@ -77,6 +77,7 @@
 
 extern const u8 BattleScript_LearnedNewMove[];
 extern const u8 BattleScript_AskToLearnMove[];
+extern const enum TrainerClassID GetTrainerClassFromId(u16 trainerId);
 
 // table to avoid ugly powing on gba (courtesy of doesnt)
 // this returns (i^2.5)/4
@@ -18042,17 +18043,37 @@ void BS_JumpIfGenConfigLowerThan(void)
         gBattlescriptCurrInstr = cmd->nextInstr;
 }
 
-u8 CalculateMutationChances(struct Pokemon *mon)
+u8 CalculateMutationChances(struct Pokemon *mon, u8 hasMutShard)
 {
-    u8 chance = 1;
-    
-    // TODO: Higher chance for tougher opponents
-    //TRAINER_CLASS_TEAM_AQUA TRAINER_CLASS_TEAM_MAGMA TRAINER_CLASS_AQUAADMIN TRAINER_CLASS_MAGMA_ADMIN TRAINER_CLASS_AQUA_LEADER TRAINER_CLASS_MAGMA_LEADER
-    //chance += 1;
-    //TRAINER_CLASS_RIVAL TRAINER_CLASS_LEADER
-    //chance += 2;
-    //TRAINER_CLASS_ELITE_FOUR TRAINER_CLASS_CHAMPION
-    //chance += 3;
+    u8 chance = 2;
+
+    if (hasMutShard)
+    {
+        chance += 2;
+    }
+
+    enum TrainerClassID trainerClass;
+    trainerClass = GetTrainerClassFromId(TRAINER_BATTLE_PARAM.opponentA);
+    // higher chance for fighting these opponents
+    if (trainerClass == TRAINER_CLASS_TEAM_AQUA ||
+        trainerClass == TRAINER_CLASS_TEAM_MAGMA ||
+        trainerClass == TRAINER_CLASS_AQUA_ADMIN ||
+        trainerClass == TRAINER_CLASS_MAGMA_ADMIN ||
+        trainerClass == TRAINER_CLASS_AQUA_LEADER ||
+        trainerClass == TRAINER_CLASS_MAGMA_LEADER)
+    {
+        chance += 1;
+    }
+    else if (trainerClass == TRAINER_CLASS_RIVAL ||
+             trainerClass == TRAINER_CLASS_LEADER)
+    {
+        chance += 2;
+    }
+    else if (trainerClass == TRAINER_CLASS_ELITE_FOUR ||
+             trainerClass == TRAINER_CLASS_CHAMPION)
+    {
+        chance += 3;
+    }
 
     // catch up mechanic
     u8 level = GetMonData(mon, MON_DATA_LEVEL);
@@ -18082,15 +18103,20 @@ void BS_LvlUpMutationCheck(void)
 
     if (totalMutations < MAX_MUTATIONS && item != ITEM_GENE_LOCK)
     {
-        u8 denominator = 4;  // default 25% chance
-        u8 chance = CalculateMutationChances(mon);
+        u8 hasMutShard = FALSE;
+        if (item == ITEM_MUTATION_SHARD)
+        {
+            hasMutShard = TRUE;
+        }
 
-        if (Random32() % denominator <= min(chance, 4))
+        u8 denominator = 8;  // default 25% chance
+        u8 chance = CalculateMutationChances(mon, hasMutShard);
+
+        if (Random32() % denominator <= min(chance, 8))
         {
             // mutation occurs
             gBattleCommunication[0] = TRUE;
         }
-        gBattleCommunication[0] = TRUE; /* DEBUG */
     }
 
     gBattlescriptCurrInstr = cmd->nextInstr;

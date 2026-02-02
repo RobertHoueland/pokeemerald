@@ -1741,8 +1741,8 @@ enum Mutation DoMutation(struct Pokemon *mon)
         rolledMutation = MUTATION_MOVE;          // 10% chance because getting a bad move sucks...
     else if (roll < 85)
         rolledMutation = MUTATION_FORM;          // 15%
-    else                
-        rolledMutation = MUTATION_SHINY; // 15%
+    else
+        rolledMutation = MUTATION_SHINY;         // 15%
 
     switch (rolledMutation)
     {
