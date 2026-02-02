@@ -71,6 +71,7 @@
 #include "constants/weather.h"
 
 #define FRIENDSHIP_EVO_THRESHOLD ((P_FRIENDSHIP_EVO_THRESHOLD >= GEN_8) ? 160 : 220)
+#define MAX_STAT_MUTATIONS 5  // each stat can have this many mutations
 
 struct SpeciesItem
 {
@@ -1718,18 +1719,42 @@ static u16 CalculateBoxMonChecksumReencrypt(struct BoxPokemon *boxMon)
 
 enum Mutation DoMutation(struct Pokemon *mon)
 {
+    u8 rolledMutation;
     u16 species = GetMonData(mon, MON_DATA_SPECIES, NULL);
+    u8 totalMutations = GetMonTotalMutations(mon);
 
-    switch (Random32() % NUM_POSSIBLE_MUTATIONS)
+    if (totalMutations >= MAX_MUTATIONS)
+    {
+        return MUTATION_CHOSEN_NONE;
+    }
+
+    u8 roll = Random32() % 100;
+    if (roll < 20)
+        rolledMutation = MUTATION_STAT;          // 20% since there's a lot of stats
+    else if (roll < 35) 
+        rolledMutation = MUTATION_TYPE;          // 15%
+    else if (roll < 45)
+        rolledMutation = MUTATION_ABILITY;       // 10% since it only happens once
+    else if (roll < 60)
+        rolledMutation = MUTATION_NATURE;        // 15%
+    else if (roll < 70)
+        rolledMutation = MUTATION_MOVE;          // 10% chance because getting a bad move sucks...
+    else if (roll < 85)
+        rolledMutation = MUTATION_FORM;          // 15%
+    else                
+        rolledMutation = MUTATION_SHINY; // 15%
+
+    switch (rolledMutation)
     {
     case MUTATION_STAT:
         enum Mutation statMutation = MutateStat(mon);
-        if (statMutation != MUTATION_CHOSEN_NONE)
+        if (statMutation == MUTATION_CHOSEN_NONE)
         {
-            // Still have stats to mutate
-            CalculateMonStats(mon);
-            IncrementMonTotalMutations(mon);
+            // all stats are max
+            return MUTATION_CHOSEN_NONE;
         }
+        CalculateMonStats(mon);
+        IncrementMonTotalMutations(mon);
         return statMutation;
     case MUTATION_TYPE:
         enum Type newType;
@@ -1738,7 +1763,7 @@ enum Mutation DoMutation(struct Pokemon *mon)
         enum Type currTeraType = GetMonData(mon, MON_DATA_TERA_TYPE, NULL);
         do
         {
-            newType = (enum Type)((Random32() % NUMBER_OF_MON_TYPES - 1)  + 1);
+            newType = (enum Type)(Random32() % NUMBER_OF_MON_TYPES);
         } while (newType == currType0 || newType == currType1 || newType == currTeraType ||
                  newType == TYPE_MYSTERY || newType == TYPE_STELLAR);
         // Add as a tera type, used as a "3rd type" in battle
@@ -1746,10 +1771,10 @@ enum Mutation DoMutation(struct Pokemon *mon)
         IncrementMonTotalMutations(mon);
         return MUTATION_CHOSEN_TYPE;
     case MUTATION_ABILITY:
-        // Check if we already have hidden ability
         u8 currSlot = GetMonData(mon, MON_DATA_ABILITY_NUM);
         if (currSlot == 2)
         {
+            // Already has hidden ability
             return MUTATION_CHOSEN_NONE;
         }
         // Unlock hidden ability
@@ -1772,8 +1797,8 @@ enum Mutation DoMutation(struct Pokemon *mon)
         IncrementMonTotalMutations(mon);
         return MUTATION_CHOSEN_NATURE;
     case MUTATION_MOVE:
-        // Handle in return function
-        IncrementMonTotalMutations(mon);
+        IncrementMonTotalMutations(mon); // should we only count it if the move is learned?
+        // Handle move learning in return function
         return MUTATION_CHOSEN_MOVE;
     case MUTATION_FORM:
         if (SpeciesHasRegionalForm(species) && !IsSpeciesRegionalForm(species))
@@ -1796,18 +1821,12 @@ enum Mutation DoMutation(struct Pokemon *mon)
                 u16 randomForm = regionalForms[Random() % regionalFormCount];
                 SetMonData(mon, MON_DATA_SPECIES, &randomForm);
                 CalculateMonStats(mon);
-            }
-            else
-            {
-                return MUTATION_CHOSEN_NONE;
+                IncrementMonTotalMutations(mon);
+                return MUTATION_CHOSEN_FORM;
             }
         }
-        else
-        {
-            return MUTATION_CHOSEN_NONE;
-        }
-        return MUTATION_CHOSEN_FORM;
-    case MUTATION_ATTEMPT_SHINY:
+        return MUTATION_CHOSEN_NONE;
+    case MUTATION_SHINY:
         u8 isShiny = GetMonData(mon, MON_DATA_IS_SHINY, NULL);
         u8 hasPokerus = GetMonData(mon, MON_DATA_POKERUS, NULL);
         u32 totalRolls = 0;
@@ -1825,12 +1844,12 @@ enum Mutation DoMutation(struct Pokemon *mon)
         else if (Random() % 150 == 0 && !hasPokerus) // 0.66%
         {
             // Gain Pokerus
-            u8 pokerus = TRUE;
-            SetMonData(mon, MON_DATA_POKERUS, &pokerus);
+            hasPokerus = TRUE;
+            SetMonData(mon, MON_DATA_POKERUS, &hasPokerus);
             IncrementMonTotalMutations(mon);
             return MUTATION_CHOSEN_POKERUS;
         }
-        // fallthrough otherwise
+        return MUTATION_CHOSEN_NONE;
     default:
         return MUTATION_CHOSEN_NONE;
     }
@@ -1846,15 +1865,15 @@ enum Mutation MutateStat(struct Pokemon *mon)
     {
         stats[i] = i;
     }
-    // Pick random stats without replacement, stop on first non-maxed stat
+
+    // Pick random stats without replacement, stop on first non-max stat
     for (u8 i = 0; i < NUM_STATS; ++i)
     {
         u8 pick = Random32() % (NUM_STATS - i);
         chosenStat = (enum Stat)stats[pick];
         statMutCount = GetMonStatMutationCount(mon, chosenStat);
 
-        // Each stat can only be mutated 7 times for memory reasons
-        if (statMutCount < 7)
+        if (statMutCount < MAX_STAT_MUTATIONS)
         {
             break;
         }
@@ -1863,14 +1882,13 @@ enum Mutation MutateStat(struct Pokemon *mon)
         stats[pick] = stats[NUM_STATS - 1 - i];
     }
 
-    // All stats are maxxed
-    if (statMutCount >= 7)
+    if (statMutCount >= MAX_STAT_MUTATIONS)
     {
+        // All stats are max
         return MUTATION_CHOSEN_NONE;
     }
     
     IncrementMonStatMutation(mon, chosenStat);
-
     switch (chosenStat)
     {
     case STAT_HP:
@@ -1890,9 +1908,9 @@ enum Mutation MutateStat(struct Pokemon *mon)
     }
 }
 
-// Unused bit fields were reused to store mutation data.
-u32 ReadStatMutationPacked(const struct Pokemon *mon)
+u32 ReadMutationPacked(const struct Pokemon *mon)
 {
+    // Unused bit fields were reused to store mutation data
     struct BoxPokemon *boxMon = (struct BoxPokemon *)&mon->box;
     DecryptBoxMon(boxMon);
 
@@ -1901,21 +1919,28 @@ u32 ReadStatMutationPacked(const struct Pokemon *mon)
     struct PokemonSubstruct1 *substruct1 = GetSubstruct1(boxMon);
     struct PokemonSubstruct3 *substruct3 = GetSubstruct3(boxMon);
 
-    v |= (substruct0->mutation0 & 0x3F);             // bits 0..5
-    v |= (u32)(substruct0->mutation1 & 0x7) << 6;    // bits 6..8
-    v |= (u32)(substruct0->mutation2 & 0x3) << 9;    // bits 9..10
-    v |= (u32)(substruct1->mutation3 & 0x1F) << 11;  // bits 11..15
-    v |= (u32)(substruct1->mutation4 & 0x7) << 16;   // bits 16..18
-    v |= (u32)(substruct3->mutation5 & 0x1) << 19;
-    v |= (u32)(boxMon->mutation6 & 0x1) << 20;
-    v |= (u32)(boxMon->mutation7 & 0x1) << 21;
+    v |= (substruct0->mutation0 & 0x3F);                   // bits 0..5   (HP [3], ATK [3])
+    v |= (u32)(substruct0->mutation1 & 0x7) << 6;          // bits 6..8   (DEF [3])
+    v |= (u32)(substruct0->mutation2 & 0x3) << 9;          // bits 9..10  (SPEED lo [2])
+    // 5 bits. Speed hi [1], SPATK [3], SPDEF lo [1]
+    u32 mut3 = substruct1->mutation3 & 0x1F;
+    v |= ((mut3 >> 0) & 0x1) << 11;                        // bit 11      (SPEED hi [1])
+    v |= ((mut3 >> 1) & 0x7) << 12;                        // bits 12..14 (SPATK [3])
+    v |= ((mut3 >> 4) & 0x1) << 15;                        // bit 15      (SPDEF lo [1])
+    // 3 bits. SPDEF hi [2], EXTRA [1]
+    u32 mut4 = substruct1->mutation4 & 0x7;
+    v |= ((mut4 >> 0) & 0x3) << 16;                        // bits 16..17 (SPDEF hi [2])
+    v |= ((mut4 >> 2) & 0x1) << 18;                        // bit 18      (extra 0)
+    v |= (u32)(substruct3->mutation5 & 0x1) << 19;         // bit 19      (extra 1)
+    v |= (u32)(boxMon->mutation6 & 0x1) << 20;             // bit 20      (extra 2)
+    v |= (u32)(boxMon->mutation7 & 0x7) << 21;             // bits 21..23 (extra 3..5)
     
     EncryptBoxMon(boxMon);
 
-    return v & 0x1FFFFF; // 21 bits mask
+    return v & 0xFFFFFF; // 24 bits mask
 }
 
-void WriteStatMutationPacked(struct Pokemon *mon, u32 packed)
+void WriteMutationPacked(struct Pokemon *mon, u32 packed)
 {
     struct BoxPokemon *boxMon = &mon->box;
     DecryptBoxMon(boxMon);
@@ -1924,84 +1949,90 @@ void WriteStatMutationPacked(struct Pokemon *mon, u32 packed)
     struct PokemonSubstruct1 *substruct1 = GetSubstruct1(boxMon);
     struct PokemonSubstruct3 *substruct3 = GetSubstruct3(boxMon);
 
-    substruct0->mutation0 = packed & 0x3F;           // bits 0..5
-    substruct0->mutation1 = (packed >> 6) & 0x7;     // bits 6..8
-    substruct0->mutation2 = (packed >> 9) & 0x3;     // bits 9..10
-    substruct1->mutation3 = (packed >> 11) & 0x1F;   // bits 11..15
-    substruct1->mutation4 = (packed >> 16) & 0x7;    // bits 16..18
-    substruct3->mutation5 = (packed >> 19) & 0x1;
-    boxMon->mutation6 = (packed >> 20) & 0x1;
-    boxMon->mutation7 = (packed >> 21) & 0x1;
+    substruct0->mutation0 = packed & 0x3F;         // HP (bits 0-2) and ATK (bits 3-5)
+    substruct0->mutation1 = (packed >> 6) & 0x7;   // DEF (bits 6-8)
+    substruct0->mutation2 = (packed >> 9) & 0x3;   // SPEED (bits 9-11)
+    u32 speedHi = (packed >> 11) & 0x1;
+    u32 spatk = (packed >> 12) & 0x7;              // SPATK (bits 12-14) -> mutation3 bits 1-3
+    u32 spdefLo = (packed >> 15) & 0x1;            // SPDEF (bits 15-17)
+    substruct1->mutation3 = (speedHi) | (spatk << 1) | (spdefLo << 4);
+    u32 spdefHi = (packed >> 16) & 0x3;            // SPDEF hi (bits 16-17) -> mutation4 bits 0-1
+    u32 extra0 = (packed >> 18) & 0x1;             // extra bit 0 (bit 18) -> mutation4 bit 2
+    substruct1->mutation4 = (spdefHi) | (extra0 << 2);
+    substruct3->mutation5 = (packed >> 19) & 0x1;  // extra bit 1 (bit 19) -> mutation5
+    boxMon->mutation6 = (packed >> 20) & 0x1;      // extra bit 2 (bit 20) -> mutation6
+    boxMon->mutation7 = (packed >> 21) & 0x7;      // extra bits 3-5 (bits 21-23) -> mutation7
 
     boxMon->checksum = CalculateBoxMonChecksumReencrypt(boxMon);
 }
 
+// Get mutation count for a specific stat
 u8 GetMonStatMutationCount(const struct Pokemon *mon, u8 statIndex)
 {
-    // Get mutation count for a specific stat
     if (statIndex >= NUM_STATS)
     {
         return 0;
     }
-    u32 packed = ReadStatMutationPacked(mon);
+    u32 packed = ReadMutationPacked(mon);
     return (packed >> (statIndex * 3)) & 0x7;
 }
 
+// Increment mutation count for a specific stat
 void IncrementMonStatMutation(struct Pokemon *mon, u8 statIndex)
 {
-    // Increment mutation count for a specific stat
     if (statIndex >= NUM_STATS)
     {
         return;
     }
-    u32 packed = ReadStatMutationPacked(mon);
+
+    u32 packed = ReadMutationPacked(mon);
     u32 shift = statIndex * 3;
     u32 cnt = (packed >> shift) & 0x7;
-    if (cnt < 7)
+    if (cnt < MAX_STAT_MUTATIONS)
     {
         cnt++;
     }
+
     packed = (packed & ~(0x7u << shift)) | (cnt << shift);
-    WriteStatMutationPacked(mon, packed);
+    WriteMutationPacked(mon, packed);
 }
 
+// Total mutations for a given mon
 u8 GetMonTotalMutations(const struct Pokemon *mon)
 {
-    // Get total mutations = sum(per-stat 3-bit counters) + extraMutations
-    u32 packed = ReadStatMutationPacked(mon);
     u8 sum = 0;
-    for (int s = 0; s < NUM_STATS; ++s)
-    {
-        sum += (packed >> (s * 3)) & 0x7;
-    }
-    // extra mutations stored in bits 18..20
-    sum += (packed >> 18) & 0x7;
+    u32 packed = ReadMutationPacked(mon);
+    sum += (packed >> 18) & 0x3F;
     return sum;
 }
 
+// Increment total mutations for a given mon
 void IncrementMonTotalMutations(struct Pokemon *mon)
 {
-    u32 packed = ReadStatMutationPacked(mon);
-    u32 extra = (packed >> 18) & 0x7;
-    if (extra < 0x7)
+    u32 packed = ReadMutationPacked(mon);
+    u8 totalMutations = GetMonTotalMutations(mon);
+
+    if (totalMutations >= MAX_MUTATIONS)
+    {
+        return;
+    }
+
+    u32 extra = (packed >> 18) & 0x3F;
+    if (extra < 0x3F)
     {
         extra++;
     }
-    // write back extra into bits 18..20
-    packed = (packed & ~(0x7u << 18)) | (extra << 18);
-    WriteStatMutationPacked(mon, packed);
+    packed = (packed & ~(0x3Fu << 18)) | (extra << 18);
+    WriteMutationPacked(mon, packed);
 }
 
 u16 GetPartyTotalMutations(void)
 {
     u16 total = 0;
-    s32 i;
-
-    for (i = 0; i < PARTY_SIZE; i++)
+    for (s8 i = 0; i < PARTY_SIZE; i++)
     {
         total += GetMonTotalMutations(&gPlayerParty[i]);
     }
-
     return total;
 }
 

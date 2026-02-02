@@ -271,9 +271,9 @@ struct BoxPokemon
     u8 markings:4;
     u8 compressedStatus:4;
     u16 checksum;
-    u16 hpLost:14; // 16383 HP.
+    u16 hpLost:12; // Reduced from 14, max hp lost 4095 is sufficient
     u16 shinyModifier:1;
-    u16 mutation7:1;
+    u16 mutation7:3; // Expanded from 1 to 3
 
     union
     {
@@ -664,7 +664,7 @@ enum PossibleMutations
     MUTATION_NATURE,
     MUTATION_MOVE,
     MUTATION_FORM,
-    MUTATION_ATTEMPT_SHINY,
+    MUTATION_SHINY, // also pokerus if shiny fails
     NUM_POSSIBLE_MUTATIONS
 };
 
@@ -700,7 +700,7 @@ extern const u16 gKyuremBlackSwapMoveTable[][2];
 #endif //P_FAMILY_KYUREM
 #endif //P_FUSION_FORMS
 
-#define MAX_MUTATIONS 49  // memory cap
+#define MAX_MUTATIONS 50
 
 #define NUM_UNOWN_FORMS 28
 
