@@ -391,6 +391,7 @@ static bool32 ShouldShowRename(void);
 static void ShowCancelOrRenamePrompt(void);
 static void CB2_ReturnToSummaryScreenFromNamingScreen(void);
 static void CB2_PssChangePokemonNickname(void);
+static void PrintMutationsCount(void);
 
 // const rom data
 
@@ -2342,9 +2343,14 @@ static void ChangeSummaryState(s16 *data, u8 taskId)
         break;
     case SKILL_STATE_EVS:
         tSkillsState = SKILL_STATE_MUTS;
+        // Replace EXP window with mutations count
+        PrintMutationsCount();
         break;
     case SKILL_STATE_MUTS:
         tSkillsState = SKILL_STATE_STATS;
+        // Restore EXP window
+        FillWindowPixelBuffer(AddWindowFromTemplateList(sPageSkillsTemplate, PSS_DATA_WINDOW_EXP), PIXEL_FILL(0));
+        PrintExpPointsNextLevel();
         break;
     }
 
@@ -4712,7 +4718,13 @@ static void SetMonTypeIcons(void)
         {
             SetSpriteInvisibility(SPRITE_ARR_ID_TYPE + 1, TRUE);
         }
-        if (SWSH_SUMMARY_SHOW_TERA_TYPE)
+        // Only show tera type if it's different from both base types
+        // because we use it as our "3rd type" mutation,
+        // and the default is to have tera type match a base type, meaning no mutation
+        if (SWSH_SUMMARY_SHOW_TERA_TYPE &&
+            summary->teraType != gSpeciesInfo[summary->species].types[0] &&
+            summary->teraType != gSpeciesInfo[summary->species].types[1]
+        )
         {
             SetTypeSpritePosAndPal(summary->teraType, 124, 44, SPRITE_ARR_ID_TERA_TYPE);
         }
@@ -5415,6 +5427,19 @@ static void CB2_PssChangePokemonNickname(void)
     DoNamingScreen(NAMING_SCREEN_NICKNAME, gStringVar2, GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_SPECIES, NULL), 
                    GetMonGender(&gPlayerParty[gSpecialVar_0x8004]), GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_PERSONALITY, NULL), 
                    CB2_ReturnToSummaryScreenFromNamingScreen);
+}
+
+static void PrintMutationsCount(void)
+{
+    static const u8 sText_Mutations[] = _("Mutations");
+    u8 windowId = AddWindowFromTemplateList(sPageSkillsTemplate, PSS_DATA_WINDOW_EXP);
+    u8 mutationsCount = GetMonTotalMutations(&sMonSummaryScreen->currentMon);
+
+    FillWindowPixelBuffer(windowId, PIXEL_FILL(0));
+    PrintTextOnWindow(windowId, sText_Mutations, 8, 0, 0, 0);
+    
+    ConvertIntToDecimalStringN(gStringVar1, mutationsCount, STR_CONV_MODE_RIGHT_ALIGN, 3);
+    PrintTextOnWindow(windowId, gStringVar1, 72 - GetStringWidth(FONT_SHORT_NARROW, gStringVar1, 0), 0, 0, 0);
 }
 
 /*
