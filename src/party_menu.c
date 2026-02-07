@@ -6141,6 +6141,14 @@ static void Task_TryLearnNewMoves(u8 taskId)
             if (learnMove)
                 break;
         }
+        // If the mon is about to evolve, skip the move learning and go straight to evolution
+        struct Pokemon *mon = &gPlayerParty[gPartyMenu.slotId];
+        u32 targetSpecies = GetEvolutionTargetSpecies(mon, EVO_MODE_NORMAL, ITEM_NONE, NULL, NULL, CHECK_EVO);
+        if (targetSpecies != SPECIES_NONE)
+        {
+            // The evolution will handle the move learning
+            PartyMenuTryEvolution(taskId);
+        }
     }
 }
 

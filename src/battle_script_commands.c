@@ -8208,6 +8208,15 @@ static void Cmd_handlelearnnewmove(void)
     u16 learnMove = MOVE_NONE;
     u32 monId = gBattleStruct->expGetterMonId;
     u32 currLvl = GetMonData(&gPlayerParty[monId], MON_DATA_LEVEL);
+    
+    // If the mon is about to evolve, skip the move learning
+    u16 targetSpecies = GetEvolutionTargetSpecies(&gPlayerParty[monId], EVO_MODE_NORMAL, ITEM_NONE, NULL, NULL, CHECK_EVO);
+    if (targetSpecies != SPECIES_NONE)
+    {
+        // The evolution will handle the move learning
+        gBattlescriptCurrInstr = cmd->nothingToLearnPtr;
+        return;
+    }
 
     if (!gBattleResources->beforeLvlUp->learnMultipleMoves && gBattleResources->beforeLvlUp->level != (currLvl - 1))
         gBattleResources->beforeLvlUp->learnMultipleMoves = TRUE;
