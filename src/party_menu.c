@@ -5983,11 +5983,12 @@ static void Task_DoMutation(u8 taskId)
 
     if ((JOY_NEW(A_BUTTON)) || (JOY_NEW(B_BUTTON)))
     {
+        u16 item = GetMonData(mon, MON_DATA_HELD_ITEM);
         u8 successfulMutation = TRUE;
         enum Mutation mutationType = MUTATION_CHOSEN_NONE;
         while (mutationType == MUTATION_CHOSEN_NONE)
         {
-            mutationType = DoMutation(mon);
+            mutationType = DoMutation(mon, item);
         }
 
         switch (mutationType)
@@ -6039,7 +6040,6 @@ static void Task_DoMutation(u8 taskId)
             }
             else if (result == MON_HAS_MAX_MOVES)
             {
-                // FIXME: attempts to learn evolution move before evolve animation
                 gMoveToLearn = randomMove;
                 gPartyMenu.learnMoveState = 3;
                 DisplayMonNeedsToReplaceMove(taskId);

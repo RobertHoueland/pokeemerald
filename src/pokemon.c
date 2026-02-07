@@ -1717,9 +1717,9 @@ static u16 CalculateBoxMonChecksumReencrypt(struct BoxPokemon *boxMon)
     return checksum;
 }
 
-enum Mutation DoMutation(struct Pokemon *mon)
+enum Mutation DoMutation(struct Pokemon *mon, u16 item)
 {
-    u8 rolledMutation;
+    u8 rolledMutation = MUTATION_STAT;
     u16 species = GetMonData(mon, MON_DATA_SPECIES, NULL);
     u8 totalMutations = GetMonTotalMutations(mon);
 
@@ -1728,21 +1728,47 @@ enum Mutation DoMutation(struct Pokemon *mon)
         return MUTATION_CHOSEN_NONE;
     }
 
-    u8 roll = Random32() % 100;
-    if (roll < 20)
-        rolledMutation = MUTATION_STAT;          // 20% since there's a lot of stats
-    else if (roll < 35) 
-        rolledMutation = MUTATION_TYPE;          // 15%
-    else if (roll < 45)
-        rolledMutation = MUTATION_ABILITY;       // 10% since it only happens once
-    else if (roll < 60)
-        rolledMutation = MUTATION_NATURE;        // 15%
-    else if (roll < 70)
-        rolledMutation = MUTATION_MOVE;          // 10% chance because getting a bad move sucks...
-    else if (roll < 85)
-        rolledMutation = MUTATION_FORM;          // 15%
-    else
-        rolledMutation = MUTATION_SHINY;         // 15%
+    u8 serumWeight = 0;
+    if (item == ITEM_MUTAGENIC_SERUM)
+    {
+        // exchanges move mutations for stat mutation chances
+        serumWeight = 10;
+    }
+
+    // Percentage chances for each individual mutation type
+    const u8 weights[] = {
+        [MUTATION_STAT] = 20 + serumWeight,  // higher since there's a lot of stats
+        [MUTATION_TYPE] = 15,
+        [MUTATION_ABILITY] = 10,             // lower since it can only happen once to each mon
+        [MUTATION_NATURE] = 15,
+        [MUTATION_MOVE] = 10 - serumWeight,  // lower since getting a bad move sucks...
+        [MUTATION_FORM] = 15,
+        [MUTATION_SHINY] = 15
+    };
+
+    u8 total = 0;
+    for (u8 i = 0; i < NUM_POSSIBLE_MUTATIONS; i++)
+    {
+        total += weights[i];
+    }
+    if (total != 100)
+    {
+        // weights must add up to 100%
+        return MUTATION_CHOSEN_NONE;
+    }
+
+    // Roll for this mutation
+    u8 roll = Random32() % total;
+    u8 accumulatedWeight = 0;
+    for (u8 i = 0; i < NUM_POSSIBLE_MUTATIONS; i++)
+    {
+        accumulatedWeight += weights[i];
+        if (roll < accumulatedWeight)
+        {
+            rolledMutation = i;
+            break;
+        }
+    }
 
     switch (rolledMutation)
     {
@@ -1797,7 +1823,7 @@ enum Mutation DoMutation(struct Pokemon *mon)
         IncrementMonTotalMutations(mon);
         return MUTATION_CHOSEN_NATURE;
     case MUTATION_MOVE:
-        IncrementMonTotalMutations(mon); // should we only count it if the move is learned?
+        IncrementMonTotalMutations(mon);
         // Handle move learning in return function
         return MUTATION_CHOSEN_MOVE;
     case MUTATION_FORM:

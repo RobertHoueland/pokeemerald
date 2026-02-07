@@ -18139,11 +18139,12 @@ void BS_DoMutation(void)
     u32 monId = gBattleStruct->expGetterMonId;
     struct Pokemon *mon = &gPlayerParty[monId];
     u32 battler = GetBattlerForBattleScript(cmd->battler);
+    u16 item = GetMonData(mon, MON_DATA_HELD_ITEM);
 
     enum Mutation mutationType = MUTATION_CHOSEN_NONE;
     while (mutationType == MUTATION_CHOSEN_NONE)
     {
-        mutationType = DoMutation(mon);
+        mutationType = DoMutation(mon, item);
     }
 
     switch (mutationType)

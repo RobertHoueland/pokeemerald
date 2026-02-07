@@ -15093,6 +15093,24 @@ const struct Item gItemsInfo[] =
         .iconPic = gItemIcon_AbilityPatch,
         .iconPalette = gItemIconPalette_AbilityPatch,
     },
+
+    [ITEM_MUTAGENIC_SERUM] = 
+    {
+        .name = ITEM_NAME("Mutagenic Serum"),
+        .pluralName = ITEM_PLURAL_NAME("Mutagenic Serums"),
+        .price = 2000,
+        .description = COMPOUND_STRING(
+            "Shifts move\n"
+            "mutations into\n"
+            "stat mutations."),
+        .pocket = POCKET_ITEMS,
+        .sortType = ITEM_TYPE_HELD_ITEM,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .flingPower = 30,
+        .iconPic = gItemIcon_AuxBottle,
+        .iconPalette = gItemIconPalette_AuxEvasion,
+    },
 };
 
 #undef ITEM_NAME

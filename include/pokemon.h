@@ -655,7 +655,7 @@ struct Fusion
     enum FusionExtraMoveHandling extraMoveHandling;
 };
 
-// Roll for a mutation
+// Possible rolls
 enum PossibleMutations
 {
     MUTATION_STAT,
@@ -664,7 +664,7 @@ enum PossibleMutations
     MUTATION_NATURE,
     MUTATION_MOVE,
     MUTATION_FORM,
-    MUTATION_SHINY, // also pokerus if shiny fails
+    MUTATION_SHINY,        // also rolls pokerus if shiny fails
     NUM_POSSIBLE_MUTATIONS
 };
 
@@ -761,7 +761,7 @@ bool8 ShouldIgnoreDeoxysForm(u8 caseId, u8 battler);
 u16 GetUnionRoomTrainerPic(void);
 enum TrainerClassID GetUnionRoomTrainerClass(void);
 void CreateEnemyEventMon(void);
-enum Mutation DoMutation(struct Pokemon *mon);
+enum Mutation DoMutation(struct Pokemon *mon, u16 item);
 enum Mutation MutateStat(struct Pokemon *mon);
 u32 ReadStatMutationPacked(const struct Pokemon *mon);
 void WriteStatMutationPacked(struct Pokemon *mon, u32 packed);
