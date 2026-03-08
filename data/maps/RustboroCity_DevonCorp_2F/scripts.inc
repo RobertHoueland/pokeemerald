@@ -821,7 +821,7 @@ MiniLegendSci_Region:
 # 431 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"
 	closemessage
 # 432 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"
-	compare VAR_RESULT, NUM_MINI_REGIONS - 1
+	compare VAR_RESULT, NUM_REGION_CHOICES - 1
 	goto_if_gt RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_2
 RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_1:
 # 437 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"
@@ -829,15 +829,15 @@ RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_1:
 # 438 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"
 	switch VAR_RESULT
 # 446 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"
-	case MINI_REGION_KANTO, RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_6
+	case REGION_CHOICE_KANTO, RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_6
 # 476 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"
-	case MINI_REGION_JOHTO, RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_7
+	case REGION_CHOICE_JOHTO, RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_7
 # 506 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"
-	case MINI_REGION_HOENN, RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_8
+	case REGION_CHOICE_HOENN, RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_8
 # 546 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"
-	case MINI_REGION_SINNOH, RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_9
+	case REGION_CHOICE_SINNOH, RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_9
 # 606 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"
-	case MINI_REGION_UNOVA, RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_10
+	case REGION_CHOICE_UNOVA, RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_10
 # 647 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"
 	goto MiniLegendSci_Region
 RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_4:
@@ -870,9 +870,9 @@ MiniLegendSci_Kanto:
 # 451 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"
 	switch VAR_RESULT
 # 452 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"
-	case MINI_KANTO_MEWTWO_LINE, RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_14
+	case KANTO_CHOICE_MEWTWO, RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_14
 # 462 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"
-	case MINI_KANTO_BIRDS_LINE, RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_15
+	case KANTO_CHOICE_BIRDS, RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_15
 # 473 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"
 	goto MiniLegendSci_Region
 RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_12:
@@ -888,9 +888,9 @@ MiniLegendSci_Johto:
 # 481 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"
 	switch VAR_RESULT
 # 482 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"
-	case MINI_JOHTO_BEASTS_LINE, RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_19
+	case JOHTO_CHOICE_BEASTS, RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_19
 # 492 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"
-	case MINI_JOHTO_TOWER_LINE, RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_20
+	case JOHTO_CHOICE_TOWER, RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_20
 # 503 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"
 	goto MiniLegendSci_Region
 RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_17:
@@ -906,11 +906,11 @@ MiniLegendSci_Hoenn:
 # 511 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"
 	switch VAR_RESULT
 # 512 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"
-	case MINI_HOENN_REGI_LINE, RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_24
+	case HOENN_CHOICE_REGIS, RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_24
 # 522 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"
-	case MINI_HOENN_EON_LINE, RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_25
+	case HOENN_CHOICE_EON, RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_25
 # 532 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"
-	case MINI_HOENN_WEATHER_LINE, RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_26
+	case HOENN_CHOICE_WEATHER, RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_26
 # 543 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"
 	goto MiniLegendSci_Region
 RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_22:
@@ -926,15 +926,15 @@ MiniLegendSci_Sinnoh:
 # 551 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"
 	switch VAR_RESULT
 # 552 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"
-	case MINI_SINNOH_LAKE_LINE, RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_30
+	case SINNOH_CHOICE_LAKE, RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_30
 # 562 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"
-	case MINI_SINNOH_MYTH_LINE, RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_31
+	case SINNOH_CHOICE_MYTH, RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_31
 # 572 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"
-	case MINI_SINNOH_HEATRAN_LINE, RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_32
+	case SINNOH_CHOICE_HEATRAN, RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_32
 # 582 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"
-	case MINI_SINNOH_REGIGIGAS_LINE, RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_33
+	case SINNOH_CHOICE_REGIGIGAS, RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_33
 # 592 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"
-	case MINI_SINNOH_CRESSELIA_LINE, RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_34
+	case SINNOH_CHOICE_CRESSELIA, RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_34
 # 603 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"
 	goto MiniLegendSci_Region
 RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_28:
@@ -950,11 +950,11 @@ MiniLegendSci_Unova:
 # 611 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"
 	switch VAR_RESULT
 # 612 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"
-	case MINI_UNOVA_SWORDS_LINE, RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_38
+	case UNOVA_CHOICE_SWORDS, RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_38
 # 622 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"
-	case MINI_UNOVA_FORCES_LINE, RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_39
+	case UNOVA_CHOICE_FORCES, RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_39
 # 632 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"
-	case MINI_UNOVA_TAO_LINE, RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_40
+	case UNOVA_CHOICE_TAO, RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_40
 # 643 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"
 	goto MiniLegendSci_Region
 RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_36:
@@ -968,9 +968,11 @@ RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_14:
 # 455 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"
 	closemessage
 # 457 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"
-	compare VAR_RESULT, MINI_CHOICES_MEWTWO_LINE - 1
+	compare VAR_RESULT, NUM_CHOICES_MEWTWO - 1
 	goto_if_gt RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_43
 RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_42:
+# 460 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"
+	addvar VAR_RESULT, OFFSET_MEWTWO
 	goto RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_12
 
 RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_15:
@@ -981,11 +983,11 @@ RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_15:
 # 465 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"
 	closemessage
 # 467 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"
-	compare VAR_RESULT, MINI_CHOICES_BIRDS_LINE - 1
+	compare VAR_RESULT, NUM_CHOICES_BIRDS - 1
 	goto_if_gt RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_46
 RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_45:
 # 470 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"
-	addvar VAR_RESULT, MINI_OFFSET_BIRDS_LINE
+	addvar VAR_RESULT, OFFSET_BIRDS
 	goto RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_12
 
 RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_19:
@@ -996,11 +998,11 @@ RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_19:
 # 485 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"
 	closemessage
 # 487 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"
-	compare VAR_RESULT, MINI_CHOICES_BEASTS_LINE - 1
+	compare VAR_RESULT, NUM_CHOICES_BEASTS - 1
 	goto_if_gt RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_49
 RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_48:
 # 490 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"
-	addvar VAR_RESULT, MINI_OFFSET_BEASTS_LINE
+	addvar VAR_RESULT, OFFSET_BEASTS
 	goto RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_17
 
 RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_20:
@@ -1011,11 +1013,11 @@ RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_20:
 # 495 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"
 	closemessage
 # 497 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"
-	compare VAR_RESULT, MINI_CHOICES_TOWER_LINE - 1
+	compare VAR_RESULT, NUM_CHOICES_TOWER - 1
 	goto_if_gt RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_52
 RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_51:
 # 500 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"
-	addvar VAR_RESULT, MINI_OFFSET_TOWER_LINE
+	addvar VAR_RESULT, OFFSET_TOWER
 	goto RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_17
 
 RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_24:
@@ -1026,11 +1028,11 @@ RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_24:
 # 515 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"
 	closemessage
 # 517 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"
-	compare VAR_RESULT, MINI_CHOICES_REGI_LINE - 1
+	compare VAR_RESULT, NUM_CHOICES_REGIS - 1
 	goto_if_gt RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_55
 RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_54:
 # 520 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"
-	addvar VAR_RESULT, MINI_OFFSET_REGI_LINE
+	addvar VAR_RESULT, OFFSET_REGIS
 	goto RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_22
 
 RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_25:
@@ -1041,11 +1043,11 @@ RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_25:
 # 525 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"
 	closemessage
 # 527 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"
-	compare VAR_RESULT, MINI_CHOICES_EON_LINE - 1
+	compare VAR_RESULT, NUM_CHOICES_EON - 1
 	goto_if_gt RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_58
 RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_57:
 # 530 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"
-	addvar VAR_RESULT, MINI_OFFSET_EON_LINE
+	addvar VAR_RESULT, OFFSET_EON
 	goto RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_22
 
 RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_26:
@@ -1056,11 +1058,11 @@ RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_26:
 # 535 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"
 	closemessage
 # 537 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"
-	compare VAR_RESULT, MINI_CHOICES_WEATHER_LINE - 1
+	compare VAR_RESULT, NUM_CHOICES_WEATHER - 1
 	goto_if_gt RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_61
 RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_60:
 # 540 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"
-	addvar VAR_RESULT, MINI_OFFSET_WEATHER_LINE
+	addvar VAR_RESULT, OFFSET_WEATHER
 	goto RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_22
 
 RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_30:
@@ -1071,11 +1073,11 @@ RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_30:
 # 555 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"
 	closemessage
 # 557 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"
-	compare VAR_RESULT, MINI_CHOICES_LAKE_LINE - 1
+	compare VAR_RESULT, NUM_CHOICES_LAKE - 1
 	goto_if_gt RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_64
 RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_63:
 # 560 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"
-	addvar VAR_RESULT, MINI_OFFSET_LAKE_LINE
+	addvar VAR_RESULT, OFFSET_LAKE
 	goto RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_28
 
 RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_31:
@@ -1086,11 +1088,11 @@ RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_31:
 # 565 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"
 	closemessage
 # 567 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"
-	compare VAR_RESULT, MINI_CHOICES_MYTH_LINE - 1
+	compare VAR_RESULT, NUM_CHOICES_MYTH - 1
 	goto_if_gt RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_67
 RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_66:
 # 570 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"
-	addvar VAR_RESULT, MINI_OFFSET_MYTH_LINE
+	addvar VAR_RESULT, OFFSET_MYTH
 	goto RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_28
 
 RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_32:
@@ -1101,11 +1103,11 @@ RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_32:
 # 575 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"
 	closemessage
 # 577 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"
-	compare VAR_RESULT, MINI_CHOICES_HEATRAN_LINE - 1
+	compare VAR_RESULT, NUM_CHOICES_HEATRAN - 1
 	goto_if_gt RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_70
 RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_69:
 # 580 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"
-	addvar VAR_RESULT, MINI_OFFSET_HEATRAN_LINE
+	addvar VAR_RESULT, OFFSET_HEATRAN
 	goto RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_28
 
 RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_33:
@@ -1116,11 +1118,11 @@ RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_33:
 # 585 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"
 	closemessage
 # 587 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"
-	compare VAR_RESULT, MINI_CHOICES_REGIGIGAS_LINE - 1
+	compare VAR_RESULT, NUM_CHOICES_REGIGIGAS - 1
 	goto_if_gt RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_73
 RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_72:
 # 590 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"
-	addvar VAR_RESULT, MINI_OFFSET_REGIGIGAS_LINE
+	addvar VAR_RESULT, OFFSET_REGIGIGAS
 	goto RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_28
 
 RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_34:
@@ -1131,11 +1133,11 @@ RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_34:
 # 595 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"
 	closemessage
 # 597 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"
-	compare VAR_RESULT, MINI_CHOICES_CRESSELIA_LINE - 1
+	compare VAR_RESULT, NUM_CHOICES_CRESSELIA - 1
 	goto_if_gt RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_76
 RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_75:
 # 600 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"
-	addvar VAR_RESULT, MINI_OFFSET_CRESSELIA_LINE
+	addvar VAR_RESULT, OFFSET_CRESSELIA
 	goto RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_28
 
 RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_38:
@@ -1146,11 +1148,11 @@ RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_38:
 # 615 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"
 	closemessage
 # 617 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"
-	compare VAR_RESULT, MINI_CHOICES_SWORDS_LINE - 1
+	compare VAR_RESULT, NUM_CHOICES_SWORDS - 1
 	goto_if_gt RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_79
 RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_78:
 # 620 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"
-	addvar VAR_RESULT, MINI_OFFSET_SWORDS_LINE
+	addvar VAR_RESULT, OFFSET_SWORDS
 	goto RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_36
 
 RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_39:
@@ -1161,11 +1163,11 @@ RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_39:
 # 625 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"
 	closemessage
 # 627 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"
-	compare VAR_RESULT, MINI_CHOICES_FORCES_LINE - 1
+	compare VAR_RESULT, NUM_CHOICES_FORCES - 1
 	goto_if_gt RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_82
 RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_81:
 # 630 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"
-	addvar VAR_RESULT, MINI_OFFSET_FORCES_LINE
+	addvar VAR_RESULT, OFFSET_FORCES
 	goto RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_36
 
 RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_40:
@@ -1176,11 +1178,11 @@ RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_40:
 # 635 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"
 	closemessage
 # 637 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"
-	compare VAR_RESULT, MINI_CHOICES_TAO_LINE - 1
+	compare VAR_RESULT, NUM_CHOICES_TAO - 1
 	goto_if_gt RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_85
 RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_84:
 # 640 "data/maps/RustboroCity_DevonCorp_2F/scripts.pory"
-	addvar VAR_RESULT, MINI_OFFSET_TAO_LINE
+	addvar VAR_RESULT, OFFSET_TAO
 	goto RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_36
 
 RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist_43:

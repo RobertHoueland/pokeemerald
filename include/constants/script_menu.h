@@ -146,71 +146,74 @@
 #define MULTI_MINI_LEGEND_TAO              135
 
 // Mini legendary region choices
-#define MINI_REGION_KANTO                  0
-#define MINI_REGION_JOHTO                  1
-#define MINI_REGION_HOENN                  2
-#define MINI_REGION_SINNOH                 3
-#define MINI_REGION_UNOVA                  4
-#define NUM_MINI_REGIONS                   MINI_REGION_UNOVA + 1
+#define REGION_CHOICE_KANTO                0
+#define REGION_CHOICE_JOHTO                1
+#define REGION_CHOICE_HOENN                2
+#define REGION_CHOICE_SINNOH               3
+#define REGION_CHOICE_UNOVA                4
+#define NUM_REGION_CHOICES                 REGION_CHOICE_UNOVA + 1
 
-// Kanto line choices
-#define MINI_KANTO_MEWTWO_LINE             0
-#define MINI_KANTO_BIRDS_LINE              1
+// Kanto mini legend choices
+#define KANTO_CHOICE_MEWTWO                0
+#define KANTO_CHOICE_BIRDS                 1
 
-// Johto line choices
-#define MINI_JOHTO_BEASTS_LINE             0
-#define MINI_JOHTO_TOWER_LINE              1
+// Johto mini legend choices
+#define JOHTO_CHOICE_BEASTS                0
+#define JOHTO_CHOICE_TOWER                 1
 
-// Hoenn line choices
-#define MINI_HOENN_REGI_LINE               0
-#define MINI_HOENN_EON_LINE                1
-#define MINI_HOENN_WEATHER_LINE            2
+// Hoenn mini legend choices
+#define HOENN_CHOICE_REGIS                 0
+#define HOENN_CHOICE_EON                   1
+#define HOENN_CHOICE_WEATHER               2
 
-// Sinnoh line choices
-#define MINI_SINNOH_LAKE_LINE              0
-#define MINI_SINNOH_MYTH_LINE              1
-#define MINI_SINNOH_HEATRAN_LINE           2
-#define MINI_SINNOH_REGIGIGAS_LINE         3
-#define MINI_SINNOH_CRESSELIA_LINE         4
+// Sinnoh mini legend choices
+#define SINNOH_CHOICE_LAKE                 0
+#define SINNOH_CHOICE_MYTH                 1
+#define SINNOH_CHOICE_HEATRAN              2
+#define SINNOH_CHOICE_REGIGIGAS            3
+#define SINNOH_CHOICE_CRESSELIA            4
 
-// Unova line choices
-#define MINI_UNOVA_SWORDS_LINE             0
-#define MINI_UNOVA_FORCES_LINE             1
-#define MINI_UNOVA_TAO_LINE                2
+// Unova mini legend choices
+#define UNOVA_CHOICE_SWORDS                0
+#define UNOVA_CHOICE_FORCES                1
+#define UNOVA_CHOICE_TAO                   2
 
-// Number of pokemon each line has
-#define MINI_CHOICES_MEWTWO_LINE           1
-#define MINI_CHOICES_BIRDS_LINE            3
-#define MINI_CHOICES_BEASTS_LINE           3
-#define MINI_CHOICES_TOWER_LINE            2
-#define MINI_CHOICES_REGI_LINE             3
-#define MINI_CHOICES_EON_LINE              2
-#define MINI_CHOICES_WEATHER_LINE          3
-#define MINI_CHOICES_LAKE_LINE             3
-#define MINI_CHOICES_MYTH_LINE             3
-#define MINI_CHOICES_HEATRAN_LINE          1
-#define MINI_CHOICES_REGIGIGAS_LINE        1
-#define MINI_CHOICES_CRESSELIA_LINE        1
-#define MINI_CHOICES_SWORDS_LINE           3
-#define MINI_CHOICES_FORCES_LINE           3
-#define MINI_CHOICES_TAO_LINE              3
+// Number of mons each line/category has
+// These categories/names came from:
+// https://bulbapedia.bulbagarden.net/wiki/Legendary_Pok%C3%A9mon
+#define NUM_CHOICES_MEWTWO                 1
+#define NUM_CHOICES_BIRDS                  3
+#define NUM_CHOICES_BEASTS                 3
+#define NUM_CHOICES_TOWER                  2
+#define NUM_CHOICES_REGIS                  3
+#define NUM_CHOICES_EON                    2
+#define NUM_CHOICES_WEATHER                3
+#define NUM_CHOICES_LAKE                   3
+#define NUM_CHOICES_MYTH                   3
+#define NUM_CHOICES_HEATRAN                1
+#define NUM_CHOICES_REGIGIGAS              1
+#define NUM_CHOICES_CRESSELIA              1
+#define NUM_CHOICES_SWORDS                 3
+#define NUM_CHOICES_FORCES                 3
+#define NUM_CHOICES_TAO                    3
 
-// Cumulative offsets for the chosen mon
-#define MINI_OFFSET_MEWTWO_LINE    0
-#define MINI_OFFSET_BIRDS_LINE     (MINI_OFFSET_MEWTWO_LINE + MINI_CHOICES_MEWTWO_LINE)
-#define MINI_OFFSET_BEASTS_LINE    (MINI_OFFSET_BIRDS_LINE + MINI_CHOICES_BIRDS_LINE)
-#define MINI_OFFSET_TOWER_LINE     (MINI_OFFSET_BEASTS_LINE + MINI_CHOICES_BEASTS_LINE)
-#define MINI_OFFSET_REGI_LINE      (MINI_OFFSET_TOWER_LINE + MINI_CHOICES_TOWER_LINE)
-#define MINI_OFFSET_EON_LINE       (MINI_OFFSET_REGI_LINE + MINI_CHOICES_REGI_LINE)
-#define MINI_OFFSET_WEATHER_LINE   (MINI_OFFSET_EON_LINE + MINI_CHOICES_EON_LINE)
-#define MINI_OFFSET_LAKE_LINE      (MINI_OFFSET_WEATHER_LINE + MINI_CHOICES_WEATHER_LINE)
-#define MINI_OFFSET_MYTH_LINE      (MINI_OFFSET_LAKE_LINE + MINI_CHOICES_LAKE_LINE)
-#define MINI_OFFSET_HEATRAN_LINE   (MINI_OFFSET_MYTH_LINE + MINI_CHOICES_MYTH_LINE)
-#define MINI_OFFSET_REGIGIGAS_LINE (MINI_OFFSET_HEATRAN_LINE + MINI_CHOICES_HEATRAN_LINE)
-#define MINI_OFFSET_CRESSELIA_LINE (MINI_OFFSET_REGIGIGAS_LINE + MINI_CHOICES_REGIGIGAS_LINE)
-#define MINI_OFFSET_SWORDS_LINE    (MINI_OFFSET_CRESSELIA_LINE + MINI_CHOICES_CRESSELIA_LINE)
-#define MINI_OFFSET_FORCES_LINE    (MINI_OFFSET_SWORDS_LINE + MINI_CHOICES_SWORDS_LINE)
-#define MINI_OFFSET_TAO_LINE       (MINI_OFFSET_FORCES_LINE + MINI_CHOICES_FORCES_LINE)
+// Cumulative offsets for the chosen category
+// Used in scripts.pory to use the player's choice to find correct mon chosen
+#define OFFSET_MEWTWO       0
+#define OFFSET_BIRDS        (OFFSET_MEWTWO + NUM_CHOICES_MEWTWO)
+#define OFFSET_BEASTS       (OFFSET_BIRDS + NUM_CHOICES_BIRDS)
+#define OFFSET_TOWER        (OFFSET_BEASTS + NUM_CHOICES_BEASTS)
+#define OFFSET_REGIS        (OFFSET_TOWER + NUM_CHOICES_TOWER)
+#define OFFSET_EON          (OFFSET_REGIS + NUM_CHOICES_REGIS)
+#define OFFSET_WEATHER      (OFFSET_EON + NUM_CHOICES_EON)
+#define OFFSET_LAKE         (OFFSET_WEATHER + NUM_CHOICES_WEATHER)
+#define OFFSET_MYTH         (OFFSET_LAKE + NUM_CHOICES_LAKE)
+#define OFFSET_HEATRAN      (OFFSET_MYTH + NUM_CHOICES_MYTH)
+#define OFFSET_REGIGIGAS    (OFFSET_HEATRAN + NUM_CHOICES_HEATRAN)
+#define OFFSET_CRESSELIA    (OFFSET_REGIGIGAS + NUM_CHOICES_REGIGIGAS)
+#define OFFSET_SWORDS       (OFFSET_CRESSELIA + NUM_CHOICES_CRESSELIA)
+#define OFFSET_FORCES       (OFFSET_SWORDS + NUM_CHOICES_SWORDS)
+#define OFFSET_TAO          (OFFSET_FORCES + NUM_CHOICES_FORCES)
 
 // Lilycove SS Tidal Multichoice Selections
 #define SSTIDAL_SELECTION_SLATEPORT        0
