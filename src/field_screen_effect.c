@@ -691,7 +691,7 @@ void Task_WarpAndLoadMap(u8 taskId)
     case 1:
         if (!PaletteFadeActive())
         {
-            if (task->data[1] == 0) // Shorten the delay
+            if (task->data[1] == 0)
             {
                 ClearMirageTowerPulseBlendEffect();
                 task->data[1] = 1;

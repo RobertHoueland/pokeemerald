@@ -1664,8 +1664,25 @@
 #define SPECIES_ZYGARDE_MEGA                            1547
 #define SPECIES_DRAMPA_MEGA                             1548
 #define SPECIES_FALINKS_MEGA                            1549
+#define SPECIES_MEWTWO_V                                1550
+#define SPECIES_ARTICUNO_V                              1551
+#define SPECIES_ZAPDOS_V                                1552
+#define SPECIES_MOLTRES_V                               1553
+#define SPECIES_RAIKOU_V                                1554
+#define SPECIES_ENTEI_V                                 1555
+#define SPECIES_SUICUNE_V                               1556
+#define SPECIES_LUGIA_V                                 1557
+#define SPECIES_HO_OH_V                                 1558
+#define SPECIES_REGIROCK_V                              1559
+#define SPECIES_REGICE_V                                1560
+#define SPECIES_REGISTEEL_V                             1561
+#define SPECIES_LATIAS_V                                1562
+#define SPECIES_LATIOS_V                                1563
+#define SPECIES_KYOGRE_V                                1564
+#define SPECIES_GROUDON_V                               1565
+#define SPECIES_RAYQUAZA_V                              1566
 
-#define SPECIES_EGG                                     (SPECIES_FALINKS_MEGA + 1)
+#define SPECIES_EGG                                     (SPECIES_RAYQUAZA_V + 1)
 
 #define NUM_SPECIES SPECIES_EGG
 
