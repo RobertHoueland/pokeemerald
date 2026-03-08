@@ -629,3 +629,20 @@ void Script_SetStatus1(struct ScriptContext *ctx)
         SetMonData(&gPlayerParty[slot], MON_DATA_STATUS, &status1);
     }
 }
+
+void Script_SetLastGiftMonShiny(struct ScriptContext *ctx UNUSED)
+{
+    bool8 isShiny = TRUE;
+
+    if (gSpecialVar_Result == MON_GIVEN_TO_PARTY)
+    {
+        s32 lastSlot = gPlayerPartyCount - 1;
+        if (lastSlot >= 0)
+            SetMonData(&gPlayerParty[lastSlot], MON_DATA_IS_SHINY, &isShiny);
+    }
+    else if (gSpecialVar_Result == MON_GIVEN_TO_PC)
+    {
+        struct BoxPokemon *boxMon = GetBoxedMonPtr(gSpecialVar_MonBoxId, gSpecialVar_MonBoxPos);
+        SetBoxMonData(boxMon, MON_DATA_IS_SHINY, &isShiny);
+    }
+}

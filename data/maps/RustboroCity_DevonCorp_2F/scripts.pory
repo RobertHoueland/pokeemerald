@@ -415,9 +415,8 @@ MiniLegendSci_Met:
 	//if (var(VAR_RESULT) == FALSE) {
 		//goto(RustboroCity_DevonCorp_2F_EventScript_MiniLegendSciEnd)
 	//}
-	// "Is that more Unstable DNA I see?"
-	// "Splendid! My research continues to evolve!"
-    // msgbox(format("Hey, if you slide me some cash, I might be able to get you a rare color."))
+	msgbox(format("Is that more Unstable DNA I see?"))
+	msgbox(format("Splendid! My research continues to evolve!"))
 MiniLegendSci_FirstMet:
 	msgbox(format("Please, accept a Proto-Legend as a thank you for the DNA sample."))
 	goto(RustboroCity_DevonCorp_2F_EventScript_SelectRegion)
@@ -478,7 +477,7 @@ script RustboroCity_DevonCorp_2F_EventScript_SelectKanto {
 	}
 
 	copyvar(VAR_TEMP_1, VAR_RESULT)
-	goto(RustboroCity_DevonCorp_2F_EventScript_GiveLegendary)
+	goto(RustboroCity_DevonCorp_2F_EventScript_OfferShiny)
 }
 
 script RustboroCity_DevonCorp_2F_EventScript_SelectJohto {
@@ -511,7 +510,7 @@ script RustboroCity_DevonCorp_2F_EventScript_SelectJohto {
 	}
 
 	copyvar(VAR_TEMP_1, VAR_RESULT)
-	goto(RustboroCity_DevonCorp_2F_EventScript_GiveLegendary)
+	goto(RustboroCity_DevonCorp_2F_EventScript_OfferShiny)
 }
 
 script RustboroCity_DevonCorp_2F_EventScript_SelectHoenn {
@@ -554,7 +553,7 @@ script RustboroCity_DevonCorp_2F_EventScript_SelectHoenn {
 	}
 
 	copyvar(VAR_TEMP_1, VAR_RESULT)
-	goto(RustboroCity_DevonCorp_2F_EventScript_GiveLegendary)
+	goto(RustboroCity_DevonCorp_2F_EventScript_OfferShiny)
 }
 
 script RustboroCity_DevonCorp_2F_EventScript_SelectSinnoh {
@@ -617,7 +616,7 @@ script RustboroCity_DevonCorp_2F_EventScript_SelectSinnoh {
 	}
 
 	copyvar(VAR_TEMP_1, VAR_RESULT)
-	goto(RustboroCity_DevonCorp_2F_EventScript_GiveLegendary)
+	goto(RustboroCity_DevonCorp_2F_EventScript_OfferShiny)
 }
 
 script RustboroCity_DevonCorp_2F_EventScript_SelectUnova {
@@ -660,6 +659,26 @@ script RustboroCity_DevonCorp_2F_EventScript_SelectUnova {
 	}
 
 	copyvar(VAR_TEMP_1, VAR_RESULT)
+	goto(RustboroCity_DevonCorp_2F_EventScript_OfferShiny)
+}
+
+script RustboroCity_DevonCorp_2F_EventScript_OfferShiny {
+	setvar(VAR_TEMP_2, 0)
+	msgbox(format("Oh, I almost forgot!"))
+	msgbox(format("I could attempt to alter your\nProto-Legend's color scheme."))
+	msgbox(format("But it requires expensive materials.\nIt'll cost you ¥50000."), MSGBOX_YESNO)
+	if (var(VAR_RESULT) == YES) {
+		checkmoney(50000)
+		if (var(VAR_RESULT) == TRUE) {
+			setvar(VAR_TEMP_2, 1)
+			msgbox(format("Excellent! I'll prepare a special variant for you."))
+		} else {
+			msgbox(format("Come back when you have ¥50000.\nYour Proto-Legend will be waiting!"))
+			setvar(VAR_RESULT, 0)
+    		releaseall
+			return
+		}
+	}
 	goto(RustboroCity_DevonCorp_2F_EventScript_GiveLegendary)
 }
 
@@ -968,7 +987,14 @@ script RustboroCity_DevonCorp_2F_EventScript_GiveLegendary {
 			// shouldn't get here
 			goto(RustboroCity_DevonCorp_2F_EventScript_MiniLegendSciEnd)
     }
-    
+
+	// Make shiny if player paid for it
+	if (var(VAR_TEMP_2) == 1) {
+		if (var(VAR_RESULT) != MON_CANT_GIVE) {
+			callnative(Script_SetLastGiftMonShiny)
+		}
+	}
+
     if (var(VAR_RESULT) == MON_GIVEN_TO_PARTY) {
         playfanfare(MUS_OBTAIN_ITEM)
         message(format("{PLAYER} received {STR_VAR_1}!"))
@@ -995,6 +1021,10 @@ script RustboroCity_DevonCorp_2F_EventScript_GiveLegendary {
         goto(Common_EventScript_NoMoreRoomForPokemon)
     }
 
+	// Take shiny payment if applicable
+	if (var(VAR_TEMP_2) == 1) {
+		removemoney(50000)
+	}
 	// TODO: take Unstable DNA from player
     msgbox(format("Enjoy your new Proto-Legend!"))
     setvar(VAR_RESULT, 0)
