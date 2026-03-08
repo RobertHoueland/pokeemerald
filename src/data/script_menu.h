@@ -784,6 +784,7 @@ static const struct MenuAction MultichoiceList_MiniLegendRegion[] =
     {COMPOUND_STRING("JOHTO")},
     {COMPOUND_STRING("HOENN")},
     {COMPOUND_STRING("SINNOH")},
+    {COMPOUND_STRING("UNOVA")},
     {gText_Exit},
 };
 
@@ -816,6 +817,14 @@ static const struct MenuAction MultichoiceList_MiniLegendSinnoh[] =
     {COMPOUND_STRING("HEATRAN LINE")},
     {COMPOUND_STRING("REGIGIGAS LINE")},
     {COMPOUND_STRING("CRESSELIA LINE")},
+    {gText_Exit},
+};
+
+static const struct MenuAction MultichoiceList_MiniLegendUnova[] =
+{
+    {COMPOUND_STRING("SWORDS OF JUSTICE LINE")},
+    {COMPOUND_STRING("FORCES OF NATURE LINE")},
+    {COMPOUND_STRING("TAO TRIO LINE")},
     {gText_Exit},
 };
 
@@ -902,6 +911,30 @@ static const struct MenuAction MultichoiceList_MiniLegendRegigigas[] =
 static const struct MenuAction MultichoiceList_MiniLegendCresselia[] =
 {
     {COMPOUND_STRING("CRESSELIA-V")},
+    {gText_Exit},
+};
+
+static const struct MenuAction MultichoiceList_MiniLegendSwords[] =
+{
+    {COMPOUND_STRING("COBALION-V")},
+    {COMPOUND_STRING("TERRAKION-V")},
+    {COMPOUND_STRING("VIRIZION-V")},
+    {gText_Exit},
+};
+
+static const struct MenuAction MultichoiceList_MiniLegendForces[] =
+{
+    {COMPOUND_STRING("TORNADUS-V")},
+    {COMPOUND_STRING("THUNDURUS-V")},
+    {COMPOUND_STRING("LANDORUS-V")},
+    {gText_Exit},
+};
+
+static const struct MenuAction MultichoiceList_MiniLegendTao[] =
+{
+    {COMPOUND_STRING("RESHIRAM-V")},
+    {COMPOUND_STRING("ZEKROM-V")},
+    {COMPOUND_STRING("KYUREM-V")},
     {gText_Exit},
 };
 
@@ -1050,6 +1083,10 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_MINI_LEGEND_HEATRAN]        = MULTICHOICE(MultichoiceList_MiniLegendHeatran),
     [MULTI_MINI_LEGEND_REGIGIGAS]      = MULTICHOICE(MultichoiceList_MiniLegendRegigigas),
     [MULTI_MINI_LEGEND_CRESSELIA]      = MULTICHOICE(MultichoiceList_MiniLegendCresselia),
+    [MULTI_MINI_LEGEND_UNOVA]          = MULTICHOICE(MultichoiceList_MiniLegendUnova),
+    [MULTI_MINI_LEGEND_SWORDS]         = MULTICHOICE(MultichoiceList_MiniLegendSwords),
+    [MULTI_MINI_LEGEND_FORCES]         = MULTICHOICE(MultichoiceList_MiniLegendForces),
+    [MULTI_MINI_LEGEND_TAO]            = MULTICHOICE(MultichoiceList_MiniLegendTao),
 };
 
 const u8 *const gStdStrings[] =

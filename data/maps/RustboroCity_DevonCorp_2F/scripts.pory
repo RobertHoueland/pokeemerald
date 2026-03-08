@@ -603,6 +603,46 @@ MiniLegendSci_Sinnoh:
 					goto(MiniLegendSci_Region)
 			}
 			break
+		case MINI_REGION_UNOVA:
+MiniLegendSci_Unova:
+			multichoice(0, 0, MULTI_MINI_LEGEND_UNOVA, FALSE)
+			closemessage
+
+			switch (var(VAR_RESULT)) {
+				case MINI_UNOVA_SWORDS_LINE:
+					goto_if_set(FLAG_OBTAINED_SWORDS_LINE, RustboroCity_DevonCorp_2F_EventScript_HasMon)
+					multichoice(0, 0, MULTI_MINI_LEGEND_SWORDS, FALSE)
+					closemessage
+
+					if (var(VAR_RESULT) > MINI_CHOICES_SWORDS_LINE - 1) {
+						goto(MiniLegendSci_Unova)
+					}
+					addvar(VAR_RESULT, MINI_OFFSET_SWORDS_LINE)
+					break
+				case MINI_UNOVA_FORCES_LINE:
+					goto_if_set(FLAG_OBTAINED_FORCES_LINE, RustboroCity_DevonCorp_2F_EventScript_HasMon)
+					multichoice(0, 0, MULTI_MINI_LEGEND_FORCES, FALSE)
+					closemessage
+
+					if (var(VAR_RESULT) > MINI_CHOICES_FORCES_LINE - 1) {
+						goto(MiniLegendSci_Unova)
+					}
+					addvar(VAR_RESULT, MINI_OFFSET_FORCES_LINE)
+					break
+				case MINI_UNOVA_TAO_LINE:
+					goto_if_set(FLAG_OBTAINED_TAO_LINE, RustboroCity_DevonCorp_2F_EventScript_HasMon)
+					multichoice(0, 0, MULTI_MINI_LEGEND_TAO, FALSE)
+					closemessage
+
+					if (var(VAR_RESULT) > MINI_CHOICES_TAO_LINE - 1) {
+						goto(MiniLegendSci_Unova)
+					}
+					addvar(VAR_RESULT, MINI_OFFSET_TAO_LINE)
+					break
+				default:
+					goto(MiniLegendSci_Region)
+			}
+			break
 		default:
 			goto(MiniLegendSci_Region)
 	}
@@ -839,6 +879,78 @@ script RustboroCity_DevonCorp_2F_EventScript_GiveLegendary {
 			givemon(SPECIES_CRESSELIA_V, 5, ITEM_NONE, ITEM_BEAST_BALL)
 			if (var(VAR_RESULT) < MON_CANT_GIVE) {
 				setflag(FLAG_OBTAINED_CRESSELIA_LINE)
+			}
+			break
+		case 26:  // Cobalion
+			bufferspeciesname(STR_VAR_1, SPECIES_COBALION_V)
+			setvar(VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_COBALION_V)
+			givemon(SPECIES_COBALION_V, 5, ITEM_NONE, ITEM_BEAST_BALL)
+			if (var(VAR_RESULT) < MON_CANT_GIVE) {
+				setflag(FLAG_OBTAINED_SWORDS_LINE)
+			}
+			break
+		case 27:  // Terrakion
+			bufferspeciesname(STR_VAR_1, SPECIES_TERRAKION_V)
+			setvar(VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_TERRAKION_V)
+			givemon(SPECIES_TERRAKION_V, 5, ITEM_NONE, ITEM_BEAST_BALL)
+			if (var(VAR_RESULT) < MON_CANT_GIVE) {
+				setflag(FLAG_OBTAINED_SWORDS_LINE)
+			}
+			break
+		case 28:  // Virizion
+			bufferspeciesname(STR_VAR_1, SPECIES_VIRIZION_V)
+			setvar(VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_VIRIZION_V)
+			givemon(SPECIES_VIRIZION_V, 5, ITEM_NONE, ITEM_BEAST_BALL)
+			if (var(VAR_RESULT) < MON_CANT_GIVE) {
+				setflag(FLAG_OBTAINED_SWORDS_LINE)
+			}
+			break
+		case 29:  // Tornadus
+			bufferspeciesname(STR_VAR_1, SPECIES_TORNADUS_V)
+			setvar(VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_TORNADUS_V)
+			givemon(SPECIES_TORNADUS_V, 5, ITEM_NONE, ITEM_BEAST_BALL)
+			if (var(VAR_RESULT) < MON_CANT_GIVE) {
+				setflag(FLAG_OBTAINED_FORCES_LINE)
+			}
+			break
+		case 30:  // Thundurus
+			bufferspeciesname(STR_VAR_1, SPECIES_THUNDURUS_V)
+			setvar(VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_THUNDURUS_V)
+			givemon(SPECIES_THUNDURUS_V, 5, ITEM_NONE, ITEM_BEAST_BALL)
+			if (var(VAR_RESULT) < MON_CANT_GIVE) {
+				setflag(FLAG_OBTAINED_FORCES_LINE)
+			}
+			break
+		case 31:  // Landorus
+			bufferspeciesname(STR_VAR_1, SPECIES_LANDORUS_V)
+			setvar(VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_LANDORUS_V)
+			givemon(SPECIES_LANDORUS_V, 5, ITEM_NONE, ITEM_BEAST_BALL)
+			if (var(VAR_RESULT) < MON_CANT_GIVE) {
+				setflag(FLAG_OBTAINED_FORCES_LINE)
+			}
+			break
+		case 32:  // Reshiram
+			bufferspeciesname(STR_VAR_1, SPECIES_RESHIRAM_V)
+			setvar(VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_RESHIRAM_V)
+			givemon(SPECIES_RESHIRAM_V, 5, ITEM_NONE, ITEM_BEAST_BALL)
+			if (var(VAR_RESULT) < MON_CANT_GIVE) {
+				setflag(FLAG_OBTAINED_TAO_LINE)
+			}
+			break
+		case 33:  // Zekrom
+			bufferspeciesname(STR_VAR_1, SPECIES_ZEKROM_V)
+			setvar(VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_ZEKROM_V)
+			givemon(SPECIES_ZEKROM_V, 5, ITEM_NONE, ITEM_BEAST_BALL)
+			if (var(VAR_RESULT) < MON_CANT_GIVE) {
+				setflag(FLAG_OBTAINED_TAO_LINE)
+			}
+			break
+		case 34:  // Kyurem
+			bufferspeciesname(STR_VAR_1, SPECIES_KYUREM_V)
+			setvar(VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_KYUREM_V)
+			givemon(SPECIES_KYUREM_V, 5, ITEM_NONE, ITEM_BEAST_BALL)
+			if (var(VAR_RESULT) < MON_CANT_GIVE) {
+				setflag(FLAG_OBTAINED_TAO_LINE)
 			}
 			break
 		default:

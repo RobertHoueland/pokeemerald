@@ -1690,8 +1690,17 @@
 #define SPECIES_HEATRAN_V                               1573
 #define SPECIES_REGIGIGAS_V                             1574
 #define SPECIES_CRESSELIA_V                             1575
+#define SPECIES_COBALION_V                              1576
+#define SPECIES_TERRAKION_V                             1577
+#define SPECIES_VIRIZION_V                              1578
+#define SPECIES_TORNADUS_V                              1579
+#define SPECIES_THUNDURUS_V                             1580
+#define SPECIES_LANDORUS_V                              1581
+#define SPECIES_RESHIRAM_V                              1582
+#define SPECIES_ZEKROM_V                                1583
+#define SPECIES_KYUREM_V                                1584
 
-#define SPECIES_EGG                                     (SPECIES_CRESSELIA_V + 1)
+#define SPECIES_EGG                                     (SPECIES_KYUREM_V + 1)
 
 #define NUM_SPECIES SPECIES_EGG
 

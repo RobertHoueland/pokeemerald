@@ -1563,7 +1563,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
             "manipulation. Though it exists as a\n"
             "proto-type, it still carries the mystical\n"
             "knowledge of its ancestral form."),
-        .pokemonScale = 434,  // was 530
+        .pokemonScale = 625,  // was 530
         .pokemonOffset = 13,
         .trainerScale = 256,
         .trainerOffset = 0,
@@ -1641,7 +1641,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
             "manipulation. Though it exists as a\n"
             "proto-type, it still possesses the\n"
             "emotional essence of its ancestral form."),
-        .pokemonScale = 434,  // was 530
+        .pokemonScale = 625,  // was 530
         .pokemonOffset = 13,
         .trainerScale = 256,
         .trainerOffset = 0,
@@ -1723,7 +1723,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
             "manipulation. Though it exists as a\n"
             "proto-type, it still carries the\n"
             "determination of its ancestral form."),
-        .pokemonScale = 434,  // was 530
+        .pokemonScale = 625,  // was 530
         .pokemonOffset = 12,  // was 13
         .trainerScale = 256,
         .trainerOffset = 0,
@@ -2022,7 +2022,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
             "manipulation. Though it exists as a\n"
             "proto-type, molten energy still surges\n"
             "through its armored body."),
-        .pokemonScale = 337,  // was 259
+        .pokemonScale = 313,  // was 259
         .pokemonOffset = 8,   // was 0  
         .trainerScale = 290,
         .trainerOffset = 1,
@@ -2097,7 +2097,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
             "manipulation. Though it exists as a\n"
             "proto-type, traces of colossal strength\n"
             "remain in its ancient frame."),
-        .pokemonScale = 333,  // was 256
+        .pokemonScale = 330,  // was 256
         .pokemonOffset = 2,
         .trainerScale = 4610,
         .trainerOffset = 17,
@@ -2171,7 +2171,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
             "manipulation. Though it exists as a\n"
             "proto-type, it still carries the calm\n"
             "aura of moonlight and dreams."),
-        .pokemonScale = 348,  // was 268
+        .pokemonScale = 324,  // was 268
         .pokemonOffset = 2,
         .trainerScale = 271,
         .trainerOffset = 0,
@@ -2211,6 +2211,746 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .isFrontierBanned = FALSE,
         .levelUpLearnset = sCresseliaLevelUpLearnset,
         .teachableLearnset = sCresseliaTeachableLearnset,
+    },
+
+    [SPECIES_COBALION_V] =
+    {
+        // BST was 580, lowered by ~18%
+        .baseHP        = 75,   // was 91
+        .baseAttack    = 74,   // was 90
+        .baseDefense   = 106,  // was 129
+        .baseSpeed     = 89,   // was 108
+        .baseSpAttack  = 74,   // was 90
+        .baseSpDefense = 59,   // was 72
+        .types = MON_TYPES(TYPE_STEEL, TYPE_FIGHTING),
+        .catchRate = 3,
+    #if P_UPDATED_EXP_YIELDS >= GEN_8
+        .expYield = 290,
+    #elif P_UPDATED_EXP_YIELDS >= GEN_5
+        .expYield = 261,
+    #else
+        .expYield = 210,
+    #endif
+        .evYield_Defense = 3,
+        .genderRatio = MON_GENDERLESS,
+        .eggCycles = 80,
+        .friendship = 35,
+        .growthRate = GROWTH_SLOW,
+        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
+        .abilities = { ABILITY_JUSTIFIED, ABILITY_NONE, ABILITY_NONE },
+        .bodyColor = BODY_COLOR_BLUE,
+        .speciesName = _("Cobalion-V"),
+        .cryId = CRY_COBALION,
+        .natDexNum = NATIONAL_DEX_COBALION_V,
+        .categoryName = _("Iron Will"),
+        .height = 17,   // was 21
+        .weight = 2050, // was 2500
+        .description = COMPOUND_STRING(
+            "A Pokemon that was created by genetic\n"
+            "manipulation. Though it exists as a\n"
+            "proto-type, its steadfast spirit and\n"
+            "iron will still endure."),
+        .pokemonScale = 302,  // was 256
+        .pokemonOffset = 2,   // was 0
+        .trainerScale = 365,
+        .trainerOffset = 7,
+        .frontPic = gMonFrontPic_Cobalion,
+        .frontPicSize = MON_COORDS_SIZE(48, 64),
+        .frontPicYOffset = 0,
+        .frontAnimFrames = ANIM_FRAMES(
+            ANIMCMD_FRAME(0, 1),
+            ANIMCMD_FRAME(1, 36),
+            ANIMCMD_FRAME(0, 10),
+        ),
+        .frontAnimId = ANIM_V_STRETCH,
+        .backPic = gMonBackPic_Cobalion,
+        .backPicSize = MON_COORDS_SIZE(48, 64),
+        .backPicYOffset = 6,
+        .backAnimId = BACK_ANIM_V_STRETCH,
+        .palette = gMonPalette_Cobalion,
+        .shinyPalette = gMonShinyPalette_Cobalion,
+        .iconSprite = gMonIcon_Cobalion,
+        .iconPalIndex = 0,
+        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
+        SHADOW(2, 14, SHADOW_SIZE_M)
+        FOOTPRINT(Cobalion)
+        OVERWORLD(
+            sPicTable_Cobalion,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            sAnimTable_Following,
+            gOverworldPalette_Cobalion,
+            gShinyOverworldPalette_Cobalion
+        )
+        .isFrontierBanned = FALSE,
+        .levelUpLearnset = sCobalionLevelUpLearnset,
+        .teachableLearnset = sCobalionTeachableLearnset,
+    },
+
+    [SPECIES_TERRAKION_V] =
+    {
+        // BST was 580, lowered by ~18%
+        .baseHP        = 75,   // was 91
+        .baseAttack    = 106,  // was 129
+        .baseDefense   = 74,   // was 90
+        .baseSpeed     = 89,   // was 108
+        .baseSpAttack  = 59,   // was 72
+        .baseSpDefense = 74,   // was 90
+        .types = MON_TYPES(TYPE_ROCK, TYPE_FIGHTING),
+        .catchRate = 3,
+    #if P_UPDATED_EXP_YIELDS >= GEN_8
+        .expYield = 290,
+    #elif P_UPDATED_EXP_YIELDS >= GEN_5
+        .expYield = 261,
+    #else
+        .expYield = 210,
+    #endif
+        .evYield_Attack = 3,
+        .genderRatio = MON_GENDERLESS,
+        .eggCycles = 80,
+        .friendship = 35,
+        .growthRate = GROWTH_SLOW,
+        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
+        .abilities = { ABILITY_JUSTIFIED, ABILITY_NONE, ABILITY_NONE },
+        .bodyColor = BODY_COLOR_GRAY,
+        .speciesName = _("Terrakion-V"),
+        .cryId = CRY_TERRAKION,
+        .natDexNum = NATIONAL_DEX_TERRAKION_V,
+        .categoryName = _("Cavern"),
+        .height = 16,   // was 19
+        .weight = 2132, // was 2600
+        .description = COMPOUND_STRING(
+            "A Pokemon that was created by genetic\n"
+            "manipulation. Though it exists as a\n"
+            "proto-type, its rock-solid body still\n"
+            "holds tremendous defensive might."),
+        .pokemonScale = 302,  // was 256
+        .pokemonOffset = 5,   // was 1
+        .trainerScale = 336,
+        .trainerOffset = 4,
+        .frontPic = gMonFrontPic_Terrakion,
+        .frontPicSize = MON_COORDS_SIZE(64, 56),
+        .frontPicYOffset = 5,
+        .frontAnimFrames = ANIM_FRAMES(
+            ANIMCMD_FRAME(0, 15),
+            ANIMCMD_FRAME(1, 20),
+            ANIMCMD_FRAME(0, 15),
+            ANIMCMD_FRAME(1, 10),
+            ANIMCMD_FRAME(0, 15),
+            ANIMCMD_FRAME(1, 10),
+            ANIMCMD_FRAME(0, 15),
+        ),
+        .frontAnimId = ANIM_V_SHAKE_TWICE,
+        .backPic = gMonBackPic_Terrakion,
+        .backPicSize = MON_COORDS_SIZE(64, 48),
+        .backPicYOffset = 8,
+        .backAnimId = BACK_ANIM_V_SHAKE_LOW,
+        .palette = gMonPalette_Terrakion,
+        .shinyPalette = gMonShinyPalette_Terrakion,
+        .iconSprite = gMonIcon_Terrakion,
+        .iconPalIndex = 2,
+        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
+        SHADOW(3, 6, SHADOW_SIZE_L)
+        FOOTPRINT(Terrakion)
+        OVERWORLD(
+            sPicTable_Terrakion,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            sAnimTable_Following,
+            gOverworldPalette_Terrakion,
+            gShinyOverworldPalette_Terrakion
+        )
+        .isFrontierBanned = FALSE,
+        .levelUpLearnset = sTerrakionLevelUpLearnset,
+        .teachableLearnset = sTerrakionTeachableLearnset,
+    },
+
+    [SPECIES_VIRIZION_V] =
+    {
+        // BST was 580, lowered by ~18%
+        .baseHP        = 75,   // was 91
+        .baseAttack    = 74,   // was 90
+        .baseDefense   = 59,   // was 72
+        .baseSpeed     = 89,   // was 108
+        .baseSpAttack  = 74,   // was 90
+        .baseSpDefense = 106,  // was 129
+        .types = MON_TYPES(TYPE_GRASS, TYPE_FIGHTING),
+        .catchRate = 3,
+    #if P_UPDATED_EXP_YIELDS >= GEN_8
+        .expYield = 290,
+    #elif P_UPDATED_EXP_YIELDS >= GEN_5
+        .expYield = 261,
+    #else
+        .expYield = 210,
+    #endif
+        .evYield_SpDefense = 3,
+        .genderRatio = MON_GENDERLESS,
+        .eggCycles = 80,
+        .friendship = 35,
+        .growthRate = GROWTH_SLOW,
+        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
+        .abilities = { ABILITY_JUSTIFIED, ABILITY_NONE, ABILITY_NONE },
+        .bodyColor = BODY_COLOR_GREEN,
+        .speciesName = _("Virizion-V"),
+        .cryId = CRY_VIRIZION,
+        .natDexNum = NATIONAL_DEX_VIRIZION_V,
+        .categoryName = _("Grassland"),
+        .height = 16,   // was 20
+        .weight = 1640, // was 2000
+        .description = COMPOUND_STRING(
+            "A Pokemon that was created by genetic\n"
+            "manipulation. Though it exists as a\n"
+            "proto-type, it still moves with the\n"
+            "grace of a bladed whirlwind."),
+        .pokemonScale = 308,  // was 261
+        .pokemonOffset = 3,   // was 1
+        .trainerScale = 344,
+        .trainerOffset = 4,
+        .frontPic = gMonFrontPic_Virizion,
+        .frontPicSize = MON_COORDS_SIZE(48, 64),
+        .frontPicYOffset = 2,
+        .frontAnimFrames = ANIM_FRAMES(
+            ANIMCMD_FRAME(1, 15),
+            ANIMCMD_FRAME(0, 20),
+        ),
+        .frontAnimId = ANIM_GROW_VIBRATE,
+        .backPic = gMonBackPic_Virizion,
+        .backPicSize = MON_COORDS_SIZE(64, 56),
+        .backPicYOffset = 8,
+        .backAnimId = BACK_ANIM_H_SHAKE,
+        .palette = gMonPalette_Virizion,
+        .shinyPalette = gMonShinyPalette_Virizion,
+        .iconSprite = gMonIcon_Virizion,
+        .iconPalIndex = 1,
+        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
+        SHADOW(1, 12, SHADOW_SIZE_M)
+        FOOTPRINT(Virizion)
+        OVERWORLD(
+            sPicTable_Virizion,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            sAnimTable_Following,
+            gOverworldPalette_Virizion,
+            gShinyOverworldPalette_Virizion
+        )
+        .isFrontierBanned = FALSE,
+        .levelUpLearnset = sVirizionLevelUpLearnset,
+        .teachableLearnset = sVirizionTeachableLearnset,
+    },
+
+    [SPECIES_TORNADUS_V] =
+    {
+        // BST was 580, lowered by ~18%
+        .baseHP        = 65,   // was 79
+        .baseAttack    = 94,   // was 115
+        .baseDefense   = 57,   // was 70
+        .baseSpeed     = 91,   // was 111
+        .baseSpAttack  = 102,  // was 125
+        .baseSpDefense = 66,   // was 80
+        .types = MON_TYPES(TYPE_FLYING),
+        .catchRate = 3,
+    #if P_UPDATED_EXP_YIELDS >= GEN_8
+        .expYield = 290,
+    #elif P_UPDATED_EXP_YIELDS >= GEN_5
+        .expYield = 261,
+    #else
+        .expYield = 210,
+    #endif
+        .evYield_Attack = 3,
+        .genderRatio = MON_MALE,
+        .eggCycles = 120,
+        .friendship = 90,
+        .growthRate = GROWTH_SLOW,
+        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
+        .abilities = { ABILITY_PRANKSTER, ABILITY_NONE, ABILITY_DEFIANT },
+        .bodyColor = BODY_COLOR_GREEN,
+        .speciesName = _("Tornadus-V"),
+        .cryId = CRY_TORNADUS_INCARNATE,
+        .natDexNum = NATIONAL_DEX_TORNADUS_V,
+        .categoryName = _("Cyclone"),
+        .height = 12,  // was 15
+        .weight = 517, // was 630
+        .description = COMPOUND_STRING(
+            "A Pokemon that was created by genetic\n"
+            "manipulation. Though it exists as a\n"
+            "proto-type, fierce gales still gather\n"
+            "in the wake of its flight."),
+        .pokemonScale = 316,  // was 268
+        .pokemonOffset = 4,   // was 2
+        .trainerScale = 271,
+        .trainerOffset = 0,
+        .frontPic = gMonFrontPic_TornadusIncarnate,
+        .frontPicSize = MON_COORDS_SIZE(64, 64),
+        .frontPicYOffset = 1,
+        .frontAnimFrames = ANIM_FRAMES(
+            ANIMCMD_FRAME(1, 2),
+            ANIMCMD_FRAME(0, 2),
+            ANIMCMD_FRAME(1, 2),
+            ANIMCMD_FRAME(0, 2),
+            ANIMCMD_FRAME(1, 2),
+            ANIMCMD_FRAME(0, 2),
+            ANIMCMD_FRAME(1, 2),
+            ANIMCMD_FRAME(0, 2),
+            ANIMCMD_FRAME(1, 2),
+            ANIMCMD_FRAME(0, 20),
+            ANIMCMD_FRAME(1, 2),
+            ANIMCMD_FRAME(0, 2),
+            ANIMCMD_FRAME(1, 2),
+            ANIMCMD_FRAME(0, 2),
+            ANIMCMD_FRAME(1, 2),
+            ANIMCMD_FRAME(0, 2),
+            ANIMCMD_FRAME(1, 2),
+            ANIMCMD_FRAME(0, 2),
+            ANIMCMD_FRAME(1, 2),
+            ANIMCMD_FRAME(0, 2),
+            ANIMCMD_FRAME(1, 2),
+            ANIMCMD_FRAME(0, 2),
+        ),
+        .frontAnimId = ANIM_FIGURE_8,
+        .enemyMonElevation = 7,
+        .backPic = gMonBackPic_TornadusIncarnate,
+        .backPicSize = MON_COORDS_SIZE(64, 64),
+        .backPicYOffset = 0,
+        .backAnimId = BACK_ANIM_V_SHAKE,
+        .palette = gMonPalette_TornadusIncarnate,
+        .shinyPalette = gMonShinyPalette_TornadusIncarnate,
+        .iconSprite = gMonIcon_TornadusIncarnate,
+        .iconPalIndex = 1,
+        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
+        SHADOW(2, 17, SHADOW_SIZE_M)
+        FOOTPRINT(Tornadus)
+        OVERWORLD(
+            sPicTable_TornadusIncarnate,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            sAnimTable_Following,
+            gOverworldPalette_TornadusIncarnate,
+            gShinyOverworldPalette_TornadusIncarnate
+        )
+        .isFrontierBanned = FALSE,
+        .levelUpLearnset = sTornadusLevelUpLearnset,
+        .teachableLearnset = sTornadusTeachableLearnset,
+    },
+
+    [SPECIES_THUNDURUS_V] =
+    {
+        // BST was 580, lowered by ~18%
+        .baseHP        = 65,   // was 79
+        .baseAttack    = 94,   // was 115
+        .baseDefense   = 57,   // was 70
+        .baseSpeed     = 91,   // was 111
+        .baseSpAttack  = 102,  // was 125
+        .baseSpDefense = 66,   // was 80
+        .types = MON_TYPES(TYPE_ELECTRIC, TYPE_FLYING),
+        .catchRate = 3,
+    #if P_UPDATED_EXP_YIELDS >= GEN_8
+        .expYield = 290,
+    #elif P_UPDATED_EXP_YIELDS >= GEN_5
+        .expYield = 261,
+    #else
+        .expYield = 210,
+    #endif
+        .evYield_Attack = 3,
+        .genderRatio = MON_MALE,
+        .eggCycles = 120,
+        .friendship = 90,
+        .growthRate = GROWTH_SLOW,
+        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
+        .abilities = { ABILITY_PRANKSTER, ABILITY_NONE, ABILITY_DEFIANT },
+        .bodyColor = BODY_COLOR_BLUE,
+        .speciesName = _("Thundurus-V"),
+        .cryId = CRY_THUNDURUS_INCARNATE,
+        .natDexNum = NATIONAL_DEX_THUNDURUS_V,
+        .categoryName = _("Bolt Strike"),
+        .height = 12,  // was 15
+        .weight = 500, // was 610
+        .description = COMPOUND_STRING(
+            "A Pokemon that was created by genetic\n"
+            "manipulation. Though it exists as a\n"
+            "proto-type, violent thunder still\n"
+            "surges from its tail."),
+        .pokemonScale = 316,  // was 268
+        .pokemonOffset = 4,   // was 2
+        .trainerScale = 271,
+        .trainerOffset = 0,
+        .frontPic = gMonFrontPic_ThundurusIncarnate,
+        .frontPicSize = MON_COORDS_SIZE(64, 64),
+        .frontPicYOffset = 1,
+        .frontAnimFrames = ANIM_FRAMES(
+            ANIMCMD_FRAME(1, 2),
+            ANIMCMD_FRAME(0, 2),
+            ANIMCMD_FRAME(1, 2),
+            ANIMCMD_FRAME(0, 2),
+            ANIMCMD_FRAME(1, 2),
+            ANIMCMD_FRAME(0, 2),
+            ANIMCMD_FRAME(1, 2),
+            ANIMCMD_FRAME(0, 2),
+            ANIMCMD_FRAME(1, 2),
+            ANIMCMD_FRAME(0, 20),
+            ANIMCMD_FRAME(1, 2),
+            ANIMCMD_FRAME(0, 2),
+            ANIMCMD_FRAME(1, 2),
+            ANIMCMD_FRAME(0, 2),
+            ANIMCMD_FRAME(1, 2),
+            ANIMCMD_FRAME(0, 2),
+            ANIMCMD_FRAME(1, 2),
+            ANIMCMD_FRAME(0, 2),
+            ANIMCMD_FRAME(1, 2),
+            ANIMCMD_FRAME(0, 2),
+            ANIMCMD_FRAME(1, 2),
+            ANIMCMD_FRAME(0, 2),
+        ),
+        .frontAnimId = ANIM_FIGURE_8,
+        .enemyMonElevation = 7,
+        .backPic = gMonBackPic_ThundurusIncarnate,
+        .backPicSize = MON_COORDS_SIZE(64, 64),
+        .backPicYOffset = 0,
+        .backAnimId = BACK_ANIM_V_SHAKE,
+        .palette = gMonPalette_ThundurusIncarnate,
+        .shinyPalette = gMonShinyPalette_ThundurusIncarnate,
+        .iconSprite = gMonIcon_ThundurusIncarnate,
+        .iconPalIndex = 0,
+        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
+        SHADOW(2, 17, SHADOW_SIZE_M)
+        FOOTPRINT(Thundurus)
+        OVERWORLD(
+            sPicTable_ThundurusIncarnate,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            sAnimTable_Following,
+            gOverworldPalette_ThundurusIncarnate,
+            gShinyOverworldPalette_ThundurusIncarnate
+        )
+        .isFrontierBanned = FALSE,
+        .levelUpLearnset = sThundurusLevelUpLearnset,
+        .teachableLearnset = sThundurusTeachableLearnset,
+    },
+
+    [SPECIES_LANDORUS_V] =
+    {
+        // BST was 600, lowered by ~21%
+        .baseHP        = 70,  // was 89
+        .baseAttack    = 99,  // was 125
+        .baseDefense   = 71,  // was 90
+        .baseSpeed     = 80,  // was 101
+        .baseSpAttack  = 91,  // was 115
+        .baseSpDefense = 63,  // was 80
+        .types = MON_TYPES(TYPE_GROUND, TYPE_FLYING),
+        .catchRate = 3,
+    #if P_UPDATED_EXP_YIELDS >= GEN_8
+        .expYield = 300,
+    #elif P_UPDATED_EXP_YIELDS >= GEN_5
+        .expYield = 270,
+    #else
+        .expYield = 220,
+    #endif
+        .evYield_SpAttack = 3,
+        .genderRatio = MON_MALE,
+        .eggCycles = 120,
+        .friendship = 90,
+        .growthRate = GROWTH_SLOW,
+        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
+        .abilities = { ABILITY_SAND_FORCE, ABILITY_NONE, ABILITY_SHEER_FORCE },
+        .bodyColor = BODY_COLOR_BROWN,
+        .speciesName = _("Landorus-V"),
+        .cryId = CRY_LANDORUS_INCARNATE,
+        .natDexNum = NATIONAL_DEX_LANDORUS_V,
+        .categoryName = _("Abundance"),
+        .height = 12,  // was 15
+        .weight = 537, // was 680
+        .description = COMPOUND_STRING(
+            "A Pokemon that was created by genetic\n"
+            "manipulation. Though it exists as a\n"
+            "proto-type, fertile winds still follow\n"
+            "wherever it takes flight."),
+        .pokemonScale = 324,  // was 268
+        .pokemonOffset = 4,   // was 2
+        .trainerScale = 271,
+        .trainerOffset = 0,
+        .frontPic = gMonFrontPic_LandorusIncarnate,
+        .frontPicSize = MON_COORDS_SIZE(64, 64),
+        .frontPicYOffset = 1,
+        .frontAnimFrames = ANIM_FRAMES(
+            ANIMCMD_FRAME(1, 2),
+            ANIMCMD_FRAME(0, 2),
+            ANIMCMD_FRAME(1, 2),
+            ANIMCMD_FRAME(0, 2),
+            ANIMCMD_FRAME(1, 2),
+            ANIMCMD_FRAME(0, 2),
+            ANIMCMD_FRAME(1, 2),
+            ANIMCMD_FRAME(0, 2),
+            ANIMCMD_FRAME(1, 2),
+            ANIMCMD_FRAME(0, 20),
+            ANIMCMD_FRAME(1, 2),
+            ANIMCMD_FRAME(0, 2),
+            ANIMCMD_FRAME(1, 2),
+            ANIMCMD_FRAME(0, 2),
+            ANIMCMD_FRAME(1, 2),
+            ANIMCMD_FRAME(0, 2),
+            ANIMCMD_FRAME(1, 2),
+            ANIMCMD_FRAME(0, 2),
+            ANIMCMD_FRAME(1, 2),
+            ANIMCMD_FRAME(0, 2),
+            ANIMCMD_FRAME(1, 2),
+            ANIMCMD_FRAME(0, 2),
+        ),
+        .frontAnimId = ANIM_FIGURE_8,
+        .enemyMonElevation = 7,
+        .backPic = gMonBackPic_LandorusIncarnate,
+        .backPicSize = MON_COORDS_SIZE(64, 64),
+        .backPicYOffset = 0,
+        .backAnimId = BACK_ANIM_V_SHAKE,
+        .palette = gMonPalette_LandorusIncarnate,
+        .shinyPalette = gMonShinyPalette_LandorusIncarnate,
+        .iconSprite = gMonIcon_LandorusIncarnate,
+        .iconPalIndex = 0,
+        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
+        SHADOW(2, 17, SHADOW_SIZE_M)
+        FOOTPRINT(Landorus)
+        OVERWORLD(
+            sPicTable_LandorusIncarnate,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            sAnimTable_Following,
+            gOverworldPalette_LandorusIncarnate,
+            gShinyOverworldPalette_LandorusIncarnate
+        )
+        .isFrontierBanned = FALSE,
+        .levelUpLearnset = sLandorusLevelUpLearnset,
+        .teachableLearnset = sLandorusTeachableLearnset,
+    },
+
+    [SPECIES_RESHIRAM_V] =
+    {
+        // BST was 680, lowered by ~30%
+        .baseHP        = 70,   // was 100
+        .baseAttack    = 84,   // was 120
+        .baseDefense   = 70,   // was 100
+        .baseSpeed     = 63,   // was 90
+        .baseSpAttack  = 105,  // was 150
+        .baseSpDefense = 84,   // was 120
+        .types = MON_TYPES(TYPE_DRAGON, TYPE_FIRE),
+        .catchRate = 3,
+    #if P_UPDATED_EXP_YIELDS >= GEN_8
+        .expYield = 340,
+    #elif P_UPDATED_EXP_YIELDS >= GEN_5
+        .expYield = 306,
+    #else
+        .expYield = 220,
+    #endif
+        .evYield_SpAttack = 3,
+        .genderRatio = MON_GENDERLESS,
+        .eggCycles = 120,
+        .friendship = 0,
+        .growthRate = GROWTH_SLOW,
+        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
+        .abilities = { ABILITY_TURBOBLAZE, ABILITY_NONE, ABILITY_NONE },
+        .bodyColor = BODY_COLOR_WHITE,
+        .speciesName = _("Reshiram-V"),
+        .cryId = CRY_RESHIRAM,
+        .natDexNum = NATIONAL_DEX_RESHIRAM_V,
+        .categoryName = _("Vast White"),
+        .height = 22,   // was 32
+        .weight = 2310, // was 3300
+        .description = COMPOUND_STRING(
+            "A Pokemon that was created by genetic\n"
+            "manipulation. Though it exists as a\n"
+            "proto-type, white-hot flames still\n"
+            "burn in its draconic core."),
+        .pokemonScale = 366,  // was 256
+        .pokemonOffset = 5,   // was 0
+        .trainerScale = 445,
+        .trainerOffset = 8,
+        .frontPic = gMonFrontPic_Reshiram,
+        .frontPicSize = MON_COORDS_SIZE(64, 64),
+        .frontPicYOffset = 1,
+        .frontAnimFrames = ANIM_FRAMES(
+            ANIMCMD_FRAME(1, 40),
+            ANIMCMD_FRAME(0, 5),
+        ),
+        .frontAnimId = ANIM_V_SHAKE,
+        .backPic = gMonBackPic_Reshiram,
+        .backPicSize = MON_COORDS_SIZE(64, 64),
+        .backPicYOffset = 7,
+        .backAnimId = BACK_ANIM_SHAKE_GLOW_RED,
+        .palette = gMonPalette_Reshiram,
+        .shinyPalette = gMonShinyPalette_Reshiram,
+        .iconSprite = gMonIcon_Reshiram,
+        .iconPalIndex = 0,
+        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
+        SHADOW(-2, 12, SHADOW_SIZE_L)
+        FOOTPRINT(Reshiram)
+        OVERWORLD(
+            sPicTable_Reshiram,
+            SIZE_64x64,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            sAnimTable_Following,
+            gOverworldPalette_Reshiram,
+            gShinyOverworldPalette_Reshiram
+        )
+        .isFrontierBanned = FALSE,
+        .levelUpLearnset = sReshiramLevelUpLearnset,
+        .teachableLearnset = sReshiramTeachableLearnset,
+    },
+
+    [SPECIES_ZEKROM_V] =
+    {
+        // BST was 680, lowered by ~30%
+        .baseHP        = 70,   // was 100
+        .baseAttack    = 105,  // was 150
+        .baseDefense   = 84,   // was 120
+        .baseSpeed     = 63,   // was 90
+        .baseSpAttack  = 84,   // was 120
+        .baseSpDefense = 70,   // was 100
+        .types = MON_TYPES(TYPE_DRAGON, TYPE_ELECTRIC),
+        .catchRate = 3,
+    #if P_UPDATED_EXP_YIELDS >= GEN_8
+        .expYield = 340,
+    #elif P_UPDATED_EXP_YIELDS >= GEN_5
+        .expYield = 306,
+    #else
+        .expYield = 220,
+    #endif
+        .evYield_Attack = 3,
+        .genderRatio = MON_GENDERLESS,
+        .eggCycles = 120,
+        .friendship = 0,
+        .growthRate = GROWTH_SLOW,
+        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
+        .abilities = { ABILITY_TERAVOLT, ABILITY_NONE, ABILITY_NONE },
+        .bodyColor = BODY_COLOR_BLACK,
+        .speciesName = _("Zekrom-V"),
+        .cryId = CRY_ZEKROM,
+        .natDexNum = NATIONAL_DEX_ZEKROM_V,
+        .categoryName = _("Deep Black"),
+        .height = 20,   // was 29
+        .weight = 2415, // was 3450
+        .description = COMPOUND_STRING(
+            "A Pokemon that was created by genetic\n"
+            "manipulation. Though it exists as a\n"
+            "proto-type, thunder still crackles\n"
+            "through its internal generator."),
+        .pokemonScale = 393,  // was 275
+        .pokemonOffset = 9,  // was 2
+        .trainerScale = 412,
+        .trainerOffset = 10,
+        .frontPic = gMonFrontPic_Zekrom,
+        .frontPicSize = MON_COORDS_SIZE(64, 64),
+        .frontPicYOffset = 0,
+        .frontAnimFrames = ANIM_FRAMES(
+            ANIMCMD_FRAME(1, 40),
+            ANIMCMD_FRAME(0, 5),
+        ),
+        .frontAnimId = ANIM_V_SHAKE,
+        .backPic = gMonBackPic_Zekrom,
+        .backPicSize = MON_COORDS_SIZE(64, 64),
+        .backPicYOffset = 3,
+        .backAnimId = BACK_ANIM_SHAKE_GLOW_BLUE,
+        .palette = gMonPalette_Zekrom,
+        .shinyPalette = gMonShinyPalette_Zekrom,
+        .iconSprite = gMonIcon_Zekrom,
+        .iconPalIndex = 2,
+        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
+        SHADOW(2, 14, SHADOW_SIZE_L)
+        FOOTPRINT(Zekrom)
+        OVERWORLD(
+            sPicTable_Zekrom,
+            SIZE_64x64,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            sAnimTable_Following,
+            gOverworldPalette_Zekrom,
+            gShinyOverworldPalette_Zekrom
+        )
+        .isFrontierBanned = FALSE,
+        .levelUpLearnset = sZekromLevelUpLearnset,
+        .teachableLearnset = sZekromTeachableLearnset,
+    },
+
+    [SPECIES_KYUREM_V] =
+    {
+        // BST was 660, lowered by ~30%
+        .baseHP        = 87,  // was 125
+        .baseAttack    = 91,  // was 130
+        .baseDefense   = 63,  // was 90
+        .baseSpeed     = 66,  // was 95
+        .baseSpAttack  = 91,  // was 130
+        .baseSpDefense = 63,  // was 90
+        .types = MON_TYPES(TYPE_DRAGON, TYPE_ICE),
+        .catchRate = 3,
+    #if P_UPDATED_EXP_YIELDS >= GEN_8
+        .expYield = 330,
+    #elif P_UPDATED_EXP_YIELDS >= GEN_5
+        .expYield = 297,
+    #else
+        .expYield = 220,
+    #endif
+        .evYield_HP = 1,
+        .evYield_Attack = 1,
+        .evYield_SpAttack = 1,
+        .genderRatio = MON_GENDERLESS,
+        .eggCycles = 120,
+        .friendship = 0,
+        .growthRate = GROWTH_SLOW,
+        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
+        .abilities = { ABILITY_PRESSURE, ABILITY_NONE, ABILITY_NONE },
+        .bodyColor = BODY_COLOR_GRAY,
+        .noFlip = TRUE,
+        .speciesName = _("Kyurem-V"),
+        .cryId = CRY_KYUREM,
+        .natDexNum = NATIONAL_DEX_KYUREM_V,
+        .categoryName = _("Boundary"),
+        .height = 21,   // was 30
+        .weight = 2275, // was 3250
+        .description = COMPOUND_STRING(
+            "A Pokemon that was created by genetic\n"
+            "manipulation. Though it exists as a\n"
+            "proto-type, frigid draconic power still\n"
+            "lingers in its frozen shell."),
+        .pokemonScale = 393,  // was 275
+        .pokemonOffset = 6,   // was 7
+        .trainerScale = 356,
+        .trainerOffset = 0,
+        .frontPic = gMonFrontPic_Kyurem,
+        .frontPicSize = MON_COORDS_SIZE(64, 64),
+        .frontPicYOffset = 6,
+        .frontAnimFrames = ANIM_FRAMES(
+            ANIMCMD_FRAME(1, 10),
+            ANIMCMD_FRAME(0, 20),
+            ANIMCMD_FRAME(1, 10),
+            ANIMCMD_FRAME(0, 10),
+        ),
+        .frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
+        .backPic = gMonBackPic_Kyurem,
+        .backPicSize = MON_COORDS_SIZE(64, 40),
+        .backPicYOffset = 12,
+        .backAnimId = BACK_ANIM_V_SHAKE_LOW,
+        .palette = gMonPalette_Kyurem,
+        .shinyPalette = gMonShinyPalette_Kyurem,
+        .iconSprite = gMonIcon_Kyurem,
+        .iconPalIndex = 0,
+        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
+        SHADOW(0, 8, SHADOW_SIZE_L)
+        FOOTPRINT(Kyurem)
+        OVERWORLD(
+            sPicTable_Kyurem,
+            SIZE_64x64,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            sAnimTable_Following,
+            gOverworldPalette_Kyurem,
+            gShinyOverworldPalette_Kyurem
+        )
+        .isFrontierBanned = FALSE,
+        .levelUpLearnset = sKyuremLevelUpLearnset,
+        .teachableLearnset = sKyuremTeachableLearnset,
     },
 
     /*

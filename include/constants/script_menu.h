@@ -140,13 +140,18 @@
 #define MULTI_MINI_LEGEND_HEATRAN          129
 #define MULTI_MINI_LEGEND_REGIGIGAS        130
 #define MULTI_MINI_LEGEND_CRESSELIA        131
+#define MULTI_MINI_LEGEND_UNOVA            132
+#define MULTI_MINI_LEGEND_SWORDS           133
+#define MULTI_MINI_LEGEND_FORCES           134
+#define MULTI_MINI_LEGEND_TAO              135
 
 // Mini legendary region choices
 #define MINI_REGION_KANTO                  0
 #define MINI_REGION_JOHTO                  1
 #define MINI_REGION_HOENN                  2
 #define MINI_REGION_SINNOH                 3
-#define NUM_MINI_REGIONS                   MINI_REGION_SINNOH + 1
+#define MINI_REGION_UNOVA                  4
+#define NUM_MINI_REGIONS                   MINI_REGION_UNOVA + 1
 
 // Kanto line choices
 #define MINI_KANTO_MEWTWO_LINE             0
@@ -168,6 +173,11 @@
 #define MINI_SINNOH_REGIGIGAS_LINE         3
 #define MINI_SINNOH_CRESSELIA_LINE         4
 
+// Unova line choices
+#define MINI_UNOVA_SWORDS_LINE             0
+#define MINI_UNOVA_FORCES_LINE             1
+#define MINI_UNOVA_TAO_LINE                2
+
 // Number of pokemon each line has
 #define MINI_CHOICES_MEWTWO_LINE           1
 #define MINI_CHOICES_BIRDS_LINE            3
@@ -181,6 +191,9 @@
 #define MINI_CHOICES_HEATRAN_LINE          1
 #define MINI_CHOICES_REGIGIGAS_LINE        1
 #define MINI_CHOICES_CRESSELIA_LINE        1
+#define MINI_CHOICES_SWORDS_LINE           3
+#define MINI_CHOICES_FORCES_LINE           3
+#define MINI_CHOICES_TAO_LINE              3
 
 // Cumulative offsets for the chosen mon
 #define MINI_OFFSET_MEWTWO_LINE    0
@@ -195,6 +208,9 @@
 #define MINI_OFFSET_HEATRAN_LINE   (MINI_OFFSET_MYTH_LINE + MINI_CHOICES_MYTH_LINE)
 #define MINI_OFFSET_REGIGIGAS_LINE (MINI_OFFSET_HEATRAN_LINE + MINI_CHOICES_HEATRAN_LINE)
 #define MINI_OFFSET_CRESSELIA_LINE (MINI_OFFSET_REGIGIGAS_LINE + MINI_CHOICES_REGIGIGAS_LINE)
+#define MINI_OFFSET_SWORDS_LINE    (MINI_OFFSET_CRESSELIA_LINE + MINI_CHOICES_CRESSELIA_LINE)
+#define MINI_OFFSET_FORCES_LINE    (MINI_OFFSET_SWORDS_LINE + MINI_CHOICES_SWORDS_LINE)
+#define MINI_OFFSET_TAO_LINE       (MINI_OFFSET_FORCES_LINE + MINI_CHOICES_FORCES_LINE)
 
 // Lilycove SS Tidal Multichoice Selections
 #define SSTIDAL_SELECTION_SLATEPORT        0
