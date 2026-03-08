@@ -657,23 +657,23 @@
 #define FLAG_HIDDEN_ITEM_ROUTE_105_BIG_PEARL                 (FLAG_HIDDEN_ITEMS_START + 0x6F)
 
 #define FLAG_MET_MINI_LEGENDARY_SCIENTIST    0x264
-#define FLAG_OBTAINED_MEWTWO_V               0x265
-#define FLAG_OBTAINED_ARTICUNO_V             0x266
-#define FLAG_OBTAINED_ZAPDOS_V               0x267
-#define FLAG_OBTAINED_MOLTRES_V              0x268
-#define FLAG_OBTAINED_RAIKOU_V               0x269
-#define FLAG_OBTAINED_ENTEI_V                0x26A
-#define FLAG_OBTAINED_SUICUNE_V              0x26B
-#define FLAG_OBTAINED_LUGIA_V                0x26C
-#define FLAG_OBTAINED_HO_OH_V                0x26D
-#define FLAG_OBTAINED_REGIROCK_V             0x26E
-#define FLAG_OBTAINED_REGICE_V               0x26F
-#define FLAG_OBTAINED_REGISTEEL_V            0x270
-#define FLAG_OBTAINED_LATIAS_V               0x271
-#define FLAG_OBTAINED_LATIOS_V               0x272
-#define FLAG_OBTAINED_KYOGRE_V               0x273
-#define FLAG_OBTAINED_GROUDON_V              0x274
-#define FLAG_OBTAINED_RAYQUAZA_V             0x275
+#define FLAG_OBTAINED_MEWTWO_LINE            0x265
+#define FLAG_OBTAINED_BIRD_LINE              0x266
+#define FLAG_OBTAINED_BEASTS_LINE            0x267
+#define FLAG_OBTAINED_TOWER_LINE             0x268
+#define FLAG_OBTAINED_REGI_LINE              0x269
+#define FLAG_OBTAINED_EON_LINE               0x26A
+#define FLAG_OBTAINED_WEATHER_LINE           0x26B
+#define FLAG_UNUSED_0x26C  0x26C // Unused Flag
+#define FLAG_UNUSED_0x26D  0x26D // Unused Flag
+#define FLAG_UNUSED_0x26E  0x26E // Unused Flag
+#define FLAG_UNUSED_0x26F  0x26F // Unused Flag
+#define FLAG_UNUSED_0x270  0x270 // Unused Flag
+#define FLAG_UNUSED_0x271  0x271 // Unused Flag
+#define FLAG_UNUSED_0x272  0x272 // Unused Flag
+#define FLAG_UNUSED_0x273  0x273 // Unused Flag
+#define FLAG_UNUSED_0x274  0x274 // Unused Flag
+#define FLAG_UNUSED_0x275  0x275 // Unused Flag
 #define FLAG_UNUSED_0x276  0x276 // Unused Flag
 #define FLAG_UNUSED_0x277  0x277 // Unused Flag
 #define FLAG_UNUSED_0x278  0x278 // Unused Flag

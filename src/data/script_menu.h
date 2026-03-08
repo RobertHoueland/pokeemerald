@@ -778,6 +778,88 @@ static const struct MenuAction MultichoiceList_BerryPlot[] =
     {gText_Exit},
 };
 
+static const struct MenuAction MultichoiceList_MiniLegendRegion[] =
+{
+    {COMPOUND_STRING("KANTO")},
+    {COMPOUND_STRING("JOHTO")},
+    {COMPOUND_STRING("HOENN")},
+    {gText_Exit},
+};
+
+static const struct MenuAction MultichoiceList_MiniLegendKanto[] =
+{
+    {COMPOUND_STRING("MEWTWO LINE")},
+    {COMPOUND_STRING("LEGENDARY BIRDS LINE")},
+    {gText_Exit},
+};
+
+static const struct MenuAction MultichoiceList_MiniLegendJohto[] =
+{
+    {COMPOUND_STRING("LEGENDARY BEASTS LINE")},
+    {COMPOUND_STRING("TOWER DUO LINE")},
+    {gText_Exit},
+};
+
+static const struct MenuAction MultichoiceList_MiniLegendHoenn[] =
+{
+    {COMPOUND_STRING("REGI LINE")},
+    {COMPOUND_STRING("EON DUO LINE")},
+    {COMPOUND_STRING("ANCIENT LEGEND LINE")},
+    {gText_Exit},
+};
+
+static const struct MenuAction MultichoiceList_MiniLegendMewtwo[] =
+{
+    {COMPOUND_STRING("MEWTWO-V")},
+    {gText_Exit},
+};
+
+static const struct MenuAction MultichoiceList_MiniLegendBirds[] =
+{
+    {COMPOUND_STRING("ARTICUNO-V")},
+    {COMPOUND_STRING("ZAPDOS-V")},
+    {COMPOUND_STRING("MOLTRES-V")},
+    {gText_Exit},
+};
+
+static const struct MenuAction MultichoiceList_MiniLegendBeasts[] =
+{
+    {COMPOUND_STRING("RAIKOU-V")},
+    {COMPOUND_STRING("ENTEI-V")},
+    {COMPOUND_STRING("SUICUNE-V")},
+    {gText_Exit},
+};
+
+static const struct MenuAction MultichoiceList_MiniLegendTower[] =
+{
+    {COMPOUND_STRING("LUGIA-V")},
+    {COMPOUND_STRING("HO-OH-V")},
+    {gText_Exit},
+};
+
+static const struct MenuAction MultichoiceList_MiniLegendRegi[] =
+{
+    {COMPOUND_STRING("REGIROCK-V")},
+    {COMPOUND_STRING("REGICE-V")},
+    {COMPOUND_STRING("REGISTEEL-V")},
+    {gText_Exit},
+};
+
+static const struct MenuAction MultichoiceList_MiniLegendEon[] =
+{
+    {COMPOUND_STRING("LATIAS-V")},
+    {COMPOUND_STRING("LATIOS-V")},
+    {gText_Exit},
+};
+
+static const struct MenuAction MultichoiceList_MiniLegendWeather[] =
+{
+    {COMPOUND_STRING("KYOGRE-V")},
+    {COMPOUND_STRING("GROUDON-V")},
+    {COMPOUND_STRING("RAYQUAZA-V")},
+    {gText_Exit},
+};
+
 static const struct MenuAction MultichoiceList_Exit[] =
 {
     {gText_Exit},
@@ -906,6 +988,17 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_FALLARBOR_TENT_RULES]       = MULTICHOICE(MultichoiceList_FallarborTentRules),
     [MULTI_TAG_MATCH_TYPE]             = MULTICHOICE(MultichoiceList_TagMatchType),
     [MULTI_BERRY_PLOT]                 = MULTICHOICE(MultichoiceList_BerryPlot),
+    [MULTI_MINI_LEGEND_REGION]         = MULTICHOICE(MultichoiceList_MiniLegendRegion),
+    [MULTI_MINI_LEGEND_KANTO]          = MULTICHOICE(MultichoiceList_MiniLegendKanto),
+    [MULTI_MINI_LEGEND_JOHTO]          = MULTICHOICE(MultichoiceList_MiniLegendJohto),
+    [MULTI_MINI_LEGEND_HOENN]          = MULTICHOICE(MultichoiceList_MiniLegendHoenn),
+    [MULTI_MINI_LEGEND_MEWTWO]         = MULTICHOICE(MultichoiceList_MiniLegendMewtwo),
+    [MULTI_MINI_LEGEND_BIRDS]          = MULTICHOICE(MultichoiceList_MiniLegendBirds),
+    [MULTI_MINI_LEGEND_BEASTS]         = MULTICHOICE(MultichoiceList_MiniLegendBeasts),
+    [MULTI_MINI_LEGEND_TOWER]          = MULTICHOICE(MultichoiceList_MiniLegendTower),
+    [MULTI_MINI_LEGEND_REGI]           = MULTICHOICE(MultichoiceList_MiniLegendRegi),
+    [MULTI_MINI_LEGEND_EON]            = MULTICHOICE(MultichoiceList_MiniLegendEon),
+    [MULTI_MINI_LEGEND_WEATHER]        = MULTICHOICE(MultichoiceList_MiniLegendWeather),
 };
 
 const u8 *const gStdStrings[] =

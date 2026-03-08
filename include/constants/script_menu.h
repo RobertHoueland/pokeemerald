@@ -123,6 +123,54 @@
 #define MULTI_FALLARBOR_TENT_RULES         112
 #define MULTI_TAG_MATCH_TYPE               113
 #define MULTI_BERRY_PLOT                   114
+#define MULTI_MINI_LEGEND_REGION           115
+#define MULTI_MINI_LEGEND_KANTO            116
+#define MULTI_MINI_LEGEND_JOHTO            117
+#define MULTI_MINI_LEGEND_HOENN            118
+#define MULTI_MINI_LEGEND_MEWTWO           119
+#define MULTI_MINI_LEGEND_BIRDS            120
+#define MULTI_MINI_LEGEND_BEASTS           121
+#define MULTI_MINI_LEGEND_TOWER            122
+#define MULTI_MINI_LEGEND_REGI             123
+#define MULTI_MINI_LEGEND_EON              124
+#define MULTI_MINI_LEGEND_WEATHER          125
+
+// Mini legendary region choices
+#define MINI_REGION_KANTO                  0
+#define MINI_REGION_JOHTO                  1
+#define MINI_REGION_HOENN                  2
+#define NUM_MINI_REGIONS                   MINI_REGION_HOENN + 1
+
+// Kanto line choices
+#define MINI_KANTO_MEWTWO_LINE             0
+#define MINI_KANTO_BIRDS_LINE              1
+
+// Johto line choices
+#define MINI_JOHTO_BEASTS_LINE             0
+#define MINI_JOHTO_TOWER_LINE              1
+
+// Hoenn line choices
+#define MINI_HOENN_REGI_LINE               0
+#define MINI_HOENN_EON_LINE                1
+#define MINI_HOENN_WEATHER_LINE            2
+
+// Number of pokemon each line has
+#define MINI_CHOICES_MEWTWO_LINE           1
+#define MINI_CHOICES_BIRDS_LINE            3
+#define MINI_CHOICES_BEASTS_LINE           3
+#define MINI_CHOICES_TOWER_LINE            2
+#define MINI_CHOICES_REGI_LINE             3
+#define MINI_CHOICES_EON_LINE              2
+#define MINI_CHOICES_WEATHER_LINE          3
+
+// Cumulative offsets for the chosen mon
+#define MINI_OFFSET_MEWTWO_LINE    0
+#define MINI_OFFSET_BIRDS_LINE     (MINI_OFFSET_MEWTWO_LINE + MINI_CHOICES_MEWTWO_LINE)
+#define MINI_OFFSET_BEASTS_LINE    (MINI_OFFSET_BIRDS_LINE + MINI_CHOICES_BIRDS_LINE)
+#define MINI_OFFSET_TOWER_LINE     (MINI_OFFSET_BEASTS_LINE + MINI_CHOICES_BEASTS_LINE)
+#define MINI_OFFSET_REGI_LINE      (MINI_OFFSET_TOWER_LINE + MINI_CHOICES_TOWER_LINE)
+#define MINI_OFFSET_EON_LINE       (MINI_OFFSET_REGI_LINE + MINI_CHOICES_REGI_LINE)
+#define MINI_OFFSET_WEATHER_LINE   (MINI_OFFSET_EON_LINE + MINI_CHOICES_EON_LINE)
 
 // Lilycove SS Tidal Multichoice Selections
 #define SSTIDAL_SELECTION_SLATEPORT        0
