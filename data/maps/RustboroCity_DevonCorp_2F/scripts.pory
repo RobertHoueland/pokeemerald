@@ -386,18 +386,15 @@ script RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist {
     lockall
     goto_if_set(FLAG_MET_MINI_LEGENDARY_SCIENTIST, MiniLegendSci_Met)
 
-	// First meeting, pre DNA sample
     msgbox("Come on... so close...")
     faceplayer
     msgbox(format("Oh! I didn't see you there!"))
     msgbox(format("I'm on the verge of a breakthrough in my research."))
     msgbox(format("All I need is a sample of Unstable DNA..."))
-
 	//checkitem(ITEM_UNSTABLE_DNA, 1)
 	//if (var(VAR_RESULT) == FALSE) {
-		//goto MiniLegendSci_End
+		//goto(RustboroCity_DevonCorp_2F_EventScript_MiniLegendSciEnd)
 	//}
-	// First meeting, post DNA sample
 	msgbox(format("Wait... you found an Unstable DNA sample?\nThat's incredible!"))
 	msgbox(format("With this, I can stabilize my lab grown prototypes."))
 	msgbox(format("I call them... PROTO-LEGENDS!"))
@@ -416,242 +413,257 @@ script RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist {
 MiniLegendSci_Met:
 	//checkitem(ITEM_UNSTABLE_DNA, 1)
 	//if (var(VAR_RESULT) == FALSE) {
-		//goto MiniLegendSci_End
+		//goto(RustboroCity_DevonCorp_2F_EventScript_MiniLegendSciEnd)
 	//}
 	// "Is that more Unstable DNA I see?"
 	// "Splendid! My research continues to evolve!"
     // msgbox(format("Hey, if you slide me some cash, I might be able to get you a rare color."))
 MiniLegendSci_FirstMet:
 	msgbox(format("Please, accept a Proto-Legend as a thank you for the DNA sample."))
+	goto(RustboroCity_DevonCorp_2F_EventScript_SelectRegion)
+}
 
-MiniLegendSci_Region:
-	// Check region
-    msgbox(format("From which region would you like your Proto-Legend?"))
+script RustboroCity_DevonCorp_2F_EventScript_SelectRegion {
+    message("From which region would you like\nyour Proto-Legend?")
     multichoice(0, 0, MULTI_MINI_LEGEND_REGION, FALSE)
 	closemessage
 	if (var(VAR_RESULT) > NUM_REGION_CHOICES - 1) {
-        goto(MiniLegendSci_End)
+        goto(RustboroCity_DevonCorp_2F_EventScript_MiniLegendSciEnd)
     }
 
-	// Check category, then specific pokemon in nested switch
-	msgbox(format("And which genetic line are you interested in?"))
+	message("And which genetic line are you\ninterested in?")
 	switch (var(VAR_RESULT)) {
-	// Order of operations:
-	// Check region choice
-	// Ask for category, go back to region if backed out
-	// Check if mon from this category has already been obtained
-	// Check specific mon choice within category
-	// If choice is valid, add offset to Pokemon's choice var
-	// Use choice var to determine which mon to give in the next script
 		case REGION_CHOICE_KANTO:
-MiniLegendSci_Kanto:
-			multichoice(0, 0, MULTI_MINI_LEGEND_KANTO, FALSE)  // ask for category
-			closemessage
-
-			switch (var(VAR_RESULT)) {
-				case KANTO_CHOICE_MEWTWO:
-					goto_if_set(FLAG_OBTAINED_MEWTWO_LINE, RustboroCity_DevonCorp_2F_EventScript_HasMon)  // category already obtained? skip to end if so
-					multichoice(0, 0, MULTI_MINI_LEGEND_MEWTWO, FALSE)  // ask for specific mon in the category
-					closemessage
-
-					if (var(VAR_RESULT) > NUM_CHOICES_MEWTWO - 1) {  // if invalid choice/backed out, go back to category choice
-        				goto(MiniLegendSci_Kanto)
-					}
-					addvar(VAR_RESULT, OFFSET_MEWTWO)  // add offset so we know which mon to give
-					break
-				case KANTO_CHOICE_BIRDS:
-					goto_if_set(FLAG_OBTAINED_BIRD_LINE, RustboroCity_DevonCorp_2F_EventScript_HasMon)
-					multichoice(0, 0, MULTI_MINI_LEGEND_BIRDS, FALSE)
-					closemessage
-
-					if (var(VAR_RESULT) > NUM_CHOICES_BIRDS - 1) {
-        				goto(MiniLegendSci_Kanto)
-					}
-					addvar(VAR_RESULT, OFFSET_BIRDS)
-					break
-				default:
-					goto(MiniLegendSci_Region)
-			}
-			break
+			goto(RustboroCity_DevonCorp_2F_EventScript_SelectKanto)
 		case REGION_CHOICE_JOHTO:
-MiniLegendSci_Johto:
-			multichoice(0, 0, MULTI_MINI_LEGEND_JOHTO, FALSE)
-			closemessage
-
-			switch (var(VAR_RESULT)) {
-				case JOHTO_CHOICE_BEASTS:
-					goto_if_set(FLAG_OBTAINED_BEASTS_LINE, RustboroCity_DevonCorp_2F_EventScript_HasMon)
-					multichoice(0, 0, MULTI_MINI_LEGEND_BEASTS, FALSE)
-					closemessage
-
-					if (var(VAR_RESULT) > NUM_CHOICES_BEASTS - 1) {
-        				goto(MiniLegendSci_Johto)
-					}
-					addvar(VAR_RESULT, OFFSET_BEASTS)
-                	break
-				case JOHTO_CHOICE_TOWER:
-					goto_if_set(FLAG_OBTAINED_TOWER_LINE, RustboroCity_DevonCorp_2F_EventScript_HasMon)
-					multichoice(0, 0, MULTI_MINI_LEGEND_TOWER, FALSE)
-					closemessage
-
-					if (var(VAR_RESULT) > NUM_CHOICES_TOWER - 1) {
-        				goto(MiniLegendSci_Johto)
-					}
-					addvar(VAR_RESULT, OFFSET_TOWER)
-                	break
-				default:
-					goto(MiniLegendSci_Region)
-			}
-			break
+			goto(RustboroCity_DevonCorp_2F_EventScript_SelectJohto)
 		case REGION_CHOICE_HOENN:
-MiniLegendSci_Hoenn:
-			multichoice(0, 0, MULTI_MINI_LEGEND_HOENN, FALSE)
-			closemessage
-
-			switch (var(VAR_RESULT)) {
-				case HOENN_CHOICE_REGIS:
-					goto_if_set(FLAG_OBTAINED_REGI_LINE, RustboroCity_DevonCorp_2F_EventScript_HasMon)
-					multichoice(0, 0, MULTI_MINI_LEGEND_REGI, FALSE)
-					closemessage
-
-					if (var(VAR_RESULT) > NUM_CHOICES_REGIS - 1) {
-        				goto(MiniLegendSci_Hoenn)
-					}
-					addvar(VAR_RESULT, OFFSET_REGIS)
-                	break
-				case HOENN_CHOICE_EON:
-					goto_if_set(FLAG_OBTAINED_EON_LINE, RustboroCity_DevonCorp_2F_EventScript_HasMon)
-					multichoice(0, 0, MULTI_MINI_LEGEND_EON, FALSE)
-					closemessage
-					
-					if (var(VAR_RESULT) > NUM_CHOICES_EON - 1) {
-        				goto(MiniLegendSci_Hoenn)
-					}
-					addvar(VAR_RESULT, OFFSET_EON)
-                	break
-				case HOENN_CHOICE_WEATHER:
-					goto_if_set(FLAG_OBTAINED_WEATHER_LINE, RustboroCity_DevonCorp_2F_EventScript_HasMon)
-					multichoice(0, 0, MULTI_MINI_LEGEND_WEATHER, FALSE)
-					closemessage
-
-					if (var(VAR_RESULT) > NUM_CHOICES_WEATHER - 1) {
-        				goto(MiniLegendSci_Hoenn)
-					}
-					addvar(VAR_RESULT, OFFSET_WEATHER)
-                	break
-				default:
-					goto(MiniLegendSci_Region)
-			}
-			break
+			goto(RustboroCity_DevonCorp_2F_EventScript_SelectHoenn)
 		case REGION_CHOICE_SINNOH:
-MiniLegendSci_Sinnoh:
-			multichoice(0, 0, MULTI_MINI_LEGEND_SINNOH, FALSE)
-			closemessage
-
-			switch (var(VAR_RESULT)) {
-				case SINNOH_CHOICE_LAKE:
-					goto_if_set(FLAG_OBTAINED_LAKE_LINE, RustboroCity_DevonCorp_2F_EventScript_HasMon)
-					multichoice(0, 0, MULTI_MINI_LEGEND_LAKE, FALSE)
-					closemessage
-
-					if (var(VAR_RESULT) > NUM_CHOICES_LAKE - 1) {
-        				goto(MiniLegendSci_Sinnoh)
-					}
-					addvar(VAR_RESULT, OFFSET_LAKE)
-                	break
-				case SINNOH_CHOICE_MYTH:
-					goto_if_set(FLAG_OBTAINED_MYTH_LINE, RustboroCity_DevonCorp_2F_EventScript_HasMon)
-					multichoice(0, 0, MULTI_MINI_LEGEND_MYTH, FALSE)
-					closemessage
-
-					if (var(VAR_RESULT) > NUM_CHOICES_MYTH - 1) {
-        				goto(MiniLegendSci_Sinnoh)
-					}
-					addvar(VAR_RESULT, OFFSET_MYTH)
-                	break
-				case SINNOH_CHOICE_HEATRAN:
-					goto_if_set(FLAG_OBTAINED_HEATRAN_LINE, RustboroCity_DevonCorp_2F_EventScript_HasMon)
-					multichoice(0, 0, MULTI_MINI_LEGEND_HEATRAN, FALSE)
-					closemessage
-
-					if (var(VAR_RESULT) > NUM_CHOICES_HEATRAN - 1) {
-        				goto(MiniLegendSci_Sinnoh)
-					}
-					addvar(VAR_RESULT, OFFSET_HEATRAN)
-                	break
-				case SINNOH_CHOICE_REGIGIGAS:
-					goto_if_set(FLAG_OBTAINED_REGIGIGAS_LINE, RustboroCity_DevonCorp_2F_EventScript_HasMon)
-					multichoice(0, 0, MULTI_MINI_LEGEND_REGIGIGAS, FALSE)
-					closemessage
-
-					if (var(VAR_RESULT) > NUM_CHOICES_REGIGIGAS - 1) {
-        				goto(MiniLegendSci_Sinnoh)
-					}
-					addvar(VAR_RESULT, OFFSET_REGIGIGAS)
-                	break
-				case SINNOH_CHOICE_CRESSELIA:
-					goto_if_set(FLAG_OBTAINED_CRESSELIA_LINE, RustboroCity_DevonCorp_2F_EventScript_HasMon)
-					multichoice(0, 0, MULTI_MINI_LEGEND_CRESSELIA, FALSE)
-					closemessage
-
-					if (var(VAR_RESULT) > NUM_CHOICES_CRESSELIA - 1) {
-        				goto(MiniLegendSci_Sinnoh)
-					}
-					addvar(VAR_RESULT, OFFSET_CRESSELIA)
-                	break
-				default:
-					goto(MiniLegendSci_Region)
-			}
-			break
+			goto(RustboroCity_DevonCorp_2F_EventScript_SelectSinnoh)
 		case REGION_CHOICE_UNOVA:
-MiniLegendSci_Unova:
-			multichoice(0, 0, MULTI_MINI_LEGEND_UNOVA, FALSE)
+			goto(RustboroCity_DevonCorp_2F_EventScript_SelectUnova)
+		default:
+			goto(RustboroCity_DevonCorp_2F_EventScript_SelectRegion)
+	}
+}
+
+script RustboroCity_DevonCorp_2F_EventScript_SelectKanto {
+	multichoice(0, 0, MULTI_MINI_LEGEND_KANTO, FALSE)
+	closemessage
+
+	switch (var(VAR_RESULT)) {
+		case KANTO_CHOICE_MEWTWO:
+			goto_if_set(FLAG_OBTAINED_MEWTWO_LINE, RustboroCity_DevonCorp_2F_EventScript_HasMon) // already obtained from this line?
+			multichoice(0, 0, MULTI_MINI_LEGEND_MEWTWO, FALSE)  // show choices for this line
 			closemessage
 
-			switch (var(VAR_RESULT)) {
-				case UNOVA_CHOICE_SWORDS:
-					goto_if_set(FLAG_OBTAINED_SWORDS_LINE, RustboroCity_DevonCorp_2F_EventScript_HasMon)
-					multichoice(0, 0, MULTI_MINI_LEGEND_SWORDS, FALSE)
-					closemessage
-
-					if (var(VAR_RESULT) > NUM_CHOICES_SWORDS - 1) {
-						goto(MiniLegendSci_Unova)
-					}
-					addvar(VAR_RESULT, OFFSET_SWORDS)
-					break
-				case UNOVA_CHOICE_FORCES:
-					goto_if_set(FLAG_OBTAINED_FORCES_LINE, RustboroCity_DevonCorp_2F_EventScript_HasMon)
-					multichoice(0, 0, MULTI_MINI_LEGEND_FORCES, FALSE)
-					closemessage
-
-					if (var(VAR_RESULT) > NUM_CHOICES_FORCES - 1) {
-						goto(MiniLegendSci_Unova)
-					}
-					addvar(VAR_RESULT, OFFSET_FORCES)
-					break
-				case UNOVA_CHOICE_TAO:
-					goto_if_set(FLAG_OBTAINED_TAO_LINE, RustboroCity_DevonCorp_2F_EventScript_HasMon)
-					multichoice(0, 0, MULTI_MINI_LEGEND_TAO, FALSE)
-					closemessage
-
-					if (var(VAR_RESULT) > NUM_CHOICES_TAO - 1) {
-						goto(MiniLegendSci_Unova)
-					}
-					addvar(VAR_RESULT, OFFSET_TAO)
-					break
-				default:
-					goto(MiniLegendSci_Region)
+			if (var(VAR_RESULT) > NUM_CHOICES_MEWTWO - 1) {  // exit or back button?
+				goto(RustboroCity_DevonCorp_2F_EventScript_SelectKanto)  // back to line choices
 			}
+			addvar(VAR_RESULT, OFFSET_MEWTWO)  // offset to get correct mon ID
+			break
+		case KANTO_CHOICE_BIRDS:
+			goto_if_set(FLAG_OBTAINED_BIRD_LINE, RustboroCity_DevonCorp_2F_EventScript_HasMon)
+			multichoice(0, 0, MULTI_MINI_LEGEND_BIRDS, FALSE)
+			closemessage
+
+			if (var(VAR_RESULT) > NUM_CHOICES_BIRDS - 1) {
+				goto(RustboroCity_DevonCorp_2F_EventScript_SelectKanto)
+			}
+			addvar(VAR_RESULT, OFFSET_BIRDS)
 			break
 		default:
-			goto(MiniLegendSci_Region)
+			goto(RustboroCity_DevonCorp_2F_EventScript_SelectRegion)
 	}
 
-	// Mon choice is now loaded in VAR_RESULT
 	copyvar(VAR_TEMP_1, VAR_RESULT)
-    goto(RustboroCity_DevonCorp_2F_EventScript_GiveLegendary)
+	goto(RustboroCity_DevonCorp_2F_EventScript_GiveLegendary)
+}
 
-MiniLegendSci_End:
+script RustboroCity_DevonCorp_2F_EventScript_SelectJohto {
+	multichoice(0, 0, MULTI_MINI_LEGEND_JOHTO, FALSE)
+	closemessage
+
+	switch (var(VAR_RESULT)) {
+		case JOHTO_CHOICE_BEASTS:
+			goto_if_set(FLAG_OBTAINED_BEASTS_LINE, RustboroCity_DevonCorp_2F_EventScript_HasMon)
+			multichoice(0, 0, MULTI_MINI_LEGEND_BEASTS, FALSE)
+			closemessage
+
+			if (var(VAR_RESULT) > NUM_CHOICES_BEASTS - 1) {
+				goto(RustboroCity_DevonCorp_2F_EventScript_SelectJohto)
+			}
+			addvar(VAR_RESULT, OFFSET_BEASTS)
+			break
+		case JOHTO_CHOICE_TOWER:
+			goto_if_set(FLAG_OBTAINED_TOWER_LINE, RustboroCity_DevonCorp_2F_EventScript_HasMon)
+			multichoice(0, 0, MULTI_MINI_LEGEND_TOWER, FALSE)
+			closemessage
+
+			if (var(VAR_RESULT) > NUM_CHOICES_TOWER - 1) {
+				goto(RustboroCity_DevonCorp_2F_EventScript_SelectJohto)
+			}
+			addvar(VAR_RESULT, OFFSET_TOWER)
+			break
+		default:
+			goto(RustboroCity_DevonCorp_2F_EventScript_SelectRegion)
+	}
+
+	copyvar(VAR_TEMP_1, VAR_RESULT)
+	goto(RustboroCity_DevonCorp_2F_EventScript_GiveLegendary)
+}
+
+script RustboroCity_DevonCorp_2F_EventScript_SelectHoenn {
+	multichoice(0, 0, MULTI_MINI_LEGEND_HOENN, FALSE)
+	closemessage
+
+	switch (var(VAR_RESULT)) {
+		case HOENN_CHOICE_REGIS:
+			goto_if_set(FLAG_OBTAINED_REGI_LINE, RustboroCity_DevonCorp_2F_EventScript_HasMon)
+			multichoice(0, 0, MULTI_MINI_LEGEND_REGI, FALSE)
+			closemessage
+
+			if (var(VAR_RESULT) > NUM_CHOICES_REGIS - 1) {
+				goto(RustboroCity_DevonCorp_2F_EventScript_SelectHoenn)
+			}
+			addvar(VAR_RESULT, OFFSET_REGIS)
+			break
+		case HOENN_CHOICE_EON:
+			goto_if_set(FLAG_OBTAINED_EON_LINE, RustboroCity_DevonCorp_2F_EventScript_HasMon)
+			multichoice(0, 0, MULTI_MINI_LEGEND_EON, FALSE)
+			closemessage
+
+			if (var(VAR_RESULT) > NUM_CHOICES_EON - 1) {
+				goto(RustboroCity_DevonCorp_2F_EventScript_SelectHoenn)
+			}
+			addvar(VAR_RESULT, OFFSET_EON)
+			break
+		case HOENN_CHOICE_WEATHER:
+			goto_if_set(FLAG_OBTAINED_WEATHER_LINE, RustboroCity_DevonCorp_2F_EventScript_HasMon)
+			multichoice(0, 0, MULTI_MINI_LEGEND_WEATHER, FALSE)
+			closemessage
+
+			if (var(VAR_RESULT) > NUM_CHOICES_WEATHER - 1) {
+				goto(RustboroCity_DevonCorp_2F_EventScript_SelectHoenn)
+			}
+			addvar(VAR_RESULT, OFFSET_WEATHER)
+			break
+		default:
+			goto(RustboroCity_DevonCorp_2F_EventScript_SelectRegion)
+	}
+
+	copyvar(VAR_TEMP_1, VAR_RESULT)
+	goto(RustboroCity_DevonCorp_2F_EventScript_GiveLegendary)
+}
+
+script RustboroCity_DevonCorp_2F_EventScript_SelectSinnoh {
+	multichoice(0, 0, MULTI_MINI_LEGEND_SINNOH, FALSE)
+	closemessage
+
+	switch (var(VAR_RESULT)) {
+		case SINNOH_CHOICE_LAKE:
+			goto_if_set(FLAG_OBTAINED_LAKE_LINE, RustboroCity_DevonCorp_2F_EventScript_HasMon)
+			multichoice(0, 0, MULTI_MINI_LEGEND_LAKE, FALSE)
+			closemessage
+
+			if (var(VAR_RESULT) > NUM_CHOICES_LAKE - 1) {
+				goto(RustboroCity_DevonCorp_2F_EventScript_SelectSinnoh)
+			}
+			addvar(VAR_RESULT, OFFSET_LAKE)
+			break
+		case SINNOH_CHOICE_MYTH:
+			goto_if_set(FLAG_OBTAINED_MYTH_LINE, RustboroCity_DevonCorp_2F_EventScript_HasMon)
+			multichoice(0, 0, MULTI_MINI_LEGEND_MYTH, FALSE)
+			closemessage
+
+			if (var(VAR_RESULT) > NUM_CHOICES_MYTH - 1) {
+				goto(RustboroCity_DevonCorp_2F_EventScript_SelectSinnoh)
+			}
+			addvar(VAR_RESULT, OFFSET_MYTH)
+			break
+		case SINNOH_CHOICE_HEATRAN:
+			goto_if_set(FLAG_OBTAINED_HEATRAN_LINE, RustboroCity_DevonCorp_2F_EventScript_HasMon)
+			multichoice(0, 0, MULTI_MINI_LEGEND_HEATRAN, FALSE)
+			closemessage
+
+			if (var(VAR_RESULT) > NUM_CHOICES_HEATRAN - 1) {
+				goto(RustboroCity_DevonCorp_2F_EventScript_SelectSinnoh)
+			}
+			addvar(VAR_RESULT, OFFSET_HEATRAN)
+			break
+		case SINNOH_CHOICE_REGIGIGAS:
+			goto_if_set(FLAG_OBTAINED_REGIGIGAS_LINE, RustboroCity_DevonCorp_2F_EventScript_HasMon)
+			multichoice(0, 0, MULTI_MINI_LEGEND_REGIGIGAS, FALSE)
+			closemessage
+
+			if (var(VAR_RESULT) > NUM_CHOICES_REGIGIGAS - 1) {
+				goto(RustboroCity_DevonCorp_2F_EventScript_SelectSinnoh)
+			}
+			addvar(VAR_RESULT, OFFSET_REGIGIGAS)
+			break
+		case SINNOH_CHOICE_CRESSELIA:
+			goto_if_set(FLAG_OBTAINED_CRESSELIA_LINE, RustboroCity_DevonCorp_2F_EventScript_HasMon)
+			multichoice(0, 0, MULTI_MINI_LEGEND_CRESSELIA, FALSE)
+			closemessage
+
+			if (var(VAR_RESULT) > NUM_CHOICES_CRESSELIA - 1) {
+				goto(RustboroCity_DevonCorp_2F_EventScript_SelectSinnoh)
+			}
+			addvar(VAR_RESULT, OFFSET_CRESSELIA)
+			break
+		default:
+			goto(RustboroCity_DevonCorp_2F_EventScript_SelectRegion)
+	}
+
+	copyvar(VAR_TEMP_1, VAR_RESULT)
+	goto(RustboroCity_DevonCorp_2F_EventScript_GiveLegendary)
+}
+
+script RustboroCity_DevonCorp_2F_EventScript_SelectUnova {
+	multichoice(0, 0, MULTI_MINI_LEGEND_UNOVA, FALSE)
+	closemessage
+
+	switch (var(VAR_RESULT)) {
+		case UNOVA_CHOICE_SWORDS:
+			goto_if_set(FLAG_OBTAINED_SWORDS_LINE, RustboroCity_DevonCorp_2F_EventScript_HasMon)
+			multichoice(0, 0, MULTI_MINI_LEGEND_SWORDS, FALSE)
+			closemessage
+
+			if (var(VAR_RESULT) > NUM_CHOICES_SWORDS - 1) {
+				goto(RustboroCity_DevonCorp_2F_EventScript_SelectUnova)
+			}
+			addvar(VAR_RESULT, OFFSET_SWORDS)
+			break
+		case UNOVA_CHOICE_FORCES:
+			goto_if_set(FLAG_OBTAINED_FORCES_LINE, RustboroCity_DevonCorp_2F_EventScript_HasMon)
+			multichoice(0, 0, MULTI_MINI_LEGEND_FORCES, FALSE)
+			closemessage
+
+			if (var(VAR_RESULT) > NUM_CHOICES_FORCES - 1) {
+				goto(RustboroCity_DevonCorp_2F_EventScript_SelectUnova)
+			}
+			addvar(VAR_RESULT, OFFSET_FORCES)
+			break
+		case UNOVA_CHOICE_TAO:
+			goto_if_set(FLAG_OBTAINED_TAO_LINE, RustboroCity_DevonCorp_2F_EventScript_HasMon)
+			multichoice(0, 0, MULTI_MINI_LEGEND_TAO, FALSE)
+			closemessage
+
+			if (var(VAR_RESULT) > NUM_CHOICES_TAO - 1) {
+				goto(RustboroCity_DevonCorp_2F_EventScript_SelectUnova)
+			}
+			addvar(VAR_RESULT, OFFSET_TAO)
+			break
+		default:
+			goto(RustboroCity_DevonCorp_2F_EventScript_SelectRegion)
+	}
+
+	copyvar(VAR_TEMP_1, VAR_RESULT)
+	goto(RustboroCity_DevonCorp_2F_EventScript_GiveLegendary)
+}
+
+script RustboroCity_DevonCorp_2F_EventScript_MiniLegendSciEnd {
     msgbox(format("If you come across any Unstable DNA samples, please come see me!"))
 	setvar(VAR_RESULT, 0)
     releaseall
@@ -666,13 +678,12 @@ script RustboroCity_DevonCorp_2F_EventScript_HasMon {
 }
 
 script RustboroCity_DevonCorp_2F_EventScript_GiveLegendary {
-    // Set species and flag based on selection
     switch (var(VAR_TEMP_1)) {
-		// Order of operations for each legend:
-		// Buffer species name
-		// Prepare species variable for transfer
-		// Give level 5 mon in a Beast Ball
-		// Set obtained flag if it was successful
+	// Order of operations:
+	// Buffer species name
+	// Prepare species variable for transfer
+	// Give level 5 mon in a Beast Ball
+	// Set obtained flag if it was successful
         case 0:  // Mewtwo
             bufferspeciesname(STR_VAR_1, SPECIES_MEWTWO_V)
 			setvar(VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_MEWTWO_V)
@@ -955,7 +966,7 @@ script RustboroCity_DevonCorp_2F_EventScript_GiveLegendary {
 			break
 		default:
 			// shouldn't get here
-			goto(MiniLegendSci_End)
+			goto(RustboroCity_DevonCorp_2F_EventScript_MiniLegendSciEnd)
     }
     
     if (var(VAR_RESULT) == MON_GIVEN_TO_PARTY) {
@@ -984,7 +995,7 @@ script RustboroCity_DevonCorp_2F_EventScript_GiveLegendary {
         goto(Common_EventScript_NoMoreRoomForPokemon)
     }
 
-	// take Unstable DNA from player
+	// TODO: take Unstable DNA from player
     msgbox(format("Enjoy your new Proto-Legend!"))
     setvar(VAR_RESULT, 0)
     releaseall
