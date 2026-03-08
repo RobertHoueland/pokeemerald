@@ -134,12 +134,19 @@
 #define MULTI_MINI_LEGEND_REGI             123
 #define MULTI_MINI_LEGEND_EON              124
 #define MULTI_MINI_LEGEND_WEATHER          125
+#define MULTI_MINI_LEGEND_SINNOH           126
+#define MULTI_MINI_LEGEND_LAKE             127
+#define MULTI_MINI_LEGEND_MYTH             128
+#define MULTI_MINI_LEGEND_HEATRAN          129
+#define MULTI_MINI_LEGEND_REGIGIGAS        130
+#define MULTI_MINI_LEGEND_CRESSELIA        131
 
 // Mini legendary region choices
 #define MINI_REGION_KANTO                  0
 #define MINI_REGION_JOHTO                  1
 #define MINI_REGION_HOENN                  2
-#define NUM_MINI_REGIONS                   MINI_REGION_HOENN + 1
+#define MINI_REGION_SINNOH                 3
+#define NUM_MINI_REGIONS                   MINI_REGION_SINNOH + 1
 
 // Kanto line choices
 #define MINI_KANTO_MEWTWO_LINE             0
@@ -154,6 +161,13 @@
 #define MINI_HOENN_EON_LINE                1
 #define MINI_HOENN_WEATHER_LINE            2
 
+// Sinnoh line choices
+#define MINI_SINNOH_LAKE_LINE              0
+#define MINI_SINNOH_MYTH_LINE              1
+#define MINI_SINNOH_HEATRAN_LINE           2
+#define MINI_SINNOH_REGIGIGAS_LINE         3
+#define MINI_SINNOH_CRESSELIA_LINE         4
+
 // Number of pokemon each line has
 #define MINI_CHOICES_MEWTWO_LINE           1
 #define MINI_CHOICES_BIRDS_LINE            3
@@ -162,6 +176,11 @@
 #define MINI_CHOICES_REGI_LINE             3
 #define MINI_CHOICES_EON_LINE              2
 #define MINI_CHOICES_WEATHER_LINE          3
+#define MINI_CHOICES_LAKE_LINE             3
+#define MINI_CHOICES_MYTH_LINE             3
+#define MINI_CHOICES_HEATRAN_LINE          1
+#define MINI_CHOICES_REGIGIGAS_LINE        1
+#define MINI_CHOICES_CRESSELIA_LINE        1
 
 // Cumulative offsets for the chosen mon
 #define MINI_OFFSET_MEWTWO_LINE    0
@@ -171,6 +190,11 @@
 #define MINI_OFFSET_REGI_LINE      (MINI_OFFSET_TOWER_LINE + MINI_CHOICES_TOWER_LINE)
 #define MINI_OFFSET_EON_LINE       (MINI_OFFSET_REGI_LINE + MINI_CHOICES_REGI_LINE)
 #define MINI_OFFSET_WEATHER_LINE   (MINI_OFFSET_EON_LINE + MINI_CHOICES_EON_LINE)
+#define MINI_OFFSET_LAKE_LINE      (MINI_OFFSET_WEATHER_LINE + MINI_CHOICES_WEATHER_LINE)
+#define MINI_OFFSET_MYTH_LINE      (MINI_OFFSET_LAKE_LINE + MINI_CHOICES_LAKE_LINE)
+#define MINI_OFFSET_HEATRAN_LINE   (MINI_OFFSET_MYTH_LINE + MINI_CHOICES_MYTH_LINE)
+#define MINI_OFFSET_REGIGIGAS_LINE (MINI_OFFSET_HEATRAN_LINE + MINI_CHOICES_HEATRAN_LINE)
+#define MINI_OFFSET_CRESSELIA_LINE (MINI_OFFSET_REGIGIGAS_LINE + MINI_CHOICES_REGIGIGAS_LINE)
 
 // Lilycove SS Tidal Multichoice Selections
 #define SSTIDAL_SELECTION_SLATEPORT        0

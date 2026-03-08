@@ -664,11 +664,11 @@
 #define FLAG_OBTAINED_REGI_LINE              0x269
 #define FLAG_OBTAINED_EON_LINE               0x26A
 #define FLAG_OBTAINED_WEATHER_LINE           0x26B
-#define FLAG_UNUSED_0x26C  0x26C // Unused Flag
-#define FLAG_UNUSED_0x26D  0x26D // Unused Flag
-#define FLAG_UNUSED_0x26E  0x26E // Unused Flag
-#define FLAG_UNUSED_0x26F  0x26F // Unused Flag
-#define FLAG_UNUSED_0x270  0x270 // Unused Flag
+#define FLAG_OBTAINED_LAKE_LINE              0x26C
+#define FLAG_OBTAINED_MYTH_LINE              0x26D
+#define FLAG_OBTAINED_HEATRAN_LINE           0x26E
+#define FLAG_OBTAINED_REGIGIGAS_LINE         0x26F
+#define FLAG_OBTAINED_CRESSELIA_LINE         0x270
 #define FLAG_UNUSED_0x271  0x271 // Unused Flag
 #define FLAG_UNUSED_0x272  0x272 // Unused Flag
 #define FLAG_UNUSED_0x273  0x273 // Unused Flag

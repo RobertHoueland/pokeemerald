@@ -783,6 +783,7 @@ static const struct MenuAction MultichoiceList_MiniLegendRegion[] =
     {COMPOUND_STRING("KANTO")},
     {COMPOUND_STRING("JOHTO")},
     {COMPOUND_STRING("HOENN")},
+    {COMPOUND_STRING("SINNOH")},
     {gText_Exit},
 };
 
@@ -805,6 +806,16 @@ static const struct MenuAction MultichoiceList_MiniLegendHoenn[] =
     {COMPOUND_STRING("REGI LINE")},
     {COMPOUND_STRING("EON DUO LINE")},
     {COMPOUND_STRING("ANCIENT LEGEND LINE")},
+    {gText_Exit},
+};
+
+static const struct MenuAction MultichoiceList_MiniLegendSinnoh[] =
+{
+    {COMPOUND_STRING("LAKE GUARDIAN LINE")},
+    {COMPOUND_STRING("MYTHICAL LINE")},
+    {COMPOUND_STRING("HEATRAN LINE")},
+    {COMPOUND_STRING("REGIGIGAS LINE")},
+    {COMPOUND_STRING("CRESSELIA LINE")},
     {gText_Exit},
 };
 
@@ -857,6 +868,40 @@ static const struct MenuAction MultichoiceList_MiniLegendWeather[] =
     {COMPOUND_STRING("KYOGRE-V")},
     {COMPOUND_STRING("GROUDON-V")},
     {COMPOUND_STRING("RAYQUAZA-V")},
+    {gText_Exit},
+};
+
+static const struct MenuAction MultichoiceList_MiniLegendLake[] =
+{
+    {COMPOUND_STRING("UXIE-V")},
+    {COMPOUND_STRING("MESPRIT-V")},
+    {COMPOUND_STRING("AZELF-V")},
+    {gText_Exit},
+};
+
+static const struct MenuAction MultichoiceList_MiniLegendMyth[] =
+{
+    {COMPOUND_STRING("DIALGA-V")},
+    {COMPOUND_STRING("PALKIA-V")},
+    {COMPOUND_STRING("GIRATINA-V")},
+    {gText_Exit},
+};
+
+static const struct MenuAction MultichoiceList_MiniLegendHeatran[] =
+{
+    {COMPOUND_STRING("HEATRAN-V")},
+    {gText_Exit},
+};
+
+static const struct MenuAction MultichoiceList_MiniLegendRegigigas[] =
+{
+    {COMPOUND_STRING("REGIGIGAS-V")},
+    {gText_Exit},
+};
+
+static const struct MenuAction MultichoiceList_MiniLegendCresselia[] =
+{
+    {COMPOUND_STRING("CRESSELIA-V")},
     {gText_Exit},
 };
 
@@ -999,6 +1044,12 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_MINI_LEGEND_REGI]           = MULTICHOICE(MultichoiceList_MiniLegendRegi),
     [MULTI_MINI_LEGEND_EON]            = MULTICHOICE(MultichoiceList_MiniLegendEon),
     [MULTI_MINI_LEGEND_WEATHER]        = MULTICHOICE(MultichoiceList_MiniLegendWeather),
+    [MULTI_MINI_LEGEND_SINNOH]         = MULTICHOICE(MultichoiceList_MiniLegendSinnoh),
+    [MULTI_MINI_LEGEND_LAKE]           = MULTICHOICE(MultichoiceList_MiniLegendLake),
+    [MULTI_MINI_LEGEND_MYTH]           = MULTICHOICE(MultichoiceList_MiniLegendMyth),
+    [MULTI_MINI_LEGEND_HEATRAN]        = MULTICHOICE(MultichoiceList_MiniLegendHeatran),
+    [MULTI_MINI_LEGEND_REGIGIGAS]      = MULTICHOICE(MultichoiceList_MiniLegendRegigigas),
+    [MULTI_MINI_LEGEND_CRESSELIA]      = MULTICHOICE(MultichoiceList_MiniLegendCresselia),
 };
 
 const u8 *const gStdStrings[] =

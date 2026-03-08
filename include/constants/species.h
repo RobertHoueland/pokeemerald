@@ -1681,8 +1681,17 @@
 #define SPECIES_KYOGRE_V                                1564
 #define SPECIES_GROUDON_V                               1565
 #define SPECIES_RAYQUAZA_V                              1566
+#define SPECIES_UXIE_V                                  1567
+#define SPECIES_MESPRIT_V                               1568
+#define SPECIES_AZELF_V                                 1569
+#define SPECIES_DIALGA_V                                1570
+#define SPECIES_PALKIA_V                                1571
+#define SPECIES_GIRATINA_V                              1572
+#define SPECIES_HEATRAN_V                               1573
+#define SPECIES_REGIGIGAS_V                             1574
+#define SPECIES_CRESSELIA_V                             1575
 
-#define SPECIES_EGG                                     (SPECIES_RAYQUAZA_V + 1)
+#define SPECIES_EGG                                     (SPECIES_CRESSELIA_V + 1)
 
 #define NUM_SPECIES SPECIES_EGG
 

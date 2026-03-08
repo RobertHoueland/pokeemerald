@@ -424,6 +424,7 @@ MiniLegendSci_Met:
 MiniLegendSci_FirstMet:
 	msgbox(format("Please, accept a Proto-Legend as a thank you for the DNA sample."))
 
+MiniLegendSci_Region:
 	// Check region
     msgbox(format("From which region would you like your Proto-Legend?"))
     multichoice(0, 0, MULTI_MINI_LEGEND_REGION, FALSE)
@@ -436,12 +437,14 @@ MiniLegendSci_FirstMet:
 	msgbox(format("And which genetic line are you interested in?"))
 	switch (var(VAR_RESULT)) {
 		// Order of operations:
-		// Check category choice
-		// Check if mon from this line has already been obtained
-		// Check specific line choice within category
+		// Check region choice
+		// Ask for category, go back to region if backed out
+		// Check if mon from this category has already been obtained
+		// Check specific mon choice within category
 		// If choice is valid, add offset to Pokemon's choice var
-		// Use var to determine which mon to give in the next script
+		// Use choice var to determine which mon to give in the next script
 		case MINI_REGION_KANTO:
+MiniLegendSci_Kanto:
 			multichoice(0, 0, MULTI_MINI_LEGEND_KANTO, FALSE)
 			closemessage
 
@@ -452,7 +455,7 @@ MiniLegendSci_FirstMet:
 					closemessage
 
 					if (var(VAR_RESULT) > MINI_CHOICES_MEWTWO_LINE - 1) {
-        				goto(MiniLegendSci_End)
+        				goto(MiniLegendSci_Kanto)
 					}
 					// no offset
 					break
@@ -462,15 +465,16 @@ MiniLegendSci_FirstMet:
 					closemessage
 
 					if (var(VAR_RESULT) > MINI_CHOICES_BIRDS_LINE - 1) {
-        				goto(MiniLegendSci_End)
+        				goto(MiniLegendSci_Kanto)
 					}
 					addvar(VAR_RESULT, MINI_OFFSET_BIRDS_LINE)
 					break
 				default:
-					goto(MiniLegendSci_End)
+					goto(MiniLegendSci_Region)
 			}
 			break
 		case MINI_REGION_JOHTO:
+MiniLegendSci_Johto:
 			multichoice(0, 0, MULTI_MINI_LEGEND_JOHTO, FALSE)
 			closemessage
 
@@ -481,7 +485,7 @@ MiniLegendSci_FirstMet:
 					closemessage
 
 					if (var(VAR_RESULT) > MINI_CHOICES_BEASTS_LINE - 1) {
-        				goto(MiniLegendSci_End)
+        				goto(MiniLegendSci_Johto)
 					}
 					addvar(VAR_RESULT, MINI_OFFSET_BEASTS_LINE)
                 	break
@@ -491,15 +495,16 @@ MiniLegendSci_FirstMet:
 					closemessage
 
 					if (var(VAR_RESULT) > MINI_CHOICES_TOWER_LINE - 1) {
-        				goto(MiniLegendSci_End)
+        				goto(MiniLegendSci_Johto)
 					}
 					addvar(VAR_RESULT, MINI_OFFSET_TOWER_LINE)
                 	break
 				default:
-					goto(MiniLegendSci_End)
+					goto(MiniLegendSci_Region)
 			}
 			break
 		case MINI_REGION_HOENN:
+MiniLegendSci_Hoenn:
 			multichoice(0, 0, MULTI_MINI_LEGEND_HOENN, FALSE)
 			closemessage
 
@@ -510,7 +515,7 @@ MiniLegendSci_FirstMet:
 					closemessage
 
 					if (var(VAR_RESULT) > MINI_CHOICES_REGI_LINE - 1) {
-        				goto(MiniLegendSci_End)
+        				goto(MiniLegendSci_Hoenn)
 					}
 					addvar(VAR_RESULT, MINI_OFFSET_REGI_LINE)
                 	break
@@ -520,7 +525,7 @@ MiniLegendSci_FirstMet:
 					closemessage
 					
 					if (var(VAR_RESULT) > MINI_CHOICES_EON_LINE - 1) {
-        				goto(MiniLegendSci_End)
+        				goto(MiniLegendSci_Hoenn)
 					}
 					addvar(VAR_RESULT, MINI_OFFSET_EON_LINE)
                 	break
@@ -530,16 +535,76 @@ MiniLegendSci_FirstMet:
 					closemessage
 
 					if (var(VAR_RESULT) > MINI_CHOICES_WEATHER_LINE - 1) {
-        				goto(MiniLegendSci_End)
+        				goto(MiniLegendSci_Hoenn)
 					}
 					addvar(VAR_RESULT, MINI_OFFSET_WEATHER_LINE)
                 	break
 				default:
-					goto(MiniLegendSci_End)
+					goto(MiniLegendSci_Region)
+			}
+			break
+		case MINI_REGION_SINNOH:
+MiniLegendSci_Sinnoh:
+			multichoice(0, 0, MULTI_MINI_LEGEND_SINNOH, FALSE)
+			closemessage
+
+			switch (var(VAR_RESULT)) {
+				case MINI_SINNOH_LAKE_LINE:
+					goto_if_set(FLAG_OBTAINED_LAKE_LINE, RustboroCity_DevonCorp_2F_EventScript_HasMon)
+					multichoice(0, 0, MULTI_MINI_LEGEND_LAKE, FALSE)
+					closemessage
+
+					if (var(VAR_RESULT) > MINI_CHOICES_LAKE_LINE - 1) {
+        				goto(MiniLegendSci_Sinnoh)
+					}
+					addvar(VAR_RESULT, MINI_OFFSET_LAKE_LINE)
+                	break
+				case MINI_SINNOH_MYTH_LINE:
+					goto_if_set(FLAG_OBTAINED_MYTH_LINE, RustboroCity_DevonCorp_2F_EventScript_HasMon)
+					multichoice(0, 0, MULTI_MINI_LEGEND_MYTH, FALSE)
+					closemessage
+
+					if (var(VAR_RESULT) > MINI_CHOICES_MYTH_LINE - 1) {
+        				goto(MiniLegendSci_Sinnoh)
+					}
+					addvar(VAR_RESULT, MINI_OFFSET_MYTH_LINE)
+                	break
+				case MINI_SINNOH_HEATRAN_LINE:
+					goto_if_set(FLAG_OBTAINED_HEATRAN_LINE, RustboroCity_DevonCorp_2F_EventScript_HasMon)
+					multichoice(0, 0, MULTI_MINI_LEGEND_HEATRAN, FALSE)
+					closemessage
+
+					if (var(VAR_RESULT) > MINI_CHOICES_HEATRAN_LINE - 1) {
+        				goto(MiniLegendSci_Sinnoh)
+					}
+					addvar(VAR_RESULT, MINI_OFFSET_HEATRAN_LINE)
+                	break
+				case MINI_SINNOH_REGIGIGAS_LINE:
+					goto_if_set(FLAG_OBTAINED_REGIGIGAS_LINE, RustboroCity_DevonCorp_2F_EventScript_HasMon)
+					multichoice(0, 0, MULTI_MINI_LEGEND_REGIGIGAS, FALSE)
+					closemessage
+
+					if (var(VAR_RESULT) > MINI_CHOICES_REGIGIGAS_LINE - 1) {
+        				goto(MiniLegendSci_Sinnoh)
+					}
+					addvar(VAR_RESULT, MINI_OFFSET_REGIGIGAS_LINE)
+                	break
+				case MINI_SINNOH_CRESSELIA_LINE:
+					goto_if_set(FLAG_OBTAINED_CRESSELIA_LINE, RustboroCity_DevonCorp_2F_EventScript_HasMon)
+					multichoice(0, 0, MULTI_MINI_LEGEND_CRESSELIA, FALSE)
+					closemessage
+
+					if (var(VAR_RESULT) > MINI_CHOICES_CRESSELIA_LINE - 1) {
+        				goto(MiniLegendSci_Sinnoh)
+					}
+					addvar(VAR_RESULT, MINI_OFFSET_CRESSELIA_LINE)
+                	break
+				default:
+					goto(MiniLegendSci_Region)
 			}
 			break
 		default:
-			goto(MiniLegendSci_End)
+			goto(MiniLegendSci_Region)
 	}
 
 	// Mon choice is now loaded in VAR_RESULT
@@ -554,7 +619,7 @@ MiniLegendSci_End:
 
 script RustboroCity_DevonCorp_2F_EventScript_HasMon {
 	msgbox(format("Wait... I see you already possess\na Proto-Legend from that genetic line."))
-	msgbox(format("I cannot allow multiple prototypes from the same lineage."))
+	msgbox(format("I cannot create multiple prototypes from the same lineage."))
 	msgbox(format("The genetic instability would be\ntoo unpredictable."))
 	setvar(VAR_RESULT, 0)
 	releaseall
@@ -702,6 +767,78 @@ script RustboroCity_DevonCorp_2F_EventScript_GiveLegendary {
 			givemon(SPECIES_RAYQUAZA_V, 5, ITEM_NONE, ITEM_BEAST_BALL)
 			if (var(VAR_RESULT) < MON_CANT_GIVE) {
 				setflag(FLAG_OBTAINED_WEATHER_LINE)
+			}
+			break
+		case 17:  // Uxie
+			bufferspeciesname(STR_VAR_1, SPECIES_UXIE_V)
+			setvar(VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_UXIE_V)
+			givemon(SPECIES_UXIE_V, 5, ITEM_NONE, ITEM_BEAST_BALL)
+			if (var(VAR_RESULT) < MON_CANT_GIVE) {
+				setflag(FLAG_OBTAINED_LAKE_LINE)
+			}
+			break
+		case 18:  // Mesprit
+			bufferspeciesname(STR_VAR_1, SPECIES_MESPRIT_V)
+			setvar(VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_MESPRIT_V)
+			givemon(SPECIES_MESPRIT_V, 5, ITEM_NONE, ITEM_BEAST_BALL)
+			if (var(VAR_RESULT) < MON_CANT_GIVE) {
+				setflag(FLAG_OBTAINED_LAKE_LINE)
+			}
+			break
+		case 19:  // Azelf
+			bufferspeciesname(STR_VAR_1, SPECIES_AZELF_V)
+			setvar(VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_AZELF_V)
+			givemon(SPECIES_AZELF_V, 5, ITEM_NONE, ITEM_BEAST_BALL)
+			if (var(VAR_RESULT) < MON_CANT_GIVE) {
+				setflag(FLAG_OBTAINED_LAKE_LINE)
+			}
+			break
+		case 20:  // Dialga
+			bufferspeciesname(STR_VAR_1, SPECIES_DIALGA_V)
+			setvar(VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_DIALGA_V)
+			givemon(SPECIES_DIALGA_V, 5, ITEM_NONE, ITEM_BEAST_BALL)
+			if (var(VAR_RESULT) < MON_CANT_GIVE) {
+				setflag(FLAG_OBTAINED_MYTH_LINE)
+			}
+			break
+		case 21:  // Palkia
+			bufferspeciesname(STR_VAR_1, SPECIES_PALKIA_V)
+			setvar(VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_PALKIA_V)
+			givemon(SPECIES_PALKIA_V, 5, ITEM_NONE, ITEM_BEAST_BALL)
+			if (var(VAR_RESULT) < MON_CANT_GIVE) {
+				setflag(FLAG_OBTAINED_MYTH_LINE)
+			}
+			break
+		case 22:  // Giratina
+			bufferspeciesname(STR_VAR_1, SPECIES_GIRATINA_V)
+			setvar(VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_GIRATINA_V)
+			givemon(SPECIES_GIRATINA_V, 5, ITEM_NONE, ITEM_BEAST_BALL)
+			if (var(VAR_RESULT) < MON_CANT_GIVE) {
+				setflag(FLAG_OBTAINED_MYTH_LINE)
+			}
+			break
+		case 23:  // Heatran
+			bufferspeciesname(STR_VAR_1, SPECIES_HEATRAN_V)
+			setvar(VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_HEATRAN_V)
+			givemon(SPECIES_HEATRAN_V, 5, ITEM_NONE, ITEM_BEAST_BALL)
+			if (var(VAR_RESULT) < MON_CANT_GIVE) {
+				setflag(FLAG_OBTAINED_HEATRAN_LINE)
+			}
+			break
+		case 24:  // Regigigas
+			bufferspeciesname(STR_VAR_1, SPECIES_REGIGIGAS_V)
+			setvar(VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_REGIGIGAS_V)
+			givemon(SPECIES_REGIGIGAS_V, 5, ITEM_NONE, ITEM_BEAST_BALL)
+			if (var(VAR_RESULT) < MON_CANT_GIVE) {
+				setflag(FLAG_OBTAINED_REGIGIGAS_LINE)
+			}
+			break
+		case 25:  // Cresselia
+			bufferspeciesname(STR_VAR_1, SPECIES_CRESSELIA_V)
+			setvar(VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_CRESSELIA_V)
+			givemon(SPECIES_CRESSELIA_V, 5, ITEM_NONE, ITEM_BEAST_BALL)
+			if (var(VAR_RESULT) < MON_CANT_GIVE) {
+				setflag(FLAG_OBTAINED_CRESSELIA_LINE)
 			}
 			break
 		default:

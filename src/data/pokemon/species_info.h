@@ -1017,7 +1017,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
             "believe the ice was formed during an\n"
             "ice age."),
         .pokemonScale = 313,  // was 256
-        .pokemonOffset = 0,
+        .pokemonOffset = 4,   // was 0
         .trainerScale = 301,
         .trainerOffset = 2,
         .frontPic = gMonFrontPic_Regice,
@@ -1095,7 +1095,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
             "mysterious substance. Not only is it hard,\n"
             "it shrinks and stretches flexibly."),
         .pokemonScale = 313,  // was 256
-        .pokemonOffset = 0,
+        .pokemonOffset = 5,   // was 0
         .trainerScale = 359,
         .trainerOffset = 6,
         .frontPic = gMonFrontPic_Registeel,
@@ -1250,7 +1250,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
             "it has telepathy. Its intelligence allows\n"
             "it to understand human languages."),
         .pokemonScale = 323,  // was 256
-        .pokemonOffset = 0,
+        .pokemonOffset = 1,   // was 0
         .trainerScale = 294,
         .trainerOffset = 3,
         .frontPic = gMonFrontPic_Latios,
@@ -1328,7 +1328,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
             "feuding with Groudon, it took to sleep at\n"
             "the bottom of the sea."),
         .pokemonScale = 361,  // was 256
-        .pokemonOffset = 0,
+        .pokemonOffset = 3,   // was 0
         .trainerScale = 614,
         .trainerOffset = 13,
         .frontPic = gMonFrontPic_Kyogre,
@@ -1406,7 +1406,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
             "underground and is said to make volcanoes\n"
             "erupt on awakening."),
         .pokemonScale = 361,  // was 256
-        .pokemonOffset = 0,
+        .pokemonOffset = 7,   // was 0
         .trainerScale = 515,
         .trainerOffset = 14,
         .frontPic = gMonFrontPic_Groudon,
@@ -1484,7 +1484,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
             "to the ground if Kyogre and Groudon\n"
             "were to fight."),
         .pokemonScale = 367,  // was 256
-        .pokemonOffset = 0,
+        .pokemonOffset = 7,   // was 0
         .trainerScale = 448,
         .trainerOffset = 12,
         .frontPic = gMonFrontPic_Rayquaza,
@@ -1523,6 +1523,694 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .isFrontierBanned = FALSE,
         .levelUpLearnset = sRayquazaLevelUpLearnset,
         .teachableLearnset = sRayquazaTeachableLearnset,
+    },
+
+    [SPECIES_UXIE_V] =
+    {
+        // BST was 580, lowered by ~18%
+        .baseHP        = 61,   // was 75
+        .baseAttack    = 61,   // was 75
+        .baseDefense   = 107,  // was 130
+        .baseSpeed     = 78,   // was 95
+        .baseSpAttack  = 61,   // was 75
+        .baseSpDefense = 107,  // was 130
+        .types = MON_TYPES(TYPE_PSYCHIC),
+        .catchRate = 3,
+    #if P_UPDATED_EXP_YIELDS >= GEN_8
+        .expYield = 290,
+    #elif P_UPDATED_EXP_YIELDS >= GEN_5
+        .expYield = 261,
+    #else
+        .expYield = 210,
+    #endif
+        .evYield_Defense = 2,
+        .evYield_SpDefense = 1,
+        .genderRatio = MON_GENDERLESS,
+        .eggCycles = 80,
+        .friendship = 140,
+        .growthRate = GROWTH_SLOW,
+        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
+        .abilities = { ABILITY_LEVITATE, ABILITY_NONE, ABILITY_NONE },
+        .bodyColor = BODY_COLOR_YELLOW,
+        .speciesName = _("Uxie-V"),
+        .cryId = CRY_UXIE,
+        .natDexNum = NATIONAL_DEX_UXIE_V,
+        .categoryName = _("Knowledge"),
+        .height = 2,    // was 3
+        .weight = 2,    // was 3
+        .description = COMPOUND_STRING(
+            "A Pokémon that was created by genetic\n"
+            "manipulation. Though it exists as a\n"
+            "proto-type, it still carries the mystical\n"
+            "knowledge of its ancestral form."),
+        .pokemonScale = 434,  // was 530
+        .pokemonOffset = 13,
+        .trainerScale = 256,
+        .trainerOffset = 0,
+        .frontPic = gMonFrontPic_Uxie,
+        .frontPicSize = MON_COORDS_SIZE(56, 56),
+        .frontPicYOffset = 6,
+        .frontAnimFrames = ANIM_FRAMES(
+            ANIMCMD_FRAME(1, 50),
+            ANIMCMD_FRAME(1, 50),
+            ANIMCMD_FRAME(0, 10),
+        ),
+        .frontAnimId = ANIM_SWING_CONCAVE,
+        .enemyMonElevation = 6,
+        .backPic = gMonBackPic_Uxie,
+        .backPicSize = MON_COORDS_SIZE(56, 48),
+        .backPicYOffset = 8,
+        .backAnimId = BACK_ANIM_CONCAVE_ARC_SMALL,
+        .palette = gMonPalette_Uxie,
+        .shinyPalette = gMonShinyPalette_Uxie,
+        .iconSprite = gMonIcon_Uxie,
+        .iconPalIndex = 0,
+        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
+        SHADOW(2, 11, SHADOW_SIZE_S)
+        FOOTPRINT(Uxie)
+        OVERWORLD(
+            sPicTable_Uxie,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            sAnimTable_Following,
+            gOverworldPalette_Uxie,
+            gShinyOverworldPalette_Uxie
+        )
+        .isFrontierBanned = FALSE,
+        .levelUpLearnset = sUxieLevelUpLearnset,
+        .teachableLearnset = sUxieTeachableLearnset,
+    },
+
+    [SPECIES_MESPRIT_V] =
+    {
+        // BST was 580, lowered by ~18%
+        .baseHP        = 66,   // was 80
+        .baseAttack    = 86,   // was 105
+        .baseDefense   = 85,   // was 105
+        .baseSpeed     = 66,   // was 80
+        .baseSpAttack  = 86,   // was 105
+        .baseSpDefense = 86,   // was 105
+        .types = MON_TYPES(TYPE_PSYCHIC),
+        .catchRate = 3,
+    #if P_UPDATED_EXP_YIELDS >= GEN_8
+        .expYield = 290,
+    #elif P_UPDATED_EXP_YIELDS >= GEN_5
+        .expYield = 261,
+    #else
+        .expYield = 210,
+    #endif
+        .evYield_Attack = 1,
+        .evYield_SpAttack = 1,
+        .evYield_SpDefense = 1,
+        .genderRatio = MON_GENDERLESS,
+        .eggCycles = 80,
+        .friendship = 140,
+        .growthRate = GROWTH_SLOW,
+        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
+        .abilities = { ABILITY_LEVITATE, ABILITY_NONE, ABILITY_NONE },
+        .bodyColor = BODY_COLOR_PINK,
+        .speciesName = _("Mesprit-V"),
+        .cryId = CRY_MESPRIT,
+        .natDexNum = NATIONAL_DEX_MESPRIT_V,
+        .categoryName = _("Emotion"),
+        .height = 2,    // was 3
+        .weight = 2,    // was 3
+        .description = COMPOUND_STRING(
+            "A Pokémon that was created by genetic\n"
+            "manipulation. Though it exists as a\n"
+            "proto-type, it still possesses the\n"
+            "emotional essence of its ancestral form."),
+        .pokemonScale = 434,  // was 530
+        .pokemonOffset = 13,
+        .trainerScale = 256,
+        .trainerOffset = 0,
+        .frontPic = gMonFrontPic_Mesprit,
+        .frontPicSize = MON_COORDS_SIZE(48, 56),
+        .frontPicYOffset = 4,
+        .frontAnimFrames = ANIM_FRAMES(
+            ANIMCMD_FRAME(1, 12),
+            ANIMCMD_FRAME(0, 12),
+            ANIMCMD_FRAME(1, 12),
+            ANIMCMD_FRAME(0, 30),
+            ANIMCMD_FRAME(1, 12),
+            ANIMCMD_FRAME(0, 12),
+            ANIMCMD_FRAME(1, 12),
+            ANIMCMD_FRAME(0, 15),
+        ),
+        .frontAnimId = ANIM_H_SLIDE_WOBBLE,
+        .enemyMonElevation = 6,
+        .backPic = gMonBackPic_Mesprit,
+        .backPicSize = MON_COORDS_SIZE(64, 48),
+        .backPicYOffset = 8,
+        .backAnimId = BACK_ANIM_CONCAVE_ARC_SMALL,
+        .palette = gMonPalette_Mesprit,
+        .shinyPalette = gMonShinyPalette_Mesprit,
+        .iconSprite = gMonIcon_Mesprit,
+        .iconPalIndex = 0,
+        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
+        SHADOW(0, 13, SHADOW_SIZE_S)
+        FOOTPRINT(Mesprit)
+        OVERWORLD(
+            sPicTable_Mesprit,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            sAnimTable_Following,
+            gOverworldPalette_Mesprit,
+            gShinyOverworldPalette_Mesprit
+        )
+        .isFrontierBanned = FALSE,
+        .levelUpLearnset = sMespritLevelUpLearnset,
+        .teachableLearnset = sMespritTeachableLearnset,
+    },
+
+    [SPECIES_AZELF_V] =
+    {
+        // BST was 580, lowered by ~18%
+        .baseHP        = 61,   // was 75
+        .baseAttack    = 102,  // was 125
+        .baseDefense   = 58,   // was 70
+        .baseSpeed     = 94,   // was 115
+        .baseSpAttack  = 102,  // was 125
+        .baseSpDefense = 58,   // was 70
+        .types = MON_TYPES(TYPE_PSYCHIC),
+        .catchRate = 3,
+    #if P_UPDATED_EXP_YIELDS >= GEN_8
+        .expYield = 290,
+    #elif P_UPDATED_EXP_YIELDS >= GEN_5
+        .expYield = 261,
+    #else
+        .expYield = 210,
+    #endif
+        .evYield_Attack = 2,
+        .evYield_SpAttack = 1,
+        .genderRatio = MON_GENDERLESS,
+        .eggCycles = 80,
+        .friendship = 140,
+        .growthRate = GROWTH_SLOW,
+        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
+        .abilities = { ABILITY_LEVITATE, ABILITY_NONE, ABILITY_NONE },
+        .bodyColor = BODY_COLOR_BLUE,
+        .speciesName = _("Azelf-V"),
+        .cryId = CRY_AZELF,
+        .natDexNum = NATIONAL_DEX_AZELF_V,
+        .categoryName = _("Willpower"),
+        .height = 2,    // was 3
+        .weight = 2,    // was 3
+        .description = COMPOUND_STRING(
+            "A Pokémon that was created by genetic\n"
+            "manipulation. Though it exists as a\n"
+            "proto-type, it still carries the\n"
+            "determination of its ancestral form."),
+        .pokemonScale = 434,  // was 530
+        .pokemonOffset = 12,  // was 13
+        .trainerScale = 256,
+        .trainerOffset = 0,
+        .frontPic = gMonFrontPic_Azelf,
+        .frontPicSize = MON_COORDS_SIZE(48, 64),
+        .frontPicYOffset = 0,
+        .frontAnimFrames = ANIM_FRAMES(
+            ANIMCMD_FRAME(1, 50),
+            ANIMCMD_FRAME(1, 30),
+            ANIMCMD_FRAME(0, 10),
+        ),
+        .frontAnimId = ANIM_V_SLIDE_WOBBLE,
+        .enemyMonElevation = 6,
+        .backPic = gMonBackPic_Azelf,
+        .backPicSize = MON_COORDS_SIZE(64, 56),
+        .backPicYOffset = 6,
+        .backAnimId = BACK_ANIM_CONCAVE_ARC_SMALL,
+        .palette = gMonPalette_Azelf,
+        .shinyPalette = gMonShinyPalette_Azelf,
+        .iconSprite = gMonIcon_Azelf,
+        .iconPalIndex = 0,
+        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
+        SHADOW(0, 17, SHADOW_SIZE_S)
+        FOOTPRINT(Azelf)
+        OVERWORLD(
+            sPicTable_Azelf,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            sAnimTable_Following,
+            gOverworldPalette_Azelf,
+            gShinyOverworldPalette_Azelf
+        )
+        .isFrontierBanned = FALSE,
+        .levelUpLearnset = sAzelfLevelUpLearnset,
+        .teachableLearnset = sAzelfTeachableLearnset,
+    },
+
+    [SPECIES_DIALGA_V] =
+    {
+        // BST was 680, lowered by ~30%
+        .baseHP        = 69,   // was 100
+        .baseAttack    = 84,   // was 120
+        .baseDefense   = 84,   // was 120
+        .baseSpeed     = 63,   // was 90
+        .baseSpAttack  = 105,  // was 150
+        .baseSpDefense = 70,   // was 100
+        .types = MON_TYPES(TYPE_STEEL, TYPE_DRAGON),
+        .catchRate = 3,
+    #if P_UPDATED_EXP_YIELDS >= GEN_8
+        .expYield = 340,
+    #elif P_UPDATED_EXP_YIELDS >= GEN_5
+        .expYield = 306,
+    #else
+        .expYield = 220,
+    #endif
+        .evYield_SpAttack = 3,
+        .genderRatio = MON_GENDERLESS,
+        .eggCycles = 120,
+        .friendship = 0,
+        .growthRate = GROWTH_SLOW,
+        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
+        .abilities = { ABILITY_FILTER, ABILITY_NONE, ABILITY_ADAPTABILITY },
+        .bodyColor = BODY_COLOR_WHITE,
+        .speciesName = _("Dialga-V"),
+        .cryId = CRY_DIALGA,
+        .natDexNum = NATIONAL_DEX_DIALGA_V,
+        .categoryName = _("Temporal"),
+        .height = 38,   // was 54
+        .weight = 4771, // was 6830
+        .description = COMPOUND_STRING(
+            "A Pokémon that was created by genetic\n"
+            "manipulation. Though it exists as a\n"
+            "proto-type, the power of time still\n"
+            "flows within its ancient form."),
+        .pokemonScale = 333,  // was 256
+        .pokemonOffset = 6,   // was 0
+        .trainerScale = 721,
+        .trainerOffset = 19,
+        .frontPic = gMonFrontPic_Dialga,
+        .frontPicSize = MON_COORDS_SIZE(64, 64),
+        .frontPicYOffset = 0,
+        .frontAnimFrames = ANIM_FRAMES(
+            ANIMCMD_FRAME(1, 40),
+            ANIMCMD_FRAME(0, 5),
+        ),
+        .frontAnimId = ANIM_H_SHAKE,
+        .backPic = gMonBackPic_Dialga,
+        .backPicSize = MON_COORDS_SIZE(64, 64),
+        .backPicYOffset = 0,
+        .backAnimId = BACK_ANIM_V_SHAKE,
+        .palette = gMonPalette_Dialga,
+        .shinyPalette = gMonShinyPalette_Dialga,
+        .iconSprite = gMonIcon_Dialga,
+        .iconPalIndex = 2,
+        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
+        SHADOW(4, 12, SHADOW_SIZE_L)
+        FOOTPRINT(Dialga)
+        OVERWORLD(
+            sPicTable_Dialga,
+            SIZE_64x64,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            sAnimTable_Following,
+            gOverworldPalette_Dialga,
+            gShinyOverworldPalette_Dialga
+        )
+        .isFrontierBanned = FALSE,
+        .levelUpLearnset = sDialgaLevelUpLearnset,
+        .teachableLearnset = sDialgaTeachableLearnset,
+    },
+
+    [SPECIES_PALKIA_V] =
+    {
+        // BST was 680, lowered by ~30%
+        .baseHP        = 62,   // was 90
+        .baseAttack    = 84,   // was 120
+        .baseDefense   = 70,   // was 100
+        .baseSpeed     = 70,   // was 100
+        .baseSpAttack  = 105,  // was 150
+        .baseSpDefense = 84,   // was 120
+        .types = MON_TYPES(TYPE_WATER, TYPE_DRAGON),
+        .catchRate = 3,
+    #if P_UPDATED_EXP_YIELDS >= GEN_8
+        .expYield = 340,
+    #elif P_UPDATED_EXP_YIELDS >= GEN_5
+        .expYield = 306,
+    #else
+        .expYield = 220,
+    #endif
+        .evYield_SpAttack = 3,
+        .genderRatio = MON_GENDERLESS,
+        .eggCycles = 120,
+        .friendship = 0,
+        .growthRate = GROWTH_SLOW,
+        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
+        .abilities = { ABILITY_ADAPTABILITY, ABILITY_NONE, ABILITY_FILTER },
+        .bodyColor = BODY_COLOR_PURPLE,
+        .speciesName = _("Palkia-V"),
+        .cryId = CRY_PALKIA,
+        .natDexNum = NATIONAL_DEX_PALKIA_V,
+        .categoryName = _("Spatial"),
+        .height = 29,   // was 42
+        .weight = 2347, // was 3360
+        .description = COMPOUND_STRING(
+            "A Pokémon that was created by genetic\n"
+            "manipulation. Though it exists as a\n"
+            "proto-type, it retains an innate hold\n"
+            "over the fabric of space."),
+        .pokemonScale = 333,  // was 256
+        .pokemonOffset = 4,   // was 0
+        .trainerScale = 650,
+        .trainerOffset = 16,
+        .frontPic = gMonFrontPic_Palkia,
+        .frontPicSize = MON_COORDS_SIZE(64, 64),
+        .frontPicYOffset = 0,
+        .frontAnimFrames = ANIM_FRAMES(
+            ANIMCMD_FRAME(1, 20),
+            ANIMCMD_FRAME(0, 10),
+        ),
+        .frontAnimId = ANIM_V_SHAKE,
+        .backPic = gMonBackPic_Palkia,
+        .backPicSize = MON_COORDS_SIZE(64, 64),
+        .backPicYOffset = 6,
+        .backAnimId = BACK_ANIM_H_SHAKE,
+        .palette = gMonPalette_Palkia,
+        .shinyPalette = gMonShinyPalette_Palkia,
+        .iconSprite = gMonIcon_Palkia,
+        .iconPalIndex = 2,
+        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
+        SHADOW(0, 10, SHADOW_SIZE_L)
+        FOOTPRINT(Palkia)
+        OVERWORLD(
+            sPicTable_Palkia,
+            SIZE_64x64,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            sAnimTable_Following,
+            gOverworldPalette_Palkia,
+            gShinyOverworldPalette_Palkia
+        )
+        .isFrontierBanned = FALSE,
+        .levelUpLearnset = sPalkiaLevelUpLearnset,
+        .teachableLearnset = sPalkiaTeachableLearnset,
+    },
+
+    [SPECIES_GIRATINA_V] =
+    {
+        // BST was 680, lowered by ~30%
+        .baseHP        = 104,  // was 150
+        .baseAttack    = 70,   // was 100
+        .baseDefense   = 84,   // was 120
+        .baseSpeed     = 63,   // was 90
+        .baseSpAttack  = 70,   // was 100
+        .baseSpDefense = 84,   // was 120
+        .types = MON_TYPES(TYPE_GHOST, TYPE_DRAGON),
+        .catchRate = 3,
+    #if P_UPDATED_EXP_YIELDS >= GEN_8
+        .expYield = 340,
+    #elif P_UPDATED_EXP_YIELDS >= GEN_5
+        .expYield = 306,
+    #else
+        .expYield = 220,
+    #endif
+        .evYield_HP = 3,
+        .genderRatio = MON_GENDERLESS,
+        .eggCycles = 120,
+        .friendship = 0,
+        .growthRate = GROWTH_SLOW,
+        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
+        .abilities = { ABILITY_CURSED_BODY, ABILITY_NONE, ABILITY_ANGER_POINT },
+        .bodyColor = BODY_COLOR_BLACK,
+        .speciesName = _("Giratina-V"),
+        .cryId = CRY_GIRATINA,
+        .natDexNum = NATIONAL_DEX_GIRATINA_V,
+        .categoryName = _("Renegade"),
+        .height = 31,   // was 45
+        .weight = 5239, // was 7500
+        .description = COMPOUND_STRING(
+            "A Pokémon that was created by genetic\n"
+            "manipulation. Though it exists as a\n"
+            "proto-type, its violent nature and\n"
+            "renegade spirit live on within it."),
+        .pokemonScale = 333,  // was 256
+        .pokemonOffset = 2,   // was 0
+        .trainerScale = 614,
+        .trainerOffset = 13,
+        .frontPic = gMonFrontPic_GiratinaAltered,
+        .frontPicSize = MON_COORDS_SIZE(64, 64),
+        .frontPicYOffset = 0,
+        .frontAnimFrames = ANIM_FRAMES(
+            ANIMCMD_FRAME(0, 12),
+            ANIMCMD_FRAME(1, 45),
+            ANIMCMD_FRAME(0, 15),
+        ),
+        .frontAnimId = ANIM_GROW_VIBRATE,
+        .backPic = gMonBackPic_GiratinaAltered,
+        .backPicSize = MON_COORDS_SIZE(64, 64),
+        .backPicYOffset = 4,
+        .backAnimId = BACK_ANIM_V_SHAKE_LOW,
+        .palette = gMonPalette_GiratinaAltered,
+        .shinyPalette = gMonShinyPalette_GiratinaAltered,
+        .iconSprite = gMonIcon_GiratinaAltered,
+        .iconPalIndex = 0,
+        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
+        SHADOW(3, 11, SHADOW_SIZE_L)
+        FOOTPRINT(GiratinaAltered)
+        OVERWORLD(
+            sPicTable_GiratinaAltered,
+            SIZE_64x64,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            sAnimTable_Following,
+            gOverworldPalette_GiratinaAltered,
+            gShinyOverworldPalette_GiratinaAltered
+        )
+        .isFrontierBanned = FALSE,
+        .levelUpLearnset = sGiratinaLevelUpLearnset,
+        .teachableLearnset = sGiratinaTeachableLearnset,
+    },
+
+    [SPECIES_HEATRAN_V] =
+    {
+        // BST was 600, lowered by ~21%
+        .baseHP        = 72,   // was 91
+        .baseAttack    = 71,   // was 90
+        .baseDefense   = 84,   // was 106
+        .baseSpeed     = 61,   // was 77
+        .baseSpAttack  = 103,  // was 130
+        .baseSpDefense = 84,   // was 106
+        .types = MON_TYPES(TYPE_FIRE, TYPE_STEEL),
+        .catchRate = 3,
+    #if P_UPDATED_EXP_YIELDS >= GEN_8
+        .expYield = 300,
+    #elif P_UPDATED_EXP_YIELDS >= GEN_5
+        .expYield = 270,
+    #else
+        .expYield = 215,
+    #endif
+        .evYield_SpAttack = 3,
+        .genderRatio = PERCENT_FEMALE(50),
+        .eggCycles = 10,
+        .friendship = 100,
+        .growthRate = GROWTH_SLOW,
+        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
+        .abilities = { ABILITY_FLASH_FIRE, ABILITY_NONE, ABILITY_FLAME_BODY },
+        .bodyColor = BODY_COLOR_BROWN,
+        .speciesName = _("Heatran-V"),
+        .cryId = CRY_HEATRAN,
+        .natDexNum = NATIONAL_DEX_HEATRAN_V,
+        .categoryName = _("Lava Dome"),
+        .height = 13,   // was 17
+        .weight = 3404, // was 4300
+        .description = COMPOUND_STRING(
+            "A Pokemon that was created by genetic\n"
+            "manipulation. Though it exists as a\n"
+            "proto-type, molten energy still surges\n"
+            "through its armored body."),
+        .pokemonScale = 337,  // was 259
+        .pokemonOffset = 8,   // was 0  
+        .trainerScale = 290,
+        .trainerOffset = 1,
+        .frontPic = gMonFrontPic_Heatran,
+        .frontPicSize = MON_COORDS_SIZE(64, 56),
+        .frontPicYOffset = 5,
+        .frontAnimFrames = ANIM_FRAMES(
+            ANIMCMD_FRAME(1, 50),
+            ANIMCMD_FRAME(1, 30),
+            ANIMCMD_FRAME(0, 10),
+        ),
+        .frontAnimId = ANIM_GLOW_ORANGE,
+        .backPic = gMonBackPic_Heatran,
+        .backPicSize = MON_COORDS_SIZE(64, 40),
+        .backPicYOffset = 13,
+        .backAnimId = BACK_ANIM_SHAKE_GLOW_RED,
+        .palette = gMonPalette_Heatran,
+        .shinyPalette = gMonShinyPalette_Heatran,
+        .iconSprite = gMonIcon_Heatran,
+        .iconPalIndex = 0,
+        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
+        SHADOW(2, 2, SHADOW_SIZE_XL_BATTLE_ONLY)
+        FOOTPRINT(Heatran)
+        OVERWORLD(
+            sPicTable_Heatran,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            sAnimTable_Following,
+            gOverworldPalette_Heatran,
+            gShinyOverworldPalette_Heatran
+        )
+        .isFrontierBanned = FALSE,
+        .levelUpLearnset = sHeatranLevelUpLearnset,
+        .teachableLearnset = sHeatranTeachableLearnset,
+    },
+
+    [SPECIES_REGIGIGAS_V] =
+    {
+        // BST was 670, lowered by ~29%
+        .baseHP        = 78,   // was 110
+        .baseAttack    = 113,  // was 160
+        .baseDefense   = 78,   // was 110
+        .baseSpeed     = 71,   // was 100
+        .baseSpAttack  = 57,   // was 80
+        .baseSpDefense = 78,   // was 110
+        .types = MON_TYPES(TYPE_NORMAL),
+        .catchRate = 3,
+    #if P_UPDATED_EXP_YIELDS >= GEN_8
+        .expYield = 335,
+    #elif P_UPDATED_EXP_YIELDS >= GEN_5
+        .expYield = 302,
+    #else
+        .expYield = 220,
+    #endif
+        .evYield_Attack = 3,
+        .genderRatio = MON_GENDERLESS,
+        .eggCycles = 120,
+        .friendship = 0,
+        .growthRate = GROWTH_SLOW,
+        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
+        .abilities = { ABILITY_STEADFAST, ABILITY_NONE, ABILITY_NORMALIZE },
+        .bodyColor = BODY_COLOR_WHITE,
+        .speciesName = _("Regigigas-V"),
+        .cryId = CRY_REGIGIGAS,
+        .natDexNum = NATIONAL_DEX_REGIGIGAS_V,
+        .categoryName = _("Colossal"),
+        .height = 26,   // was 37
+        .weight = 2978, // was 4200
+        .description = COMPOUND_STRING(
+            "A Pokemon that was created by genetic\n"
+            "manipulation. Though it exists as a\n"
+            "proto-type, traces of colossal strength\n"
+            "remain in its ancient frame."),
+        .pokemonScale = 333,  // was 256
+        .pokemonOffset = 2,
+        .trainerScale = 4610,
+        .trainerOffset = 17,
+        .frontPic = gMonFrontPic_Regigigas,
+        .frontPicSize = MON_COORDS_SIZE(64, 64),
+        .frontPicYOffset = 4,
+        .frontAnimFrames = ANIM_FRAMES(
+            ANIMCMD_FRAME(1, 40),
+            ANIMCMD_FRAME(0, 5),
+        ),
+        .frontAnimId = ANIM_V_SHAKE,
+        .backPic = gMonBackPic_Regigigas,
+        .backPicSize = MON_COORDS_SIZE(64, 40),
+        .backPicYOffset = 13,
+        .backAnimId = BACK_ANIM_V_SHAKE_LOW,
+        .palette = gMonPalette_Regigigas,
+        .shinyPalette = gMonShinyPalette_Regigigas,
+        .iconSprite = gMonIcon_Regigigas,
+        .iconPalIndex = 0,
+        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
+        SHADOW(3, 10, SHADOW_SIZE_XL_BATTLE_ONLY)
+        FOOTPRINT(Regigigas)
+        OVERWORLD(
+            sPicTable_Regigigas,
+            SIZE_64x64,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            sAnimTable_Following,
+            gOverworldPalette_Regigigas,
+            gShinyOverworldPalette_Regigigas
+        )
+        .isFrontierBanned = FALSE,
+        .levelUpLearnset = sRegigigasLevelUpLearnset,
+        .teachableLearnset = sRegigigasTeachableLearnset,
+    },
+
+    [SPECIES_CRESSELIA_V] =
+    {
+        // BST was 600, lowered by ~21%
+        .baseHP        = 95,   // was 120
+        .baseAttack    = 55,   // was 70
+        .baseDefense   = 95,   // was 120
+        .baseSpeed     = 67,   // was 85
+        .baseSpAttack  = 60,   // was 75
+        .baseSpDefense = 103,  // was 130
+        .types = MON_TYPES(TYPE_PSYCHIC),
+        .catchRate = 3,
+    #if P_UPDATED_EXP_YIELDS >= GEN_8
+        .expYield = 300,
+    #elif P_UPDATED_EXP_YIELDS >= GEN_5
+        .expYield = 270,
+    #else
+        .expYield = 210,
+    #endif
+        .evYield_SpDefense = 3,
+        .genderRatio = MON_FEMALE,
+        .eggCycles = 120,
+        .friendship = 100,
+        .growthRate = GROWTH_SLOW,
+        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
+        .abilities = { ABILITY_LEVITATE, ABILITY_NONE, ABILITY_NATURAL_CURE },
+        .bodyColor = BODY_COLOR_YELLOW,
+        .speciesName = _("Cresselia-V"),
+        .cryId = CRY_CRESSELIA,
+        .natDexNum = NATIONAL_DEX_CRESSELIA_V,
+        .categoryName = _("Lunar"),
+        .height = 12,  // was 15
+        .weight = 678, // was 856
+        .description = COMPOUND_STRING(
+            "A Pokemon that was created by genetic\n"
+            "manipulation. Though it exists as a\n"
+            "proto-type, it still carries the calm\n"
+            "aura of moonlight and dreams."),
+        .pokemonScale = 348,  // was 268
+        .pokemonOffset = 2,
+        .trainerScale = 271,
+        .trainerOffset = 0,
+        .frontPic = gMonFrontPic_Cresselia,
+        .frontPicSize = MON_COORDS_SIZE(64, 64),
+        .frontPicYOffset = 2,
+        .frontAnimFrames = ANIM_FRAMES(
+            ANIMCMD_FRAME(1, 15),
+            ANIMCMD_FRAME(0, 15),
+            ANIMCMD_FRAME(1, 15),
+            ANIMCMD_FRAME(0, 15),
+            ANIMCMD_FRAME(1, 15),
+            ANIMCMD_FRAME(0, 15),
+        ),
+        .frontAnimId = ANIM_H_SLIDE_WOBBLE,
+        .enemyMonElevation = 3,
+        .backPic = gMonBackPic_Cresselia,
+        .backPicSize = MON_COORDS_SIZE(56, 64),
+        .backPicYOffset = 0,
+        .backAnimId = BACK_ANIM_CONVEX_DOUBLE_ARC,
+        .palette = gMonPalette_Cresselia,
+        .shinyPalette = gMonShinyPalette_Cresselia,
+        .iconSprite = gMonIcon_Cresselia,
+        .iconPalIndex = 0,
+        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
+        SHADOW(-2, 12, SHADOW_SIZE_M)
+        FOOTPRINT(Cresselia)
+        OVERWORLD(
+            sPicTable_Cresselia,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            sAnimTable_Following,
+            gOverworldPalette_Cresselia,
+            gShinyOverworldPalette_Cresselia
+        )
+        .isFrontierBanned = FALSE,
+        .levelUpLearnset = sCresseliaLevelUpLearnset,
+        .teachableLearnset = sCresseliaTeachableLearnset,
     },
 
     /*
