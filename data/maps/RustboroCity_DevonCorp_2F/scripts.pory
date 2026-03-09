@@ -424,7 +424,17 @@ MiniLegendSci_FirstMet:
 
 script RustboroCity_DevonCorp_2F_EventScript_SelectRegion {
     message("From which region would you like\nyour Proto-Legend?")
-    multichoice(0, 0, MULTI_MINI_LEGEND_REGION, FALSE)
+    dynmultichoice(0, 0, FALSE, 5, 0, DYN_MULTICHOICE_CB_NONE,
+        "KANTO",
+        "JOHTO",
+        "HOENN",
+        "SINNOH",
+        "UNOVA",
+        "KALOS",
+		//"ALOLA",
+		//"GALAR",
+		//"PALDEA",
+        "{COLOR GREEN}EXIT")
 	closemessage
 	if (var(VAR_RESULT) > NUM_REGION_CHOICES - 1) {
         goto(RustboroCity_DevonCorp_2F_EventScript_MiniLegendSciEnd)
@@ -442,6 +452,14 @@ script RustboroCity_DevonCorp_2F_EventScript_SelectRegion {
 			goto(RustboroCity_DevonCorp_2F_EventScript_SelectSinnoh)
 		case REGION_CHOICE_UNOVA:
 			goto(RustboroCity_DevonCorp_2F_EventScript_SelectUnova)
+		case REGION_CHOICE_KALOS:
+			goto(RustboroCity_DevonCorp_2F_EventScript_SelectKalos)
+		//case REGION_CHOICE_ALOLA:
+			//goto(RustboroCity_DevonCorp_2F_EventScript_SelectAlola)
+		//case REGION_CHOICE_GALAR:
+			//goto(RustboroCity_DevonCorp_2F_EventScript_SelectGalar)
+		//case REGION_CHOICE_PALDEA:
+			//goto(RustboroCity_DevonCorp_2F_EventScript_SelectPaldea)
 		default:
 			goto(RustboroCity_DevonCorp_2F_EventScript_SelectRegion)
 	}
@@ -653,6 +671,29 @@ script RustboroCity_DevonCorp_2F_EventScript_SelectUnova {
 				goto(RustboroCity_DevonCorp_2F_EventScript_SelectUnova)
 			}
 			addvar(VAR_RESULT, OFFSET_TAO)
+			break
+		default:
+			goto(RustboroCity_DevonCorp_2F_EventScript_SelectRegion)
+	}
+
+	copyvar(VAR_TEMP_1, VAR_RESULT)
+	goto(RustboroCity_DevonCorp_2F_EventScript_OfferShiny)
+}
+
+script RustboroCity_DevonCorp_2F_EventScript_SelectKalos {
+	multichoice(0, 0, MULTI_MINI_LEGEND_KALOS, FALSE)
+	closemessage
+
+	switch (var(VAR_RESULT)) {
+		case KALOS_CHOICE_AURA:
+			goto_if_set(FLAG_OBTAINED_AURA_LINE, RustboroCity_DevonCorp_2F_EventScript_HasMon)
+			multichoice(0, 0, MULTI_MINI_LEGEND_AURA, FALSE)
+			closemessage
+
+			if (var(VAR_RESULT) > NUM_CHOICES_AURA - 1) {
+				goto(RustboroCity_DevonCorp_2F_EventScript_SelectKalos)
+			}
+			addvar(VAR_RESULT, OFFSET_AURA)
 			break
 		default:
 			goto(RustboroCity_DevonCorp_2F_EventScript_SelectRegion)
@@ -981,6 +1022,30 @@ script RustboroCity_DevonCorp_2F_EventScript_GiveLegendary {
 			givemon(SPECIES_KYUREM_V, 5, ITEM_NONE, ITEM_BEAST_BALL)
 			if (var(VAR_RESULT) < MON_CANT_GIVE) {
 				setflag(FLAG_OBTAINED_TAO_LINE)
+			}
+			break
+		case 35:  // Xerneas
+			bufferspeciesname(STR_VAR_1, SPECIES_XERNEAS_V)
+			setvar(VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_XERNEAS_V)
+			givemon(SPECIES_XERNEAS_V, 5, ITEM_NONE, ITEM_BEAST_BALL)
+			if (var(VAR_RESULT) < MON_CANT_GIVE) {
+				setflag(FLAG_OBTAINED_AURA_LINE)
+			}
+			break
+		case 36:  // Yveltal
+			bufferspeciesname(STR_VAR_1, SPECIES_YVELTAL_V)
+			setvar(VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_YVELTAL_V)
+			givemon(SPECIES_YVELTAL_V, 5, ITEM_NONE, ITEM_BEAST_BALL)
+			if (var(VAR_RESULT) < MON_CANT_GIVE) {
+				setflag(FLAG_OBTAINED_AURA_LINE)
+			}
+			break
+		case 37:  // Zygarde
+			bufferspeciesname(STR_VAR_1, SPECIES_ZYGARDE_V)
+			setvar(VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_ZYGARDE_V)
+			givemon(SPECIES_ZYGARDE_V, 5, ITEM_NONE, ITEM_BEAST_BALL)
+			if (var(VAR_RESULT) < MON_CANT_GIVE) {
+				setflag(FLAG_OBTAINED_AURA_LINE)
 			}
 			break
 		default:

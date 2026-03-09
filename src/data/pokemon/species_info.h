@@ -2237,7 +2237,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .friendship = 35,
         .growthRate = GROWTH_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
-        .abilities = { ABILITY_JUSTIFIED, ABILITY_NONE, ABILITY_NONE },
+        .abilities = { ABILITY_JUSTIFIED, ABILITY_NONE, ABILITY_INNER_FOCUS },
         .bodyColor = BODY_COLOR_BLUE,
         .speciesName = _("Cobalion-V"),
         .cryId = CRY_COBALION,
@@ -2312,7 +2312,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .friendship = 35,
         .growthRate = GROWTH_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
-        .abilities = { ABILITY_JUSTIFIED, ABILITY_NONE, ABILITY_NONE },
+        .abilities = { ABILITY_JUSTIFIED, ABILITY_NONE, ABILITY_INNER_FOCUS },
         .bodyColor = BODY_COLOR_GRAY,
         .speciesName = _("Terrakion-V"),
         .cryId = CRY_TERRAKION,
@@ -2391,7 +2391,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .friendship = 35,
         .growthRate = GROWTH_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
-        .abilities = { ABILITY_JUSTIFIED, ABILITY_NONE, ABILITY_NONE },
+        .abilities = { ABILITY_JUSTIFIED, ABILITY_NONE, ABILITY_INNER_FOCUS },
         .bodyColor = BODY_COLOR_GREEN,
         .speciesName = _("Virizion-V"),
         .cryId = CRY_VIRIZION,
@@ -2900,7 +2900,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .friendship = 0,
         .growthRate = GROWTH_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
-        .abilities = { ABILITY_PRESSURE, ABILITY_NONE, ABILITY_NONE },
+        .abilities = { ABILITY_REFRIGERATE, ABILITY_NONE, ABILITY_NONE },
         .bodyColor = BODY_COLOR_GRAY,
         .noFlip = TRUE,
         .speciesName = _("Kyurem-V"),
@@ -2951,6 +2951,225 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .isFrontierBanned = FALSE,
         .levelUpLearnset = sKyuremLevelUpLearnset,
         .teachableLearnset = sKyuremTeachableLearnset,
+    },
+
+    [SPECIES_XERNEAS_V] =
+    {
+        // BST was 680, lowered by ~30%
+        .baseHP        = 88,   // was 126
+        .baseAttack    = 91,   // was 131
+        .baseDefense   = 66,   // was 95
+        .baseSpeed     = 69,   // was 99
+        .baseSpAttack  = 91,   // was 131
+        .baseSpDefense = 70,   // was 98
+        .types = MON_TYPES(TYPE_FAIRY),
+        .catchRate = 3,
+    #if P_UPDATED_EXP_YIELDS >= GEN_8
+        .expYield = 340,
+    #elif P_UPDATED_EXP_YIELDS >= GEN_5
+        .expYield = 306,
+    #else
+        .expYield = 220,
+    #endif
+        .evYield_HP = 3,
+        .genderRatio = MON_GENDERLESS,
+        .eggCycles = 120,
+        .friendship = 0,
+        .growthRate = GROWTH_SLOW,
+        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
+        .abilities = { ABILITY_FAIRY_AURA, ABILITY_NONE, ABILITY_NONE },
+        .bodyColor = BODY_COLOR_BLUE,
+        .speciesName = _("Xerneas-V"),
+        .cryId = CRY_XERNEAS,
+        .natDexNum = NATIONAL_DEX_XERNEAS_V,
+        .categoryName = _("Life"),
+        .height = 21,    // was 30
+        .weight = 1505,  // was 2150
+        .description = COMPOUND_STRING(
+            "A Pokemon that was created by genetic\n"
+            "manipulation. Though it exists as a\n"
+            "proto-type, restorative life energy\n"
+            "still overflows from its antlers."),
+        .pokemonScale = 358,  // was 275
+        .pokemonOffset = 7,
+        .trainerScale = 256,
+        .trainerOffset = 0,
+        .frontPic = gMonFrontPic_XerneasNeutral,
+        .frontPicSize = MON_COORDS_SIZE(64, 64),
+        .frontPicYOffset = 0,
+        .frontAnimFrames = sAnims_Xerneas,
+        .frontAnimId = ANIM_GROW_VIBRATE,
+        .backPic = gMonBackPic_XerneasNeutral,
+        .backPicSize = MON_COORDS_SIZE(64, 64),
+        .backPicYOffset = 0,
+        .backAnimId = BACK_ANIM_SHAKE_GLOW_BLUE,
+        .palette = gMonPalette_XerneasNeutral,
+        .shinyPalette = gMonShinyPalette_XerneasNeutral,
+        .iconSprite = gMonIcon_XerneasNeutral,
+        .iconPalIndex = 0,
+        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
+        SHADOW(3, 14, SHADOW_SIZE_M)
+        FOOTPRINT(Xerneas)
+        OVERWORLD(
+            sPicTable_XerneasNeutral,
+            SIZE_64x64,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            sAnimTable_Following,
+            gOverworldPalette_XerneasNeutral,
+            gShinyOverworldPalette_XerneasNeutral
+        )
+        .isFrontierBanned = FALSE,
+        .levelUpLearnset = sXerneasLevelUpLearnset,
+        .teachableLearnset = sXerneasTeachableLearnset,
+    },
+
+    [SPECIES_YVELTAL_V] =
+    {
+        // BST was 680, lowered by ~30%
+        .baseHP        = 88,   // was 126
+        .baseAttack    = 91,   // was 131
+        .baseDefense   = 66,   // was 95
+        .baseSpeed     = 69,   // was 99
+        .baseSpAttack  = 91,   // was 131
+        .baseSpDefense = 70,   // was 98
+        .types = MON_TYPES(TYPE_DARK, TYPE_FLYING),
+        .catchRate = 3,
+    #if P_UPDATED_EXP_YIELDS >= GEN_8
+        .expYield = 340,
+    #elif P_UPDATED_EXP_YIELDS >= GEN_5
+        .expYield = 306,
+    #else
+        .expYield = 220,
+    #endif
+        .evYield_HP = 3,
+        .genderRatio = MON_GENDERLESS,
+        .eggCycles = 120,
+        .friendship = 0,
+        .growthRate = GROWTH_SLOW,
+        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
+        .abilities = { ABILITY_DARK_AURA, ABILITY_NONE, ABILITY_NONE },
+        .bodyColor = BODY_COLOR_RED,
+        .speciesName = _("Yveltal-V"),
+        .cryId = CRY_YVELTAL,
+        .natDexNum = NATIONAL_DEX_YVELTAL_V,
+        .categoryName = _("Destruction"),
+        .height = 41,    // was 58
+        .weight = 1421,  // was 2030
+        .description = COMPOUND_STRING(
+            "A Pokemon that was created by genetic\n"
+            "manipulation. Though it exists as a\n"
+            "proto-type, ruinous energy still radiates\n"
+            "from its wings and tail."),
+        .pokemonScale = 333,  // was 256
+        .pokemonOffset = 3,   // was 0
+        .trainerScale = 360,
+        .trainerOffset = 7,
+        .frontPic = gMonFrontPic_Yveltal,
+        .frontPicSize = MON_COORDS_SIZE(64, 64),
+        .frontPicYOffset = 0,
+        .frontAnimFrames = ANIM_FRAMES(
+            ANIMCMD_FRAME(1, 20),
+            ANIMCMD_FRAME(0, 10),
+            ANIMCMD_FRAME(1, 15),
+            ANIMCMD_FRAME(0, 1),
+        ),
+        .frontAnimId = ANIM_FRONT_FLIP,
+        .enemyMonElevation = 5,
+        .backPic = gMonBackPic_Yveltal,
+        .backPicSize = MON_COORDS_SIZE(64, 48),
+        .backPicYOffset = 10,
+        .backAnimId = BACK_ANIM_SHAKE_GLOW_RED,
+        .palette = gMonPalette_Yveltal,
+        .shinyPalette = gMonShinyPalette_Yveltal,
+        .iconSprite = gMonIcon_Yveltal,
+        .iconPalIndex = 0,
+        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
+        SHADOW(0, 16, SHADOW_SIZE_L)
+        FOOTPRINT(Yveltal)
+        OVERWORLD(
+            sPicTable_Yveltal,
+            SIZE_64x64,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            sAnimTable_Following,
+            gOverworldPalette_Yveltal,
+            gShinyOverworldPalette_Yveltal
+        )
+        .isFrontierBanned = FALSE,
+        .levelUpLearnset = sYveltalLevelUpLearnset,
+        .teachableLearnset = sYveltalTeachableLearnset,
+    },
+
+    [SPECIES_ZYGARDE_V] =
+    {
+        // Based off complete form, other forms are boring
+        // BST was 708, lowered by ~33%
+        .baseHP        = 145,  // was 216
+        .baseAttack    = 67,   // was 100
+        .baseDefense   = 81,   // was 121
+        .baseSpeed     = 57,   // was 85
+        .baseSpAttack  = 61,   // was 91
+        .baseSpDefense = 64,   // was 95
+        .types = MON_TYPES(TYPE_DRAGON, TYPE_GROUND),
+        .catchRate = 3,
+        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_8) ? 354 : 319,
+        .evYield_HP = 3,
+        .genderRatio = MON_GENDERLESS,
+        .eggCycles = 120,
+        .friendship = 0,
+        .growthRate = GROWTH_SLOW,
+        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
+        .abilities = { ABILITY_STAMINA, ABILITY_NONE, ABILITY_GOOEY },
+        .bodyColor = BODY_COLOR_BLACK,
+        .noFlip = TRUE,
+        .speciesName = _("Zygarde-V"),
+        .cryId = CRY_ZYGARDE_COMPLETE,
+        .natDexNum = NATIONAL_DEX_ZYGARDE_V,
+        .categoryName = _("Order"),
+        .height = 30,    // was 45
+        .weight = 4087,  // was 6100
+        .description = COMPOUND_STRING(
+            "A Pokemon that was created by genetic\n"
+            "manipulation. Though it exists as a\n"
+            "proto-type, it still monitors ecosystems\n"
+            "as a guardian of order."),
+        .pokemonScale = 310,  // was 256
+        .pokemonOffset = 4,   // was 0
+        .trainerScale = 721,
+        .trainerOffset = 19,
+        .frontPic = gMonFrontPic_ZygardeComplete,
+        .frontPicSize = MON_COORDS_SIZE(64, 64),
+        .frontPicYOffset = 0,
+        .frontAnimFrames = ANIM_FRAMES(
+            ANIMCMD_FRAME(0, 12),
+            ANIMCMD_FRAME(1, 45),
+            ANIMCMD_FRAME(0, 15),
+        ),
+        .frontAnimId = ANIM_GROW_VIBRATE,
+        .backPic = gMonBackPic_ZygardeComplete,
+        .backPicSize = MON_COORDS_SIZE(64, 64),
+        .backPicYOffset = 0,
+        .backAnimId = BACK_ANIM_SHAKE_GLOW_GREEN,
+        .palette = gMonPalette_ZygardeComplete,
+        .shinyPalette = gMonShinyPalette_ZygardeComplete,
+        .iconSprite = gMonIcon_ZygardeComplete,
+        .iconPalIndex = 1,
+        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
+        SHADOW(-3, 13, SHADOW_SIZE_L)
+        FOOTPRINT(Zygarde)
+        OVERWORLD(
+            sPicTable_ZygardeComplete,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            sAnimTable_Following,
+            gOverworldPalette_ZygardeComplete,
+            gShinyOverworldPalette_ZygardeComplete
+        )
+        .isFrontierBanned = FALSE,
+        .levelUpLearnset = sZygardeLevelUpLearnset,
+        .teachableLearnset = sZygardeTeachableLearnset,
     },
 
     /*

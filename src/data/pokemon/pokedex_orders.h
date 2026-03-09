@@ -1061,6 +1061,7 @@ const u16 gPokedexOrder_Alphabetical[] =
 
     NATIONAL_DEX_XATU,
     NATIONAL_DEX_XERNEAS,
+    NATIONAL_DEX_XERNEAS_V,
     NATIONAL_DEX_XURKITREE,
 
     NATIONAL_DEX_YAMASK,
@@ -1069,6 +1070,7 @@ const u16 gPokedexOrder_Alphabetical[] =
     NATIONAL_DEX_YANMEGA,
     NATIONAL_DEX_YUNGOOS,
     NATIONAL_DEX_YVELTAL,
+    NATIONAL_DEX_YVELTAL_V,
 
     NATIONAL_DEX_ZACIAN,
     NATIONAL_DEX_ZAMAZENTA,
@@ -1086,6 +1088,7 @@ const u16 gPokedexOrder_Alphabetical[] =
     NATIONAL_DEX_ZUBAT,
     NATIONAL_DEX_ZWEILOUS,
     NATIONAL_DEX_ZYGARDE,
+    NATIONAL_DEX_ZYGARDE_V,
 };
 
 const u16 gPokedexOrder_Weight[] =
@@ -2699,6 +2702,8 @@ const u16 gPokedexOrder_Weight[] =
     NATIONAL_DEX_DRUDDIGON,
     // 139.1 kg
     NATIONAL_DEX_HO_OH_V,
+    // 313.3 lbs / 142.1 kg
+    NATIONAL_DEX_YVELTAL_V,
     // 143.3 kg
     NATIONAL_DEX_REGICE_V,
     // 144.2 kg
@@ -2720,6 +2725,7 @@ const u16 gPokedexOrder_Weight[] =
     NATIONAL_DEX_NAGANADEL,
     NATIONAL_DEX_ARCTOZOLT,
     // 331.8 lbs / 150.5 kg
+    NATIONAL_DEX_XERNEAS_V,
     NATIONAL_DEX_GOODRA,
     // 332.0 lbs / 150.6 kg
     NATIONAL_DEX_WALREIN,
@@ -2946,6 +2952,8 @@ const u16 gPokedexOrder_Weight[] =
     NATIONAL_DEX_WAILORD,
     // 881.8 lbs / 400.0 kg
     NATIONAL_DEX_STEELIX,
+    // 408.7 kg
+    NATIONAL_DEX_ZYGARDE_V,
     // 916.2 lbs / 415.6 kg
     //NATIONAL_DEX_EXEGGUTOR_ALOLA,
     // 925.9 lbs / 420.0 kg
@@ -4202,6 +4210,7 @@ const u16 gPokedexOrder_Height[] =
     NATIONAL_DEX_REGIDRAGO,
     NATIONAL_DEX_BAXCALIBUR,
     NATIONAL_DEX_ENTEI_V,
+    NATIONAL_DEX_XERNEAS_V,
     // 7'03" / 2.2m
     //NATIONAL_DEX_PIDGEOT_MEGA,
     NATIONAL_DEX_KANGASKHAN,
@@ -4302,6 +4311,7 @@ const u16 gPokedexOrder_Height[] =
     NATIONAL_DEX_DRAGAPULT,
     NATIONAL_DEX_BASCULEGION,//_MALE,
     //NATIONAL_DEX_BASCULEGION_FEMALE,
+    NATIONAL_DEX_ZYGARDE_V,
     // 10'02" / 3.1m
     //NATIONAL_DEX_ARAQUANID_TOTEM_SIZED,
     NATIONAL_DEX_GIRATINA_V,
@@ -4381,6 +4391,7 @@ const u16 gPokedexOrder_Height[] =
     NATIONAL_DEX_STAKATAKA,
     // 19'00" / 5.8m
     NATIONAL_DEX_YVELTAL,
+    NATIONAL_DEX_YVELTAL_V,
     // 20'04" / 6.2m
     NATIONAL_DEX_MILOTIC,
     //NATIONAL_DEX_PALKIA_ORIGIN,

@@ -778,16 +778,6 @@ static const struct MenuAction MultichoiceList_BerryPlot[] =
     {gText_Exit},
 };
 
-static const struct MenuAction MultichoiceList_MiniLegendRegion[] =
-{
-    {COMPOUND_STRING("KANTO")},
-    {COMPOUND_STRING("JOHTO")},
-    {COMPOUND_STRING("HOENN")},
-    {COMPOUND_STRING("SINNOH")},
-    {COMPOUND_STRING("UNOVA")},
-    {gText_Exit},
-};
-
 static const struct MenuAction MultichoiceList_MiniLegendKanto[] =
 {
     {COMPOUND_STRING("MEWTWO LINE")},
@@ -825,6 +815,12 @@ static const struct MenuAction MultichoiceList_MiniLegendUnova[] =
     {COMPOUND_STRING("SWORDS OF JUSTICE LINE")},
     {COMPOUND_STRING("FORCES OF NATURE LINE")},
     {COMPOUND_STRING("TAO TRIO LINE")},
+    {gText_Exit},
+};
+
+static const struct MenuAction MultichoiceList_MiniLegendKalos[] =
+{
+    {COMPOUND_STRING("AURA TRIO LINE")},
     {gText_Exit},
 };
 
@@ -935,6 +931,14 @@ static const struct MenuAction MultichoiceList_MiniLegendTao[] =
     {COMPOUND_STRING("RESHIRAM-V")},
     {COMPOUND_STRING("ZEKROM-V")},
     {COMPOUND_STRING("KYUREM-V")},
+    {gText_Exit},
+};
+
+static const struct MenuAction MultichoiceList_MiniLegendAura[] =
+{
+    {COMPOUND_STRING("XERNEAS-V")},
+    {COMPOUND_STRING("YVELTAL-V")},
+    {COMPOUND_STRING("ZYGARDE-V")},
     {gText_Exit},
 };
 
@@ -1066,7 +1070,6 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_FALLARBOR_TENT_RULES]       = MULTICHOICE(MultichoiceList_FallarborTentRules),
     [MULTI_TAG_MATCH_TYPE]             = MULTICHOICE(MultichoiceList_TagMatchType),
     [MULTI_BERRY_PLOT]                 = MULTICHOICE(MultichoiceList_BerryPlot),
-    [MULTI_MINI_LEGEND_REGION]         = MULTICHOICE(MultichoiceList_MiniLegendRegion),
     [MULTI_MINI_LEGEND_KANTO]          = MULTICHOICE(MultichoiceList_MiniLegendKanto),
     [MULTI_MINI_LEGEND_JOHTO]          = MULTICHOICE(MultichoiceList_MiniLegendJohto),
     [MULTI_MINI_LEGEND_HOENN]          = MULTICHOICE(MultichoiceList_MiniLegendHoenn),
@@ -1087,6 +1090,8 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_MINI_LEGEND_SWORDS]         = MULTICHOICE(MultichoiceList_MiniLegendSwords),
     [MULTI_MINI_LEGEND_FORCES]         = MULTICHOICE(MultichoiceList_MiniLegendForces),
     [MULTI_MINI_LEGEND_TAO]            = MULTICHOICE(MultichoiceList_MiniLegendTao),
+    [MULTI_MINI_LEGEND_KALOS]          = MULTICHOICE(MultichoiceList_MiniLegendKalos),
+    [MULTI_MINI_LEGEND_AURA]           = MULTICHOICE(MultichoiceList_MiniLegendAura),
 };
 
 const u8 *const gStdStrings[] =

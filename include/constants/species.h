@@ -1699,8 +1699,11 @@
 #define SPECIES_RESHIRAM_V                              1582
 #define SPECIES_ZEKROM_V                                1583
 #define SPECIES_KYUREM_V                                1584
+#define SPECIES_XERNEAS_V                               1585
+#define SPECIES_YVELTAL_V                               1586
+#define SPECIES_ZYGARDE_V                               1587
 
-#define SPECIES_EGG                                     (SPECIES_KYUREM_V + 1)
+#define SPECIES_EGG                                     (SPECIES_ZYGARDE_V + 1)
 
 #define NUM_SPECIES SPECIES_EGG
 

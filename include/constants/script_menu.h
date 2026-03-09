@@ -123,27 +123,31 @@
 #define MULTI_FALLARBOR_TENT_RULES         112
 #define MULTI_TAG_MATCH_TYPE               113
 #define MULTI_BERRY_PLOT                   114
-#define MULTI_MINI_LEGEND_REGION           115
-#define MULTI_MINI_LEGEND_KANTO            116
-#define MULTI_MINI_LEGEND_JOHTO            117
-#define MULTI_MINI_LEGEND_HOENN            118
-#define MULTI_MINI_LEGEND_MEWTWO           119
-#define MULTI_MINI_LEGEND_BIRDS            120
-#define MULTI_MINI_LEGEND_BEASTS           121
-#define MULTI_MINI_LEGEND_TOWER            122
-#define MULTI_MINI_LEGEND_REGI             123
-#define MULTI_MINI_LEGEND_EON              124
-#define MULTI_MINI_LEGEND_WEATHER          125
-#define MULTI_MINI_LEGEND_SINNOH           126
-#define MULTI_MINI_LEGEND_LAKE             127
-#define MULTI_MINI_LEGEND_MYTH             128
-#define MULTI_MINI_LEGEND_HEATRAN          129
-#define MULTI_MINI_LEGEND_REGIGIGAS        130
-#define MULTI_MINI_LEGEND_CRESSELIA        131
-#define MULTI_MINI_LEGEND_UNOVA            132
-#define MULTI_MINI_LEGEND_SWORDS           133
-#define MULTI_MINI_LEGEND_FORCES           134
-#define MULTI_MINI_LEGEND_TAO              135
+#define MULTI_MINI_LEGEND_KANTO            115
+#define MULTI_MINI_LEGEND_JOHTO            116
+#define MULTI_MINI_LEGEND_HOENN            117
+#define MULTI_MINI_LEGEND_SINNOH           118
+#define MULTI_MINI_LEGEND_UNOVA            119
+#define MULTI_MINI_LEGEND_KALOS            120
+#define MULTI_MINI_LEGEND_ALOLA            121
+#define MULTI_MINI_LEGEND_GALAR            122
+#define MULTI_MINI_LEGEND_PALDEA           123
+#define MULTI_MINI_LEGEND_MEWTWO           124
+#define MULTI_MINI_LEGEND_BIRDS            125
+#define MULTI_MINI_LEGEND_BEASTS           126
+#define MULTI_MINI_LEGEND_TOWER            127
+#define MULTI_MINI_LEGEND_REGI             128
+#define MULTI_MINI_LEGEND_EON              129
+#define MULTI_MINI_LEGEND_WEATHER          130
+#define MULTI_MINI_LEGEND_LAKE             131
+#define MULTI_MINI_LEGEND_MYTH             132
+#define MULTI_MINI_LEGEND_HEATRAN          133
+#define MULTI_MINI_LEGEND_REGIGIGAS        134
+#define MULTI_MINI_LEGEND_CRESSELIA        135
+#define MULTI_MINI_LEGEND_SWORDS           136
+#define MULTI_MINI_LEGEND_FORCES           137
+#define MULTI_MINI_LEGEND_TAO              138
+#define MULTI_MINI_LEGEND_AURA             139
 
 // Mini legendary region choices
 #define REGION_CHOICE_KANTO                0
@@ -151,32 +155,34 @@
 #define REGION_CHOICE_HOENN                2
 #define REGION_CHOICE_SINNOH               3
 #define REGION_CHOICE_UNOVA                4
-#define NUM_REGION_CHOICES                 REGION_CHOICE_UNOVA + 1
+#define REGION_CHOICE_KALOS                5
+//#define REGION_CHOICE_ALOLA                6
+//#define REGION_CHOICE_GALAR                7
+//#define REGION_CHOICE_PALDEA               8
+#define NUM_REGION_CHOICES                 REGION_CHOICE_KALOS + 1
 
-// Kanto mini legend choices
+// Category choices
 #define KANTO_CHOICE_MEWTWO                0
 #define KANTO_CHOICE_BIRDS                 1
 
-// Johto mini legend choices
 #define JOHTO_CHOICE_BEASTS                0
 #define JOHTO_CHOICE_TOWER                 1
 
-// Hoenn mini legend choices
 #define HOENN_CHOICE_REGIS                 0
 #define HOENN_CHOICE_EON                   1
 #define HOENN_CHOICE_WEATHER               2
 
-// Sinnoh mini legend choices
 #define SINNOH_CHOICE_LAKE                 0
 #define SINNOH_CHOICE_MYTH                 1
 #define SINNOH_CHOICE_HEATRAN              2
 #define SINNOH_CHOICE_REGIGIGAS            3
 #define SINNOH_CHOICE_CRESSELIA            4
 
-// Unova mini legend choices
 #define UNOVA_CHOICE_SWORDS                0
 #define UNOVA_CHOICE_FORCES                1
 #define UNOVA_CHOICE_TAO                   2
+
+#define KALOS_CHOICE_AURA                  0
 
 // Number of mons each line/category has
 // These categories/names came from:
@@ -196,6 +202,7 @@
 #define NUM_CHOICES_SWORDS                 3
 #define NUM_CHOICES_FORCES                 3
 #define NUM_CHOICES_TAO                    3
+#define NUM_CHOICES_AURA                   3
 
 // Cumulative offsets for the chosen category
 // Used in scripts.pory to use the player's choice to find correct mon chosen
@@ -214,6 +221,7 @@
 #define OFFSET_SWORDS       (OFFSET_CRESSELIA + NUM_CHOICES_CRESSELIA)
 #define OFFSET_FORCES       (OFFSET_SWORDS + NUM_CHOICES_SWORDS)
 #define OFFSET_TAO          (OFFSET_FORCES + NUM_CHOICES_FORCES)
+#define OFFSET_AURA         (OFFSET_TAO + NUM_CHOICES_TAO)
 
 // Lilycove SS Tidal Multichoice Selections
 #define SSTIDAL_SELECTION_SLATEPORT        0
