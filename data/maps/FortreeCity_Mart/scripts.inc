@@ -23,7 +23,6 @@ FortreeCity_Mart_Pokemart:
 	.2byte ITEM_AWAKENING
 	.2byte ITEM_REVIVE
 	.2byte ITEM_SUPER_REPEL
-	.2byte ITEM_LINKING_CORD
 	.2byte ITEM_WOOD_MAIL
 	pokemartlistend
 
