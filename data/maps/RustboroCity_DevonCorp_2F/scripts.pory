@@ -382,21 +382,62 @@ RustboroCity_DevonCorp_2F_Text_WhatToWorkOnNext:
 	.string "environment as an engineer.$"
 `
 
-script RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist {
+movement DrParkerExcited_MoveLeft {
+	walk_left * 2
+	face_down
+	walk_up * 2
+	face_left
+	walk_right
+	face_up
+	walk_down * 2
+	walk_right
+	face_player
+}
+
+movement DrParkerExcited_MoveRight {
+	walk_right * 2
+	face_down
+	walk_up * 2
+	face_left
+	walk_right
+	face_up
+	walk_down * 2
+	walk_left * 3
+	face_player
+}
+
+script RustboroCity_DevonCorp_2F_EventScript_DrParker {
     lockall
-    goto_if_set(FLAG_MET_MINI_LEGENDARY_SCIENTIST, MiniLegendSci_Met)
+    goto_if_set(FLAG_MET_DR_PARKER, Met_DrParker)
+	GetDirectionToFace (VAR_TEMP_0, LOCALID_DR_PARKER, OBJ_EVENT_ID_PLAYER)
 
     msgbox("Come on... so close...")
     faceplayer
     msgbox(format("Oh! I didn't see you there!"))
-    msgbox(format("I'm on the verge of a breakthrough in my research."))
+    msgbox(format("I'm DR. PARKER, a scientist here at DEVON CORPORATION."))
+	// TODO backstory...
+    msgbox(format("I'm on the verge of a breakthrough\nin my research."))
     msgbox(format("All I need is a sample of Unstable DNA..."))
+
 	//checkitem(ITEM_UNSTABLE_DNA, 1)
 	//if (var(VAR_RESULT) == FALSE) {
-		//goto(RustboroCity_DevonCorp_2F_EventScript_MiniLegendSciEnd)
+		//goto(RustboroCity_DevonCorp_2F_EventScript_DrParkerEnd)
 	//}
-	msgbox(format("Wait... you found an Unstable DNA sample?\nThat's incredible!"))
-	msgbox(format("With this, I can stabilize my lab grown prototypes."))
+
+	playse(SE_PIN)
+	applymovement(LOCALID_DR_PARKER, Common_Movement_ExclamationMark)
+	waitmovement(0)
+	msgbox(format("Wait... you found an Unstable DNA sample? That's incredible!"))
+
+	if (var(VAR_TEMP_0) == DIR_EAST) {
+		applymovement(LOCALID_DR_PARKER, DrParkerExcited_MoveLeft)
+	} else {
+		applymovement(LOCALID_DR_PARKER, DrParkerExcited_MoveRight)
+	}
+	waitmovement(0)
+
+	msgbox(format("DR. PARKER: If you are willing to separate with it..."))
+	msgbox(format("I can finally stabilize my lab grown experiments."))
 	msgbox(format("I call them... PROTO-LEGENDS!"))
     msgbox(format("They are breathtaking POKéMON, forged with fragments of legendary power."))
 	msgbox(format("Now, don't expect them to be perfect..."))
@@ -405,19 +446,20 @@ script RustboroCity_DevonCorp_2F_EventScript_MiniLegendaryScientist {
 	msgbox(format("They harness abilities unlike their legendary counterparts."))
 	msgbox(format("And they mutate with unusual frequency!"))
 	msgbox(format("Keep in mind, each prototype belongs to a distinct genetic line."))
-	msgbox(format("Meaning I can only create one POKéMON per lineage."))
+	msgbox(format("Meaning I can only create one\nPOKéMON per lineage."))
 	msgbox(format("This ensures there are no conflicts with their unstable genetics."))
-    setflag(FLAG_MET_MINI_LEGENDARY_SCIENTIST)
-	goto(MiniLegendSci_FirstMet)
+    setflag(FLAG_MET_DR_PARKER)
+	goto(FirstMeet_DrParker)
 
-MiniLegendSci_Met:
+Met_DrParker:
+    faceplayer
 	//checkitem(ITEM_UNSTABLE_DNA, 1)
 	//if (var(VAR_RESULT) == FALSE) {
-		//goto(RustboroCity_DevonCorp_2F_EventScript_MiniLegendSciEnd)
+		//goto(RustboroCity_DevonCorp_2F_EventScript_DrParkerEnd)
 	//}
-	msgbox(format("Is that more Unstable DNA I see?"))
+	msgbox(format("DR. PARKER: Is that Unstable DNA I see?"))
 	msgbox(format("Splendid! My research continues to evolve!"))
-MiniLegendSci_FirstMet:
+FirstMeet_DrParker:
 	msgbox(format("Please, accept a Proto-Legend as a thank you for the DNA sample."))
 	goto(RustboroCity_DevonCorp_2F_EventScript_SelectRegion)
 }
@@ -437,7 +479,7 @@ script RustboroCity_DevonCorp_2F_EventScript_SelectRegion {
         "{COLOR GREEN}EXIT")
 	closemessage
 	if (var(VAR_RESULT) > NUM_REGION_CHOICES - 1) {
-        goto(RustboroCity_DevonCorp_2F_EventScript_MiniLegendSciEnd)
+        goto(RustboroCity_DevonCorp_2F_EventScript_DrParkerEnd)
     }
 
 	message("And which genetic line are you\ninterested in?")
@@ -708,8 +750,10 @@ script RustboroCity_DevonCorp_2F_EventScript_OfferShiny {
 	msgbox(format("Oh, I almost forgot!"))
 	msgbox(format("I could attempt to alter your\nProto-Legend's color scheme."))
 	msgbox(format("But it requires expensive materials.\nIt'll cost you ¥50000."), MSGBOX_YESNO)
+
 	if (var(VAR_RESULT) == YES) {
 		checkmoney(50000)
+
 		if (var(VAR_RESULT) == TRUE) {
 			setvar(VAR_TEMP_2, 1)
 			msgbox(format("Excellent! I'll prepare a special variant for you."))
@@ -719,11 +763,14 @@ script RustboroCity_DevonCorp_2F_EventScript_OfferShiny {
     		releaseall
 			return
 		}
+	} else {
+		msgbox(format("OK, I'll get to work..."))
 	}
+
 	goto(RustboroCity_DevonCorp_2F_EventScript_GiveLegendary)
 }
 
-script RustboroCity_DevonCorp_2F_EventScript_MiniLegendSciEnd {
+script RustboroCity_DevonCorp_2F_EventScript_DrParkerEnd {
     msgbox(format("If you come across any Unstable DNA samples, please come see me!"))
 	setvar(VAR_RESULT, 0)
     releaseall
@@ -1050,21 +1097,30 @@ script RustboroCity_DevonCorp_2F_EventScript_GiveLegendary {
 			break
 		default:
 			// shouldn't get here
-			goto(RustboroCity_DevonCorp_2F_EventScript_MiniLegendSciEnd)
+			goto(RustboroCity_DevonCorp_2F_EventScript_DrParkerEnd)
     }
 
-	// Make shiny if player paid for it
-	if (var(VAR_TEMP_2) == 1) {
-		if (var(VAR_RESULT) != MON_CANT_GIVE) {
+	// Successful give?
+	if (var(VAR_RESULT) != MON_CANT_GIVE) {
+		// Make shiny if player paid for it
+		if (var(VAR_TEMP_2) == 1) {
 			callnative(Script_SetLastGiftMonShiny)
 		}
-	}
 
-    if (var(VAR_RESULT) == MON_GIVEN_TO_PARTY) {
+		// flash screen and do cry
+		playmoncry(VAR_TEMP_TRANSFERRED_SPECIES, CRY_MODE_ENCOUNTER)
+		fadescreenspeed(FADE_TO_BLACK, 1)
+		msgbox(format("{STR_VAR_1} materialized from the unstable DNA!"))
+		fadescreenspeed(FADE_FROM_BLACK, 1)
+		waitmoncry
+
         playfanfare(MUS_OBTAIN_ITEM)
         message(format("{PLAYER} received {STR_VAR_1}!"))
         waitmessage
         waitfanfare
+	}
+
+    if (var(VAR_RESULT) == MON_GIVEN_TO_PARTY) {
         msgbox(gText_NicknameThisPokemon, MSGBOX_YESNO)
         if (var(VAR_RESULT) == YES) {
             call(Common_EventScript_GetGiftMonPartySlot)
@@ -1072,10 +1128,6 @@ script RustboroCity_DevonCorp_2F_EventScript_GiveLegendary {
         }
         closemessage
     } elif (var(VAR_RESULT) == MON_GIVEN_TO_PC) {
-        playfanfare(MUS_OBTAIN_ITEM)
-        message(format("{PLAYER} received {STR_VAR_1}!"))
-        waitmessage
-        waitfanfare
         call(Common_EventScript_TransferredToPC)
         msgbox(gText_NicknameThisPokemon, MSGBOX_YESNO)
         if (var(VAR_RESULT) == YES) {
@@ -1090,8 +1142,10 @@ script RustboroCity_DevonCorp_2F_EventScript_GiveLegendary {
 	if (var(VAR_TEMP_2) == 1) {
 		removemoney(50000)
 	}
+
 	// TODO: take Unstable DNA from player
-    msgbox(format("Enjoy your new Proto-Legend!"))
+
+    msgbox(format("DR. PARKER: Enjoy your new Proto-Legend!"))
     setvar(VAR_RESULT, 0)
     releaseall
 }
