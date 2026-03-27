@@ -1704,6 +1704,8 @@
 #define SPECIES_ZYGARDE_V                               1587
 
 #define SPECIES_EGG                                     (SPECIES_ZYGARDE_V + 1)
+#define SPECIES_PROTO_LEGEND_START                      SPECIES_MEWTWO_V
+#define SPECIES_PROTO_LEGEND_END                        SPECIES_ZYGARDE_V_50
 
 #define NUM_SPECIES SPECIES_EGG
 

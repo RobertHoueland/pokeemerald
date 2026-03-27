@@ -5930,6 +5930,7 @@ static void TryMutationAfterLevelUp(u8 taskId)
         struct Pokemon *mon = &gPlayerParty[gPartyMenu.slotId];
         u8 totalMutations = GetMonTotalMutations(mon);
         u16 item = GetMonData(mon, MON_DATA_HELD_ITEM);
+        u16 species = GetMonData(mon, MON_DATA_SPECIES);
 
         if (totalMutations < MAX_MUTATIONS && item != ITEM_GENE_LOCK)
         {
@@ -5941,17 +5942,25 @@ static void TryMutationAfterLevelUp(u8 taskId)
                 chance += 2;
             }
 
-            // catch up mechanic
-            u8 level = GetMonData(mon, MON_DATA_LEVEL);
-            u8 numMutations = GetMonTotalMutations(mon);
-            u8 expected = level / 4;
-            u8 deficit = expected - numMutations;
-            if (deficit >= 4)
-                // 4 or more mutations behind expected
+            if (species >= SPECIES_PROTO_LEGEND_START && species <= SPECIES_PROTO_LEGEND_END) {
+                // Proto legends have a higher mutation chance
                 chance += 2;
-            else if (deficit >=2)
-                // only 2 or 3 mutations behind expected
-                chance += 1;
+            } else {
+                // Catch up mechanic, proto legends are exempt
+                u8 level = GetMonData(mon, MON_DATA_LEVEL);
+                u8 numMutations = GetMonTotalMutations(mon);
+                u8 expected = level / 4;
+                u8 deficit = expected - numMutations;
+                
+                if (deficit >= 4) {
+                    // 4 or more mutations behind expected
+                    chance += 2;
+                }
+                else if (deficit >=2) {
+                    // only 2 or 3 mutations behind expected
+                    chance += 1;
+                }
+            }
 
             if (Random32() % denominator <= min(chance, 8))
             {

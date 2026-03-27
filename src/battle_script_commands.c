@@ -18054,16 +18054,37 @@ void BS_JumpIfGenConfigLowerThan(void)
 
 u8 CalculateMutationChances(struct Pokemon *mon, u8 hasMutShard)
 {
-    u8 chance = 2;
+    u16 species = GetMonData(mon, MON_DATA_SPECIES);
+    u8 chance = 2;  // default 25% chance
 
     if (hasMutShard)
     {
         chance += 2;
     }
 
+    if (species >= SPECIES_PROTO_LEGEND_START && species <= SPECIES_PROTO_LEGEND_END) {
+        // Proto legends have a higher mutation chance
+        chance += 2;
+    } else {
+        // Catch up mechanic, proto legends are exempt
+        u8 level = GetMonData(mon, MON_DATA_LEVEL);
+        u8 numMutations = GetMonTotalMutations(mon);
+        u8 expected = level / 4;
+        u8 deficit = expected - numMutations;
+
+        if (deficit >= 4) {
+            // 4 or more mutations behind expected
+            chance += 2;
+        }
+        else if (deficit >=2) {
+            // only 2 or 3 mutations behind expected
+            chance += 1;
+        }
+    }
+
     enum TrainerClassID trainerClass;
     trainerClass = GetTrainerClassFromId(TRAINER_BATTLE_PARAM.opponentA);
-    // higher chance for fighting these opponents
+    // Higher chance for fighting these opponents
     if (trainerClass == TRAINER_CLASS_TEAM_AQUA ||
         trainerClass == TRAINER_CLASS_TEAM_MAGMA ||
         trainerClass == TRAINER_CLASS_AQUA_ADMIN ||
@@ -18083,18 +18104,6 @@ u8 CalculateMutationChances(struct Pokemon *mon, u8 hasMutShard)
     {
         chance += 3;
     }
-
-    // catch up mechanic
-    u8 level = GetMonData(mon, MON_DATA_LEVEL);
-    u8 numMutations = GetMonTotalMutations(mon);
-    u8 expected = level / 4;
-    u8 deficit = expected - numMutations;
-    if (deficit >= 4)
-        // 4 or more mutations behind expected
-        chance += 2;
-    else if (deficit >=2)
-        // only 2 or 3 mutations behind expected
-        chance += 1;
 
     return chance;
 }
