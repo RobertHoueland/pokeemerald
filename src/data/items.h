@@ -15111,6 +15111,23 @@ const struct Item gItemsInfo[] =
         .iconPic = gItemIcon_AuxBottle,
         .iconPalette = gItemIconPalette_AuxEvasion,
     },
+
+    [ITEM_UNSTABLE_DNA] =
+    {
+        .name = ITEM_NAME("Unstable DNA"),
+        .pluralName = ITEM_PLURAL_NAME("Unstable DNA"),
+        .price = 0,
+        .importance = 1,
+        .description = COMPOUND_STRING(
+        "A volatile sample\n"
+        "of DNA with highly\n"
+        "reactive traits."),
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_StellarTeraShard,
+        .iconPalette = gItemIconPalette_StellarTeraShard,
+    },
 };
 
 #undef ITEM_NAME
