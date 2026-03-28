@@ -1270,11 +1270,11 @@ RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_129:
 
 RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_32:
 # 669 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	bufferspeciesname STR_VAR_1, SPECIES_TORNADUS_V
+	bufferspeciesname STR_VAR_1, SPECIES_TORNADUS_V_INCARNATE
 # 670 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_TORNADUS_V
+	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_TORNADUS_V_INCARNATE
 # 671 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	givemon SPECIES_TORNADUS_V, 5, ITEM_NONE, ITEM_BEAST_BALL
+	givemon SPECIES_TORNADUS_V_INCARNATE, 5, ITEM_NONE, ITEM_BEAST_BALL
 # 672 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	compare VAR_RESULT, MON_CANT_GIVE
 	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_133
@@ -1283,11 +1283,11 @@ RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_132:
 
 RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_33:
 # 677 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	bufferspeciesname STR_VAR_1, SPECIES_THUNDURUS_V
+	bufferspeciesname STR_VAR_1, SPECIES_THUNDURUS_V_INCARNATE
 # 678 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_THUNDURUS_V
+	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_THUNDURUS_V_INCARNATE
 # 679 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	givemon SPECIES_THUNDURUS_V, 5, ITEM_NONE, ITEM_BEAST_BALL
+	givemon SPECIES_THUNDURUS_V_INCARNATE, 5, ITEM_NONE, ITEM_BEAST_BALL
 # 680 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	compare VAR_RESULT, MON_CANT_GIVE
 	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_136
@@ -1296,11 +1296,11 @@ RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_135:
 
 RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_34:
 # 685 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	bufferspeciesname STR_VAR_1, SPECIES_LANDORUS_V
+	bufferspeciesname STR_VAR_1, SPECIES_LANDORUS_V_INCARNATE
 # 686 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_LANDORUS_V
+	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_LANDORUS_V_INCARNATE
 # 687 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	givemon SPECIES_LANDORUS_V, 5, ITEM_NONE, ITEM_BEAST_BALL
+	givemon SPECIES_LANDORUS_V_INCARNATE, 5, ITEM_NONE, ITEM_BEAST_BALL
 # 688 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	compare VAR_RESULT, MON_CANT_GIVE
 	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_139
@@ -1348,11 +1348,11 @@ RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_147:
 
 RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_38:
 # 717 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	bufferspeciesname STR_VAR_1, SPECIES_XERNEAS_V
+	bufferspeciesname STR_VAR_1, SPECIES_XERNEAS_V_NEUTRAL
 # 718 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_XERNEAS_V
+	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_XERNEAS_V_NEUTRAL
 # 719 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	givemon SPECIES_XERNEAS_V, 5, ITEM_NONE, ITEM_BEAST_BALL
+	givemon SPECIES_XERNEAS_V_NEUTRAL, 5, ITEM_NONE, ITEM_BEAST_BALL
 # 720 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	compare VAR_RESULT, MON_CANT_GIVE
 	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_151

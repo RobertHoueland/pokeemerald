@@ -175,11 +175,11 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .iconPalIndex = 1,
     },
 
-    // TODO: Descriptions
-
+    //
     // Mini legendaries had their stats lowered to 475 BST
     // Each stat was lowered by a percentage to achieve this
     // Sizes and weights were lowered by the same percentage
+    //
 
     [SPECIES_MEWTWO_V] =
     {
@@ -1559,10 +1559,10 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .height = 2,    // was 3
         .weight = 2,    // was 3
         .description = COMPOUND_STRING(
-            "A Pokémon that was created by genetic\n"
-            "manipulation. Though it exists as a\n"
-            "proto-type, it still carries the mystical\n"
-            "knowledge of its ancestral form."),
+            "Known as ”The Being of Knowledge,”\n"
+            "according to some sources, this Pokémon\n"
+            "provided people with the intelligence\n"
+            "necessary to solve various problems."),
         .pokemonScale = 625,  // was 530
         .pokemonOffset = 13,
         .trainerScale = 256,
@@ -1637,10 +1637,10 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .height = 2,    // was 3
         .weight = 2,    // was 3
         .description = COMPOUND_STRING(
-            "A Pokémon that was created by genetic\n"
-            "manipulation. Though it exists as a\n"
-            "proto-type, it still possesses the\n"
-            "emotional essence of its ancestral form."),
+            "Although it slumbers at the bottom of a\n"
+            "lake, its spirit is said to leave its body\n"
+            "and flitter on the water surface. It\n"
+            "taught humans of sorrow, pain, and joy."),
         .pokemonScale = 625,  // was 530
         .pokemonOffset = 13,
         .trainerScale = 256,
@@ -1719,10 +1719,10 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .height = 2,    // was 3
         .weight = 2,    // was 3
         .description = COMPOUND_STRING(
-            "A Pokémon that was created by genetic\n"
-            "manipulation. Though it exists as a\n"
-            "proto-type, it still carries the\n"
-            "determination of its ancestral form."),
+            "This Pokémon is said to have endowed\n"
+            "humans with the determination needed to\n"
+            "do things. It is thought that Uxie, Mesprit\n"
+            "and Azelf all came from the same egg."),
         .pokemonScale = 625,  // was 530
         .pokemonOffset = 12,  // was 13
         .trainerScale = 256,
@@ -1795,10 +1795,10 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .height = 38,   // was 54
         .weight = 4771, // was 6830
         .description = COMPOUND_STRING(
-            "A Pokémon that was created by genetic\n"
-            "manipulation. Though it exists as a\n"
-            "proto-type, the power of time still\n"
-            "flows within its ancient form."),
+            "A Pokémon spoken of in legend.\n"
+            "It completely controls the flow of time.\n"
+            "It uses its power to travel at will\n"
+            "through the past and future."),
         .pokemonScale = 333,  // was 256
         .pokemonOffset = 6,   // was 0
         .trainerScale = 721,
@@ -1869,10 +1869,10 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .height = 29,   // was 42
         .weight = 2347, // was 3360
         .description = COMPOUND_STRING(
-            "A Pokémon that was created by genetic\n"
-            "manipulation. Though it exists as a\n"
-            "proto-type, it retains an innate hold\n"
-            "over the fabric of space."),
+            "Palkia has the ability to distort space.\n"
+            "Its total control over the boundaries of\n"
+            "space enable it to transport itself to\n"
+            "faraway places and other dimensions."),
         .pokemonScale = 333,  // was 256
         .pokemonOffset = 4,   // was 0
         .trainerScale = 650,
@@ -1943,10 +1943,10 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .height = 31,   // was 45
         .weight = 5239, // was 7500
         .description = COMPOUND_STRING(
-            "A Pokémon that was created by genetic\n"
-            "manipulation. Though it exists as a\n"
-            "proto-type, its violent nature and\n"
-            "renegade spirit live on within it."),
+            "This Pokémon is said to live in a world\n"
+            "on the reverse side of ours, where common\n"
+            "knowledge is distorted and strange.\n"
+            "It was banished for its violence."),
         .pokemonScale = 333,  // was 256
         .pokemonOffset = 2,   // was 0
         .trainerScale = 614,
@@ -2018,10 +2018,10 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .height = 13,   // was 17
         .weight = 3404, // was 4300
         .description = COMPOUND_STRING(
-            "A Pokemon that was created by genetic\n"
-            "manipulation. Though it exists as a\n"
-            "proto-type, molten energy still surges\n"
-            "through its armored body."),
+            "Boiling blood, like magma, circulates\n"
+            "through its body. It dwells in volcanic\n"
+            "caves, using its cross-shaped feet\n"
+            "to crawl on ceilings and walls."),
         .pokemonScale = 313,  // was 259
         .pokemonOffset = 8,   // was 0  
         .trainerScale = 290,
@@ -2093,10 +2093,10 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .height = 26,   // was 37
         .weight = 2978, // was 4200
         .description = COMPOUND_STRING(
-            "A Pokemon that was created by genetic\n"
-            "manipulation. Though it exists as a\n"
-            "proto-type, traces of colossal strength\n"
-            "remain in its ancient frame."),
+            "There is an enduring legend that\n"
+            "states this Pokémon shaped Regirock,\n"
+            "Regice, and Registeel out of clay, ice,\n"
+            "and magma."),
         .pokemonScale = 330,  // was 256
         .pokemonOffset = 2,
         .trainerScale = 4610,
@@ -2167,10 +2167,10 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .height = 12,  // was 15
         .weight = 678, // was 856
         .description = COMPOUND_STRING(
-            "A Pokemon that was created by genetic\n"
-            "manipulation. Though it exists as a\n"
-            "proto-type, it still carries the calm\n"
-            "aura of moonlight and dreams."),
+            "Those who sleep holding one of\n"
+            "Cresselia's feathers are assured of\n"
+            "joyful dreams. It is said to represent\n"
+            "the crescent moon."),
         .pokemonScale = 324,  // was 268
         .pokemonOffset = 2,
         .trainerScale = 271,
@@ -2224,13 +2224,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .baseSpDefense = 59,   // was 72
         .types = MON_TYPES(TYPE_STEEL, TYPE_FIGHTING),
         .catchRate = 3,
-    #if P_UPDATED_EXP_YIELDS >= GEN_8
-        .expYield = 290,
-    #elif P_UPDATED_EXP_YIELDS >= GEN_5
-        .expYield = 261,
-    #else
-        .expYield = 210,
-    #endif
+        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_8) ? 290 : 261,
         .evYield_Defense = 3,
         .genderRatio = MON_GENDERLESS,
         .eggCycles = 80,
@@ -2246,10 +2240,10 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .height = 17,   // was 21
         .weight = 2050, // was 2500
         .description = COMPOUND_STRING(
-            "A Pokemon that was created by genetic\n"
-            "manipulation. Though it exists as a\n"
-            "proto-type, its steadfast spirit and\n"
-            "iron will still endure."),
+            "It has a body and heart of steel. This\n"
+            "legendary Pokémon battled against humans\n"
+            "to protect Pokémon. Its personality\n"
+            "is calm and composed."),
         .pokemonScale = 302,  // was 256
         .pokemonOffset = 2,   // was 0
         .trainerScale = 365,
@@ -2299,13 +2293,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .baseSpDefense = 74,   // was 90
         .types = MON_TYPES(TYPE_ROCK, TYPE_FIGHTING),
         .catchRate = 3,
-    #if P_UPDATED_EXP_YIELDS >= GEN_8
-        .expYield = 290,
-    #elif P_UPDATED_EXP_YIELDS >= GEN_5
-        .expYield = 261,
-    #else
-        .expYield = 210,
-    #endif
+        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_8) ? 290 : 261,
         .evYield_Attack = 3,
         .genderRatio = MON_GENDERLESS,
         .eggCycles = 80,
@@ -2321,10 +2309,10 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .height = 16,   // was 19
         .weight = 2132, // was 2600
         .description = COMPOUND_STRING(
-            "A Pokemon that was created by genetic\n"
-            "manipulation. Though it exists as a\n"
-            "proto-type, its rock-solid body still\n"
-            "holds tremendous defensive might."),
+            "Spoken of in legend, this Pokémon used\n"
+            "its phenomenal power to destroy a castle\n"
+            "in its effort to protect Pokémon that had\n"
+            "lost their homes in a war among humans."),
         .pokemonScale = 302,  // was 256
         .pokemonOffset = 5,   // was 1
         .trainerScale = 336,
@@ -2378,13 +2366,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .baseSpDefense = 106,  // was 129
         .types = MON_TYPES(TYPE_GRASS, TYPE_FIGHTING),
         .catchRate = 3,
-    #if P_UPDATED_EXP_YIELDS >= GEN_8
-        .expYield = 290,
-    #elif P_UPDATED_EXP_YIELDS >= GEN_5
-        .expYield = 261,
-    #else
-        .expYield = 210,
-    #endif
+        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_8) ? 290 : 261,
         .evYield_SpDefense = 3,
         .genderRatio = MON_GENDERLESS,
         .eggCycles = 80,
@@ -2400,10 +2382,10 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .height = 16,   // was 20
         .weight = 1640, // was 2000
         .description = COMPOUND_STRING(
-            "A Pokemon that was created by genetic\n"
-            "manipulation. Though it exists as a\n"
-            "proto-type, it still moves with the\n"
-            "grace of a bladed whirlwind."),
+            "Its head sprouts horns as sharp as blades.\n"
+            "Legends say this Pokémon used\n"
+            "whirlwind-like movements to confound\n"
+            "and swiftly cut its opponents."),
         .pokemonScale = 308,  // was 261
         .pokemonOffset = 3,   // was 1
         .trainerScale = 344,
@@ -2441,7 +2423,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .teachableLearnset = sVirizionTeachableLearnset,
     },
 
-    [SPECIES_TORNADUS_V] =
+    [SPECIES_TORNADUS_V_INCARNATE] =
     {
         // BST was 580, lowered by ~18%
         .baseHP        = 65,   // was 79
@@ -2452,13 +2434,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .baseSpDefense = 66,   // was 80
         .types = MON_TYPES(TYPE_FLYING),
         .catchRate = 3,
-    #if P_UPDATED_EXP_YIELDS >= GEN_8
-        .expYield = 290,
-    #elif P_UPDATED_EXP_YIELDS >= GEN_5
-        .expYield = 261,
-    #else
-        .expYield = 210,
-    #endif
+        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_8) ? 290 : 261,
         .evYield_Attack = 3,
         .genderRatio = MON_MALE,
         .eggCycles = 120,
@@ -2472,14 +2448,14 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .natDexNum = NATIONAL_DEX_TORNADUS_V,
         .categoryName = _("Cyclone"),
         .height = 12,  // was 15
-        .weight = 517, // was 630
+        .weight = 424, // was 630
         .description = COMPOUND_STRING(
-            "A Pokemon that was created by genetic\n"
-            "manipulation. Though it exists as a\n"
-            "proto-type, fierce gales still gather\n"
-            "in the wake of its flight."),
+            "Tornadus expels massive energy from\n"
+            "its tail, causing severe storms.\n"
+            "Its power can blow entire houses away.\n"
+            "It zooms through the sky at 200 mph."),
         .pokemonScale = 316,  // was 268
-        .pokemonOffset = 4,   // was 2
+        .pokemonOffset = 2,
         .trainerScale = 271,
         .trainerOffset = 0,
         .frontPic = gMonFrontPic_TornadusIncarnate,
@@ -2534,9 +2510,84 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .isFrontierBanned = FALSE,
         .levelUpLearnset = sTornadusLevelUpLearnset,
         .teachableLearnset = sTornadusTeachableLearnset,
+        .formSpeciesIdTable = sTornadusVFormSpeciesIdTable,
+        .formChangeTable = sTornadusVFormChangeTable,
     },
 
-    [SPECIES_THUNDURUS_V] =
+    [SPECIES_TORNADUS_V_THERIAN] =
+    {
+        // BST was 580, lowered by ~18%
+        .baseHP        = 65,   // was 79
+        .baseAttack    = 82,   // was 100
+        .baseDefense   = 65,   // was 80
+        .baseSpeed     = 99,   // was 121
+        .baseSpAttack  = 90,  // was 110
+        .baseSpDefense = 74,   // was 90
+        .types = MON_TYPES(TYPE_FLYING),
+        .catchRate = 3,
+        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_8) ? 290 : 261,
+        .evYield_Attack = 3,
+        .genderRatio = MON_MALE,
+        .eggCycles = 120,
+        .friendship = 90,
+        .growthRate = GROWTH_SLOW,
+        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
+        .abilities = { ABILITY_REGENERATOR, ABILITY_NONE, ABILITY_REGENERATOR },
+        .bodyColor = BODY_COLOR_GREEN,
+        .speciesName = _("Tornadus-V"),
+        .cryId = CRY_TORNADUS_THERIAN,
+        .natDexNum = NATIONAL_DEX_TORNADUS_V,
+        .categoryName = _("Cyclone"),
+        .height = 12,  // was 14
+        .weight = 517, // was 630
+        .description = COMPOUND_STRING(
+            "An example of what is known as a\n"
+            "“form change”. Tornadus has been\n"
+            "sighted crossing the ocean while in this\n"
+            "form."),
+        .pokemonScale = 316,  // was 268
+        .pokemonOffset = 2,
+        .trainerScale = 271,
+        .trainerOffset = 0,
+        .frontPic = gMonFrontPic_TornadusTherian,
+        .frontPicSize = MON_COORDS_SIZE(64, 64),
+        .frontPicYOffset = 1,
+        .frontAnimFrames = ANIM_FRAMES(
+            ANIMCMD_FRAME(0, 5),
+            ANIMCMD_FRAME(1, 10),
+            ANIMCMD_FRAME(0, 10),
+            ANIMCMD_FRAME(1, 35),
+            ANIMCMD_FRAME(0, 5),
+        ),
+        .frontAnimId = ANIM_V_STRETCH,
+        .backPic = gMonBackPic_TornadusTherian,
+        .backPicSize = MON_COORDS_SIZE(56, 64),
+        .backPicYOffset = 0,
+        .backAnimId = BACK_ANIM_SHRINK_GROW_VIBRATE,
+        .palette = gMonPalette_TornadusTherian,
+        .shinyPalette = gMonShinyPalette_TornadusTherian,
+        .iconSprite = gMonIcon_TornadusTherian,
+        .iconPalIndex = 1,
+        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
+        SHADOW(-5, 12, SHADOW_SIZE_L)
+        FOOTPRINT(Tornadus)
+        OVERWORLD(
+            sPicTable_TornadusTherian,
+            SIZE_64x64,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            sAnimTable_Following,
+            gOverworldPalette_TornadusTherian,
+            gShinyOverworldPalette_TornadusTherian
+        )
+        .isFrontierBanned = FALSE,
+        .levelUpLearnset = sTornadusLevelUpLearnset,
+        .teachableLearnset = sTornadusTeachableLearnset,
+        .formSpeciesIdTable = sTornadusVFormSpeciesIdTable,
+        .formChangeTable = sTornadusVFormChangeTable,
+    },
+
+    [SPECIES_THUNDURUS_V_INCARNATE] =
     {
         // BST was 580, lowered by ~18%
         .baseHP        = 65,   // was 79
@@ -2547,13 +2598,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .baseSpDefense = 66,   // was 80
         .types = MON_TYPES(TYPE_ELECTRIC, TYPE_FLYING),
         .catchRate = 3,
-    #if P_UPDATED_EXP_YIELDS >= GEN_8
-        .expYield = 290,
-    #elif P_UPDATED_EXP_YIELDS >= GEN_5
-        .expYield = 261,
-    #else
-        .expYield = 210,
-    #endif
+        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_8) ? 290 : 261,
         .evYield_Attack = 3,
         .genderRatio = MON_MALE,
         .eggCycles = 120,
@@ -2569,12 +2614,12 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .height = 12,  // was 15
         .weight = 500, // was 610
         .description = COMPOUND_STRING(
-            "A Pokemon that was created by genetic\n"
-            "manipulation. Though it exists as a\n"
-            "proto-type, violent thunder still\n"
-            "surges from its tail."),
+            "The spikes on its tail discharge immense\n"
+            "bolts of lightning. Countless charred\n"
+            "remains mar the landscape of places\n"
+            "through which Thundurus has passed."),
         .pokemonScale = 316,  // was 268
-        .pokemonOffset = 4,   // was 2
+        .pokemonOffset = 2,
         .trainerScale = 271,
         .trainerOffset = 0,
         .frontPic = gMonFrontPic_ThundurusIncarnate,
@@ -2629,9 +2674,96 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .isFrontierBanned = FALSE,
         .levelUpLearnset = sThundurusLevelUpLearnset,
         .teachableLearnset = sThundurusTeachableLearnset,
+        .formSpeciesIdTable = sThundurusVFormSpeciesIdTable,
+        .formChangeTable = sThundurusVFormChangeTable,
     },
 
-    [SPECIES_LANDORUS_V] =
+    [SPECIES_THUNDURUS_V_THERIAN] =
+    {
+        // BST was 580, lowered by ~18%
+        .baseHP        = 65,   // was 79
+        .baseAttack    = 86,   // was 105
+        .baseDefense   = 57,   // was 70
+        .baseSpeed     = 82,   // was 101
+        .baseSpAttack  = 119,  // was 145
+        .baseSpDefense = 66,   // was 80
+        .types = MON_TYPES(TYPE_ELECTRIC, TYPE_FLYING),
+        .catchRate = 3,
+        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_8) ? 290 : 261,
+        .evYield_SpAttack = 3,
+        .genderRatio = MON_MALE,
+        .eggCycles = 120,
+        .friendship = 90,
+        .growthRate = GROWTH_SLOW,
+        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
+        .abilities = { ABILITY_VOLT_ABSORB, ABILITY_NONE, ABILITY_VOLT_ABSORB },
+        .bodyColor = BODY_COLOR_BLUE,
+        .speciesName = _("Thundurus-V"),
+        .cryId = CRY_THUNDURUS_THERIAN,
+        .natDexNum = NATIONAL_DEX_THUNDURUS_V,
+        .categoryName = _("Bolt Strike"),
+        .height = 25,  // was 30
+        .weight = 500, // was 610
+        .description = COMPOUND_STRING(
+            "It pulverizes foes into nothingness\n"
+            "with showers of devastatingly\n"
+            "powerful lightning bolts launched\n"
+            "from the string of orbs on its tail."),
+        .pokemonScale = 316,  // was 268
+        .pokemonOffset = 2,
+        .trainerScale = 271,
+        .trainerOffset = 0,
+        .frontPic = gMonFrontPic_ThundurusTherian,
+        .frontPicSize = MON_COORDS_SIZE(64, 64),
+        .frontPicYOffset = 2,
+        .frontAnimFrames = ANIM_FRAMES(
+            ANIMCMD_FRAME(0, 5),
+            ANIMCMD_FRAME(1, 5),
+            ANIMCMD_FRAME(0, 5),
+            ANIMCMD_FRAME(1, 5),
+            ANIMCMD_FRAME(0, 5),
+            ANIMCMD_FRAME(1, 5),
+            ANIMCMD_FRAME(0, 5),
+            ANIMCMD_FRAME(1, 5),
+            ANIMCMD_FRAME(0, 5),
+            ANIMCMD_FRAME(1, 5),
+            ANIMCMD_FRAME(0, 20),
+            ANIMCMD_FRAME(0, 5),
+            ANIMCMD_FRAME(1, 5),
+            ANIMCMD_FRAME(0, 5),
+            ANIMCMD_FRAME(1, 5),
+            ANIMCMD_FRAME(0, 5),
+        ),
+        .frontAnimId = ANIM_RISING_WOBBLE,
+        .enemyMonElevation = 7,
+        .backPic = gMonBackPic_ThundurusTherian,
+        .backPicSize = MON_COORDS_SIZE(64, 64),
+        .backPicYOffset = 5,
+        .backAnimId = BACK_ANIM_SHAKE_FLASH_YELLOW,
+        .palette = gMonPalette_ThundurusTherian,
+        .shinyPalette = gMonShinyPalette_ThundurusTherian,
+        .iconSprite = gMonIcon_ThundurusTherian,
+        .iconPalIndex = 0,
+        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
+        SHADOW(5, 16, SHADOW_SIZE_M)
+        FOOTPRINT(Thundurus)
+        OVERWORLD(
+            sPicTable_ThundurusTherian,
+            SIZE_64x64,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            sAnimTable_Following,
+            gOverworldPalette_ThundurusTherian,
+            gShinyOverworldPalette_ThundurusTherian
+        )
+        .isFrontierBanned = FALSE,
+        .levelUpLearnset = sThundurusLevelUpLearnset,
+        .teachableLearnset = sThundurusTeachableLearnset,
+        .formSpeciesIdTable = sThundurusVFormSpeciesIdTable,
+        .formChangeTable = sThundurusVFormChangeTable,
+    },
+
+    [SPECIES_LANDORUS_V_INCARNATE] =
     {
         // BST was 600, lowered by ~21%
         .baseHP        = 70,  // was 89
@@ -2642,13 +2774,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .baseSpDefense = 63,  // was 80
         .types = MON_TYPES(TYPE_GROUND, TYPE_FLYING),
         .catchRate = 3,
-    #if P_UPDATED_EXP_YIELDS >= GEN_8
-        .expYield = 300,
-    #elif P_UPDATED_EXP_YIELDS >= GEN_5
-        .expYield = 270,
-    #else
-        .expYield = 220,
-    #endif
+        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_8) ? 300 : 270,
         .evYield_SpAttack = 3,
         .genderRatio = MON_MALE,
         .eggCycles = 120,
@@ -2664,12 +2790,12 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .height = 12,  // was 15
         .weight = 537, // was 680
         .description = COMPOUND_STRING(
-            "A Pokemon that was created by genetic\n"
-            "manipulation. Though it exists as a\n"
-            "proto-type, fertile winds still follow\n"
-            "wherever it takes flight."),
-        .pokemonScale = 324,  // was 268
-        .pokemonOffset = 4,   // was 2
+            "The energy that comes pouring from its\n"
+            "tail increases the nutrition in the soil,\n"
+            "granting bountiful crops. It has been\n"
+            "hailed as “The Guardian of the Fields.”"),
+        .pokemonScale = 316,  // was 268
+        .pokemonOffset = 2,
         .trainerScale = 271,
         .trainerOffset = 0,
         .frontPic = gMonFrontPic_LandorusIncarnate,
@@ -2724,6 +2850,81 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .isFrontierBanned = FALSE,
         .levelUpLearnset = sLandorusLevelUpLearnset,
         .teachableLearnset = sLandorusTeachableLearnset,
+        .formSpeciesIdTable = sLandorusVFormSpeciesIdTable,
+        .formChangeTable = sLandorusVFormChangeTable,
+    },
+    
+    [SPECIES_LANDORUS_V_THERIAN] =
+    {
+        // BST was 600, lowered by ~21%
+        .baseHP        = 71,   // was 89
+        .baseAttack    = 115,  // was 145
+        .baseDefense   = 71,   // was 90
+        .baseSpeed     = 72,   // was 91
+        .baseSpAttack  = 83,   // was 105
+        .baseSpDefense = 63,   // was 80
+        .types = MON_TYPES(TYPE_GROUND, TYPE_FLYING),
+        .catchRate = 3,
+        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_8) ? 300 : 270,
+        .evYield_Attack = 3,
+        .genderRatio = MON_MALE,
+        .eggCycles = 120,
+        .friendship = 90,
+        .growthRate = GROWTH_SLOW,
+        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
+        .abilities = { ABILITY_INTIMIDATE, ABILITY_NONE, ABILITY_NONE },
+        .bodyColor = BODY_COLOR_BROWN,
+        .speciesName = _("Landorus-V"),
+        .cryId = CRY_LANDORUS_THERIAN,
+        .natDexNum = NATIONAL_DEX_LANDORUS_V,
+        .categoryName = _("Abundance"),
+        .height = 10,  // was 13
+        .weight = 537, // was 680
+        .description = COMPOUND_STRING(
+            "Landorus soars through the sky in\n"
+            "this form, bestowing plentiful\n"
+            "harvests upon the land and earning the\n"
+            "people's reverence."),
+        .pokemonScale = 324,  // was 268
+        .pokemonOffset = 2,
+        .trainerScale = 271,
+        .trainerOffset = 0,
+        .frontPic = gMonFrontPic_LandorusTherian,
+        .frontPicSize = MON_COORDS_SIZE(64, 64),
+        .frontPicYOffset = 0,
+        .frontAnimFrames = ANIM_FRAMES(
+            ANIMCMD_FRAME(0, 15),
+            ANIMCMD_FRAME(1, 15),
+            ANIMCMD_FRAME(0, 15),
+            ANIMCMD_FRAME(1, 15),
+            ANIMCMD_FRAME(0, 15),
+        ),
+        .frontAnimId = ANIM_CIRCULAR_VIBRATE,
+        .backPic = gMonBackPic_LandorusTherian,
+        .backPicSize = MON_COORDS_SIZE(64, 56),
+        .backPicYOffset = 7,
+        .backAnimId = BACK_ANIM_GROW_STUTTER,
+        .palette = gMonPalette_LandorusTherian,
+        .shinyPalette = gMonShinyPalette_LandorusTherian,
+        .iconSprite = gMonIcon_LandorusTherian,
+        .iconPalIndex = 0,
+        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
+        SHADOW(1, 11, SHADOW_SIZE_L)
+        FOOTPRINT(Landorus)
+        OVERWORLD(
+            sPicTable_LandorusTherian,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            sAnimTable_Following,
+            gOverworldPalette_LandorusTherian,
+            gShinyOverworldPalette_LandorusTherian
+        )
+        .isFrontierBanned = FALSE,
+        .levelUpLearnset = sLandorusLevelUpLearnset,
+        .teachableLearnset = sLandorusTeachableLearnset,
+        .formSpeciesIdTable = sLandorusVFormSpeciesIdTable,
+        .formChangeTable = sLandorusVFormChangeTable,
     },
 
     [SPECIES_RESHIRAM_V] =
@@ -2737,13 +2938,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .baseSpDefense = 84,   // was 120
         .types = MON_TYPES(TYPE_DRAGON, TYPE_FIRE),
         .catchRate = 3,
-    #if P_UPDATED_EXP_YIELDS >= GEN_8
-        .expYield = 340,
-    #elif P_UPDATED_EXP_YIELDS >= GEN_5
-        .expYield = 306,
-    #else
-        .expYield = 220,
-    #endif
+        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_8) ? 340 : 306,
         .evYield_SpAttack = 3,
         .genderRatio = MON_GENDERLESS,
         .eggCycles = 120,
@@ -2759,10 +2954,10 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .height = 22,   // was 32
         .weight = 2310, // was 3300
         .description = COMPOUND_STRING(
-            "A Pokemon that was created by genetic\n"
-            "manipulation. Though it exists as a\n"
-            "proto-type, white-hot flames still\n"
-            "burn in its draconic core."),
+            "This Pokémon appears in legends. It\n"
+            "sends flames into the air from its tail,\n"
+            "burning up everything around it. It helps\n"
+            "those who want to build a world of truth."),
         .pokemonScale = 366,  // was 256
         .pokemonOffset = 5,   // was 0
         .trainerScale = 445,
@@ -2811,13 +3006,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .baseSpDefense = 70,   // was 100
         .types = MON_TYPES(TYPE_DRAGON, TYPE_ELECTRIC),
         .catchRate = 3,
-    #if P_UPDATED_EXP_YIELDS >= GEN_8
-        .expYield = 340,
-    #elif P_UPDATED_EXP_YIELDS >= GEN_5
-        .expYield = 306,
-    #else
-        .expYield = 220,
-    #endif
+        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_8) ? 340 : 306,
         .evYield_Attack = 3,
         .genderRatio = MON_GENDERLESS,
         .eggCycles = 120,
@@ -2833,10 +3022,10 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .height = 20,   // was 29
         .weight = 2415, // was 3450
         .description = COMPOUND_STRING(
-            "A Pokemon that was created by genetic\n"
-            "manipulation. Though it exists as a\n"
-            "proto-type, thunder still crackles\n"
-            "through its internal generator."),
+            "This legendary Pokémon can scorch the\n"
+            "world with lightning. It has a generator\n"
+            "that creates electricity in its tail. It\n"
+            "assists those with strong ideals."),
         .pokemonScale = 393,  // was 275
         .pokemonOffset = 9,  // was 2
         .trainerScale = 412,
@@ -2885,13 +3074,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .baseSpDefense = 63,  // was 90
         .types = MON_TYPES(TYPE_DRAGON, TYPE_ICE),
         .catchRate = 3,
-    #if P_UPDATED_EXP_YIELDS >= GEN_8
-        .expYield = 330,
-    #elif P_UPDATED_EXP_YIELDS >= GEN_5
-        .expYield = 297,
-    #else
-        .expYield = 220,
-    #endif
+        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_8) ? 330 : 297,
         .evYield_HP = 1,
         .evYield_Attack = 1,
         .evYield_SpAttack = 1,
@@ -2910,10 +3093,10 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .height = 21,   // was 30
         .weight = 2275, // was 3250
         .description = COMPOUND_STRING(
-            "A Pokemon that was created by genetic\n"
-            "manipulation. Though it exists as a\n"
-            "proto-type, frigid draconic power still\n"
-            "lingers in its frozen shell."),
+            "This legendary ice Pokémon waits for a\n"
+            "hero to fill in the missing parts of its\n"
+            "body with truth or ideals. Its body became\n"
+            "frozen when its energy leaked out."),
         .pokemonScale = 393,  // was 275
         .pokemonOffset = 6,   // was 7
         .trainerScale = 356,
@@ -2953,7 +3136,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .teachableLearnset = sKyuremTeachableLearnset,
     },
 
-    [SPECIES_XERNEAS_V] =
+    [SPECIES_XERNEAS_V_NEUTRAL] =
     {
         // BST was 680, lowered by ~30%
         .baseHP        = 88,   // was 126
@@ -2964,13 +3147,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .baseSpDefense = 70,   // was 98
         .types = MON_TYPES(TYPE_FAIRY),
         .catchRate = 3,
-    #if P_UPDATED_EXP_YIELDS >= GEN_8
-        .expYield = 340,
-    #elif P_UPDATED_EXP_YIELDS >= GEN_5
-        .expYield = 306,
-    #else
-        .expYield = 220,
-    #endif
+        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_8) ? 340 : 306,
         .evYield_HP = 3,
         .genderRatio = MON_GENDERLESS,
         .eggCycles = 120,
@@ -2986,10 +3163,10 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .height = 21,    // was 30
         .weight = 1505,  // was 2150
         .description = COMPOUND_STRING(
-            "A Pokemon that was created by genetic\n"
-            "manipulation. Though it exists as a\n"
-            "proto-type, restorative life energy\n"
-            "still overflows from its antlers."),
+            "Legends say that when the horns on\n"
+            "its head shine in seven colors, it is\n"
+            "sharing everlasting life. It slept for a\n"
+            "thousand years in the form of a tree"),
         .pokemonScale = 358,  // was 275
         .pokemonOffset = 7,
         .trainerScale = 256,
@@ -3022,6 +3199,75 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .isFrontierBanned = FALSE,
         .levelUpLearnset = sXerneasLevelUpLearnset,
         .teachableLearnset = sXerneasTeachableLearnset,
+        .formSpeciesIdTable = sXerneasVFormSpeciesIdTable,
+        .formChangeTable = sXerneasVFormChangeTable,
+    },
+
+    [SPECIES_XERNEAS_V_ACTIVE] =
+    {
+        // BST was 680, lowered by ~30%
+        .baseHP        = 88,   // was 126
+        .baseAttack    = 91,   // was 131
+        .baseDefense   = 66,   // was 95
+        .baseSpeed     = 69,   // was 99
+        .baseSpAttack  = 91,   // was 131
+        .baseSpDefense = 70,   // was 98
+        .types = MON_TYPES(TYPE_FAIRY),
+        .catchRate = 3,
+        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_8) ? 340 : 306,
+        .evYield_HP = 3,
+        .genderRatio = MON_GENDERLESS,
+        .eggCycles = 120,
+        .friendship = 0,
+        .growthRate = GROWTH_SLOW,
+        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
+        .abilities = { ABILITY_FAIRY_AURA, ABILITY_NONE, ABILITY_NONE },
+        .bodyColor = BODY_COLOR_BLUE,
+        .speciesName = _("Xerneas-V"),
+        .cryId = CRY_XERNEAS,
+        .natDexNum = NATIONAL_DEX_XERNEAS_V,
+        .categoryName = _("Life"),
+        .height = 21,    // was 30
+        .weight = 1505,  // was 2150
+        .description = COMPOUND_STRING(
+            "Legends say that when the horns on\n"
+            "its head shine in seven colors, it is\n"
+            "sharing everlasting life. It slept for a\n"
+            "thousand years in the form of a tree"),
+        .pokemonScale = 358,  // was 275
+        .pokemonOffset = 7,
+        .trainerScale = 256,
+        .trainerOffset = 0,
+        .frontPic = gMonFrontPic_XerneasActive,
+        .frontPicSize = MON_COORDS_SIZE(64, 64),
+        .frontPicYOffset = 0,
+        .frontAnimFrames = sAnims_Xerneas,
+        .frontAnimId = ANIM_GROW_VIBRATE,
+        .backPic = gMonBackPic_XerneasActive,
+        .backPicSize = MON_COORDS_SIZE(64, 64),
+        .backPicYOffset = 0,
+        .backAnimId = BACK_ANIM_SHAKE_GLOW_BLUE,
+        .palette = gMonPalette_XerneasActive,
+        .shinyPalette = gMonShinyPalette_XerneasActive,
+        .iconSprite = gMonIcon_XerneasActive,
+        .iconPalIndex = 0,
+        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
+        SHADOW(3, 14, SHADOW_SIZE_M)
+        FOOTPRINT(Xerneas)
+        OVERWORLD(
+            sPicTable_XerneasActive,
+            SIZE_64x64,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            sAnimTable_Following,
+            gOverworldPalette_XerneasNeutral,
+            gShinyOverworldPalette_XerneasNeutral
+        )
+        .isFrontierBanned = FALSE,
+        .levelUpLearnset = sXerneasLevelUpLearnset,
+        .teachableLearnset = sXerneasTeachableLearnset,
+        .formSpeciesIdTable = sXerneasVFormSpeciesIdTable,
+        .formChangeTable = sXerneasVFormChangeTable,
     },
 
     [SPECIES_YVELTAL_V] =
@@ -3035,13 +3281,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .baseSpDefense = 70,   // was 98
         .types = MON_TYPES(TYPE_DARK, TYPE_FLYING),
         .catchRate = 3,
-    #if P_UPDATED_EXP_YIELDS >= GEN_8
-        .expYield = 340,
-    #elif P_UPDATED_EXP_YIELDS >= GEN_5
-        .expYield = 306,
-    #else
-        .expYield = 220,
-    #endif
+        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_8) ? 340 : 306,
         .evYield_HP = 3,
         .genderRatio = MON_GENDERLESS,
         .eggCycles = 120,
@@ -3057,10 +3297,10 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .height = 41,    // was 58
         .weight = 1421,  // was 2030
         .description = COMPOUND_STRING(
-            "A Pokemon that was created by genetic\n"
-            "manipulation. Though it exists as a\n"
-            "proto-type, ruinous energy still radiates\n"
-            "from its wings and tail."),
+            "When its life comes to an end, its wings\n"
+            "and tail spread wide and glow red, and\n"
+            "it absorbs the life energy of every living\n"
+            "thing and turns into a cocoon."),
         .pokemonScale = 333,  // was 256
         .pokemonOffset = 3,   // was 0
         .trainerScale = 360,
@@ -3130,10 +3370,10 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .height = 30,    // was 45
         .weight = 4087,  // was 6100
         .description = COMPOUND_STRING(
-            "A Pokemon that was created by genetic\n"
-            "manipulation. Though it exists as a\n"
-            "proto-type, it still monitors ecosystems\n"
-            "as a guardian of order."),
+            "This is Zygarde's perfected form.\n"
+            "From the orifice on its chest, it\n"
+            "radiates high-powered energy that\n"
+            "eliminates everything."),
         .pokemonScale = 310,  // was 256
         .pokemonOffset = 4,   // was 0
         .trainerScale = 721,

@@ -1693,19 +1693,24 @@
 #define SPECIES_COBALION_V                              1576
 #define SPECIES_TERRAKION_V                             1577
 #define SPECIES_VIRIZION_V                              1578
-#define SPECIES_TORNADUS_V                              1579
-#define SPECIES_THUNDURUS_V                             1580
-#define SPECIES_LANDORUS_V                              1581
-#define SPECIES_RESHIRAM_V                              1582
-#define SPECIES_ZEKROM_V                                1583
-#define SPECIES_KYUREM_V                                1584
-#define SPECIES_XERNEAS_V                               1585
-#define SPECIES_YVELTAL_V                               1586
-#define SPECIES_ZYGARDE_V                               1587
+#define SPECIES_TORNADUS_V_INCARNATE                    1579
+#define SPECIES_TORNADUS_V_THERIAN                      1580
+#define SPECIES_THUNDURUS_V_INCARNATE                   1581
+#define SPECIES_THUNDURUS_V_THERIAN                     1582
+#define SPECIES_LANDORUS_V_INCARNATE                    1583
+#define SPECIES_LANDORUS_V_THERIAN                      1584
+#define SPECIES_RESHIRAM_V                              1585
+#define SPECIES_ZEKROM_V                                1586
+#define SPECIES_KYUREM_V                                1587
+#define SPECIES_XERNEAS_V_NEUTRAL                       1588
+#define SPECIES_XERNEAS_V_ACTIVE                        1589
+#define SPECIES_YVELTAL_V                               1590
+#define SPECIES_ZYGARDE_V                               1591
 
 #define SPECIES_EGG                                     (SPECIES_ZYGARDE_V + 1)
+
 #define SPECIES_PROTO_LEGEND_START                      SPECIES_MEWTWO_V
-#define SPECIES_PROTO_LEGEND_END                        SPECIES_ZYGARDE_V_50
+#define SPECIES_PROTO_LEGEND_END                        SPECIES_ZYGARDE_V
 
 #define NUM_SPECIES SPECIES_EGG
 

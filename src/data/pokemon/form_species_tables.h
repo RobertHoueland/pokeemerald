@@ -2432,3 +2432,27 @@ static const u16 sTerapagosFormSpeciesIdTable[] = {
     FORM_SPECIES_END,
 };
 #endif //P_FAMILY_TERAPAGOS
+
+static const u16 sTornadusVFormSpeciesIdTable[] = {
+    SPECIES_TORNADUS_V_INCARNATE,
+    SPECIES_TORNADUS_V_THERIAN,
+    FORM_SPECIES_END,
+};
+
+static const u16 sThundurusVFormSpeciesIdTable[] = {
+    SPECIES_THUNDURUS_V_INCARNATE,
+    SPECIES_THUNDURUS_V_THERIAN,
+    FORM_SPECIES_END,
+};
+
+static const u16 sLandorusVFormSpeciesIdTable[] = {
+    SPECIES_LANDORUS_V_INCARNATE,
+    SPECIES_LANDORUS_V_THERIAN,
+    FORM_SPECIES_END,
+};
+
+static const u16 sXerneasVFormSpeciesIdTable[] = {
+    SPECIES_XERNEAS_V_NEUTRAL,
+    SPECIES_XERNEAS_V_ACTIVE,
+    FORM_SPECIES_END,
+};
