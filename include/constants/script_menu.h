@@ -148,6 +148,7 @@
 #define MULTI_MINI_LEGEND_FORCES           137
 #define MULTI_MINI_LEGEND_TAO              138
 #define MULTI_MINI_LEGEND_AURA             139
+#define MULTI_MINI_LEGEND_TYPENULL         140
 
 // Mini legendary region choices
 #define REGION_CHOICE_KANTO                0
@@ -156,10 +157,10 @@
 #define REGION_CHOICE_SINNOH               3
 #define REGION_CHOICE_UNOVA                4
 #define REGION_CHOICE_KALOS                5
-//#define REGION_CHOICE_ALOLA                6
+#define REGION_CHOICE_ALOLA                6
 //#define REGION_CHOICE_GALAR                7
 //#define REGION_CHOICE_PALDEA               8
-#define NUM_REGION_CHOICES                 REGION_CHOICE_KALOS + 1
+#define NUM_REGION_CHOICES                 REGION_CHOICE_ALOLA + 1
 
 // Category choices
 #define KANTO_CHOICE_MEWTWO                0
@@ -184,6 +185,8 @@
 
 #define KALOS_CHOICE_AURA                  0
 
+#define ALOLA_CHOICE_TYPENULL              0
+
 // Number of mons each line/category has
 // These categories/names came from:
 // https://bulbapedia.bulbagarden.net/wiki/Legendary_Pok%C3%A9mon
@@ -203,6 +206,7 @@
 #define NUM_CHOICES_FORCES                 3
 #define NUM_CHOICES_TAO                    3
 #define NUM_CHOICES_AURA                   3
+#define NUM_CHOICES_TYPENULL               1
 
 // Cumulative offsets for the chosen category
 // Used in scripts.pory to use the player's choice to find correct mon chosen
@@ -222,6 +226,7 @@
 #define OFFSET_FORCES       (OFFSET_SWORDS + NUM_CHOICES_SWORDS)
 #define OFFSET_TAO          (OFFSET_FORCES + NUM_CHOICES_FORCES)
 #define OFFSET_AURA         (OFFSET_TAO + NUM_CHOICES_TAO)
+#define OFFSET_TYPENULL     (OFFSET_AURA + NUM_CHOICES_AURA)
 
 // Lilycove SS Tidal Multichoice Selections
 #define SSTIDAL_SELECTION_SLATEPORT        0

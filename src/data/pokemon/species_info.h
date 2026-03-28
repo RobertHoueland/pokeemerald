@@ -3412,6 +3412,151 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .teachableLearnset = sZygardeTeachableLearnset,
     },
 
+    [SPECIES_TYPE_NULL_V] =
+    {
+        // BST was 534, lowered by ~11%
+        .baseHP        = 85,   // was 95
+        .baseAttack    = 85,   // was 95
+        .baseDefense   = 84,   // was 95
+        .baseSpeed     = 52,   // was 59
+        .baseSpAttack  = 84,   // was 95
+        .baseSpDefense = 85,   // was 95
+        .types = MON_TYPES(TYPE_NORMAL),
+        .catchRate = 3,
+        .expYield = 107,
+        .evYield_HP = 2,
+        .genderRatio = MON_GENDERLESS,
+        .eggCycles = 120,
+        .friendship = 0,
+        .growthRate = GROWTH_SLOW,
+        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
+        .abilities = { ABILITY_BATTLE_ARMOR, ABILITY_NONE, ABILITY_NONE },
+        .bodyColor = BODY_COLOR_GRAY,
+        .speciesName = _("Type: Null-V"),
+        .cryId = CRY_TYPE_NULL,
+        .natDexNum = NATIONAL_DEX_TYPE_NULL_V,
+        .categoryName = _("Synthetic"),
+        .height = 17,    // was 19
+        .weight = 1072,  // was 1205
+        .description = COMPOUND_STRING(
+            "Due to the danger that this synthetic\n"
+            "Pokémon may go on a rampage, it wears a\n"
+            "control mask to restrain its capabilities.\n"
+            "It has some hidden special power."),
+        .pokemonScale = 288,  // was 256
+        .pokemonOffset = 1,
+        .trainerScale = 326,
+        .trainerOffset = 4,
+        .frontPic = gMonFrontPic_TypeNull,
+        .frontPicSize = MON_COORDS_SIZE(64, 64),
+        .frontPicYOffset = 2,
+        .frontAnimFrames = sAnims_SingleFramePlaceHolder,
+        .frontAnimId = ANIM_H_SHAKE,
+        .backPic = gMonBackPic_TypeNull,
+        .backPicSize = MON_COORDS_SIZE(56, 64),
+        .backPicYOffset = 1,
+        .palette = gMonPalette_TypeNull,
+        .shinyPalette = gMonShinyPalette_TypeNull,
+        .iconSprite = gMonIcon_TypeNull,
+        .iconPalIndex = 0,
+        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
+        SHADOW(1, 11, SHADOW_SIZE_L)
+        FOOTPRINT(Type_Null)
+        OVERWORLD(
+            sPicTable_TypeNull,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            sAnimTable_Following,
+            gOverworldPalette_TypeNull,
+            gShinyOverworldPalette_TypeNull
+        )
+        .isFrontierBanned = FALSE,
+        .levelUpLearnset = sTypeNullLevelUpLearnset,
+        .teachableLearnset = sTypeNullTeachableLearnset,
+        .evolutions = EVOLUTION({EVO_LEVEL, 0, SPECIES_SILVALLY_V_NORMAL, CONDITIONS({IF_MIN_FRIENDSHIP, FRIENDSHIP_EVO_THRESHOLD})}),
+    },
+
+#define SILVALLY_V_SPECIES_INFO(type, _palette)                                       \
+    {                                                                                 \
+        .baseHP        = 80,   /* was 95 */                                           \
+        .baseAttack    = 79,   /* was 95 */                                           \
+        .baseDefense   = 79,   /* was 95 */                                           \
+        .baseSpeed     = 79,   /* was 95 */                                           \
+        .baseSpAttack  = 79,   /* was 95 */                                           \
+        .baseSpDefense = 79,   /* was 95 */                                           \
+        .types = MON_TYPES(TYPE_NORMAL),                                              \
+        .catchRate = 3,                                                               \
+        .expYield = 257,                                                              \
+        .evYield_HP = 3,                                                              \
+        .genderRatio = MON_GENDERLESS,                                                \
+        .eggCycles = 120,                                                             \
+        .friendship = 0,                                                              \
+        .growthRate = GROWTH_SLOW,                                                    \
+        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),                    \
+        .abilities = { ABILITY_RKS_SYSTEM, ABILITY_NONE, ABILITY_NONE },              \
+        .bodyColor = BODY_COLOR_GRAY,                                                 \
+        .speciesName = _("Silvally-V"),                                               \
+        .cryId = CRY_SILVALLY,                                                        \
+        .natDexNum = NATIONAL_DEX_SILVALLY_V_NORMAL,                                  \
+        .categoryName = _("Synthetic"),                                               \
+        .height = 19,   /* was 23 */                                                  \
+        .weight = 838,  /* was 1005 */                                                \
+        .description = gSilvallyNormalPokedexText,                                    \
+        .pokemonScale = 307,  /* was 256 */                                           \
+        .pokemonOffset = 0,                                                           \
+        .trainerScale = 342,                                                          \
+        .trainerOffset = 7,                                                           \
+        .frontPic = gMonFrontPic_Silvally,                                            \
+        .frontPicSize = MON_COORDS_SIZE(64, 64),                                      \
+        .frontPicYOffset = 0,                                                         \
+        .frontAnimFrames = sAnims_SingleFramePlaceHolder,                             \
+        .frontAnimId = ANIM_V_SHAKE,                                                  \
+        .backPic = gMonBackPic_Silvally,                                              \
+        .backPicSize = MON_COORDS_SIZE(56, 64),                                       \
+        .backPicYOffset = 0,                                                          \
+        .palette = gMonPalette_SilvallyNormal,                                        \
+        .shinyPalette = gMonShinyPalette_SilvallyNormal,                              \
+        .iconSprite = gMonIcon_Silvally,                                              \
+        .iconPalIndex = 0,                                                            \
+        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,                                       \
+        SHADOW(1, 13, SHADOW_SIZE_L)                                                  \
+        FOOTPRINT(Silvally)                                                           \
+        OVERWORLD(                                                                    \
+            sPicTable_Silvally,                                                       \
+            SIZE_32x32,                                                               \
+            SHADOW_SIZE_M,                                                            \
+            TRACKS_FOOT,                                                              \
+            sAnimTable_Following,                                                     \
+            gOverworldPalette_Silvally,                                               \
+            gShinyOverworldPalette_Silvally                                           \
+        )                                                                             \
+        .isFrontierBanned = FALSE,                                                    \
+        .levelUpLearnset = sSilvallyLevelUpLearnset,                                  \
+        .teachableLearnset = sSilvallyTeachableLearnset,                              \
+        .formSpeciesIdTable = sSilvallyVFormSpeciesIdTable,                           \
+        .formChangeTable = sSilvallyVFormChangeTable,                                 \
+    }
+
+    [SPECIES_SILVALLY_V_NORMAL]   = SILVALLY_V_SPECIES_INFO(TYPE_NORMAL,   Normal),
+    [SPECIES_SILVALLY_V_FIGHTING] = SILVALLY_V_SPECIES_INFO(TYPE_FIGHTING, Fighting),
+    [SPECIES_SILVALLY_V_FLYING]   = SILVALLY_V_SPECIES_INFO(TYPE_FLYING,   Flying),
+    [SPECIES_SILVALLY_V_POISON]   = SILVALLY_V_SPECIES_INFO(TYPE_POISON,   Poison),
+    [SPECIES_SILVALLY_V_GROUND]   = SILVALLY_V_SPECIES_INFO(TYPE_GROUND,   Ground),
+    [SPECIES_SILVALLY_V_ROCK]     = SILVALLY_V_SPECIES_INFO(TYPE_ROCK,     Rock),
+    [SPECIES_SILVALLY_V_BUG]      = SILVALLY_V_SPECIES_INFO(TYPE_BUG,      Bug),
+    [SPECIES_SILVALLY_V_GHOST]    = SILVALLY_V_SPECIES_INFO(TYPE_GHOST,    Ghost),
+    [SPECIES_SILVALLY_V_STEEL]    = SILVALLY_V_SPECIES_INFO(TYPE_STEEL,    Steel),
+    [SPECIES_SILVALLY_V_FIRE]     = SILVALLY_V_SPECIES_INFO(TYPE_FIRE,     Fire),
+    [SPECIES_SILVALLY_V_WATER]    = SILVALLY_V_SPECIES_INFO(TYPE_WATER,    Water),
+    [SPECIES_SILVALLY_V_GRASS]    = SILVALLY_V_SPECIES_INFO(TYPE_GRASS,    Grass),
+    [SPECIES_SILVALLY_V_ELECTRIC] = SILVALLY_V_SPECIES_INFO(TYPE_ELECTRIC, Electric),
+    [SPECIES_SILVALLY_V_PSYCHIC]  = SILVALLY_V_SPECIES_INFO(TYPE_PSYCHIC,  Psychic),
+    [SPECIES_SILVALLY_V_ICE]      = SILVALLY_V_SPECIES_INFO(TYPE_ICE,      Ice),
+    [SPECIES_SILVALLY_V_DRAGON]   = SILVALLY_V_SPECIES_INFO(TYPE_DRAGON,   Dragon),
+    [SPECIES_SILVALLY_V_DARK]     = SILVALLY_V_SPECIES_INFO(TYPE_DARK,     Dark),
+    [SPECIES_SILVALLY_V_FAIRY]    = SILVALLY_V_SPECIES_INFO(TYPE_FAIRY,    Fairy),
+
     /*
     [SPECIES_NONE] =
     {

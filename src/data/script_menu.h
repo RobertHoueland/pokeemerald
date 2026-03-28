@@ -824,6 +824,12 @@ static const struct MenuAction MultichoiceList_MiniLegendKalos[] =
     {gText_Exit},
 };
 
+static const struct MenuAction MultichoiceList_MiniLegendAlola[] =
+{
+    {COMPOUND_STRING("TYPE: NULL LINE")},
+    {gText_Exit},
+};
+
 static const struct MenuAction MultichoiceList_MiniLegendMewtwo[] =
 {
     {COMPOUND_STRING("MEWTWO-V")},
@@ -939,6 +945,12 @@ static const struct MenuAction MultichoiceList_MiniLegendAura[] =
     {COMPOUND_STRING("XERNEAS-V")},
     {COMPOUND_STRING("YVELTAL-V")},
     {COMPOUND_STRING("ZYGARDE-V")},
+    {gText_Exit},
+};
+
+static const struct MenuAction MultichoiceList_MiniLegendTypeNull[] = 
+{
+    {COMPOUND_STRING("TYPE: NULL-V")},
     {gText_Exit},
 };
 
@@ -1092,6 +1104,8 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_MINI_LEGEND_TAO]            = MULTICHOICE(MultichoiceList_MiniLegendTao),
     [MULTI_MINI_LEGEND_KALOS]          = MULTICHOICE(MultichoiceList_MiniLegendKalos),
     [MULTI_MINI_LEGEND_AURA]           = MULTICHOICE(MultichoiceList_MiniLegendAura),
+    [MULTI_MINI_LEGEND_ALOLA]          = MULTICHOICE(MultichoiceList_MiniLegendAlola),
+    [MULTI_MINI_LEGEND_TYPENULL]       = MULTICHOICE(MultichoiceList_MiniLegendTypeNull),
 };
 
 const u8 *const gStdStrings[] =

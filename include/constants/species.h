@@ -1706,11 +1706,30 @@
 #define SPECIES_XERNEAS_V_ACTIVE                        1589
 #define SPECIES_YVELTAL_V                               1590
 #define SPECIES_ZYGARDE_V                               1591
+#define SPECIES_TYPE_NULL_V                             1592
+#define SPECIES_SILVALLY_V_NORMAL                       1593
+#define SPECIES_SILVALLY_V_FIGHTING                     1594
+#define SPECIES_SILVALLY_V_FLYING                       1595
+#define SPECIES_SILVALLY_V_POISON                       1596
+#define SPECIES_SILVALLY_V_GROUND                       1597
+#define SPECIES_SILVALLY_V_ROCK                         1598
+#define SPECIES_SILVALLY_V_BUG                          1599
+#define SPECIES_SILVALLY_V_GHOST                        1600
+#define SPECIES_SILVALLY_V_STEEL                        1601
+#define SPECIES_SILVALLY_V_FIRE                         1602
+#define SPECIES_SILVALLY_V_WATER                        1603
+#define SPECIES_SILVALLY_V_GRASS                        1604
+#define SPECIES_SILVALLY_V_ELECTRIC                     1605
+#define SPECIES_SILVALLY_V_PSYCHIC                      1606
+#define SPECIES_SILVALLY_V_ICE                          1607
+#define SPECIES_SILVALLY_V_DRAGON                       1608
+#define SPECIES_SILVALLY_V_DARK                         1609
+#define SPECIES_SILVALLY_V_FAIRY                        1610
 
-#define SPECIES_EGG                                     (SPECIES_ZYGARDE_V + 1)
+#define SPECIES_EGG                                     (SPECIES_SILVALLY_V_FAIRY + 1)
 
 #define SPECIES_PROTO_LEGEND_START                      SPECIES_MEWTWO_V
-#define SPECIES_PROTO_LEGEND_END                        SPECIES_ZYGARDE_V
+#define SPECIES_PROTO_LEGEND_END                        SPECIES_SILVALLY_V_FAIRY
 
 #define NUM_SPECIES SPECIES_EGG
 
