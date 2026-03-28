@@ -826,6 +826,7 @@ static const struct MenuAction MultichoiceList_MiniLegendAlola[] =
 {
     {COMPOUND_STRING("TAPU LINE")},
     {COMPOUND_STRING("TYPE: NULL LINE")},
+    {COMPOUND_STRING("LIGHT LINE")},
     {gText_Exit},
 };
 
@@ -949,6 +950,12 @@ static const struct MenuAction MultichoiceList_MiniLegendTapus[] =
     {COMPOUND_STRING("TAPU LELE-V")},
     {COMPOUND_STRING("TAPU BULU-V")},
     {COMPOUND_STRING("TAPU FINI-V")},
+    {gText_Exit},
+};
+
+static const struct MenuAction MultichoiceList_MiniLegendLight[] =
+{
+    {COMPOUND_STRING("COSMOG-V")},
     {gText_Exit},
 };
 
@@ -1103,6 +1110,7 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_MINI_LEGEND_ALOLA]          = MULTICHOICE(MultichoiceList_MiniLegendAlola),
     [MULTI_MINI_LEGEND_TYPENULL]       = MULTICHOICE(MultichoiceList_MiniLegendTypeNull),
     [MULTI_MINI_LEGEND_TAPUS]          = MULTICHOICE(MultichoiceList_MiniLegendTapus),
+    [MULTI_MINI_LEGEND_LIGHT]          = MULTICHOICE(MultichoiceList_MiniLegendLight),
 };
 
 const u8 *const gStdStrings[] =

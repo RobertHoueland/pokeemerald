@@ -3695,6 +3695,273 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .teachableLearnset = sTapuFiniTeachableLearnset,
     },
 
+    [SPECIES_COSMOG_V] =
+    {
+        // Solgaleo/Lunala were lowered by ~30%,
+        // so we'll do the same
+        .baseHP        = 30,  // was 43
+        .baseAttack    = 20,  // was 29
+        .baseDefense   = 22,  // was 31
+        .baseSpeed     = 26,  // was 37
+        .baseSpAttack  = 20,  // was 29
+        .baseSpDefense = 22,  // was 31
+        .types = MON_TYPES(TYPE_PSYCHIC),
+        .catchRate = 45,
+        .expYield = 40,
+        .evYield_HP = 1,
+        .genderRatio = MON_GENDERLESS,
+        .eggCycles = 120,
+        .friendship = 0,
+        .growthRate = GROWTH_SLOW,
+        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
+        .abilities = { ABILITY_UNAWARE, ABILITY_NONE, ABILITY_NONE },
+        .bodyColor = BODY_COLOR_BLUE,
+        .speciesName = _("Cosmog-V"),
+        .cryId = CRY_COSMOG,
+        .natDexNum = NATIONAL_DEX_COSMOG_V,
+        .categoryName = _("Nebula"),
+        .height = 2,
+        .weight = 1,
+        .description = COMPOUND_STRING(
+            "In ages past, it was called the child of\n"
+            "the stars. It's said to be a Pokemon from\n"
+            "another world, but no specific details\n"
+            "are known."),
+        .pokemonScale = 887,  // was 682
+        .pokemonOffset = 24,
+        .trainerScale = 256,
+        .trainerOffset = 0,
+        .frontPic = gMonFrontPic_Cosmog,
+        .frontPicSize = MON_COORDS_SIZE(56, 48),
+        .frontPicYOffset = 10,
+        .frontAnimFrames = sAnims_SingleFramePlaceHolder,
+        .frontAnimId = ANIM_H_JUMPS_V_STRETCH,
+        .enemyMonElevation = 7,
+        .backPic = gMonBackPic_Cosmog,
+        .backPicSize = MON_COORDS_SIZE(64, 48),
+        .backPicYOffset = 10,
+        .palette = gMonPalette_Cosmog,
+        .shinyPalette = gMonShinyPalette_Cosmog,
+        .iconSprite = gMonIcon_Cosmog,
+        .iconPalIndex = 2,
+        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
+        SHADOW(0, 8, SHADOW_SIZE_S)
+        FOOTPRINT(Cosmog)
+        OVERWORLD(
+            sPicTable_Cosmog,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            sAnimTable_Following,
+            gOverworldPalette_Cosmog,
+            gShinyOverworldPalette_Cosmog
+        )
+        .tmIlliterate = TRUE,
+        .isFrontierBanned = FALSE,
+        .levelUpLearnset = sCosmogLevelUpLearnset,
+        .teachableLearnset = sCosmogTeachableLearnset,
+        .evolutions = EVOLUTION({EVO_LEVEL, 43, SPECIES_COSMOEM_V}),
+    },
+
+    [SPECIES_COSMOEM_V] =
+    {
+        // Solgaleo/Lunala were lowered by ~30%,
+        // so we'll do the same
+        .baseHP        = 30,   // was 43
+        .baseAttack    = 20,   // was 29
+        .baseDefense   = 92,  // was 131
+        .baseSpeed     = 26,   // was 37
+        .baseSpAttack  = 20,   // was 29
+        .baseSpDefense = 92,  // was 131
+        .types = MON_TYPES(TYPE_PSYCHIC),
+        .catchRate = 45,
+        .expYield = 140,
+        .evYield_Defense = 1,
+        .evYield_SpDefense = 1,
+        .genderRatio = MON_GENDERLESS,
+        .eggCycles = 120,
+        .friendship = 0,
+        .growthRate = GROWTH_SLOW,
+        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
+        .abilities = { ABILITY_STURDY, ABILITY_NONE, ABILITY_NONE },
+        .bodyColor = BODY_COLOR_BLUE,
+        .speciesName = _("Cosmoem-V"),
+        .cryId = CRY_COSMOEM,
+        .natDexNum = NATIONAL_DEX_COSMOEM_V,
+        .categoryName = _("Protostar"),
+        .height = 1,
+        .weight = 7000,  // was 9999
+        .description = COMPOUND_STRING(
+            "Motionless as if dead, its body is faintly\n"
+            "warm to the touch. There's something\n"
+            "accumulating around the black core\n"
+            "within its hard shell."),
+        .pokemonScale = 887,  // was 682
+        .pokemonOffset = 24,
+        .trainerScale = 256,
+        .trainerOffset = 0,
+        .frontPic = gMonFrontPic_Cosmoem,
+        .frontPicSize = MON_COORDS_SIZE(48, 48),
+        .frontPicYOffset = 9,
+        .frontAnimFrames = sAnims_SingleFramePlaceHolder,
+        .frontAnimId = ANIM_RISING_WOBBLE,
+        .enemyMonElevation = 3,
+        .backPic = gMonBackPic_Cosmoem,
+        .backPicSize = MON_COORDS_SIZE(64, 40),
+        .backPicYOffset = 17,
+        .palette = gMonPalette_Cosmoem,
+        .shinyPalette = gMonShinyPalette_Cosmoem,
+        .iconSprite = gMonIcon_Cosmoem,
+        .iconPalIndex = 0,
+        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
+        SHADOW(0, 5, SHADOW_SIZE_M)
+        FOOTPRINT(Cosmoem)
+        OVERWORLD(
+            sPicTable_Cosmoem,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            sAnimTable_Following,
+            gOverworldPalette_Cosmoem,
+            gShinyOverworldPalette_Cosmoem
+        )
+        .tmIlliterate = TRUE,
+        .isFrontierBanned = FALSE,
+        .levelUpLearnset = sCosmoemLevelUpLearnset,
+        .teachableLearnset = sCosmoemTeachableLearnset,
+        .evolutions = EVOLUTION({EVO_LEVEL, 53, SPECIES_SOLGALEO_V, CONDITIONS({IF_NOT_TIME, TIME_NIGHT})},
+                                {EVO_LEVEL, 53, SPECIES_LUNALA_V, CONDITIONS({IF_TIME, TIME_NIGHT})}),
+    },
+
+    [SPECIES_SOLGALEO_V] =
+    {
+        // BST was 680, lowered by ~30%
+        .baseHP        = 95,   // was 137
+        .baseAttack    = 96,   // was 137
+        .baseDefense   = 75,   // was 107
+        .baseSpeed     = 68,   // was 97
+        .baseSpAttack  = 79,   // was 113
+        .baseSpDefense = 62,   // was 89
+        .types = MON_TYPES(TYPE_PSYCHIC, TYPE_STEEL),
+        .catchRate = 45,
+        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_8) ? 340 : 306,
+        .evYield_Attack = 3,
+        .genderRatio = MON_GENDERLESS,
+        .eggCycles = 120,
+        .friendship = 0,
+        .growthRate = GROWTH_SLOW,
+        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
+        .abilities = { ABILITY_FULL_METAL_BODY, ABILITY_NONE, ABILITY_NONE },
+        .bodyColor = BODY_COLOR_WHITE,
+        .speciesName = _("Solgaleo-V"),
+        .cryId = CRY_SOLGALEO,
+        .natDexNum = NATIONAL_DEX_SOLGALEO_V,
+        .categoryName = _("Sunne"),
+        .height = 24,    // was 34
+        .weight = 1610,  // was 2300
+        .description = COMPOUND_STRING(
+            "It is said to live in another world.\n"
+            "The intense light it radiates from the\n"
+            "surface of its body can make the darkest\n"
+            "of nights light up like midday."),
+        .pokemonScale = 333,  // was 256
+        .pokemonOffset = 3,   // was 0
+        .trainerScale = 405,
+        .trainerOffset = 8,
+        .frontPic = gMonFrontPic_Solgaleo,
+        .frontPicSize = MON_COORDS_SIZE(64, 64),
+        .frontPicYOffset = 0,
+        .frontAnimFrames = sAnims_SingleFramePlaceHolder,
+        .frontAnimId = ANIM_GROW_VIBRATE,
+        .backPic = gMonBackPic_Solgaleo,
+        .backPicSize = MON_COORDS_SIZE(64, 64),
+        .backPicYOffset = 3,
+        .palette = gMonPalette_Solgaleo,
+        .shinyPalette = gMonShinyPalette_Solgaleo,
+        .iconSprite = gMonIcon_Solgaleo,
+        .iconPalIndex = 2,
+        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
+        SHADOW(-1, 11, SHADOW_SIZE_XL_BATTLE_ONLY)
+        FOOTPRINT(Solgaleo)
+        OVERWORLD(
+            sPicTable_Solgaleo,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            sAnimTable_Following,
+            gOverworldPalette_Solgaleo,
+            gShinyOverworldPalette_Solgaleo
+        )
+        .isFrontierBanned = FALSE,
+        .levelUpLearnset = sSolgaleoLevelUpLearnset,
+        .teachableLearnset = sSolgaleoTeachableLearnset,
+    },
+
+    [SPECIES_LUNALA_V] =
+    {
+        // BST was 680, lowered by ~30%
+        .baseHP        = 95,   // was 137
+        .baseAttack    = 79,   // was 113
+        .baseDefense   = 62,   // was 89
+        .baseSpeed     = 68,   // was 97
+        .baseSpAttack  = 96,   // was 137
+        .baseSpDefense = 75,   // was 107
+        .types = MON_TYPES(TYPE_PSYCHIC, TYPE_GHOST),
+        .catchRate = 45,
+        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_8) ? 340 : 306,
+        .evYield_SpAttack = 3,
+        .genderRatio = MON_GENDERLESS,
+        .eggCycles = 120,
+        .friendship = 0,
+        .growthRate = GROWTH_SLOW,
+        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
+        .abilities = { ABILITY_SHADOW_SHIELD, ABILITY_NONE, ABILITY_NONE },
+        .bodyColor = BODY_COLOR_PURPLE,
+        .speciesName = _("Lunala-V"),
+        .cryId = CRY_LUNALA,
+        .natDexNum = NATIONAL_DEX_LUNALA_V,
+        .categoryName = _("Moone"),
+        .height = 28,   // was 40
+        .weight = 840,  // was 1200
+        .description = COMPOUND_STRING(
+            "When its third eye activates, away it flies\n"
+            "to another world. This Pokemon devours\n"
+            "light, drawing the moonless dark veil of\n"
+            "night over the brightness of day."),
+        .pokemonScale = 333,  // was 256
+        .pokemonOffset = 0,
+        .trainerScale = 411,
+        .trainerOffset = 5,
+        .frontPic = gMonFrontPic_Lunala,
+        .frontPicSize = MON_COORDS_SIZE(64, 64),
+        .frontPicYOffset = 0,
+        .frontAnimFrames = sAnims_SingleFramePlaceHolder,
+        .frontAnimId = ANIM_CIRCULAR_VIBRATE,
+        .enemyMonElevation = 6,
+        .backPic = gMonBackPic_Lunala,
+        .backPicSize = MON_COORDS_SIZE(64, 64),
+        .backPicYOffset = 2,
+        .palette = gMonPalette_Lunala,
+        .shinyPalette = gMonShinyPalette_Lunala,
+        .iconSprite = gMonIcon_Lunala,
+        .iconPalIndex = 2,
+        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
+        SHADOW(4, 17, SHADOW_SIZE_L)
+        FOOTPRINT(Lunala)
+        OVERWORLD(
+            sPicTable_Lunala,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            sAnimTable_Following,
+            gOverworldPalette_Lunala,
+            gShinyOverworldPalette_Lunala
+        )
+        .isFrontierBanned = FALSE,
+        .levelUpLearnset = sLunalaLevelUpLearnset,
+        .teachableLearnset = sLunalaTeachableLearnset,
+    },
+
     [SPECIES_TYPE_NULL_V] =
     {
         // BST was 534, lowered by ~11%

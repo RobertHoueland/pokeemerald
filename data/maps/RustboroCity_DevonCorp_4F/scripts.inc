@@ -683,12 +683,14 @@ RustboroCity_DevonCorp_4F_EventScript_SelectAlola::
 	case ALOLA_CHOICE_TAPUS, RustboroCity_DevonCorp_4F_EventScript_SelectAlola_3
 # 374 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	case ALOLA_CHOICE_TYPENULL, RustboroCity_DevonCorp_4F_EventScript_SelectAlola_4
-# 385 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 384 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+	case ALOLA_CHOICE_LIGHT, RustboroCity_DevonCorp_4F_EventScript_SelectAlola_5
+# 395 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	goto RustboroCity_DevonCorp_4F_EventScript_SelectRegion
 RustboroCity_DevonCorp_4F_EventScript_SelectAlola_1:
-# 388 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 398 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	copyvar VAR_TEMP_1, VAR_RESULT
-# 389 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 399 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	goto RustboroCity_DevonCorp_4F_EventScript_OfferShiny
 	return
 
@@ -701,8 +703,8 @@ RustboroCity_DevonCorp_4F_EventScript_SelectAlola_3:
 	closemessage
 # 369 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	compare VAR_RESULT, NUM_CHOICES_TAPUS - 1
-	goto_if_gt RustboroCity_DevonCorp_4F_EventScript_SelectAlola_7
-RustboroCity_DevonCorp_4F_EventScript_SelectAlola_6:
+	goto_if_gt RustboroCity_DevonCorp_4F_EventScript_SelectAlola_8
+RustboroCity_DevonCorp_4F_EventScript_SelectAlola_7:
 # 372 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	addvar VAR_RESULT, OFFSET_TAPUS
 	goto RustboroCity_DevonCorp_4F_EventScript_SelectAlola_1
@@ -716,1054 +718,1094 @@ RustboroCity_DevonCorp_4F_EventScript_SelectAlola_4:
 	closemessage
 # 379 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	compare VAR_RESULT, NUM_CHOICES_TYPENULL - 1
-	goto_if_gt RustboroCity_DevonCorp_4F_EventScript_SelectAlola_10
-RustboroCity_DevonCorp_4F_EventScript_SelectAlola_9:
+	goto_if_gt RustboroCity_DevonCorp_4F_EventScript_SelectAlola_11
+RustboroCity_DevonCorp_4F_EventScript_SelectAlola_10:
 # 382 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	addvar VAR_RESULT, OFFSET_TYPENULL
 	goto RustboroCity_DevonCorp_4F_EventScript_SelectAlola_1
 
-RustboroCity_DevonCorp_4F_EventScript_SelectAlola_7:
+RustboroCity_DevonCorp_4F_EventScript_SelectAlola_5:
+# 385 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+	goto_if_set FLAG_OBTAINED_LIGHT_LINE, RustboroCity_DevonCorp_4F_EventScript_HasMon
+# 386 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+	multichoice 0, 0, MULTI_MINI_LEGEND_LIGHT, FALSE
+# 387 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+	closemessage
+# 389 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+	compare VAR_RESULT, NUM_CHOICES_LIGHT - 1
+	goto_if_gt RustboroCity_DevonCorp_4F_EventScript_SelectAlola_14
+RustboroCity_DevonCorp_4F_EventScript_SelectAlola_13:
+# 392 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+	addvar VAR_RESULT, OFFSET_LIGHT
+	goto RustboroCity_DevonCorp_4F_EventScript_SelectAlola_1
+
+RustboroCity_DevonCorp_4F_EventScript_SelectAlola_8:
 # 370 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	goto RustboroCity_DevonCorp_4F_EventScript_SelectAlola
-	goto RustboroCity_DevonCorp_4F_EventScript_SelectAlola_6
+	goto RustboroCity_DevonCorp_4F_EventScript_SelectAlola_7
 
-RustboroCity_DevonCorp_4F_EventScript_SelectAlola_10:
+RustboroCity_DevonCorp_4F_EventScript_SelectAlola_11:
 # 380 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	goto RustboroCity_DevonCorp_4F_EventScript_SelectAlola
-	goto RustboroCity_DevonCorp_4F_EventScript_SelectAlola_9
+	goto RustboroCity_DevonCorp_4F_EventScript_SelectAlola_10
+
+RustboroCity_DevonCorp_4F_EventScript_SelectAlola_14:
+# 390 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+	goto RustboroCity_DevonCorp_4F_EventScript_SelectAlola
+	goto RustboroCity_DevonCorp_4F_EventScript_SelectAlola_13
 
 
 RustboroCity_DevonCorp_4F_EventScript_OfferShiny::
-# 393 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 403 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	setvar VAR_TEMP_2, 0
-# 394 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 404 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	msgbox RustboroCity_DevonCorp_4F_EventScript_OfferShiny_Text_0
-# 395 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 405 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	showmoneybox 0, 0
-# 396 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 406 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	msgbox RustboroCity_DevonCorp_4F_EventScript_OfferShiny_Text_1
-# 397 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 407 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	msgbox RustboroCity_DevonCorp_4F_EventScript_OfferShiny_Text_2
-# 398 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 408 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	multichoicedefault 20, 8, MULTI_YESNO, 1, FALSE
-# 399 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 409 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	hidemoneybox
-# 401 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 411 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	compare VAR_RESULT, 0
 	goto_if_eq RustboroCity_DevonCorp_4F_EventScript_OfferShiny_2
-# 418 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 428 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	msgbox RustboroCity_DevonCorp_4F_EventScript_OfferShiny_Text_5
 RustboroCity_DevonCorp_4F_EventScript_OfferShiny_1:
-# 422 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 432 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	setvar VAR_0x8004, ITEM_UNSTABLE_DNA
-# 423 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 433 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	call Common_EventScript_PlayerHandedOverTheItem
-# 425 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 435 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary
 	return
 
 RustboroCity_DevonCorp_4F_EventScript_OfferShiny_2:
-# 403 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 413 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	checkmoney 50000
-# 405 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 415 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	compare VAR_RESULT, TRUE
 	goto_if_eq RustboroCity_DevonCorp_4F_EventScript_OfferShiny_5
-# 411 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 421 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	msgbox RustboroCity_DevonCorp_4F_EventScript_OfferShiny_Text_4
-# 412 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 422 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	setvar VAR_RESULT, 0
-# 413 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 423 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	releaseall
 	return
 
 RustboroCity_DevonCorp_4F_EventScript_OfferShiny_5:
-# 406 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 416 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	removemoney 50000
-# 407 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 417 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	playse SE_SHOP
-# 408 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 418 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	setvar VAR_TEMP_2, 1
-# 409 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 419 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	msgbox RustboroCity_DevonCorp_4F_EventScript_OfferShiny_Text_3
 	goto RustboroCity_DevonCorp_4F_EventScript_OfferShiny_1
 
 
 RustboroCity_DevonCorp_4F_EventScript_DrParkerEnd::
-# 429 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 439 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	msgbox RustboroCity_DevonCorp_4F_EventScript_DrParkerEnd_Text_0
-# 430 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 440 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	setvar VAR_RESULT, 0
-# 431 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 441 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	releaseall
 	return
 
 
 RustboroCity_DevonCorp_4F_EventScript_HasMon::
-# 435 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 445 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	msgbox RustboroCity_DevonCorp_4F_EventScript_HasMon_Text_0
-# 436 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 446 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	msgbox RustboroCity_DevonCorp_4F_EventScript_HasMon_Text_1
-# 437 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 447 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	msgbox RustboroCity_DevonCorp_4F_EventScript_HasMon_Text_2
-# 438 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 448 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	setvar VAR_RESULT, 0
-# 439 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 449 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	releaseall
 	return
 
 
 RustboroCity_DevonCorp_4F_EventScript_GiveLegendary::
-# 443 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 453 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	switch VAR_TEMP_1
-# 449 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 459 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	case 0, RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_3
-# 457 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 467 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	case 1, RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_4
-# 465 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 475 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	case 2, RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_5
-# 473 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 483 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	case 3, RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_6
-# 481 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 491 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	case 4, RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_7
-# 489 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 499 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	case 5, RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_8
-# 497 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 507 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	case 6, RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_9
-# 505 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 515 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	case 7, RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_10
-# 513 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 523 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	case 8, RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_11
-# 521 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 531 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	case 9, RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_12
-# 529 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 539 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	case 10, RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_13
-# 537 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 547 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	case 11, RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_14
-# 545 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 555 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	case 12, RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_15
-# 553 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 563 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	case 13, RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_16
-# 561 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 571 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	case 14, RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_17
-# 569 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 579 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	case 15, RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_18
-# 577 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 587 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	case 16, RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_19
-# 585 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 595 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	case 17, RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_20
-# 593 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 603 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	case 18, RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_21
-# 601 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 611 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	case 19, RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_22
-# 609 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 619 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	case 20, RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_23
-# 617 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 627 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	case 21, RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_24
-# 625 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 635 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	case 22, RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_25
-# 633 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 643 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	case 23, RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_26
-# 641 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 651 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	case 24, RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_27
-# 649 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 659 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	case 25, RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_28
-# 657 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 667 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	case 26, RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_29
-# 665 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 675 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	case 27, RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_30
-# 673 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 683 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	case 28, RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_31
-# 681 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 691 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	case 29, RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_32
-# 689 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 699 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	case 30, RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_33
-# 697 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 707 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	case 31, RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_34
-# 705 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 715 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	case 32, RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_35
-# 713 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 723 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	case 33, RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_36
-# 721 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 731 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	case 34, RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_37
-# 729 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 739 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	case 35, RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_38
-# 737 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 747 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	case 36, RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_39
-# 745 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 755 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	case 37, RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_40
-# 753 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 763 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	case 38, RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_41
-# 761 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 771 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	case 39, RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_42
-# 769 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 779 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	case 40, RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_43
-# 777 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 787 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	case 41, RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_44
-# 785 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	case 42, RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_45
 # 795 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+	case 42, RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_45
+# 803 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+	case 43, RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_46
+# 813 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	goto RustboroCity_DevonCorp_4F_EventScript_DrParkerEnd
 RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_1:
-# 799 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 817 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	compare VAR_RESULT, MON_CANT_GIVE
-	goto_if_ne RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_48
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_47:
-# 818 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	compare VAR_RESULT, MON_GIVEN_TO_PARTY
-	goto_if_eq RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_180
-# 825 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	compare VAR_RESULT, MON_GIVEN_TO_PC
-	goto_if_eq RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_181
-# 833 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	goto Common_EventScript_NoMoreRoomForPokemon
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_179:
+	goto_if_ne RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_49
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_48:
 # 836 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+	compare VAR_RESULT, MON_GIVEN_TO_PARTY
+	goto_if_eq RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_184
+# 843 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+	compare VAR_RESULT, MON_GIVEN_TO_PC
+	goto_if_eq RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_185
+# 851 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+	goto Common_EventScript_NoMoreRoomForPokemon
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_183:
+# 854 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	msgbox RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_Text_2
-# 837 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 855 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	setvar VAR_RESULT, 0
-# 838 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 856 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	releaseall
 	return
 
 RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_3:
-# 450 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 460 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	bufferspeciesname STR_VAR_1, SPECIES_MEWTWO_V
-# 451 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 461 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_MEWTWO_V
-# 452 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 462 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	givemon SPECIES_MEWTWO_V, 5, ITEM_NONE, ITEM_BEAST_BALL
-# 453 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 463 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	compare VAR_RESULT, MON_CANT_GIVE
-	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_51
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_50:
+	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_52
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_51:
 	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_1
 
 RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_4:
-# 458 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 468 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	bufferspeciesname STR_VAR_1, SPECIES_ARTICUNO_V
-# 459 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 469 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_ARTICUNO_V
-# 460 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 470 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	givemon SPECIES_ARTICUNO_V, 5, ITEM_NONE, ITEM_BEAST_BALL
-# 461 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 471 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	compare VAR_RESULT, MON_CANT_GIVE
-	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_54
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_53:
+	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_55
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_54:
 	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_1
 
 RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_5:
-# 466 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 476 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	bufferspeciesname STR_VAR_1, SPECIES_ZAPDOS_V
-# 467 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 477 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_ZAPDOS_V
-# 468 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 478 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	givemon SPECIES_ZAPDOS_V, 5, ITEM_NONE, ITEM_BEAST_BALL
-# 469 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 479 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	compare VAR_RESULT, MON_CANT_GIVE
-	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_57
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_56:
+	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_58
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_57:
 	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_1
 
 RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_6:
-# 474 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 484 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	bufferspeciesname STR_VAR_1, SPECIES_MOLTRES_V
-# 475 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 485 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_MOLTRES_V
-# 476 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 486 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	givemon SPECIES_MOLTRES_V, 5, ITEM_NONE, ITEM_BEAST_BALL
-# 477 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 487 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	compare VAR_RESULT, MON_CANT_GIVE
-	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_60
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_59:
+	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_61
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_60:
 	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_1
 
 RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_7:
-# 482 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 492 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	bufferspeciesname STR_VAR_1, SPECIES_RAIKOU_V
-# 483 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 493 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_RAIKOU_V
-# 484 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 494 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	givemon SPECIES_RAIKOU_V, 5, ITEM_NONE, ITEM_BEAST_BALL
-# 485 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 495 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	compare VAR_RESULT, MON_CANT_GIVE
-	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_63
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_62:
+	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_64
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_63:
 	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_1
 
 RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_8:
-# 490 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 500 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	bufferspeciesname STR_VAR_1, SPECIES_ENTEI_V
-# 491 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 501 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_ENTEI_V
-# 492 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 502 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	givemon SPECIES_ENTEI_V, 5, ITEM_NONE, ITEM_BEAST_BALL
-# 493 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 503 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	compare VAR_RESULT, MON_CANT_GIVE
-	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_66
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_65:
+	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_67
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_66:
 	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_1
 
 RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_9:
-# 498 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 508 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	bufferspeciesname STR_VAR_1, SPECIES_SUICUNE_V
-# 499 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 509 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_SUICUNE_V
-# 500 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 510 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	givemon SPECIES_SUICUNE_V, 5, ITEM_NONE, ITEM_BEAST_BALL
-# 501 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 511 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	compare VAR_RESULT, MON_CANT_GIVE
-	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_69
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_68:
+	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_70
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_69:
 	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_1
 
 RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_10:
-# 506 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 516 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	bufferspeciesname STR_VAR_1, SPECIES_LUGIA_V
-# 507 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 517 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_LUGIA_V
-# 508 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 518 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	givemon SPECIES_LUGIA_V, 5, ITEM_NONE, ITEM_BEAST_BALL
-# 509 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 519 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	compare VAR_RESULT, MON_CANT_GIVE
-	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_72
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_71:
+	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_73
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_72:
 	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_1
 
 RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_11:
-# 514 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 524 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	bufferspeciesname STR_VAR_1, SPECIES_HO_OH_V
-# 515 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 525 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_HO_OH_V
-# 516 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 526 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	givemon SPECIES_HO_OH_V, 5, ITEM_NONE, ITEM_BEAST_BALL
-# 517 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 527 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	compare VAR_RESULT, MON_CANT_GIVE
-	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_75
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_74:
+	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_76
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_75:
 	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_1
 
 RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_12:
-# 522 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 532 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	bufferspeciesname STR_VAR_1, SPECIES_REGIROCK_V
-# 523 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 533 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_REGIROCK_V
-# 524 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 534 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	givemon SPECIES_REGIROCK_V, 5, ITEM_NONE, ITEM_BEAST_BALL
-# 525 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 535 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	compare VAR_RESULT, MON_CANT_GIVE
-	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_78
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_77:
+	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_79
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_78:
 	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_1
 
 RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_13:
-# 530 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 540 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	bufferspeciesname STR_VAR_1, SPECIES_REGICE_V
-# 531 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 541 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_REGICE_V
-# 532 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 542 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	givemon SPECIES_REGICE_V, 5, ITEM_NONE, ITEM_BEAST_BALL
-# 533 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 543 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	compare VAR_RESULT, MON_CANT_GIVE
-	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_81
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_80:
+	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_82
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_81:
 	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_1
 
 RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_14:
-# 538 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 548 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	bufferspeciesname STR_VAR_1, SPECIES_REGISTEEL_V
-# 539 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 549 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_REGISTEEL_V
-# 540 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 550 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	givemon SPECIES_REGISTEEL_V, 5, ITEM_NONE, ITEM_BEAST_BALL
-# 541 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 551 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	compare VAR_RESULT, MON_CANT_GIVE
-	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_84
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_83:
+	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_85
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_84:
 	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_1
 
 RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_15:
-# 546 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 556 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	bufferspeciesname STR_VAR_1, SPECIES_LATIAS_V
-# 547 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 557 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_LATIAS_V
-# 548 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 558 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	givemon SPECIES_LATIAS_V, 5, ITEM_NONE, ITEM_BEAST_BALL
-# 549 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 559 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	compare VAR_RESULT, MON_CANT_GIVE
-	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_87
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_86:
+	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_88
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_87:
 	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_1
 
 RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_16:
-# 554 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 564 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	bufferspeciesname STR_VAR_1, SPECIES_LATIOS_V
-# 555 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 565 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_LATIOS_V
-# 556 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 566 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	givemon SPECIES_LATIOS_V, 5, ITEM_NONE, ITEM_BEAST_BALL
-# 557 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 567 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	compare VAR_RESULT, MON_CANT_GIVE
-	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_90
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_89:
+	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_91
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_90:
 	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_1
 
 RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_17:
-# 562 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 572 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	bufferspeciesname STR_VAR_1, SPECIES_KYOGRE_V
-# 563 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 573 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_KYOGRE_V
-# 564 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 574 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	givemon SPECIES_KYOGRE_V, 5, ITEM_NONE, ITEM_BEAST_BALL
-# 565 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 575 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	compare VAR_RESULT, MON_CANT_GIVE
-	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_93
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_92:
+	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_94
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_93:
 	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_1
 
 RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_18:
-# 570 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 580 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	bufferspeciesname STR_VAR_1, SPECIES_GROUDON_V
-# 571 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 581 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_GROUDON_V
-# 572 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 582 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	givemon SPECIES_GROUDON_V, 5, ITEM_NONE, ITEM_BEAST_BALL
-# 573 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 583 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	compare VAR_RESULT, MON_CANT_GIVE
-	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_96
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_95:
+	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_97
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_96:
 	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_1
 
 RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_19:
-# 578 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 588 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	bufferspeciesname STR_VAR_1, SPECIES_RAYQUAZA_V
-# 579 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 589 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_RAYQUAZA_V
-# 580 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 590 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	givemon SPECIES_RAYQUAZA_V, 5, ITEM_NONE, ITEM_BEAST_BALL
-# 581 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 591 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	compare VAR_RESULT, MON_CANT_GIVE
-	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_99
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_98:
+	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_100
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_99:
 	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_1
 
 RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_20:
-# 586 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 596 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	bufferspeciesname STR_VAR_1, SPECIES_UXIE_V
-# 587 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 597 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_UXIE_V
-# 588 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 598 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	givemon SPECIES_UXIE_V, 5, ITEM_NONE, ITEM_BEAST_BALL
-# 589 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 599 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	compare VAR_RESULT, MON_CANT_GIVE
-	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_102
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_101:
+	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_103
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_102:
 	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_1
 
 RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_21:
-# 594 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 604 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	bufferspeciesname STR_VAR_1, SPECIES_MESPRIT_V
-# 595 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 605 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_MESPRIT_V
-# 596 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 606 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	givemon SPECIES_MESPRIT_V, 5, ITEM_NONE, ITEM_BEAST_BALL
-# 597 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 607 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	compare VAR_RESULT, MON_CANT_GIVE
-	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_105
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_104:
+	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_106
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_105:
 	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_1
 
 RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_22:
-# 602 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 612 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	bufferspeciesname STR_VAR_1, SPECIES_AZELF_V
-# 603 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 613 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_AZELF_V
-# 604 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 614 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	givemon SPECIES_AZELF_V, 5, ITEM_NONE, ITEM_BEAST_BALL
-# 605 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 615 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	compare VAR_RESULT, MON_CANT_GIVE
-	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_108
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_107:
+	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_109
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_108:
 	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_1
 
 RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_23:
-# 610 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 620 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	bufferspeciesname STR_VAR_1, SPECIES_DIALGA_V
-# 611 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 621 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_DIALGA_V
-# 612 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 622 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	givemon SPECIES_DIALGA_V, 5, ITEM_NONE, ITEM_BEAST_BALL
-# 613 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 623 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	compare VAR_RESULT, MON_CANT_GIVE
-	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_111
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_110:
+	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_112
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_111:
 	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_1
 
 RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_24:
-# 618 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 628 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	bufferspeciesname STR_VAR_1, SPECIES_PALKIA_V
-# 619 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 629 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_PALKIA_V
-# 620 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 630 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	givemon SPECIES_PALKIA_V, 5, ITEM_NONE, ITEM_BEAST_BALL
-# 621 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 631 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	compare VAR_RESULT, MON_CANT_GIVE
-	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_114
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_113:
+	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_115
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_114:
 	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_1
 
 RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_25:
-# 626 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 636 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	bufferspeciesname STR_VAR_1, SPECIES_GIRATINA_V
-# 627 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 637 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_GIRATINA_V
-# 628 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 638 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	givemon SPECIES_GIRATINA_V, 5, ITEM_NONE, ITEM_BEAST_BALL
-# 629 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 639 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	compare VAR_RESULT, MON_CANT_GIVE
-	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_117
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_116:
+	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_118
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_117:
 	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_1
 
 RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_26:
-# 634 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 644 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	bufferspeciesname STR_VAR_1, SPECIES_HEATRAN_V
-# 635 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 645 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_HEATRAN_V
-# 636 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 646 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	givemon SPECIES_HEATRAN_V, 5, ITEM_NONE, ITEM_BEAST_BALL
-# 637 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 647 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	compare VAR_RESULT, MON_CANT_GIVE
-	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_120
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_119:
+	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_121
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_120:
 	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_1
 
 RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_27:
-# 642 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 652 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	bufferspeciesname STR_VAR_1, SPECIES_REGIGIGAS_V
-# 643 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 653 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_REGIGIGAS_V
-# 644 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 654 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	givemon SPECIES_REGIGIGAS_V, 5, ITEM_NONE, ITEM_BEAST_BALL
-# 645 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 655 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	compare VAR_RESULT, MON_CANT_GIVE
-	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_123
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_122:
+	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_124
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_123:
 	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_1
 
 RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_28:
-# 650 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 660 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	bufferspeciesname STR_VAR_1, SPECIES_CRESSELIA_V
-# 651 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 661 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_CRESSELIA_V
-# 652 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 662 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	givemon SPECIES_CRESSELIA_V, 5, ITEM_NONE, ITEM_BEAST_BALL
-# 653 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 663 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	compare VAR_RESULT, MON_CANT_GIVE
-	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_126
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_125:
+	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_127
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_126:
 	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_1
 
 RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_29:
-# 658 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 668 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	bufferspeciesname STR_VAR_1, SPECIES_COBALION_V
-# 659 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 669 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_COBALION_V
-# 660 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 670 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	givemon SPECIES_COBALION_V, 5, ITEM_NONE, ITEM_BEAST_BALL
-# 661 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 671 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	compare VAR_RESULT, MON_CANT_GIVE
-	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_129
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_128:
+	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_130
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_129:
 	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_1
 
 RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_30:
-# 666 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 676 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	bufferspeciesname STR_VAR_1, SPECIES_TERRAKION_V
-# 667 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 677 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_TERRAKION_V
-# 668 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 678 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	givemon SPECIES_TERRAKION_V, 5, ITEM_NONE, ITEM_BEAST_BALL
-# 669 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 679 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	compare VAR_RESULT, MON_CANT_GIVE
-	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_132
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_131:
+	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_133
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_132:
 	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_1
 
 RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_31:
-# 674 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 684 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	bufferspeciesname STR_VAR_1, SPECIES_VIRIZION_V
-# 675 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 685 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_VIRIZION_V
-# 676 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 686 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	givemon SPECIES_VIRIZION_V, 5, ITEM_NONE, ITEM_BEAST_BALL
-# 677 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 687 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	compare VAR_RESULT, MON_CANT_GIVE
-	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_135
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_134:
+	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_136
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_135:
 	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_1
 
 RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_32:
-# 682 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 692 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	bufferspeciesname STR_VAR_1, SPECIES_TORNADUS_V_INCARNATE
-# 683 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 693 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_TORNADUS_V_INCARNATE
-# 684 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 694 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	givemon SPECIES_TORNADUS_V_INCARNATE, 5, ITEM_NONE, ITEM_BEAST_BALL
-# 685 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 695 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	compare VAR_RESULT, MON_CANT_GIVE
-	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_138
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_137:
+	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_139
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_138:
 	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_1
 
 RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_33:
-# 690 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 700 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	bufferspeciesname STR_VAR_1, SPECIES_THUNDURUS_V_INCARNATE
-# 691 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 701 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_THUNDURUS_V_INCARNATE
-# 692 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 702 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	givemon SPECIES_THUNDURUS_V_INCARNATE, 5, ITEM_NONE, ITEM_BEAST_BALL
-# 693 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 703 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	compare VAR_RESULT, MON_CANT_GIVE
-	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_141
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_140:
+	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_142
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_141:
 	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_1
 
 RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_34:
-# 698 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 708 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	bufferspeciesname STR_VAR_1, SPECIES_LANDORUS_V_INCARNATE
-# 699 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 709 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_LANDORUS_V_INCARNATE
-# 700 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 710 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	givemon SPECIES_LANDORUS_V_INCARNATE, 5, ITEM_NONE, ITEM_BEAST_BALL
-# 701 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 711 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	compare VAR_RESULT, MON_CANT_GIVE
-	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_144
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_143:
+	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_145
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_144:
 	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_1
 
 RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_35:
-# 706 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 716 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	bufferspeciesname STR_VAR_1, SPECIES_RESHIRAM_V
-# 707 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 717 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_RESHIRAM_V
-# 708 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 718 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	givemon SPECIES_RESHIRAM_V, 5, ITEM_NONE, ITEM_BEAST_BALL
-# 709 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 719 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	compare VAR_RESULT, MON_CANT_GIVE
-	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_147
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_146:
+	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_148
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_147:
 	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_1
 
 RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_36:
-# 714 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 724 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	bufferspeciesname STR_VAR_1, SPECIES_ZEKROM_V
-# 715 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 725 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_ZEKROM_V
-# 716 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 726 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	givemon SPECIES_ZEKROM_V, 5, ITEM_NONE, ITEM_BEAST_BALL
-# 717 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 727 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	compare VAR_RESULT, MON_CANT_GIVE
-	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_150
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_149:
+	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_151
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_150:
 	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_1
 
 RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_37:
-# 722 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 732 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	bufferspeciesname STR_VAR_1, SPECIES_KYUREM_V
-# 723 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 733 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_KYUREM_V
-# 724 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 734 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	givemon SPECIES_KYUREM_V, 5, ITEM_NONE, ITEM_BEAST_BALL
-# 725 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 735 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	compare VAR_RESULT, MON_CANT_GIVE
-	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_153
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_152:
+	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_154
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_153:
 	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_1
 
 RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_38:
-# 730 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 740 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	bufferspeciesname STR_VAR_1, SPECIES_XERNEAS_V_NEUTRAL
-# 731 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 741 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_XERNEAS_V_NEUTRAL
-# 732 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 742 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	givemon SPECIES_XERNEAS_V_NEUTRAL, 5, ITEM_NONE, ITEM_BEAST_BALL
-# 733 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 743 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	compare VAR_RESULT, MON_CANT_GIVE
-	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_156
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_155:
+	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_157
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_156:
 	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_1
 
 RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_39:
-# 738 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 748 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	bufferspeciesname STR_VAR_1, SPECIES_YVELTAL_V
-# 739 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 749 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_YVELTAL_V
-# 740 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 750 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	givemon SPECIES_YVELTAL_V, 5, ITEM_NONE, ITEM_BEAST_BALL
-# 741 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 751 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	compare VAR_RESULT, MON_CANT_GIVE
-	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_159
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_158:
+	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_160
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_159:
 	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_1
 
 RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_40:
-# 746 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 756 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	bufferspeciesname STR_VAR_1, SPECIES_ZYGARDE_V
-# 747 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 757 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_ZYGARDE_V
-# 748 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 758 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	givemon SPECIES_ZYGARDE_V, 5, ITEM_NONE, ITEM_BEAST_BALL
-# 749 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 759 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	compare VAR_RESULT, MON_CANT_GIVE
-	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_162
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_161:
+	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_163
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_162:
 	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_1
 
 RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_41:
-# 754 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 764 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	bufferspeciesname STR_VAR_1, SPECIES_TAPU_KOKO_V
-# 755 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 765 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_TAPU_KOKO_V
-# 756 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 766 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	givemon SPECIES_TAPU_KOKO_V, 5, ITEM_NONE, ITEM_BEAST_BALL
-# 757 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 767 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	compare VAR_RESULT, MON_CANT_GIVE
-	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_165
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_164:
+	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_166
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_165:
 	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_1
 
 RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_42:
-# 762 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 772 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	bufferspeciesname STR_VAR_1, SPECIES_TAPU_LELE_V
-# 763 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 773 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_TAPU_LELE_V
-# 764 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 774 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	givemon SPECIES_TAPU_LELE_V, 5, ITEM_NONE, ITEM_BEAST_BALL
-# 765 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 775 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	compare VAR_RESULT, MON_CANT_GIVE
-	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_168
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_167:
+	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_169
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_168:
 	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_1
 
 RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_43:
-# 770 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 780 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	bufferspeciesname STR_VAR_1, SPECIES_TAPU_BULU_V
-# 771 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 781 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_TAPU_BULU_V
-# 772 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 782 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	givemon SPECIES_TAPU_BULU_V, 5, ITEM_NONE, ITEM_BEAST_BALL
-# 773 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 783 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	compare VAR_RESULT, MON_CANT_GIVE
-	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_171
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_170:
+	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_172
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_171:
 	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_1
 
 RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_44:
-# 778 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 788 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	bufferspeciesname STR_VAR_1, SPECIES_TAPU_FINI_V
-# 779 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 789 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_TAPU_FINI_V
-# 780 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 790 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	givemon SPECIES_TAPU_FINI_V, 5, ITEM_NONE, ITEM_BEAST_BALL
-# 781 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 791 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	compare VAR_RESULT, MON_CANT_GIVE
-	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_174
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_173:
+	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_175
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_174:
 	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_1
 
 RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_45:
-# 786 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 796 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	bufferspeciesname STR_VAR_1, SPECIES_TYPE_NULL_V
-# 787 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 797 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_TYPE_NULL_V
-# 788 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 798 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	givemon SPECIES_TYPE_NULL_V, 5, ITEM_NONE, ITEM_BEAST_BALL
-# 789 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 799 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	compare VAR_RESULT, MON_CANT_GIVE
-	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_177
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_176:
+	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_178
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_177:
 	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_1
 
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_48:
-# 801 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	compare VAR_TEMP_2, 1
-	goto_if_eq RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_186
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_185:
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_46:
+# 804 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+	bufferspeciesname STR_VAR_1, SPECIES_COSMOG_V
+# 805 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_COSMOG_V
 # 806 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	playmoncry VAR_TEMP_TRANSFERRED_SPECIES, CRY_MODE_ENCOUNTER
+	givemon SPECIES_COSMOG_V, 5, ITEM_NONE, ITEM_BEAST_BALL
 # 807 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	fadescreenspeed FADE_TO_BLACK, 1
-# 808 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	msgbox RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_Text_0
-# 809 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	fadescreenspeed FADE_FROM_BLACK, 1
-# 810 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	waitmoncry
-# 812 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	playfanfare MUS_OBTAIN_ITEM
-# 813 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	message RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_Text_1
-# 814 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	waitmessage
-# 815 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	waitfanfare
-	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_47
-
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_51:
-# 454 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	setflag FLAG_OBTAINED_MEWTWO_LINE
-	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_50
-
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_54:
-# 462 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	setflag FLAG_OBTAINED_BIRD_LINE
-	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_53
-
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_57:
-# 470 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	setflag FLAG_OBTAINED_BIRD_LINE
-	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_56
-
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_60:
-# 478 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	setflag FLAG_OBTAINED_BIRD_LINE
-	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_59
-
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_63:
-# 486 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	setflag FLAG_OBTAINED_BEASTS_LINE
-	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_62
-
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_66:
-# 494 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	setflag FLAG_OBTAINED_BEASTS_LINE
-	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_65
-
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_69:
-# 502 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	setflag FLAG_OBTAINED_BEASTS_LINE
-	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_68
-
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_72:
-# 510 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	setflag FLAG_OBTAINED_TOWER_LINE
-	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_71
-
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_75:
-# 518 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	setflag FLAG_OBTAINED_TOWER_LINE
-	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_74
-
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_78:
-# 526 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	setflag FLAG_OBTAINED_REGI_LINE
-	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_77
-
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_81:
-# 534 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	setflag FLAG_OBTAINED_REGI_LINE
-	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_80
-
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_84:
-# 542 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	setflag FLAG_OBTAINED_REGI_LINE
-	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_83
-
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_87:
-# 550 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	setflag FLAG_OBTAINED_EON_LINE
-	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_86
-
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_90:
-# 558 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	setflag FLAG_OBTAINED_EON_LINE
-	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_89
-
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_93:
-# 566 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	setflag FLAG_OBTAINED_WEATHER_LINE
-	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_92
-
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_96:
-# 574 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	setflag FLAG_OBTAINED_WEATHER_LINE
-	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_95
-
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_99:
-# 582 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	setflag FLAG_OBTAINED_WEATHER_LINE
-	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_98
-
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_102:
-# 590 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	setflag FLAG_OBTAINED_LAKE_LINE
-	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_101
-
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_105:
-# 598 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	setflag FLAG_OBTAINED_LAKE_LINE
-	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_104
-
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_108:
-# 606 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	setflag FLAG_OBTAINED_LAKE_LINE
-	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_107
-
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_111:
-# 614 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	setflag FLAG_OBTAINED_MYTH_LINE
-	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_110
-
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_114:
-# 622 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	setflag FLAG_OBTAINED_MYTH_LINE
-	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_113
-
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_117:
-# 630 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	setflag FLAG_OBTAINED_MYTH_LINE
-	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_116
-
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_120:
-# 638 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	setflag FLAG_OBTAINED_RELIC_LINE
-	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_119
-
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_123:
-# 646 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	setflag FLAG_OBTAINED_RELIC_LINE
-	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_122
-
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_126:
-# 654 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	setflag FLAG_OBTAINED_RELIC_LINE
-	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_125
-
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_129:
-# 662 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	setflag FLAG_OBTAINED_SWORDS_LINE
-	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_128
-
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_132:
-# 670 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	setflag FLAG_OBTAINED_SWORDS_LINE
-	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_131
-
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_135:
-# 678 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	setflag FLAG_OBTAINED_SWORDS_LINE
-	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_134
-
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_138:
-# 686 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	setflag FLAG_OBTAINED_FORCES_LINE
-	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_137
-
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_141:
-# 694 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	setflag FLAG_OBTAINED_FORCES_LINE
-	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_140
-
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_144:
-# 702 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	setflag FLAG_OBTAINED_FORCES_LINE
-	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_143
-
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_147:
-# 710 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	setflag FLAG_OBTAINED_TAO_LINE
-	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_146
-
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_150:
-# 718 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	setflag FLAG_OBTAINED_TAO_LINE
-	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_149
-
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_153:
-# 726 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	setflag FLAG_OBTAINED_TAO_LINE
-	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_152
-
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_156:
-# 734 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	setflag FLAG_OBTAINED_AURA_LINE
-	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_155
-
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_159:
-# 742 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	setflag FLAG_OBTAINED_AURA_LINE
-	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_158
-
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_162:
-# 750 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	setflag FLAG_OBTAINED_AURA_LINE
-	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_161
-
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_165:
-# 758 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	setflag FLAG_OBTAINED_TAPUS_LINE
-	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_164
-
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_168:
-# 766 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	setflag FLAG_OBTAINED_TAPUS_LINE
-	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_167
-
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_171:
-# 774 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	setflag FLAG_OBTAINED_TAPUS_LINE
-	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_170
-
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_174:
-# 782 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	setflag FLAG_OBTAINED_TAPUS_LINE
-	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_173
-
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_177:
-# 790 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	setflag FLAG_OBTAINED_TYPENULL_LINE
-	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_176
-
+	compare VAR_RESULT, MON_CANT_GIVE
+	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_181
 RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_180:
+	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_1
+
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_49:
 # 819 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	msgbox gText_NicknameThisPokemon, MSGBOX_YESNO
-# 820 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	compare VAR_RESULT, YES
-	goto_if_eq RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_189
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_188:
+	compare VAR_TEMP_2, 1
+	goto_if_eq RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_190
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_189:
 # 824 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	closemessage
-	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_179
+	playmoncry VAR_TEMP_TRANSFERRED_SPECIES, CRY_MODE_ENCOUNTER
+# 825 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+	fadescreenspeed FADE_TO_BLACK, 1
+# 826 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+	msgbox RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_Text_0
+# 827 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+	fadescreenspeed FADE_FROM_BLACK, 1
+# 828 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+	waitmoncry
+# 830 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+	playfanfare MUS_OBTAIN_ITEM
+# 831 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+	message RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_Text_1
+# 832 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+	waitmessage
+# 833 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+	waitfanfare
+	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_48
+
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_52:
+# 464 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+	setflag FLAG_OBTAINED_MEWTWO_LINE
+	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_51
+
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_55:
+# 472 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+	setflag FLAG_OBTAINED_BIRD_LINE
+	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_54
+
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_58:
+# 480 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+	setflag FLAG_OBTAINED_BIRD_LINE
+	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_57
+
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_61:
+# 488 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+	setflag FLAG_OBTAINED_BIRD_LINE
+	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_60
+
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_64:
+# 496 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+	setflag FLAG_OBTAINED_BEASTS_LINE
+	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_63
+
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_67:
+# 504 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+	setflag FLAG_OBTAINED_BEASTS_LINE
+	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_66
+
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_70:
+# 512 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+	setflag FLAG_OBTAINED_BEASTS_LINE
+	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_69
+
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_73:
+# 520 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+	setflag FLAG_OBTAINED_TOWER_LINE
+	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_72
+
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_76:
+# 528 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+	setflag FLAG_OBTAINED_TOWER_LINE
+	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_75
+
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_79:
+# 536 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+	setflag FLAG_OBTAINED_REGI_LINE
+	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_78
+
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_82:
+# 544 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+	setflag FLAG_OBTAINED_REGI_LINE
+	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_81
+
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_85:
+# 552 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+	setflag FLAG_OBTAINED_REGI_LINE
+	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_84
+
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_88:
+# 560 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+	setflag FLAG_OBTAINED_EON_LINE
+	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_87
+
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_91:
+# 568 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+	setflag FLAG_OBTAINED_EON_LINE
+	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_90
+
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_94:
+# 576 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+	setflag FLAG_OBTAINED_WEATHER_LINE
+	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_93
+
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_97:
+# 584 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+	setflag FLAG_OBTAINED_WEATHER_LINE
+	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_96
+
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_100:
+# 592 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+	setflag FLAG_OBTAINED_WEATHER_LINE
+	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_99
+
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_103:
+# 600 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+	setflag FLAG_OBTAINED_LAKE_LINE
+	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_102
+
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_106:
+# 608 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+	setflag FLAG_OBTAINED_LAKE_LINE
+	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_105
+
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_109:
+# 616 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+	setflag FLAG_OBTAINED_LAKE_LINE
+	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_108
+
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_112:
+# 624 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+	setflag FLAG_OBTAINED_MYTH_LINE
+	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_111
+
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_115:
+# 632 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+	setflag FLAG_OBTAINED_MYTH_LINE
+	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_114
+
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_118:
+# 640 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+	setflag FLAG_OBTAINED_MYTH_LINE
+	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_117
+
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_121:
+# 648 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+	setflag FLAG_OBTAINED_RELIC_LINE
+	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_120
+
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_124:
+# 656 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+	setflag FLAG_OBTAINED_RELIC_LINE
+	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_123
+
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_127:
+# 664 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+	setflag FLAG_OBTAINED_RELIC_LINE
+	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_126
+
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_130:
+# 672 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+	setflag FLAG_OBTAINED_SWORDS_LINE
+	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_129
+
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_133:
+# 680 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+	setflag FLAG_OBTAINED_SWORDS_LINE
+	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_132
+
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_136:
+# 688 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+	setflag FLAG_OBTAINED_SWORDS_LINE
+	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_135
+
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_139:
+# 696 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+	setflag FLAG_OBTAINED_FORCES_LINE
+	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_138
+
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_142:
+# 704 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+	setflag FLAG_OBTAINED_FORCES_LINE
+	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_141
+
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_145:
+# 712 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+	setflag FLAG_OBTAINED_FORCES_LINE
+	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_144
+
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_148:
+# 720 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+	setflag FLAG_OBTAINED_TAO_LINE
+	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_147
+
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_151:
+# 728 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+	setflag FLAG_OBTAINED_TAO_LINE
+	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_150
+
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_154:
+# 736 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+	setflag FLAG_OBTAINED_TAO_LINE
+	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_153
+
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_157:
+# 744 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+	setflag FLAG_OBTAINED_AURA_LINE
+	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_156
+
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_160:
+# 752 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+	setflag FLAG_OBTAINED_AURA_LINE
+	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_159
+
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_163:
+# 760 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+	setflag FLAG_OBTAINED_AURA_LINE
+	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_162
+
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_166:
+# 768 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+	setflag FLAG_OBTAINED_TAPUS_LINE
+	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_165
+
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_169:
+# 776 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+	setflag FLAG_OBTAINED_TAPUS_LINE
+	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_168
+
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_172:
+# 784 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+	setflag FLAG_OBTAINED_TAPUS_LINE
+	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_171
+
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_175:
+# 792 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+	setflag FLAG_OBTAINED_TAPUS_LINE
+	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_174
+
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_178:
+# 800 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+	setflag FLAG_OBTAINED_TYPENULL_LINE
+	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_177
 
 RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_181:
-# 826 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	call Common_EventScript_TransferredToPC
-# 827 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 808 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+	setflag FLAG_OBTAINED_LIGHT_LINE
+	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_180
+
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_184:
+# 837 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	msgbox gText_NicknameThisPokemon, MSGBOX_YESNO
-# 828 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 838 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	compare VAR_RESULT, YES
-	goto_if_eq RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_192
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_191:
-# 831 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	closemessage
-	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_179
-
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_186:
-# 802 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	callnative Script_SetLastGiftMonShiny
-	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_185
-
-RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_189:
-# 821 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	call Common_EventScript_GetGiftMonPartySlot
-# 822 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	call Common_EventScript_NameReceivedPartyMon
-	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_188
-
+	goto_if_eq RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_193
 RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_192:
-# 829 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 842 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+	closemessage
+	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_183
+
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_185:
+# 844 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+	call Common_EventScript_TransferredToPC
+# 845 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+	msgbox gText_NicknameThisPokemon, MSGBOX_YESNO
+# 846 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+	compare VAR_RESULT, YES
+	goto_if_eq RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_196
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_195:
+# 849 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+	closemessage
+	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_183
+
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_190:
+# 820 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+	callnative Script_SetLastGiftMonShiny
+	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_189
+
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_193:
+# 839 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+	call Common_EventScript_GetGiftMonPartySlot
+# 840 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+	call Common_EventScript_NameReceivedPartyMon
+	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_192
+
+RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_196:
+# 847 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	call Common_EventScript_NameReceivedBoxMon
-	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_191
+	goto RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_195
 
 
 RustboroCity_DevonCorp_4F_EventScript_DrParker_Text_0:
@@ -1914,63 +1956,63 @@ RustboroCity_DevonCorp_4F_EventScript_SelectRegion_Text_9:
 	.string "And which genetic line are you\ninterested in?$"
 
 RustboroCity_DevonCorp_4F_EventScript_OfferShiny_Text_0:
-# 394 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 404 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	.string "Oh, I almost forgot!$"
 
 RustboroCity_DevonCorp_4F_EventScript_OfferShiny_Text_1:
-# 396 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 406 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	.string "I could attempt to alter your\n"
 	.string "Proto-Legend's color scheme.$"
 
 RustboroCity_DevonCorp_4F_EventScript_OfferShiny_Text_2:
-# 397 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 407 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	.string "But it requires expensive materials.\n"
 	.string "It'll cost you ¥50000.$"
 
 RustboroCity_DevonCorp_4F_EventScript_OfferShiny_Text_3:
-# 409 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 419 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	.string "Excellent! I'll prepare a special\n"
 	.string "variant for you.$"
 
 RustboroCity_DevonCorp_4F_EventScript_OfferShiny_Text_4:
-# 411 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 421 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	.string "Come back when you have ¥50000.\n"
 	.string "Your Proto-Legend will be waiting!$"
 
 RustboroCity_DevonCorp_4F_EventScript_OfferShiny_Text_5:
-# 418 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 428 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	.string "OK, I'll get to work...$"
 
 RustboroCity_DevonCorp_4F_EventScript_DrParkerEnd_Text_0:
-# 429 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 439 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	.string "If you come across any Unstable DNA\n"
 	.string "samples, please come see me!$"
 
 RustboroCity_DevonCorp_4F_EventScript_HasMon_Text_0:
-# 435 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 445 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	.string "Wait... I see you already possess\n"
 	.string "a Proto-Legend from that genetic line.$"
 
 RustboroCity_DevonCorp_4F_EventScript_HasMon_Text_1:
-# 436 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 446 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	.string "I cannot create multiple prototypes\n"
 	.string "from the same lineage.$"
 
 RustboroCity_DevonCorp_4F_EventScript_HasMon_Text_2:
-# 437 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 447 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	.string "The genetic instability would be\n"
 	.string "too unpredictable.$"
 
 RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_Text_0:
-# 808 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 826 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	.string "{STR_VAR_1} materialized from the\n"
 	.string "Unstable DNA!$"
 
 RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_Text_1:
-# 813 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 831 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	.string "{PLAYER} received {STR_VAR_1}!$"
 
 RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_Text_2:
-# 836 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
+# 854 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	.string "DR. PARKER: Enjoy your new\n"
 	.string "Proto-Legend!$"

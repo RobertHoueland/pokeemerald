@@ -381,6 +381,16 @@ script RustboroCity_DevonCorp_4F_EventScript_SelectAlola {
 			}
 			addvar(VAR_RESULT, OFFSET_TYPENULL)
 			break
+		case ALOLA_CHOICE_LIGHT:
+			goto_if_set(FLAG_OBTAINED_LIGHT_LINE, RustboroCity_DevonCorp_4F_EventScript_HasMon)
+			multichoice(0, 0, MULTI_MINI_LEGEND_LIGHT, FALSE)
+			closemessage
+
+			if (var(VAR_RESULT) > NUM_CHOICES_LIGHT - 1) {
+				goto(RustboroCity_DevonCorp_4F_EventScript_SelectAlola)
+			}
+			addvar(VAR_RESULT, OFFSET_LIGHT)
+			break
 		default:
 			goto(RustboroCity_DevonCorp_4F_EventScript_SelectRegion)
 	}
@@ -788,6 +798,14 @@ script RustboroCity_DevonCorp_4F_EventScript_GiveLegendary {
 			givemon(SPECIES_TYPE_NULL_V, 5, ITEM_NONE, ITEM_BEAST_BALL)
 			if (var(VAR_RESULT) < MON_CANT_GIVE) {
 				setflag(FLAG_OBTAINED_TYPENULL_LINE)
+			}
+			break
+		case 43:  // Cosmog
+			bufferspeciesname(STR_VAR_1, SPECIES_COSMOG_V)
+			setvar(VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_COSMOG_V)
+			givemon(SPECIES_COSMOG_V, 5, ITEM_NONE, ITEM_BEAST_BALL)
+			if (var(VAR_RESULT) < MON_CANT_GIVE) {
+				setflag(FLAG_OBTAINED_LIGHT_LINE)
 			}
 			break
 		default:

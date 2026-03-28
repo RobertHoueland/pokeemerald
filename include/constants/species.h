@@ -1729,11 +1729,15 @@
 #define SPECIES_TAPU_LELE_V                             1612
 #define SPECIES_TAPU_BULU_V                             1613
 #define SPECIES_TAPU_FINI_V                             1614
+#define SPECIES_COSMOG_V                                1615
+#define SPECIES_COSMOEM_V                               1616
+#define SPECIES_SOLGALEO_V                              1617
+#define SPECIES_LUNALA_V                                1618
 
-#define SPECIES_EGG                                     (SPECIES_TAPU_FINI_V + 1)
+#define SPECIES_EGG                                     (SPECIES_LUNALA_V + 1)
 
 #define SPECIES_PROTO_LEGEND_START                      SPECIES_MEWTWO_V
-#define SPECIES_PROTO_LEGEND_END                        SPECIES_TAPU_FINI_V
+#define SPECIES_PROTO_LEGEND_END                        SPECIES_LUNALA_V
 
 #define NUM_SPECIES SPECIES_EGG
 
