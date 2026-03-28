@@ -1686,7 +1686,7 @@
 #define SPECIES_AZELF_V                                 1569
 #define SPECIES_DIALGA_V                                1570
 #define SPECIES_PALKIA_V                                1571
-#define SPECIES_GIRATINA_V                              1572
+#define SPECIES_GIRATINA_V_ALTERED                      1572
 #define SPECIES_HEATRAN_V                               1573
 #define SPECIES_REGIGIGAS_V                             1574
 #define SPECIES_CRESSELIA_V                             1575
@@ -1734,11 +1734,16 @@
 #define SPECIES_SOLGALEO_V                              1617
 #define SPECIES_LUNALA_V                                1618
 #define SPECIES_NECROZMA_V                              1619
+#define SPECIES_GIRATINA_V_ORIGIN                       1620
+#define SPECIES_KYUREM_V_WHITE                          1621
+#define SPECIES_KYUREM_V_BLACK                          1622
+#define SPECIES_DIALGA_V_ORIGIN                         1623
+#define SPECIES_PALKIA_V_ORIGIN                         1624
 
-#define SPECIES_EGG                                     (SPECIES_NECROZMA_V + 1)
+#define SPECIES_EGG                                     (SPECIES_PALKIA_V_ORIGIN + 1)
 
 #define SPECIES_PROTO_LEGEND_START                      SPECIES_MEWTWO_V
-#define SPECIES_PROTO_LEGEND_END                        SPECIES_NECROZMA_V
+#define SPECIES_PROTO_LEGEND_END                        SPECIES_PALKIA_V_ORIGIN
 
 #define NUM_SPECIES SPECIES_EGG
 

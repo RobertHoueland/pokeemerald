@@ -1261,11 +1261,11 @@ RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_115:
 
 RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_25:
 # 646 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	bufferspeciesname STR_VAR_1, SPECIES_GIRATINA_V
+	bufferspeciesname STR_VAR_1, SPECIES_GIRATINA_V_ALTERED
 # 647 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_GIRATINA_V
+	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_GIRATINA_V_ALTERED
 # 648 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	givemon SPECIES_GIRATINA_V, 5, ITEM_NONE, ITEM_BEAST_BALL
+	givemon SPECIES_GIRATINA_V_ALTERED, 5, ITEM_NONE, ITEM_BEAST_BALL
 # 649 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	compare VAR_RESULT, MON_CANT_GIVE
 	goto_if_lt RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_119

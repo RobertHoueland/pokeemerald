@@ -190,7 +190,7 @@
 #define ALOLA_CHOICE_NECROZMA              3
 
 // Number of mons each line/category has
-// These categories/names came from:
+// These categories/names mostly came from:
 // https://bulbapedia.bulbagarden.net/wiki/Legendary_Pok%C3%A9mon
 #define NUM_CHOICES_MEWTWO                 1
 #define NUM_CHOICES_BIRDS                  3
@@ -212,7 +212,6 @@
 #define NUM_CHOICES_NECROZMA               1
 
 // Cumulative offsets for the chosen category
-// Used in scripts.pory to use the player's choice to find correct mon chosen
 #define OFFSET_MEWTWO       0
 #define OFFSET_BIRDS        (OFFSET_MEWTWO + NUM_CHOICES_MEWTWO)
 #define OFFSET_BEASTS       (OFFSET_BIRDS + NUM_CHOICES_BIRDS)

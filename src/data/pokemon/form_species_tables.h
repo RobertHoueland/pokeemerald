@@ -2457,6 +2457,31 @@ static const u16 sXerneasVFormSpeciesIdTable[] = {
     FORM_SPECIES_END,
 };
 
+static const u16 sGiratinaVFormSpeciesIdTable[] = {
+    SPECIES_GIRATINA_V_ALTERED,
+    SPECIES_GIRATINA_V_ORIGIN,
+    FORM_SPECIES_END,
+};
+
+static const u16 sDialgaVFormSpeciesIdTable[] = {
+    SPECIES_DIALGA_V,
+    SPECIES_DIALGA_V_ORIGIN,
+    FORM_SPECIES_END,
+};
+
+static const u16 sPalkiaVFormSpeciesIdTable[] = {
+    SPECIES_PALKIA_V,
+    SPECIES_PALKIA_V_ORIGIN,
+    FORM_SPECIES_END,
+};
+
+static const u16 sKyuremVFormSpeciesIdTable[] = {
+    SPECIES_KYUREM_V,
+    SPECIES_KYUREM_V_WHITE,
+    SPECIES_KYUREM_V_BLACK,
+    FORM_SPECIES_END,
+};
+
 static const u16 sSilvallyVFormSpeciesIdTable[] = {
     SPECIES_SILVALLY_V_NORMAL,
     SPECIES_SILVALLY_V_FIGHTING,

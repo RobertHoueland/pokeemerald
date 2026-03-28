@@ -643,9 +643,9 @@ script RustboroCity_DevonCorp_4F_EventScript_GiveLegendary {
 			}
 			break
 		case 22:  // Giratina
-			bufferspeciesname(STR_VAR_1, SPECIES_GIRATINA_V)
-			setvar(VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_GIRATINA_V)
-			givemon(SPECIES_GIRATINA_V, 5, ITEM_NONE, ITEM_BEAST_BALL)
+			bufferspeciesname(STR_VAR_1, SPECIES_GIRATINA_V_ALTERED)
+			setvar(VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_GIRATINA_V_ALTERED)
+			givemon(SPECIES_GIRATINA_V_ALTERED, 5, ITEM_NONE, ITEM_BEAST_BALL)
 			if (var(VAR_RESULT) < MON_CANT_GIVE) {
 				setflag(FLAG_OBTAINED_MYTH_LINE)
 			}

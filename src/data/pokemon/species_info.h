@@ -1834,6 +1834,79 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .isFrontierBanned = FALSE,
         .levelUpLearnset = sDialgaLevelUpLearnset,
         .teachableLearnset = sDialgaTeachableLearnset,
+        .formSpeciesIdTable = sDialgaVFormSpeciesIdTable,
+        .formChangeTable = sDialgaVFormChangeTable,
+    },
+
+    [SPECIES_DIALGA_V_ORIGIN] =
+    {
+        // BST was 680, lowered by ~30%
+        .baseHP        = 69,   // was 100
+        .baseAttack    = 70,   // was 100
+        .baseDefense   = 84,   // was 120
+        .baseSpeed     = 63,   // was 90
+        .baseSpAttack  = 105,  // was 150
+        .baseSpDefense = 84,   // was 120
+        .types = MON_TYPES(TYPE_STEEL, TYPE_DRAGON),
+        .catchRate = 3,
+    #if P_UPDATED_EXP_YIELDS >= GEN_8
+        .expYield = 340,
+    #elif P_UPDATED_EXP_YIELDS >= GEN_5
+        .expYield = 306,
+    #else
+        .expYield = 220,
+    #endif
+        .evYield_SpAttack = 3,
+        .genderRatio = MON_GENDERLESS,
+        .eggCycles = 120,
+        .friendship = 0,
+        .growthRate = GROWTH_SLOW,
+        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
+        .abilities = { ABILITY_FILTER, ABILITY_NONE, ABILITY_ADAPTABILITY },
+        .bodyColor = BODY_COLOR_WHITE,
+        .speciesName = _("Dialga-V"),
+        .cryId = CRY_DIALGA,
+        .natDexNum = NATIONAL_DEX_DIALGA_V,
+        .categoryName = _("Temporal"),
+        .height = 49,   // was 70
+        .weight = 5950, // was 8500
+        .description = COMPOUND_STRING(
+            "Radiant light caused Dialga to take on a\n"
+            "form bearing a striking resemblance to the\n"
+            "creator Pokémon. It wields such a colossal\n"
+            "strength that this might be its true form."),
+        .pokemonScale = 333,
+        .pokemonOffset = 6,
+        .trainerScale = 721,
+        .trainerOffset = 19,
+        .frontPic = gMonFrontPic_DialgaOrigin,
+        .frontPicSize = MON_COORDS_SIZE(64, 64),
+        .frontPicYOffset = 0,
+        .frontAnimFrames = sAnims_SingleFramePlaceHolder,
+        .backPic = gMonBackPic_DialgaOrigin,
+        .backPicSize = MON_COORDS_SIZE(64, 64),
+        .backPicYOffset = 0,
+        .palette = gMonPalette_DialgaOrigin,
+        .shinyPalette = gMonShinyPalette_DialgaOrigin,
+        .iconSprite = gMonIcon_DialgaOrigin,
+        .iconPalIndex = 0,
+        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
+        SHADOW(2, 11, SHADOW_SIZE_L)
+        FOOTPRINT(Dialga)
+        OVERWORLD(
+            sPicTable_DialgaOrigin,
+            SIZE_64x64,
+            SHADOW_SIZE_M,
+            TRACKS_NONE,
+            sAnimTable_Following,
+            gOverworldPalette_DialgaOrigin,
+            gShinyOverworldPalette_DialgaOrigin
+        )
+        .isFrontierBanned = FALSE,
+        .levelUpLearnset = sDialgaLevelUpLearnset,
+        .teachableLearnset = sDialgaTeachableLearnset,
+        .formSpeciesIdTable = sDialgaVFormSpeciesIdTable,
+        .formChangeTable = sDialgaVFormChangeTable,
     },
 
     [SPECIES_PALKIA_V] =
@@ -1908,9 +1981,82 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .isFrontierBanned = FALSE,
         .levelUpLearnset = sPalkiaLevelUpLearnset,
         .teachableLearnset = sPalkiaTeachableLearnset,
+        .formSpeciesIdTable = sPalkiaVFormSpeciesIdTable,
+        .formChangeTable = sPalkiaVFormChangeTable,
     },
 
-    [SPECIES_GIRATINA_V] =
+    [SPECIES_PALKIA_V_ORIGIN] =
+    {
+        // BST was 680, lowered by ~30%
+        .baseHP        = 62,   // was 90
+        .baseAttack    = 70,   // was 100
+        .baseDefense   = 70,   // was 100
+        .baseSpeed     = 84,   // was 120
+        .baseSpAttack  = 105,  // was 150
+        .baseSpDefense = 84,   // was 120
+        .types = MON_TYPES(TYPE_WATER, TYPE_DRAGON),
+        .catchRate = 3,
+    #if P_UPDATED_EXP_YIELDS >= GEN_8
+        .expYield = 340,
+    #elif P_UPDATED_EXP_YIELDS >= GEN_5
+        .expYield = 306,
+    #else
+        .expYield = 220,
+    #endif
+        .evYield_SpAttack = 3,
+        .genderRatio = MON_GENDERLESS,
+        .eggCycles = 120,
+        .friendship = 0,
+        .growthRate = GROWTH_SLOW,
+        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
+        .abilities = { ABILITY_ADAPTABILITY, ABILITY_NONE, ABILITY_FILTER },
+        .bodyColor = BODY_COLOR_PURPLE,
+        .speciesName = _("Palkia-V"),
+        .cryId = CRY_PALKIA,
+        .natDexNum = NATIONAL_DEX_PALKIA_V,
+        .categoryName = _("Spatial"),
+        .height = 44,   // was 63
+        .weight = 4620, // was 6600
+        .description = COMPOUND_STRING(
+            "It soars across the sky in a form that\n"
+            "resembles the creator of all things.\n"
+            "Perhaps this imitation of appearance is a\n"
+            "strategy for gaining Arceus's powers."),
+        .pokemonScale = 333,
+        .pokemonOffset = 4,
+        .trainerScale = 650,
+        .trainerOffset = 16,
+        .frontPic = gMonFrontPic_PalkiaOrigin,
+        .frontPicSize = MON_COORDS_SIZE(64, 64),
+        .frontPicYOffset = 0,
+        .frontAnimFrames = sAnims_SingleFramePlaceHolder,
+        .backPic = gMonBackPic_PalkiaOrigin,
+        .backPicSize = MON_COORDS_SIZE(64, 64),
+        .backPicYOffset = 3,
+        .palette = gMonPalette_PalkiaOrigin,
+        .shinyPalette = gMonShinyPalette_PalkiaOrigin,
+        .iconSprite = gMonIcon_PalkiaOrigin,
+        .iconPalIndex = 2,
+        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
+        SHADOW(-3, 14, SHADOW_SIZE_L)
+        FOOTPRINT(Palkia)
+        OVERWORLD(
+            sPicTable_PalkiaOrigin,
+            SIZE_64x64,
+            SHADOW_SIZE_M,
+            TRACKS_NONE,
+            sAnimTable_Following,
+            gOverworldPalette_PalkiaOrigin,
+            gShinyOverworldPalette_PalkiaOrigin
+        )
+        .isFrontierBanned = FALSE,
+        .levelUpLearnset = sPalkiaLevelUpLearnset,
+        .teachableLearnset = sPalkiaTeachableLearnset,
+        .formSpeciesIdTable = sPalkiaVFormSpeciesIdTable,
+        .formChangeTable = sPalkiaVFormChangeTable,
+    },
+
+    [SPECIES_GIRATINA_V_ALTERED] =
     {
         // BST was 680, lowered by ~30%
         .baseHP        = 104,  // was 150
@@ -1983,6 +2129,88 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .isFrontierBanned = FALSE,
         .levelUpLearnset = sGiratinaLevelUpLearnset,
         .teachableLearnset = sGiratinaTeachableLearnset,
+        .formSpeciesIdTable = sGiratinaVFormSpeciesIdTable,
+        .formChangeTable = sGiratinaVFormChangeTable,
+    },
+
+    [SPECIES_GIRATINA_V_ORIGIN] =
+    {
+        // BST was 680, lowered by ~30%
+        .baseHP        = 104,  // was 150
+        .baseAttack    = 84,   // was 120
+        .baseDefense   = 70,   // was 100
+        .baseSpeed     = 63,   // was 90
+        .baseSpAttack  = 84,   // was 120
+        .baseSpDefense = 70,   // was 100
+        .types = MON_TYPES(TYPE_GHOST, TYPE_DRAGON),
+        .catchRate = 3,
+    #if P_UPDATED_EXP_YIELDS >= GEN_8
+        .expYield = 340,
+    #elif P_UPDATED_EXP_YIELDS >= GEN_5
+        .expYield = 306,
+    #else
+        .expYield = 220,
+    #endif
+        .evYield_HP = 3,
+        .genderRatio = MON_GENDERLESS,
+        .eggCycles = 120,
+        .friendship = 0,
+        .growthRate = GROWTH_SLOW,
+        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
+        .abilities = { ABILITY_LEVITATE, ABILITY_NONE, ABILITY_NONE },
+        .bodyColor = BODY_COLOR_BLACK,
+        .speciesName = _("Giratina-V"),
+        .cryId = CRY_GIRATINA,
+        .natDexNum = NATIONAL_DEX_GIRATINA_V,
+        .categoryName = _("Renegade"),
+        .height = 48,   // was 69
+        .weight = 4550, // was 6500
+        .description = COMPOUND_STRING(
+            "Giratina loses its legs upon changing into\n"
+            "this form. It's believed it hails from a\n"
+            "world where the heavens and the earth\n"
+            "are as one."),
+        .pokemonScale = 333,  // was 256
+        .pokemonOffset = 2,   // was 0
+        .trainerScale = 614,
+        .trainerOffset = 13,
+        .frontPic = gMonFrontPic_GiratinaOrigin,
+        .frontPicSize = MON_COORDS_SIZE(64, 64),
+        .frontPicYOffset = 0,
+        .frontAnimFrames = ANIM_FRAMES(
+            ANIMCMD_FRAME(0, 11),
+            ANIMCMD_FRAME(1, 10),
+            ANIMCMD_FRAME(0, 10),
+            ANIMCMD_FRAME(1, 10),
+            ANIMCMD_FRAME(0, 10),
+        ),
+        .frontAnimId = ANIM_LUNGE_GROW,
+        .enemyMonElevation = 7,
+        .backPic = gMonBackPic_GiratinaOrigin,
+        .backPicSize = MON_COORDS_SIZE(64, 56),
+        .backPicYOffset = 4,
+        .backAnimId = BACK_ANIM_GROW_STUTTER,
+        .palette = gMonPalette_GiratinaOrigin,
+        .shinyPalette = gMonShinyPalette_GiratinaOrigin,
+        .iconSprite = gMonIcon_GiratinaOrigin,
+        .iconPalIndex = 0,
+        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
+        SHADOW(0, 18, SHADOW_SIZE_L)
+        FOOTPRINT(GiratinaOrigin)
+        OVERWORLD(
+            sPicTable_GiratinaOrigin,
+            SIZE_64x64,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            sAnimTable_Following,
+            gOverworldPalette_GiratinaOrigin,
+            gShinyOverworldPalette_GiratinaOrigin
+        )
+        .isFrontierBanned = FALSE,
+        .levelUpLearnset = sGiratinaLevelUpLearnset,
+        .teachableLearnset = sGiratinaTeachableLearnset,
+        .formSpeciesIdTable = sGiratinaVFormSpeciesIdTable,
+        .formChangeTable = sGiratinaVFormChangeTable,
     },
 
     [SPECIES_HEATRAN_V] =
@@ -3134,6 +3362,149 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .isFrontierBanned = FALSE,
         .levelUpLearnset = sKyuremLevelUpLearnset,
         .teachableLearnset = sKyuremTeachableLearnset,
+        .formSpeciesIdTable = sKyuremVFormSpeciesIdTable,
+    },
+
+    [SPECIES_KYUREM_V_WHITE] =
+    {
+        // BST was 700, lowered by ~32%
+        .baseHP        = 85,   // was 125
+        .baseAttack    = 82,   // was 120
+        .baseDefense   = 61,   // was 90
+        .baseSpeed     = 65,   // was 95
+        .baseSpAttack  = 116,  // was 170
+        .baseSpDefense = 66,   // was 100
+        .types = MON_TYPES(TYPE_DRAGON, TYPE_ICE),
+        .catchRate = 3,
+        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_8) ? 350 : 315,
+        .evYield_SpAttack = 3,
+        .genderRatio = MON_GENDERLESS,
+        .eggCycles = 120,
+        .friendship = 0,
+        .growthRate = GROWTH_SLOW,
+        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
+        .abilities = { ABILITY_TURBOBLAZE, ABILITY_NONE, ABILITY_NONE },
+        .bodyColor = BODY_COLOR_GRAY,
+        .noFlip = TRUE,
+        .speciesName = _("Kyurem-V"),
+        .cryId = CRY_KYUREM_WHITE,
+        .natDexNum = NATIONAL_DEX_KYUREM_V,
+        .categoryName = _("Boundary"),
+        .height = 24,   // was 36
+        .weight = 2210, // was 3250
+        .description = COMPOUND_STRING(
+            "The sameness of Reshiram's and\n"
+            "Kyurem's genes allowed Kyurem to\n"
+            "absorb Reshiram. Kyurem can now use the\n"
+            "power of both fire and ice."),
+        .pokemonScale = 393,
+        .pokemonOffset = 6,
+        .trainerScale = 356,
+        .trainerOffset = 0,
+        .frontPic = gMonFrontPic_KyuremWhite,
+        .frontPicSize = MON_COORDS_SIZE(64, 64),
+        .frontPicYOffset = 0,
+        .frontAnimFrames = ANIM_FRAMES(
+            ANIMCMD_FRAME(1, 40),
+            ANIMCMD_FRAME(0, 5),
+        ),
+        .frontAnimId = ANIM_H_SHAKE,
+        .backPic = gMonBackPic_KyuremWhite,
+        .backPicSize = MON_COORDS_SIZE(64, 64),
+        .backPicYOffset = 0,
+        .backAnimId = BACK_ANIM_SHAKE_GLOW_RED,
+        .palette = gMonPalette_KyuremWhite,
+        .shinyPalette = gMonShinyPalette_KyuremWhite,
+        .iconSprite = gMonIcon_KyuremWhite,
+        .iconPalIndex = 0,
+        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
+        SHADOW(-8, 14, SHADOW_SIZE_L)
+        FOOTPRINT(Kyurem)
+        OVERWORLD(
+            sPicTable_KyuremWhite,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            sAnimTable_Following,
+            gOverworldPalette_KyuremWhite,
+            gShinyOverworldPalette_KyuremWhite
+        )
+        .cannotBeTraded = TRUE,
+        .isFrontierBanned = FALSE,
+        .levelUpLearnset = sKyuremWhiteLevelUpLearnset,
+        .teachableLearnset = sKyuremTeachableLearnset,
+        .formSpeciesIdTable = sKyuremVFormSpeciesIdTable,
+    },
+
+    [SPECIES_KYUREM_V_BLACK] =
+    {
+        // BST was 700, lowered by ~32%
+        .baseHP        = 85,   // was 125
+        .baseAttack    = 116,  // was 170
+        .baseDefense   = 66,   // was 100
+        .baseSpeed     = 65,   // was 95
+        .baseSpAttack  = 82,   // was 120
+        .baseSpDefense = 61,   // was 90
+        .types = MON_TYPES(TYPE_DRAGON, TYPE_ICE),
+        .catchRate = 3,
+        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_8) ? 350 : 315,
+        .evYield_Attack = 3,
+        .genderRatio = MON_GENDERLESS,
+        .eggCycles = 120,
+        .friendship = 0,
+        .growthRate = GROWTH_SLOW,
+        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
+        .abilities = { ABILITY_TERAVOLT, ABILITY_NONE, ABILITY_NONE },
+        .bodyColor = BODY_COLOR_GRAY,
+        .noFlip = TRUE,
+        .speciesName = _("Kyurem-V"),
+        .cryId = CRY_KYUREM_BLACK,
+        .natDexNum = NATIONAL_DEX_KYUREM_V,
+        .categoryName = _("Boundary"),
+        .height = 22,   // was 33
+        .weight = 2210, // was 3250
+        .description = COMPOUND_STRING(
+            "The sameness of Zekrom's and\n"
+            "Kyurem's genes allowed Kyurem to absorb\n"
+            "Zekrom. Kyurem can now use the\n"
+            "power of both electricity and ice."),
+        .pokemonScale = 393,
+        .pokemonOffset = 6,
+        .trainerScale = 356,
+        .trainerOffset = 0,
+        .frontPic = gMonFrontPic_KyuremBlack,
+        .frontPicSize = MON_COORDS_SIZE(64, 64),
+        .frontPicYOffset = 0,
+        .frontAnimFrames = ANIM_FRAMES(
+            ANIMCMD_FRAME(1, 40),
+            ANIMCMD_FRAME(0, 5),
+        ),
+        .frontAnimId = ANIM_V_SHAKE,
+        .backPic = gMonBackPic_KyuremBlack,
+        .backPicSize = MON_COORDS_SIZE(64, 64),
+        .backPicYOffset = 3,
+        .backAnimId = BACK_ANIM_SHAKE_GLOW_BLUE,
+        .palette = gMonPalette_KyuremBlack,
+        .shinyPalette = gMonShinyPalette_KyuremBlack,
+        .iconSprite = gMonIcon_KyuremBlack,
+        .iconPalIndex = 0,
+        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
+        SHADOW(4, 14, SHADOW_SIZE_L)
+        FOOTPRINT(Kyurem)
+        OVERWORLD(
+            sPicTable_KyuremBlack,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            sAnimTable_Following,
+            gOverworldPalette_KyuremBlack,
+            gShinyOverworldPalette_KyuremBlack
+        )
+        .cannotBeTraded = TRUE,
+        .isFrontierBanned = FALSE,
+        .levelUpLearnset = sKyuremBlackLevelUpLearnset,
+        .teachableLearnset = sKyuremTeachableLearnset,
+        .formSpeciesIdTable = sKyuremVFormSpeciesIdTable,
     },
 
     [SPECIES_XERNEAS_V_NEUTRAL] =
