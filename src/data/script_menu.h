@@ -804,9 +804,7 @@ static const struct MenuAction MultichoiceList_MiniLegendSinnoh[] =
 {
     {COMPOUND_STRING("LAKE GUARDIAN LINE")},
     {COMPOUND_STRING("MYTHICAL LINE")},
-    {COMPOUND_STRING("HEATRAN LINE")},
-    {COMPOUND_STRING("REGIGIGAS LINE")},
-    {COMPOUND_STRING("CRESSELIA LINE")},
+    {COMPOUND_STRING("RELIC LINE")},
     {gText_Exit},
 };
 
@@ -898,20 +896,10 @@ static const struct MenuAction MultichoiceList_MiniLegendMyth[] =
     {gText_Exit},
 };
 
-static const struct MenuAction MultichoiceList_MiniLegendHeatran[] =
+static const struct MenuAction MultichoiceList_MiniLegendRelic[] =
 {
     {COMPOUND_STRING("HEATRAN-V")},
-    {gText_Exit},
-};
-
-static const struct MenuAction MultichoiceList_MiniLegendRegigigas[] =
-{
     {COMPOUND_STRING("REGIGIGAS-V")},
-    {gText_Exit},
-};
-
-static const struct MenuAction MultichoiceList_MiniLegendCresselia[] =
-{
     {COMPOUND_STRING("CRESSELIA-V")},
     {gText_Exit},
 };
@@ -1095,9 +1083,7 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_MINI_LEGEND_SINNOH]         = MULTICHOICE(MultichoiceList_MiniLegendSinnoh),
     [MULTI_MINI_LEGEND_LAKE]           = MULTICHOICE(MultichoiceList_MiniLegendLake),
     [MULTI_MINI_LEGEND_MYTH]           = MULTICHOICE(MultichoiceList_MiniLegendMyth),
-    [MULTI_MINI_LEGEND_HEATRAN]        = MULTICHOICE(MultichoiceList_MiniLegendHeatran),
-    [MULTI_MINI_LEGEND_REGIGIGAS]      = MULTICHOICE(MultichoiceList_MiniLegendRegigigas),
-    [MULTI_MINI_LEGEND_CRESSELIA]      = MULTICHOICE(MultichoiceList_MiniLegendCresselia),
+    [MULTI_MINI_LEGEND_RELIC]        = MULTICHOICE(MultichoiceList_MiniLegendRelic),
     [MULTI_MINI_LEGEND_UNOVA]          = MULTICHOICE(MultichoiceList_MiniLegendUnova),
     [MULTI_MINI_LEGEND_SWORDS]         = MULTICHOICE(MultichoiceList_MiniLegendSwords),
     [MULTI_MINI_LEGEND_FORCES]         = MULTICHOICE(MultichoiceList_MiniLegendForces),

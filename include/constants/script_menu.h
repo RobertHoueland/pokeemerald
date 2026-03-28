@@ -141,14 +141,12 @@
 #define MULTI_MINI_LEGEND_WEATHER          130
 #define MULTI_MINI_LEGEND_LAKE             131
 #define MULTI_MINI_LEGEND_MYTH             132
-#define MULTI_MINI_LEGEND_HEATRAN          133
-#define MULTI_MINI_LEGEND_REGIGIGAS        134
-#define MULTI_MINI_LEGEND_CRESSELIA        135
-#define MULTI_MINI_LEGEND_SWORDS           136
-#define MULTI_MINI_LEGEND_FORCES           137
-#define MULTI_MINI_LEGEND_TAO              138
-#define MULTI_MINI_LEGEND_AURA             139
-#define MULTI_MINI_LEGEND_TYPENULL         140
+#define MULTI_MINI_LEGEND_RELIC            133
+#define MULTI_MINI_LEGEND_SWORDS           134
+#define MULTI_MINI_LEGEND_FORCES           135
+#define MULTI_MINI_LEGEND_TAO              136
+#define MULTI_MINI_LEGEND_AURA             137
+#define MULTI_MINI_LEGEND_TYPENULL         138
 
 // Mini legendary region choices
 #define REGION_CHOICE_KANTO                0
@@ -175,9 +173,7 @@
 
 #define SINNOH_CHOICE_LAKE                 0
 #define SINNOH_CHOICE_MYTH                 1
-#define SINNOH_CHOICE_HEATRAN              2
-#define SINNOH_CHOICE_REGIGIGAS            3
-#define SINNOH_CHOICE_CRESSELIA            4
+#define SINNOH_CHOICE_RELIC                2
 
 #define UNOVA_CHOICE_SWORDS                0
 #define UNOVA_CHOICE_FORCES                1
@@ -199,9 +195,7 @@
 #define NUM_CHOICES_WEATHER                3
 #define NUM_CHOICES_LAKE                   3
 #define NUM_CHOICES_MYTH                   3
-#define NUM_CHOICES_HEATRAN                1
-#define NUM_CHOICES_REGIGIGAS              1
-#define NUM_CHOICES_CRESSELIA              1
+#define NUM_CHOICES_RELIC                  3
 #define NUM_CHOICES_SWORDS                 3
 #define NUM_CHOICES_FORCES                 3
 #define NUM_CHOICES_TAO                    3
@@ -219,10 +213,8 @@
 #define OFFSET_WEATHER      (OFFSET_EON + NUM_CHOICES_EON)
 #define OFFSET_LAKE         (OFFSET_WEATHER + NUM_CHOICES_WEATHER)
 #define OFFSET_MYTH         (OFFSET_LAKE + NUM_CHOICES_LAKE)
-#define OFFSET_HEATRAN      (OFFSET_MYTH + NUM_CHOICES_MYTH)
-#define OFFSET_REGIGIGAS    (OFFSET_HEATRAN + NUM_CHOICES_HEATRAN)
-#define OFFSET_CRESSELIA    (OFFSET_REGIGIGAS + NUM_CHOICES_REGIGIGAS)
-#define OFFSET_SWORDS       (OFFSET_CRESSELIA + NUM_CHOICES_CRESSELIA)
+#define OFFSET_RELIC        (OFFSET_MYTH + NUM_CHOICES_MYTH)
+#define OFFSET_SWORDS       (OFFSET_RELIC + NUM_CHOICES_RELIC)
 #define OFFSET_FORCES       (OFFSET_SWORDS + NUM_CHOICES_SWORDS)
 #define OFFSET_TAO          (OFFSET_FORCES + NUM_CHOICES_FORCES)
 #define OFFSET_AURA         (OFFSET_TAO + NUM_CHOICES_TAO)

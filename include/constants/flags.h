@@ -666,14 +666,14 @@
 #define FLAG_OBTAINED_WEATHER_LINE           0x26B
 #define FLAG_OBTAINED_LAKE_LINE              0x26C
 #define FLAG_OBTAINED_MYTH_LINE              0x26D
-#define FLAG_OBTAINED_HEATRAN_LINE           0x26E
-#define FLAG_OBTAINED_REGIGIGAS_LINE         0x26F
-#define FLAG_OBTAINED_CRESSELIA_LINE         0x270
-#define FLAG_OBTAINED_SWORDS_LINE            0x271
-#define FLAG_OBTAINED_FORCES_LINE            0x272
-#define FLAG_OBTAINED_TAO_LINE               0x273
-#define FLAG_OBTAINED_AURA_LINE              0x274
-#define FLAG_OBTAINED_TYPENULL_LINE          0x275
+#define FLAG_OBTAINED_RELIC_LINE             0x26E
+#define FLAG_OBTAINED_SWORDS_LINE            0x26F
+#define FLAG_OBTAINED_FORCES_LINE            0x270
+#define FLAG_OBTAINED_TAO_LINE               0x271
+#define FLAG_OBTAINED_AURA_LINE              0x272
+#define FLAG_OBTAINED_TYPENULL_LINE          0x273
+#define FLAG_UNUSED_0x274  0x274 // Unused Flag
+#define FLAG_UNUSED_0x275  0x275 // Unused Flag
 #define FLAG_UNUSED_0x276  0x276 // Unused Flag
 #define FLAG_UNUSED_0x277  0x277 // Unused Flag
 #define FLAG_UNUSED_0x278  0x278 // Unused Flag

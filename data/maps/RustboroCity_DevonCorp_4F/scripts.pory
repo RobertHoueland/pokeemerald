@@ -104,7 +104,7 @@ script RustboroCity_DevonCorp_4F_EventScript_SelectRegion {
         "SINNOH",
         "UNOVA",
         "KALOS",
-		//"ALOLA",
+		"ALOLA",
 		//"GALAR",
 		//"PALDEA",
         "{COLOR GREEN}EXIT")
@@ -127,8 +127,8 @@ script RustboroCity_DevonCorp_4F_EventScript_SelectRegion {
 			goto(RustboroCity_DevonCorp_4F_EventScript_SelectUnova)
 		case REGION_CHOICE_KALOS:
 			goto(RustboroCity_DevonCorp_4F_EventScript_SelectKalos)
-		//case REGION_CHOICE_ALOLA:
-			//goto(RustboroCity_DevonCorp_4F_EventScript_SelectAlola)
+		case REGION_CHOICE_ALOLA:
+			goto(RustboroCity_DevonCorp_4F_EventScript_SelectAlola)
 		//case REGION_CHOICE_GALAR:
 			//goto(RustboroCity_DevonCorp_4F_EventScript_SelectGalar)
 		//case REGION_CHOICE_PALDEA:
@@ -272,35 +272,15 @@ script RustboroCity_DevonCorp_4F_EventScript_SelectSinnoh {
 			}
 			addvar(VAR_RESULT, OFFSET_MYTH)
 			break
-		case SINNOH_CHOICE_HEATRAN:
-			goto_if_set(FLAG_OBTAINED_HEATRAN_LINE, RustboroCity_DevonCorp_4F_EventScript_HasMon)
-			multichoice(0, 0, MULTI_MINI_LEGEND_HEATRAN, FALSE)
+		case SINNOH_CHOICE_RELIC:
+			goto_if_set(FLAG_OBTAINED_RELIC_LINE, RustboroCity_DevonCorp_4F_EventScript_HasMon)
+			multichoice(0, 0, MULTI_MINI_LEGEND_RELIC, FALSE)
 			closemessage
 
-			if (var(VAR_RESULT) > NUM_CHOICES_HEATRAN - 1) {
+			if (var(VAR_RESULT) > NUM_CHOICES_RELIC - 1) {
 				goto(RustboroCity_DevonCorp_4F_EventScript_SelectSinnoh)
 			}
-			addvar(VAR_RESULT, OFFSET_HEATRAN)
-			break
-		case SINNOH_CHOICE_REGIGIGAS:
-			goto_if_set(FLAG_OBTAINED_REGIGIGAS_LINE, RustboroCity_DevonCorp_4F_EventScript_HasMon)
-			multichoice(0, 0, MULTI_MINI_LEGEND_REGIGIGAS, FALSE)
-			closemessage
-
-			if (var(VAR_RESULT) > NUM_CHOICES_REGIGIGAS - 1) {
-				goto(RustboroCity_DevonCorp_4F_EventScript_SelectSinnoh)
-			}
-			addvar(VAR_RESULT, OFFSET_REGIGIGAS)
-			break
-		case SINNOH_CHOICE_CRESSELIA:
-			goto_if_set(FLAG_OBTAINED_CRESSELIA_LINE, RustboroCity_DevonCorp_4F_EventScript_HasMon)
-			multichoice(0, 0, MULTI_MINI_LEGEND_CRESSELIA, FALSE)
-			closemessage
-
-			if (var(VAR_RESULT) > NUM_CHOICES_CRESSELIA - 1) {
-				goto(RustboroCity_DevonCorp_4F_EventScript_SelectSinnoh)
-			}
-			addvar(VAR_RESULT, OFFSET_CRESSELIA)
+			addvar(VAR_RESULT, OFFSET_RELIC)
 			break
 		default:
 			goto(RustboroCity_DevonCorp_4F_EventScript_SelectRegion)
@@ -367,6 +347,29 @@ script RustboroCity_DevonCorp_4F_EventScript_SelectKalos {
 				goto(RustboroCity_DevonCorp_4F_EventScript_SelectKalos)
 			}
 			addvar(VAR_RESULT, OFFSET_AURA)
+			break
+		default:
+			goto(RustboroCity_DevonCorp_4F_EventScript_SelectRegion)
+	}
+
+	copyvar(VAR_TEMP_1, VAR_RESULT)
+	goto(RustboroCity_DevonCorp_4F_EventScript_OfferShiny)
+}
+
+script RustboroCity_DevonCorp_4F_EventScript_SelectAlola {
+	multichoice(0, 0, MULTI_MINI_LEGEND_ALOLA, FALSE)
+	closemessage
+
+	switch (var(VAR_RESULT)) {
+		case ALOLA_CHOICE_TYPENULL:
+			goto_if_set(FLAG_OBTAINED_TYPENULL_LINE, RustboroCity_DevonCorp_4F_EventScript_HasMon)
+			multichoice(0, 0, MULTI_MINI_LEGEND_TYPENULL, FALSE)
+			closemessage
+
+			if (var(VAR_RESULT) > NUM_CHOICES_TYPENULL - 1) {
+				goto(RustboroCity_DevonCorp_4F_EventScript_SelectAlola)
+			}
+			addvar(VAR_RESULT, OFFSET_TYPENULL)
 			break
 		default:
 			goto(RustboroCity_DevonCorp_4F_EventScript_SelectRegion)
@@ -622,7 +625,7 @@ script RustboroCity_DevonCorp_4F_EventScript_GiveLegendary {
 			setvar(VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_HEATRAN_V)
 			givemon(SPECIES_HEATRAN_V, 5, ITEM_NONE, ITEM_BEAST_BALL)
 			if (var(VAR_RESULT) < MON_CANT_GIVE) {
-				setflag(FLAG_OBTAINED_HEATRAN_LINE)
+				setflag(FLAG_OBTAINED_RELIC_LINE)
 			}
 			break
 		case 24:  // Regigigas
@@ -630,7 +633,7 @@ script RustboroCity_DevonCorp_4F_EventScript_GiveLegendary {
 			setvar(VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_REGIGIGAS_V)
 			givemon(SPECIES_REGIGIGAS_V, 5, ITEM_NONE, ITEM_BEAST_BALL)
 			if (var(VAR_RESULT) < MON_CANT_GIVE) {
-				setflag(FLAG_OBTAINED_REGIGIGAS_LINE)
+				setflag(FLAG_OBTAINED_RELIC_LINE)
 			}
 			break
 		case 25:  // Cresselia
@@ -638,7 +641,7 @@ script RustboroCity_DevonCorp_4F_EventScript_GiveLegendary {
 			setvar(VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_CRESSELIA_V)
 			givemon(SPECIES_CRESSELIA_V, 5, ITEM_NONE, ITEM_BEAST_BALL)
 			if (var(VAR_RESULT) < MON_CANT_GIVE) {
-				setflag(FLAG_OBTAINED_CRESSELIA_LINE)
+				setflag(FLAG_OBTAINED_RELIC_LINE)
 			}
 			break
 		case 26:  // Cobalion
@@ -735,6 +738,14 @@ script RustboroCity_DevonCorp_4F_EventScript_GiveLegendary {
 			givemon(SPECIES_ZYGARDE_V, 5, ITEM_NONE, ITEM_BEAST_BALL)
 			if (var(VAR_RESULT) < MON_CANT_GIVE) {
 				setflag(FLAG_OBTAINED_AURA_LINE)
+			}
+			break
+		case 38:  // Type: Null
+			bufferspeciesname(STR_VAR_1, SPECIES_TYPE_NULL_V)
+			setvar(VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_TYPE_NULL_V)
+			givemon(SPECIES_TYPE_NULL_V, 5, ITEM_NONE, ITEM_BEAST_BALL)
+			if (var(VAR_RESULT) < MON_CANT_GIVE) {
+				setflag(FLAG_OBTAINED_TYPENULL_LINE)
 			}
 			break
 		default:
