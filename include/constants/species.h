@@ -1725,11 +1725,15 @@
 #define SPECIES_SILVALLY_V_DRAGON                       1608
 #define SPECIES_SILVALLY_V_DARK                         1609
 #define SPECIES_SILVALLY_V_FAIRY                        1610
+#define SPECIES_TAPU_KOKO_V                             1611
+#define SPECIES_TAPU_LELE_V                             1612
+#define SPECIES_TAPU_BULU_V                             1613
+#define SPECIES_TAPU_FINI_V                             1614
 
-#define SPECIES_EGG                                     (SPECIES_SILVALLY_V_FAIRY + 1)
+#define SPECIES_EGG                                     (SPECIES_TAPU_FINI_V + 1)
 
 #define SPECIES_PROTO_LEGEND_START                      SPECIES_MEWTWO_V
-#define SPECIES_PROTO_LEGEND_END                        SPECIES_SILVALLY_V_FAIRY
+#define SPECIES_PROTO_LEGEND_END                        SPECIES_TAPU_FINI_V
 
 #define NUM_SPECIES SPECIES_EGG
 

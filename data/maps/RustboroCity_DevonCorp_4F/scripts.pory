@@ -361,6 +361,16 @@ script RustboroCity_DevonCorp_4F_EventScript_SelectAlola {
 	closemessage
 
 	switch (var(VAR_RESULT)) {
+		case ALOLA_CHOICE_TAPUS:
+			goto_if_set(FLAG_OBTAINED_TAPUS_LINE, RustboroCity_DevonCorp_4F_EventScript_HasMon)
+			multichoice(0, 0, MULTI_MINI_LEGEND_TAPUS, FALSE)
+			closemessage
+
+			if (var(VAR_RESULT) > NUM_CHOICES_TAPUS - 1) {
+				goto(RustboroCity_DevonCorp_4F_EventScript_SelectAlola)
+			}
+			addvar(VAR_RESULT, OFFSET_TAPUS)
+			break
 		case ALOLA_CHOICE_TYPENULL:
 			goto_if_set(FLAG_OBTAINED_TYPENULL_LINE, RustboroCity_DevonCorp_4F_EventScript_HasMon)
 			multichoice(0, 0, MULTI_MINI_LEGEND_TYPENULL, FALSE)
@@ -740,7 +750,39 @@ script RustboroCity_DevonCorp_4F_EventScript_GiveLegendary {
 				setflag(FLAG_OBTAINED_AURA_LINE)
 			}
 			break
-		case 38:  // Type: Null
+		case 38:  // Tapu Koko
+			bufferspeciesname(STR_VAR_1, SPECIES_TAPU_KOKO_V)
+			setvar(VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_TAPU_KOKO_V)
+			givemon(SPECIES_TAPU_KOKO_V, 5, ITEM_NONE, ITEM_BEAST_BALL)
+			if (var(VAR_RESULT) < MON_CANT_GIVE) {
+				setflag(FLAG_OBTAINED_TAPUS_LINE)
+			}
+			break
+		case 39:  // Tapu Lele
+			bufferspeciesname(STR_VAR_1, SPECIES_TAPU_LELE_V)
+			setvar(VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_TAPU_LELE_V)
+			givemon(SPECIES_TAPU_LELE_V, 5, ITEM_NONE, ITEM_BEAST_BALL)
+			if (var(VAR_RESULT) < MON_CANT_GIVE) {
+				setflag(FLAG_OBTAINED_TAPUS_LINE)
+			}
+			break
+		case 40:  // Tapu Bulu
+			bufferspeciesname(STR_VAR_1, SPECIES_TAPU_BULU_V)
+			setvar(VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_TAPU_BULU_V)
+			givemon(SPECIES_TAPU_BULU_V, 5, ITEM_NONE, ITEM_BEAST_BALL)
+			if (var(VAR_RESULT) < MON_CANT_GIVE) {
+				setflag(FLAG_OBTAINED_TAPUS_LINE)
+			}
+			break
+		case 41:  // Tapu Fini
+			bufferspeciesname(STR_VAR_1, SPECIES_TAPU_FINI_V)
+			setvar(VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_TAPU_FINI_V)
+			givemon(SPECIES_TAPU_FINI_V, 5, ITEM_NONE, ITEM_BEAST_BALL)
+			if (var(VAR_RESULT) < MON_CANT_GIVE) {
+				setflag(FLAG_OBTAINED_TAPUS_LINE)
+			}
+			break
+		case 42:  // Type: Null
 			bufferspeciesname(STR_VAR_1, SPECIES_TYPE_NULL_V)
 			setvar(VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_TYPE_NULL_V)
 			givemon(SPECIES_TYPE_NULL_V, 5, ITEM_NONE, ITEM_BEAST_BALL)

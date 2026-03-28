@@ -3412,6 +3412,289 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .teachableLearnset = sZygardeTeachableLearnset,
     },
 
+    [SPECIES_TAPU_KOKO_V] =
+    {
+        // BST was 570, lowered by ~17%
+        .baseHP        = 58,   // was 70
+        .baseAttack    = 96,   // was 115
+        .baseDefense   = 71,   // was 85
+        .baseSpeed     = 108,  // was 130
+        .baseSpAttack  = 79,   // was 95
+        .baseSpDefense = 63,   // was 75
+        .types = MON_TYPES(TYPE_ELECTRIC, TYPE_FAIRY),
+        .catchRate = 3,
+        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_8) ? 285 : 257,
+        .evYield_Speed = 3,
+        .genderRatio = MON_GENDERLESS,
+        .eggCycles = 15,
+        .friendship = 0,
+        .growthRate = GROWTH_SLOW,
+        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
+        .abilities = { ABILITY_ELECTRIC_SURGE, ABILITY_NONE, ABILITY_TELEPATHY },
+        .bodyColor = BODY_COLOR_YELLOW,
+        .speciesName = _("Tapu Koko-V"),
+        .cryId = CRY_TAPU_KOKO,
+        .natDexNum = NATIONAL_DEX_TAPU_KOKO_V,
+        .categoryName = _("Land Spirit"),
+        .height = 15,   // was 18
+        .weight = 171,  // was 205
+        .description = COMPOUND_STRING(
+            "It confuses its enemies by flying too\n"
+            "quickly for the eye to follow. It has a\n"
+            "hair-trigger temper but forgets what\n"
+            "made it angry an instant later."),
+        .pokemonScale = 287,  // was 267
+        .pokemonOffset = 3,
+        .trainerScale = 310,
+        .trainerOffset = 2,
+        .frontPic = gMonFrontPic_TapuKoko,
+        .frontPicSize = MON_COORDS_SIZE(64, 64),
+        .frontPicYOffset = 1,
+        .frontAnimFrames = ANIM_FRAMES(
+            ANIMCMD_FRAME(0, 1),
+            ANIMCMD_FRAME(1, 40),
+            ANIMCMD_FRAME(0, 10),
+            ANIMCMD_FRAME(1, 10),
+            ANIMCMD_FRAME(0, 10),
+            ANIMCMD_FRAME(1, 10),
+            ANIMCMD_FRAME(0, 1),
+        ),
+        .frontAnimId = ANIM_TRIANGLE_DOWN_TWICE,
+        .enemyMonElevation = 9,
+        .backPic = gMonBackPic_TapuKoko,
+        .backPicSize = MON_COORDS_SIZE(64, 64),
+        .backPicYOffset = 2,
+        .palette = gMonPalette_TapuKoko,
+        .shinyPalette = gMonShinyPalette_TapuKoko,
+        .iconSprite = gMonIcon_TapuKoko,
+        .iconPalIndex = 0,
+        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
+        SHADOW(-1, 19, SHADOW_SIZE_M)
+        FOOTPRINT(TapuKoko)
+        OVERWORLD(
+            sPicTable_TapuKoko,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            sAnimTable_Following,
+            gOverworldPalette_TapuKoko,
+            gShinyOverworldPalette_TapuKoko
+        )
+        .isFrontierBanned = FALSE,
+        .levelUpLearnset = sTapuKokoLevelUpLearnset,
+        .teachableLearnset = sTapuKokoTeachableLearnset,
+    },
+
+    [SPECIES_TAPU_LELE_V] =
+    {
+        // BST was 570, lowered by ~17%
+        .baseHP        = 58,   // was 70
+        .baseAttack    = 71,   // was 85
+        .baseDefense   = 63,   // was 75
+        .baseSpeed     = 79,   // was 95
+        .baseSpAttack  = 108,  // was 130
+        .baseSpDefense = 96,   // was 115
+        .types = MON_TYPES(TYPE_PSYCHIC, TYPE_FAIRY),
+        .catchRate = 3,
+        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_8) ? 285 : 257,
+        .evYield_SpAttack = 3,
+        .genderRatio = MON_GENDERLESS,
+        .eggCycles = 15,
+        .friendship = 0,
+        .growthRate = GROWTH_SLOW,
+        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
+        .abilities = { ABILITY_PSYCHIC_SURGE, ABILITY_NONE, ABILITY_TELEPATHY },
+        .bodyColor = BODY_COLOR_PINK,
+        .speciesName = _("Tapu Lele-V"),
+        .cryId = CRY_TAPU_LELE,
+        .natDexNum = NATIONAL_DEX_TAPU_LELE_V,
+        .categoryName = _("Land Spirit"),
+        .height = 10,   // was 12
+        .weight = 155,  // was 186
+        .description = COMPOUND_STRING(
+            "A fragrant aroma of flowers follows it.\n"
+            "As it flutters about, it scatters its\n"
+            "strangely glowing scales. Touching them\n"
+            "is said to restore good health."),
+        .pokemonScale = 338,  // was 282
+        .pokemonOffset = 7,
+        .trainerScale = 256,
+        .trainerOffset = 0,
+        .frontPic = gMonFrontPic_TapuLele,
+        .frontPicSize = MON_COORDS_SIZE(48, 56),
+        .frontPicYOffset = 6,
+        .frontAnimFrames = ANIM_FRAMES(
+            ANIMCMD_FRAME(1, 50),
+            ANIMCMD_FRAME(1, 50),
+            ANIMCMD_FRAME(0, 1),
+        ),
+        .frontAnimId = ANIM_V_SLIDE_WOBBLE_SMALL,
+        .enemyMonElevation = 8,
+        .backPic = gMonBackPic_TapuLele,
+        .backPicSize = MON_COORDS_SIZE(56, 56),
+        .backPicYOffset = 6,
+        .palette = gMonPalette_TapuLele,
+        .shinyPalette = gMonShinyPalette_TapuLele,
+        .iconSprite = gMonIcon_TapuLele,
+        .iconPalIndex = 0,
+        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
+        SHADOW(0, 13, SHADOW_SIZE_S)
+        FOOTPRINT(TapuLele)
+        OVERWORLD(
+            sPicTable_TapuLele,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            sAnimTable_Following,
+            gOverworldPalette_TapuLele,
+            gShinyOverworldPalette_TapuLele
+        )
+        .isFrontierBanned = FALSE,
+        .levelUpLearnset = sTapuLeleLevelUpLearnset,
+        .teachableLearnset = sTapuLeleTeachableLearnset,
+    },
+
+    [SPECIES_TAPU_BULU_V] =
+    {
+        // BST was 570, lowered by ~17%
+        .baseHP        = 58,   // was 70
+        .baseAttack    = 108,  // was 130
+        .baseDefense   = 96,   // was 115
+        .baseSpeed     = 63,   // was 75
+        .baseSpAttack  = 71,   // was 85
+        .baseSpDefense = 79,   // was 95
+        .types = MON_TYPES(TYPE_GRASS, TYPE_FAIRY),
+        .catchRate = 3,
+        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_8) ? 285 : 257,
+        .evYield_Attack = 3,
+        .genderRatio = MON_GENDERLESS,
+        .eggCycles = 15,
+        .friendship = 0,
+        .growthRate = GROWTH_SLOW,
+        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
+        .abilities = { ABILITY_GRASSY_SURGE, ABILITY_NONE, ABILITY_TELEPATHY },
+        .bodyColor = BODY_COLOR_RED,
+        .speciesName = _("Tapu Bulu-V"),
+        .cryId = CRY_TAPU_BULU,
+        .natDexNum = NATIONAL_DEX_TAPU_BULU_V,
+        .categoryName = _("Land Spirit"),
+        .height = 16,   // was 19
+        .weight = 379,  // was 455
+        .description = COMPOUND_STRING(
+            "It causes vegetation to grow, and then\n"
+            "it absorbs energy from the growth.\n"
+            "It pulls large trees up by the roots and\n"
+            "swings them around at its enemies."),
+        .pokemonScale = 304,  // was 256
+        .pokemonOffset = 2,
+        .trainerScale = 390,
+        .trainerOffset = 8,
+        .frontPic = gMonFrontPic_TapuBulu,
+        .frontPicSize = MON_COORDS_SIZE(56, 64),
+        .frontPicYOffset = 0,
+        .frontAnimFrames = ANIM_FRAMES(
+            ANIMCMD_FRAME(0, 1),
+            ANIMCMD_FRAME(1, 40),
+            ANIMCMD_FRAME(0, 10),
+            ANIMCMD_FRAME(1, 40),
+            ANIMCMD_FRAME(0, 1),
+        ),
+        .frontAnimId = ANIM_V_SHAKE_TWICE,
+        .enemyMonElevation = 5,
+        .backPic = gMonBackPic_TapuBulu,
+        .backPicSize = MON_COORDS_SIZE(64, 64),
+        .backPicYOffset = 1,
+        .palette = gMonPalette_TapuBulu,
+        .shinyPalette = gMonShinyPalette_TapuBulu,
+        .iconSprite = gMonIcon_TapuBulu,
+        .iconPalIndex = 2,
+        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
+        SHADOW(4, 16, SHADOW_SIZE_M)
+        FOOTPRINT(TapuBulu)
+        OVERWORLD(
+            sPicTable_TapuBulu,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            sAnimTable_Following,
+            gOverworldPalette_TapuBulu,
+            gShinyOverworldPalette_TapuBulu
+        )
+        .isFrontierBanned = FALSE,
+        .levelUpLearnset = sTapuBuluLevelUpLearnset,
+        .teachableLearnset = sTapuBuluTeachableLearnset,
+    },
+
+    [SPECIES_TAPU_FINI_V] =
+    {
+        // BST was 570, lowered by ~17%
+        .baseHP        = 58,   // was 70
+        .baseAttack    = 63,   // was 75
+        .baseDefense   = 96,   // was 115
+        .baseSpeed     = 71,   // was 85
+        .baseSpAttack  = 79,   // was 95
+        .baseSpDefense = 108,  // was 130
+        .types = MON_TYPES(TYPE_WATER, TYPE_FAIRY),
+        .catchRate = 3,
+        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_8) ? 285 : 257,
+        .evYield_SpDefense = 3,
+        .genderRatio = MON_GENDERLESS,
+        .eggCycles = 15,
+        .friendship = 0,
+        .growthRate = GROWTH_SLOW,
+        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
+        .abilities = { ABILITY_MISTY_SURGE, ABILITY_NONE, ABILITY_TELEPATHY },
+        .bodyColor = BODY_COLOR_PURPLE,
+        .speciesName = _("Tapu Fini-V"),
+        .cryId = CRY_TAPU_FINI,
+        .natDexNum = NATIONAL_DEX_TAPU_FINI_V,
+        .categoryName = _("Land Spirit"),
+        .height = 11,   // was 13
+        .weight = 177,  // was 212
+        .description = COMPOUND_STRING(
+            "People say it can create pure water that\n"
+            "will wash away any corruption. The dense\n"
+            "fog it creates brings the downfall and\n"
+            "destruction of its confused enemies."),
+        .pokemonScale = 321,  // was 272
+        .pokemonOffset = 5,
+        .trainerScale = 302,
+        .trainerOffset = 2,
+        .frontPic = gMonFrontPic_TapuFini,
+        .frontPicSize = MON_COORDS_SIZE(56, 64),
+        .frontPicYOffset = 2,
+        .frontAnimFrames = ANIM_FRAMES(
+            ANIMCMD_FRAME(1, 60),
+            ANIMCMD_FRAME(1, 60),
+            ANIMCMD_FRAME(0, 1),
+        ),
+        .frontAnimId = ANIM_SHAKE_GLOW_BLUE_SLOW,
+        .frontAnimDelay = 5,
+        .enemyMonElevation = 6,
+        .backPic = gMonBackPic_TapuFini,
+        .backPicSize = MON_COORDS_SIZE(64, 56),
+        .backPicYOffset = 4,
+        .palette = gMonPalette_TapuFini,
+        .shinyPalette = gMonShinyPalette_TapuFini,
+        .iconSprite = gMonIcon_TapuFini,
+        .iconPalIndex = 2,
+        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
+        SHADOW(1, 15, SHADOW_SIZE_M)
+        FOOTPRINT(TapuFini)
+        OVERWORLD(
+            sPicTable_TapuFini,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            sAnimTable_Following,
+            gOverworldPalette_TapuFini,
+            gShinyOverworldPalette_TapuFini
+        )
+        .isFrontierBanned = FALSE,
+        .levelUpLearnset = sTapuFiniLevelUpLearnset,
+        .teachableLearnset = sTapuFiniTeachableLearnset,
+    },
+
     [SPECIES_TYPE_NULL_V] =
     {
         // BST was 534, lowered by ~11%
