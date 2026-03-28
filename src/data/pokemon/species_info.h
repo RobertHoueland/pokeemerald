@@ -3962,6 +3962,73 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .teachableLearnset = sLunalaTeachableLearnset,
     },
 
+    [SPECIES_NECROZMA_V] =
+    {
+        // BST was 600, lowered by ~21%
+        .baseHP        = 77,   // was 97
+        .baseAttack    = 85,   // was 107
+        .baseDefense   = 80,   // was 101
+        .baseSpeed     = 62,   // was 79
+        .baseSpAttack  = 101,  // was 127
+        .baseSpDefense = 70,   // was 89
+        .types = MON_TYPES(TYPE_PSYCHIC),
+        .catchRate = 3,
+        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_8) ? 300 : 270,
+        .evYield_Attack = 1,
+        .evYield_SpAttack = 2,
+        .genderRatio = MON_GENDERLESS,
+        .eggCycles = 120,
+        .friendship = 0,
+        .growthRate = GROWTH_SLOW,
+        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
+        .abilities = { ABILITY_PRISM_ARMOR, ABILITY_NONE, ABILITY_NONE },
+        .bodyColor = BODY_COLOR_BLACK,
+        .noFlip = TRUE,
+        .speciesName = _("Necrozma-V"),
+        .cryId = CRY_NECROZMA,
+        .natDexNum = NATIONAL_DEX_NECROZMA_V,
+        .categoryName = _("Prism"),
+        .height = 19,    // was 24
+        .weight = 1817,  // was 2300
+        .description = COMPOUND_STRING(
+            "Reminiscent of the Ultra Beasts, this\n"
+            "life-form, apparently asleep underground,\n"
+            "is thought to have come from another\n"
+            "world in ancient times."),
+        .pokemonScale = 362,  // was 256
+        .pokemonOffset = 7,   // was 3
+        .trainerScale = 369,
+        .trainerOffset = 7,
+        .frontPic = gMonFrontPic_Necrozma,
+        .frontPicSize = MON_COORDS_SIZE(64, 64),
+        .frontPicYOffset = 2,
+        .frontAnimFrames = sAnims_SingleFramePlaceHolder,
+        .frontAnimId = ANIM_GROW_VIBRATE,
+        .enemyMonElevation = 6,
+        .backPic = gMonBackPic_Necrozma,
+        .backPicSize = MON_COORDS_SIZE(64, 64),
+        .backPicYOffset = 4,
+        .palette = gMonPalette_Necrozma,
+        .shinyPalette = gMonShinyPalette_Necrozma,
+        .iconSprite = gMonIcon_Necrozma,
+        .iconPalIndex = 1,
+        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
+        SHADOW(-1, 15, SHADOW_SIZE_M)
+        FOOTPRINT(Necrozma)
+        OVERWORLD(
+            sPicTable_Necrozma,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            sAnimTable_Following,
+            gOverworldPalette_Necrozma,
+            gShinyOverworldPalette_Necrozma
+        )
+        .isFrontierBanned = FALSE,
+        .levelUpLearnset = sNecrozmaLevelUpLearnset,
+        .teachableLearnset = sNecrozmaTeachableLearnset,
+    },
+
     [SPECIES_TYPE_NULL_V] =
     {
         // BST was 534, lowered by ~11%

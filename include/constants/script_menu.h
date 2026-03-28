@@ -148,7 +148,8 @@
 #define MULTI_MINI_LEGEND_AURA             137
 #define MULTI_MINI_LEGEND_TYPENULL         138
 #define MULTI_MINI_LEGEND_TAPUS            139
-#define MULTI_MINI_LEGEND_LIGHT            140
+#define MULTI_MINI_LEGEND_COSMOG           140
+#define MULTI_MINI_LEGEND_NECROZMA         141
 
 // Mini legendary region choices
 #define REGION_CHOICE_KANTO                0
@@ -185,7 +186,8 @@
 
 #define ALOLA_CHOICE_TAPUS                 0
 #define ALOLA_CHOICE_TYPENULL              1
-#define ALOLA_CHOICE_LIGHT                 2
+#define ALOLA_CHOICE_COSMOG                2
+#define ALOLA_CHOICE_NECROZMA              3
 
 // Number of mons each line/category has
 // These categories/names came from:
@@ -206,7 +208,8 @@
 #define NUM_CHOICES_AURA                   3
 #define NUM_CHOICES_TAPUS                  4
 #define NUM_CHOICES_TYPENULL               1
-#define NUM_CHOICES_LIGHT                  1
+#define NUM_CHOICES_COSMOG                 1
+#define NUM_CHOICES_NECROZMA               1
 
 // Cumulative offsets for the chosen category
 // Used in scripts.pory to use the player's choice to find correct mon chosen
@@ -226,7 +229,8 @@
 #define OFFSET_AURA         (OFFSET_TAO + NUM_CHOICES_TAO)
 #define OFFSET_TAPUS        (OFFSET_AURA + NUM_CHOICES_AURA)
 #define OFFSET_TYPENULL     (OFFSET_TAPUS + NUM_CHOICES_TAPUS)
-#define OFFSET_LIGHT        (OFFSET_TYPENULL + NUM_CHOICES_TYPENULL)
+#define OFFSET_COSMOG       (OFFSET_TYPENULL + NUM_CHOICES_TYPENULL)
+#define OFFSET_NECROZMA     (OFFSET_COSMOG + NUM_CHOICES_COSMOG)
 
 // Lilycove SS Tidal Multichoice Selections
 #define SSTIDAL_SELECTION_SLATEPORT        0

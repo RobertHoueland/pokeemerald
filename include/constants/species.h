@@ -1733,11 +1733,12 @@
 #define SPECIES_COSMOEM_V                               1616
 #define SPECIES_SOLGALEO_V                              1617
 #define SPECIES_LUNALA_V                                1618
+#define SPECIES_NECROZMA_V                              1619
 
-#define SPECIES_EGG                                     (SPECIES_LUNALA_V + 1)
+#define SPECIES_EGG                                     (SPECIES_NECROZMA_V + 1)
 
 #define SPECIES_PROTO_LEGEND_START                      SPECIES_MEWTWO_V
-#define SPECIES_PROTO_LEGEND_END                        SPECIES_LUNALA_V
+#define SPECIES_PROTO_LEGEND_END                        SPECIES_NECROZMA_V
 
 #define NUM_SPECIES SPECIES_EGG
 

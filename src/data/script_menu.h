@@ -826,7 +826,8 @@ static const struct MenuAction MultichoiceList_MiniLegendAlola[] =
 {
     {COMPOUND_STRING("TAPU LINE")},
     {COMPOUND_STRING("TYPE: NULL LINE")},
-    {COMPOUND_STRING("LIGHT LINE")},
+    {COMPOUND_STRING("COSMOG LINE")},
+    {COMPOUND_STRING("NECROZMA LINE")},
     {gText_Exit},
 };
 
@@ -953,9 +954,15 @@ static const struct MenuAction MultichoiceList_MiniLegendTapus[] =
     {gText_Exit},
 };
 
-static const struct MenuAction MultichoiceList_MiniLegendLight[] =
+static const struct MenuAction MultichoiceList_MiniLegendCosmog[] =
 {
     {COMPOUND_STRING("COSMOG-V")},
+    {gText_Exit},
+};
+
+static const struct MenuAction MultichoiceList_MiniLegendNecrozma[] =
+{
+    {COMPOUND_STRING("NECROZMA-V")},
     {gText_Exit},
 };
 
@@ -1110,7 +1117,8 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_MINI_LEGEND_ALOLA]          = MULTICHOICE(MultichoiceList_MiniLegendAlola),
     [MULTI_MINI_LEGEND_TYPENULL]       = MULTICHOICE(MultichoiceList_MiniLegendTypeNull),
     [MULTI_MINI_LEGEND_TAPUS]          = MULTICHOICE(MultichoiceList_MiniLegendTapus),
-    [MULTI_MINI_LEGEND_LIGHT]          = MULTICHOICE(MultichoiceList_MiniLegendLight),
+    [MULTI_MINI_LEGEND_COSMOG]         = MULTICHOICE(MultichoiceList_MiniLegendCosmog),
+    [MULTI_MINI_LEGEND_NECROZMA]       = MULTICHOICE(MultichoiceList_MiniLegendNecrozma),
 };
 
 const u8 *const gStdStrings[] =
