@@ -2623,7 +2623,7 @@ RustboroCity_EventScript_DrParkerIntro::
 # 1306 "data/maps/RustboroCity/scripts.pory"
 	lockall
 # 1307 "data/maps/RustboroCity/scripts.pory"
-	clearflag FLAG_HIDE_RUSTBORO_CITY_DR_PARKER
+	playbgm MUS_ENCOUNTER_SUSPICIOUS, TRUE
 # 1308 "data/maps/RustboroCity/scripts.pory"
 	addobject LOCALID_RUSTBORO_DR_PARKER
 # 1309 "data/maps/RustboroCity/scripts.pory"

@@ -15128,6 +15128,54 @@ const struct Item gItemsInfo[] =
         .iconPic = gItemIcon_StellarTeraShard,
         .iconPalette = gItemIconPalette_StellarTeraShard,
     },
+
+    [ITEM_WIND_TABLET] =
+    {
+        .name = ITEM_NAME("Wind Tablet"),
+        .price = 0,
+        .importance = 1,
+        .description = COMPOUND_STRING(
+            "An ancient tablet\n"
+            "unearthed in the\n"
+            "desert."),
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_FossilizedBird,
+        .iconPalette = gItemIconPalette_FossilizedBird,
+    },
+
+    [ITEM_BOLT_TABLET] =
+    {
+        .name = ITEM_NAME("Bolt Tablet"),
+        .price = 0,
+        .importance = 1,
+        .description = COMPOUND_STRING(
+            "An ancient tablet\n"
+            "found in the\n"
+            "desert sand."),
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_OddKeystone,
+        .iconPalette = gItemIconPalette_OddKeystone,
+    },
+
+    [ITEM_EARTH_TABLET] =
+    {
+        .name = ITEM_NAME("Earth Tablet"),
+        .price = 0,
+        .importance = 1,
+        .description = COMPOUND_STRING(
+            "An ancient tablet\n"
+            "forged from desert\n"
+            "stone."),
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_RelicStatue,
+        .iconPalette = gItemIconPalette_Relics,
+    },
 };
 
 #undef ITEM_NAME

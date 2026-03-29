@@ -1304,7 +1304,7 @@ script RustboroCity_OnTransition {
 
 script RustboroCity_EventScript_DrParkerIntro {
     lockall
-    clearflag(FLAG_HIDE_RUSTBORO_CITY_DR_PARKER)
+	playbgm(MUS_ENCOUNTER_SUSPICIOUS, TRUE)
     addobject(LOCALID_RUSTBORO_DR_PARKER)
     setobjectmovementtype(LOCALID_RUSTBORO_DR_PARKER, MOVEMENT_TYPE_FACE_RIGHT)
 

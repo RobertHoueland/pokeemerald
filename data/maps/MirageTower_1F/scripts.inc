@@ -1,10 +1,132 @@
-MirageTower_1F_MapScripts::
-	map_script MAP_SCRIPT_ON_TRANSITION, MirageTower_1F_OnTransition
-	.byte 0
+# 1 "data/maps/MirageTower_1F/scripts.pory"
 
+# 2 "data/maps/MirageTower_1F/scripts.pory"
+MirageTower_1F_MapScripts::
+# 3 "data/maps/MirageTower_1F/scripts.pory"
+	map_script MAP_SCRIPT_ON_TRANSITION, MirageTower_1F_OnTransition
+# 4 "data/maps/MirageTower_1F/scripts.pory"
+	.byte 0
+# 5 "data/maps/MirageTower_1F/scripts.pory"
+
+# 6 "data/maps/MirageTower_1F/scripts.pory"
 MirageTower_1F_OnTransition:
+# 7 "data/maps/MirageTower_1F/scripts.pory"
 	setflag FLAG_ENTERED_MIRAGE_TOWER
+# 8 "data/maps/MirageTower_1F/scripts.pory"
 	setflag FLAG_FORCE_MIRAGE_TOWER_VISIBLE
+# 9 "data/maps/MirageTower_1F/scripts.pory"
 	setflag FLAG_LANDMARK_MIRAGE_TOWER
+# 10 "data/maps/MirageTower_1F/scripts.pory"
 	end
 
+MirageTower_1F_Event_SecondClue::
+# 18 "data/maps/MirageTower_1F/scripts.pory"
+	lockall
+# 19 "data/maps/MirageTower_1F/scripts.pory"
+	goto_if_set FLAG_ARCHAEOLOGIST_FOUND_SECOND_CLUE, AlreadyHaveSecondClue
+# 20 "data/maps/MirageTower_1F/scripts.pory"
+	goto_if_set FLAG_ARCHAEOLOGIST_FOUND_FIRST_CLUE, SecondClueMetArchaeologist
+# 22 "data/maps/MirageTower_1F/scripts.pory"
+AlreadyHaveSecondClue:
+# 24 "data/maps/MirageTower_1F/scripts.pory"
+	msgbox MirageTower_1F_Event_SecondClue_Text_0
+# 25 "data/maps/MirageTower_1F/scripts.pory"
+	releaseall
+# 26 "data/maps/MirageTower_1F/scripts.pory"
+	end
+# 28 "data/maps/MirageTower_1F/scripts.pory"
+SecondClueMetArchaeologist:
+# 30 "data/maps/MirageTower_1F/scripts.pory"
+	addobject LOCALID_MIRAGE_TOWER_YOUNGSTER
+# 31 "data/maps/MirageTower_1F/scripts.pory"
+	setobjectmovementtype LOCALID_MIRAGE_TOWER_YOUNGSTER, MOVEMENT_TYPE_FACE_RIGHT
+# 33 "data/maps/MirageTower_1F/scripts.pory"
+	applymovement LOCALID_MIRAGE_TOWER_YOUNGSTER, MirageTower_1F_Event_SecondClue_Movement_0
+# 37 "data/maps/MirageTower_1F/scripts.pory"
+	waitmovement 0
+# 39 "data/maps/MirageTower_1F/scripts.pory"
+	msgbox MirageTower_1F_Event_SecondClue_Text_1
+# 40 "data/maps/MirageTower_1F/scripts.pory"
+	msgbox MirageTower_1F_Event_SecondClue_Text_2
+# 41 "data/maps/MirageTower_1F/scripts.pory"
+	trainerbattle_no_intro TRAINER_RICARD, MirageTower_Text_RicardDefeat
+# 42 "data/maps/MirageTower_1F/scripts.pory"
+	giveitem ITEM_BOLT_TABLET
+# 43 "data/maps/MirageTower_1F/scripts.pory"
+	setflag FLAG_ARCHAEOLOGIST_FOUND_SECOND_CLUE
+# 44 "data/maps/MirageTower_1F/scripts.pory"
+	msgbox MirageTower_1F_Event_SecondClue_Text_3
+# 45 "data/maps/MirageTower_1F/scripts.pory"
+	closemessage
+# 47 "data/maps/MirageTower_1F/scripts.pory"
+	applymovement LOCALID_MIRAGE_TOWER_YOUNGSTER, MirageTower_1F_Event_SecondClue_Movement_1
+# 50 "data/maps/MirageTower_1F/scripts.pory"
+	waitmovement 0
+# 51 "data/maps/MirageTower_1F/scripts.pory"
+	releaseall
+	return
+
+
+# 33 "data/maps/MirageTower_1F/scripts.pory"
+MirageTower_1F_Event_SecondClue_Movement_0:
+# 34 "data/maps/MirageTower_1F/scripts.pory"
+	walk_faster_right
+# 34 "data/maps/MirageTower_1F/scripts.pory"
+	walk_faster_right
+# 34 "data/maps/MirageTower_1F/scripts.pory"
+	walk_faster_right
+# 34 "data/maps/MirageTower_1F/scripts.pory"
+	walk_faster_right
+# 34 "data/maps/MirageTower_1F/scripts.pory"
+	walk_faster_right
+# 34 "data/maps/MirageTower_1F/scripts.pory"
+	walk_faster_right
+# 34 "data/maps/MirageTower_1F/scripts.pory"
+	walk_faster_right
+# 34 "data/maps/MirageTower_1F/scripts.pory"
+	walk_faster_right
+# 35 "data/maps/MirageTower_1F/scripts.pory"
+	face_player
+	step_end
+
+# 47 "data/maps/MirageTower_1F/scripts.pory"
+MirageTower_1F_Event_SecondClue_Movement_1:
+# 48 "data/maps/MirageTower_1F/scripts.pory"
+	walk_faster_left
+# 48 "data/maps/MirageTower_1F/scripts.pory"
+	walk_faster_left
+# 48 "data/maps/MirageTower_1F/scripts.pory"
+	walk_faster_left
+# 48 "data/maps/MirageTower_1F/scripts.pory"
+	walk_faster_left
+# 48 "data/maps/MirageTower_1F/scripts.pory"
+	walk_faster_left
+# 48 "data/maps/MirageTower_1F/scripts.pory"
+	walk_faster_left
+# 48 "data/maps/MirageTower_1F/scripts.pory"
+	walk_faster_left
+# 48 "data/maps/MirageTower_1F/scripts.pory"
+	walk_faster_left
+	step_end
+
+MirageTower_1F_Event_SecondClue_Text_0:
+# 24 "data/maps/MirageTower_1F/scripts.pory"
+	.string "A strange imprint lies in the sand,\n"
+	.string "as if something was buried here.$"
+
+MirageTower_1F_Event_SecondClue_Text_1:
+# 39 "data/maps/MirageTower_1F/scripts.pory"
+	.string "Oh, are you looking for the tablet?$"
+
+MirageTower_1F_Event_SecondClue_Text_2:
+# 40 "data/maps/MirageTower_1F/scripts.pory"
+	.string "Finders keepers!$"
+
+MirageTower_1F_Event_SecondClue_Text_3:
+# 44 "data/maps/MirageTower_1F/scripts.pory"
+	.string "I couldn't read the symbols on that\n"
+	.string "thing anyways.$"
+
+MirageTower_Text_RicardDefeat::
+# 13 "data/maps/MirageTower_1F/scripts.pory"
+	.string "Wow, you're really strong!\nI guess you can have the tablet.$"

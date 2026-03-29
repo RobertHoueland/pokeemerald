@@ -425,6 +425,7 @@ script RustboroCity_DevonCorp_4F_EventScript_OfferShiny {
 		if (var(VAR_RESULT) == TRUE) {
 			removemoney(50000)
 			playse(SE_SHOP)
+			waitse
 			setvar(VAR_TEMP_2, 1)
 			msgbox(format("Excellent! I'll prepare a special variant for you."))
 		} else {
@@ -872,4 +873,33 @@ script RustboroCity_DevonCorp_4F_EventScript_GiveLegendary {
     msgbox(format("DR. PARKER: Enjoy your new Proto-Legend!"))
     setvar(VAR_RESULT, 0)
     releaseall
+}
+
+script RustboroCity_DevonCorp_4F_EventScript_TableProtoLegends {
+	lockall
+	msgbox(format("Blueprints and sketches cover the table."))
+    msgbox(format("Each page is labeled: PROTO-LEGENDS."))
+    msgbox(format("Several failed drafts are crossed out:\n“Mutation cascade risk: CRITICAL.”"))
+	releaseall
+}
+
+script RustboroCity_DevonCorp_4F_EventScript_MonitorMutations {
+	lockall
+	msgbox(format("A DEVON monitor displays mutation logs."))
+	msgbox(format("Proto-Legends adapt rapidly under stress."))
+	msgbox(format("Note: sudden mutations can alter abilities and battle tendencies."))
+	releaseall
+}
+
+script RustboroCity_DevonCorp_4F_EventScript_DisplayGeneticLines {
+	lockall
+	msgbox(format("A warning label reads:\nGENETIC LINEAGE CONTAINMENT PROTOCOL"))
+	msgbox(format("Only one Proto-Legend may be stabilized per genetic line."))
+	releaseall
+}
+
+script RustboroCity_DevonCorp_4F_EventScript_DisplayExperiment {
+	lockall
+	msgbox(format("A glass chamber hums softly.\nA glowing orb pulses inside."))
+	releaseall
 }

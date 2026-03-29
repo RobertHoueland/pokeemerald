@@ -1025,8 +1025,11 @@
 #define ITEM_GENE_LOCK 856
 #define ITEM_MUTAGENIC_SERUM 857
 #define ITEM_UNSTABLE_DNA 858
+#define ITEM_WIND_TABLET 859
+#define ITEM_BOLT_TABLET 860
+#define ITEM_EARTH_TABLET 861
 
-#define ITEMS_COUNT (ITEM_UNSTABLE_DNA + 1)
+#define ITEMS_COUNT (ITEM_EARTH_TABLET + 1)
 #define ITEM_FIELD_ARROW ITEMS_COUNT
 
 // A special item id associated with "Cancel"/"Exit" etc. in a list of items or decorations

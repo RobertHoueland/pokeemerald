@@ -1,0 +1,52 @@
+raw `
+MirageTower_1F_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, MirageTower_1F_OnTransition
+	.byte 0
+
+MirageTower_1F_OnTransition:
+	setflag FLAG_ENTERED_MIRAGE_TOWER
+	setflag FLAG_FORCE_MIRAGE_TOWER_VISIBLE
+	setflag FLAG_LANDMARK_MIRAGE_TOWER
+	end
+`
+
+text MirageTower_Text_RicardDefeat {
+    "Wow, you're really strong!\nI guess you can have the tablet."
+}
+
+script MirageTower_1F_Event_SecondClue {
+	lockall
+    goto_if_set(FLAG_ARCHAEOLOGIST_FOUND_SECOND_CLUE, AlreadyHaveSecondClue)
+	goto_if_set(FLAG_ARCHAEOLOGIST_FOUND_FIRST_CLUE, SecondClueMetArchaeologist)
+    
+AlreadyHaveSecondClue:
+    // Already have the second clue, or haven't found the first clue yet
+	msgbox(format("A strange imprint lies in the sand,\nas if something was buried here."))
+    releaseall
+    end
+
+SecondClueMetArchaeologist:
+    // Found the first clue
+	addobject(LOCALID_MIRAGE_TOWER_YOUNGSTER)
+	setobjectmovementtype(LOCALID_MIRAGE_TOWER_YOUNGSTER, MOVEMENT_TYPE_FACE_RIGHT)
+
+	applymovement(LOCALID_MIRAGE_TOWER_YOUNGSTER, moves(
+        walk_faster_right * 8
+        face_player
+    ))
+    waitmovement(0)
+
+	msgbox(format("Oh, are you looking for the tablet?"))
+    msgbox(format("Finders keepers!"))
+	trainerbattle_no_intro(TRAINER_RICARD, MirageTower_Text_RicardDefeat)
+    giveitem(ITEM_BOLT_TABLET)
+    setflag(FLAG_ARCHAEOLOGIST_FOUND_SECOND_CLUE)
+    msgbox(format("I couldn't read the symbols on that thing anyways."))
+	closemessage
+
+	applymovement(LOCALID_MIRAGE_TOWER_YOUNGSTER, moves(
+        walk_faster_left * 8
+    ))
+    waitmovement(0)
+	releaseall
+}

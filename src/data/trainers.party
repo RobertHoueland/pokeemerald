@@ -3747,6 +3747,31 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Psybeam
 - Rock Tomb
 
+=== TRAINER_RICARD ===
+Name: RICARD
+Class: Youngster
+Pic: Youngster
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer
+
+Trapinch
+Level: 31
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Dig
+- Bite
+- Sand Tomb
+- Rock Slide
+
+Cacturne
+Level: 33
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Needle Arm
+- Feint Attack
+- Leech Seed
+- Sand Attack
+
 === TRAINER_LARRY ===
 Name: LARRY
 Class: Camper

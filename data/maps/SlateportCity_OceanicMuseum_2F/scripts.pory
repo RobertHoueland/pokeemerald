@@ -484,7 +484,7 @@ script SlateportCity_OceanicMuseum_2F_EventScript_MutSci {
             msgbox(format("Huzzah, your POKéMON team has mutated 40 times!"))
             msgbox(format("Thank you for letting my study your team. Please, take this gift."))
             setflag(FLAG_40_MUTATIONS)
-            giveitem(ITEM_ABILITY_CAPSULE, 10)
+            giveitem(ITEM_ABILITY_CAPSULE, 5)
         }
         if (var(VAR_RESULT) > 50 && !flag(FLAG_50_MUTATIONS)) {
             msgbox(format("Spectacular, your POKéMON team has mutated 50 times!"))
@@ -508,6 +508,7 @@ script SlateportCity_OceanicMuseum_2F_EventScript_MutSci {
             msgbox(format("Marvelous! Your POKéMON team has mutated 100 times!"))
             msgbox(format("Thank you for letting my study your team. Please, take this gift."))
             setflag(FLAG_100_MUTATIONS)
+			// TODO giveitem
         }
         if (var(VAR_RESULT) > 125 && !flag(FLAG_125_MUTATIONS)) {
             msgbox(format("Yippee! Your POKéMON team has mutated 125 times!"))
