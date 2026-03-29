@@ -2620,145 +2620,129 @@ RustboroCity_OnTransition_9:
 
 
 RustboroCity_EventScript_DrParkerIntro::
-# 1306 "data/maps/RustboroCity/scripts.pory"
+# 1314 "data/maps/RustboroCity/scripts.pory"
 	lockall
-# 1307 "data/maps/RustboroCity/scripts.pory"
+# 1315 "data/maps/RustboroCity/scripts.pory"
 	playbgm MUS_ENCOUNTER_SUSPICIOUS, TRUE
-# 1308 "data/maps/RustboroCity/scripts.pory"
-	addobject LOCALID_RUSTBORO_DR_PARKER
-# 1309 "data/maps/RustboroCity/scripts.pory"
-	setobjectmovementtype LOCALID_RUSTBORO_DR_PARKER, MOVEMENT_TYPE_FACE_RIGHT
-# 1311 "data/maps/RustboroCity/scripts.pory"
-	msgbox RustboroCity_EventScript_DrParkerIntro_Text_0
-# 1312 "data/maps/RustboroCity/scripts.pory"
-	applymovement LOCALID_RUSTBORO_DR_PARKER, RustboroCity_EventScript_DrParkerIntro_Movement_0
 # 1316 "data/maps/RustboroCity/scripts.pory"
-	waitmovement 0
-# 1318 "data/maps/RustboroCity/scripts.pory"
-	applymovement LOCALID_RUSTBORO_DR_PARKER, RustboroCity_EventScript_DrParkerIntro_Movement_1
-# 1329 "data/maps/RustboroCity/scripts.pory"
-	waitmovement 0
-# 1331 "data/maps/RustboroCity/scripts.pory"
-	playse SE_PIN
-# 1332 "data/maps/RustboroCity/scripts.pory"
-	msgbox RustboroCity_EventScript_DrParkerIntro_Text_1
-# 1333 "data/maps/RustboroCity/scripts.pory"
-	msgbox RustboroCity_EventScript_DrParkerIntro_Text_2
-# 1334 "data/maps/RustboroCity/scripts.pory"
-	msgbox RustboroCity_EventScript_DrParkerIntro_Text_3
-# 1335 "data/maps/RustboroCity/scripts.pory"
-	msgbox RustboroCity_EventScript_DrParkerIntro_Text_4
-# 1336 "data/maps/RustboroCity/scripts.pory"
-	msgbox RustboroCity_EventScript_DrParkerIntro_Text_5
-# 1337 "data/maps/RustboroCity/scripts.pory"
+	addobject LOCALID_RUSTBORO_DR_PARKER
+# 1317 "data/maps/RustboroCity/scripts.pory"
+	setobjectmovementtype LOCALID_RUSTBORO_DR_PARKER, MOVEMENT_TYPE_FACE_RIGHT
+# 1319 "data/maps/RustboroCity/scripts.pory"
+	msgbox RustboroCity_EventScript_DrParkerIntro_Text_0
+# 1320 "data/maps/RustboroCity/scripts.pory"
 	closemessage
-# 1339 "data/maps/RustboroCity/scripts.pory"
-	applymovement LOCALID_RUSTBORO_DR_PARKER, RustboroCity_EventScript_DrParkerIntro_Movement_2
-# 1342 "data/maps/RustboroCity/scripts.pory"
+# 1321 "data/maps/RustboroCity/scripts.pory"
+	applymovement LOCALID_RUSTBORO_DR_PARKER, RustboroCity_EventScript_DrParkerIntro_Movement_0
+# 1325 "data/maps/RustboroCity/scripts.pory"
 	waitmovement 0
+# 1327 "data/maps/RustboroCity/scripts.pory"
+	applymovement LOCALID_RUSTBORO_DR_PARKER, RustboroCity_EventScript_DrParkerIntro_Movement_1
+# 1338 "data/maps/RustboroCity/scripts.pory"
+	waitmovement 0
+# 1340 "data/maps/RustboroCity/scripts.pory"
+	playse SE_PIN
+# 1341 "data/maps/RustboroCity/scripts.pory"
+	msgbox RustboroCity_Text_DrParkerIntroDialogue
+# 1342 "data/maps/RustboroCity/scripts.pory"
+	closemessage
 # 1344 "data/maps/RustboroCity/scripts.pory"
+	applymovement LOCALID_RUSTBORO_DR_PARKER, RustboroCity_EventScript_DrParkerIntro_Movement_2
+# 1347 "data/maps/RustboroCity/scripts.pory"
+	fadedefaultbgm
+# 1348 "data/maps/RustboroCity/scripts.pory"
+	waitmovement 0
+# 1350 "data/maps/RustboroCity/scripts.pory"
 	removeobject LOCALID_RUSTBORO_DR_PARKER
-# 1345 "data/maps/RustboroCity/scripts.pory"
+# 1351 "data/maps/RustboroCity/scripts.pory"
 	setvar VAR_RUSTBORO_GYM_STATE, 3
-# 1346 "data/maps/RustboroCity/scripts.pory"
+# 1352 "data/maps/RustboroCity/scripts.pory"
 	releaseall
 	return
 
 
-# 1312 "data/maps/RustboroCity/scripts.pory"
+# 1321 "data/maps/RustboroCity/scripts.pory"
 RustboroCity_EventScript_DrParkerIntro_Movement_0:
-# 1313 "data/maps/RustboroCity/scripts.pory"
+# 1322 "data/maps/RustboroCity/scripts.pory"
 	walk_faster_right
-# 1313 "data/maps/RustboroCity/scripts.pory"
+# 1322 "data/maps/RustboroCity/scripts.pory"
 	walk_faster_right
-# 1313 "data/maps/RustboroCity/scripts.pory"
+# 1322 "data/maps/RustboroCity/scripts.pory"
 	walk_faster_right
-# 1314 "data/maps/RustboroCity/scripts.pory"
+# 1323 "data/maps/RustboroCity/scripts.pory"
 	walk_right
-# 1314 "data/maps/RustboroCity/scripts.pory"
+# 1323 "data/maps/RustboroCity/scripts.pory"
 	walk_right
-# 1314 "data/maps/RustboroCity/scripts.pory"
+# 1323 "data/maps/RustboroCity/scripts.pory"
 	walk_right
-# 1314 "data/maps/RustboroCity/scripts.pory"
+# 1323 "data/maps/RustboroCity/scripts.pory"
 	walk_right
-# 1314 "data/maps/RustboroCity/scripts.pory"
+# 1323 "data/maps/RustboroCity/scripts.pory"
 	walk_right
-# 1314 "data/maps/RustboroCity/scripts.pory"
+# 1323 "data/maps/RustboroCity/scripts.pory"
 	walk_right
-# 1314 "data/maps/RustboroCity/scripts.pory"
+# 1323 "data/maps/RustboroCity/scripts.pory"
 	walk_right
 	step_end
 
-# 1318 "data/maps/RustboroCity/scripts.pory"
-RustboroCity_EventScript_DrParkerIntro_Movement_1:
-# 1319 "data/maps/RustboroCity/scripts.pory"
-	face_up
-# 1320 "data/maps/RustboroCity/scripts.pory"
-	delay_16
-# 1321 "data/maps/RustboroCity/scripts.pory"
-	face_down
-# 1322 "data/maps/RustboroCity/scripts.pory"
-	delay_16
-# 1323 "data/maps/RustboroCity/scripts.pory"
-	face_left
-# 1324 "data/maps/RustboroCity/scripts.pory"
-	delay_16
-# 1325 "data/maps/RustboroCity/scripts.pory"
-	face_right
-# 1326 "data/maps/RustboroCity/scripts.pory"
-	delay_16
 # 1327 "data/maps/RustboroCity/scripts.pory"
+RustboroCity_EventScript_DrParkerIntro_Movement_1:
+# 1328 "data/maps/RustboroCity/scripts.pory"
+	face_up
+# 1329 "data/maps/RustboroCity/scripts.pory"
+	delay_16
+# 1330 "data/maps/RustboroCity/scripts.pory"
+	face_down
+# 1331 "data/maps/RustboroCity/scripts.pory"
+	delay_16
+# 1332 "data/maps/RustboroCity/scripts.pory"
+	face_left
+# 1333 "data/maps/RustboroCity/scripts.pory"
+	delay_16
+# 1334 "data/maps/RustboroCity/scripts.pory"
+	face_right
+# 1335 "data/maps/RustboroCity/scripts.pory"
+	delay_16
+# 1336 "data/maps/RustboroCity/scripts.pory"
 	face_player
 	step_end
 
-# 1339 "data/maps/RustboroCity/scripts.pory"
+# 1344 "data/maps/RustboroCity/scripts.pory"
 RustboroCity_EventScript_DrParkerIntro_Movement_2:
-# 1340 "data/maps/RustboroCity/scripts.pory"
+# 1345 "data/maps/RustboroCity/scripts.pory"
 	walk_left
-# 1340 "data/maps/RustboroCity/scripts.pory"
+# 1345 "data/maps/RustboroCity/scripts.pory"
 	walk_left
-# 1340 "data/maps/RustboroCity/scripts.pory"
+# 1345 "data/maps/RustboroCity/scripts.pory"
 	walk_left
-# 1340 "data/maps/RustboroCity/scripts.pory"
+# 1345 "data/maps/RustboroCity/scripts.pory"
 	walk_left
-# 1340 "data/maps/RustboroCity/scripts.pory"
+# 1345 "data/maps/RustboroCity/scripts.pory"
 	walk_left
-# 1340 "data/maps/RustboroCity/scripts.pory"
+# 1345 "data/maps/RustboroCity/scripts.pory"
 	walk_left
-# 1340 "data/maps/RustboroCity/scripts.pory"
+# 1345 "data/maps/RustboroCity/scripts.pory"
 	walk_left
-# 1340 "data/maps/RustboroCity/scripts.pory"
+# 1345 "data/maps/RustboroCity/scripts.pory"
 	walk_left
-# 1340 "data/maps/RustboroCity/scripts.pory"
+# 1345 "data/maps/RustboroCity/scripts.pory"
 	walk_left
-# 1340 "data/maps/RustboroCity/scripts.pory"
+# 1345 "data/maps/RustboroCity/scripts.pory"
 	walk_left
 	step_end
 
 RustboroCity_EventScript_DrParkerIntro_Text_0:
-# 1311 "data/maps/RustboroCity/scripts.pory"
+# 1319 "data/maps/RustboroCity/scripts.pory"
 	.string "I know it's around here somewhere...$"
 
-RustboroCity_EventScript_DrParkerIntro_Text_1:
-# 1332 "data/maps/RustboroCity/scripts.pory"
-	.string "Oh, you're {PLAYER}?$"
-
-RustboroCity_EventScript_DrParkerIntro_Text_2:
-# 1333 "data/maps/RustboroCity/scripts.pory"
+RustboroCity_Text_DrParkerIntroDialogue::
+# 1305 "data/maps/RustboroCity/scripts.pory"
+	.string "Oh, you're {PLAYER}?\p"
 	.string "Did you happen to see anyone drop\n"
-	.string "anything unusual around here?$"
-
-RustboroCity_EventScript_DrParkerIntro_Text_3:
-# 1334 "data/maps/RustboroCity/scripts.pory"
+	.string "anything unusual around here?\p"
 	.string "I'm DR. PARKER, a scientist over at\n"
-	.string "DEVON CORPORATION.$"
-
-RustboroCity_EventScript_DrParkerIntro_Text_4:
-# 1335 "data/maps/RustboroCity/scripts.pory"
+	.string "DEVON CORPORATION.\p"
 	.string "Just between you and me, I'm working on\n"
-	.string "something in the attic of DEVON CORP.$"
-
-RustboroCity_EventScript_DrParkerIntro_Text_5:
-# 1336 "data/maps/RustboroCity/scripts.pory"
+	.string "something in the attic of DEVON CORP.\p"
 	.string "Let me know if you find anything that\n"
 	.string "looks like it could be useful!$"

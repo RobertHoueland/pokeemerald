@@ -56,6 +56,13 @@ MauvilleCity_Mart_Text_DecisionsDetermineBattle:
 	.string "battles turn out, I think.$"
 `
 
+text MauvilleCity_Mart_Clerk_Tablet {
+	format("Welcome!\pHow may I serve--\p"
+    	   "Oh, you're looking for that old thing?\p"
+    	   "I've got it right here! It's been getting sand everywhere.\p"
+     	   "You can have it for free if you clean up the mess afterwards.")
+}
+
 script MauvilleCity_Mart_EventScript_Clerk {
     lockall
 	faceplayer
@@ -73,10 +80,7 @@ LookingForTablet:
 	if (var(VAR_RESULT) == TRUE) {
 		goto(HasTablet)
 	}
-    msgbox(format("Welcome!\pHow may I serve--$"))
-    msgbox(format("Oh, you're looking for that old thing?"))
-    msgbox(format("I've got it right here! It's been getting sand everywhere."))
-    msgbox(format("You can have it for free if you clean up the mess afterwards."))
+    msgbox(MauvilleCity_Mart_Clerk_Tablet)
     pokemart(MauvilleCity_Mart_Pokemart_TabletQuest)
     msgbox(gText_PleaseComeAgain, MSGBOX_DEFAULT)
 	releaseall

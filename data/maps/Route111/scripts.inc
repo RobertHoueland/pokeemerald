@@ -1442,480 +1442,390 @@ Route111_Text_TrainerHillSign:
 	.string "TRAINERS!”$"
 
 Route111_EventScript_Archaeologist::
-# 725 "data/maps/Route111/scripts.pory"
+# 786 "data/maps/Route111/scripts.pory"
 	lockall
-# 726 "data/maps/Route111/scripts.pory"
+# 787 "data/maps/Route111/scripts.pory"
 	faceplayer
-# 727 "data/maps/Route111/scripts.pory"
+# 788 "data/maps/Route111/scripts.pory"
 	goto_if_set FLAG_MET_ARCHAEOLOGIST, MetArchaeologist
-# 730 "data/maps/Route111/scripts.pory"
-	msgbox Route111_EventScript_Archaeologist_Text_0
-# 731 "data/maps/Route111/scripts.pory"
-	msgbox Route111_EventScript_Archaeologist_Text_1
-# 732 "data/maps/Route111/scripts.pory"
-	msgbox Route111_EventScript_Archaeologist_Text_2
-# 733 "data/maps/Route111/scripts.pory"
-	msgbox Route111_EventScript_Archaeologist_Text_3
-# 734 "data/maps/Route111/scripts.pory"
-	msgbox Route111_EventScript_Archaeologist_Text_4
-# 735 "data/maps/Route111/scripts.pory"
-	delay 16
-# 736 "data/maps/Route111/scripts.pory"
+# 791 "data/maps/Route111/scripts.pory"
+	msgbox Route111_Text_ArchaeologistFirstMeeting
+# 792 "data/maps/Route111/scripts.pory"
 	setflag FLAG_MET_ARCHAEOLOGIST
-# 738 "data/maps/Route111/scripts.pory"
+# 794 "data/maps/Route111/scripts.pory"
 MetArchaeologist:
-# 739 "data/maps/Route111/scripts.pory"
+# 795 "data/maps/Route111/scripts.pory"
 	checkitem ITEM_WIND_TABLET, 1
-# 740 "data/maps/Route111/scripts.pory"
+# 796 "data/maps/Route111/scripts.pory"
 	compare VAR_RESULT, TRUE
 	goto_if_eq Route111_EventScript_Archaeologist_2
-Route111_EventScript_Archaeologist_1:
-# 745 "data/maps/Route111/scripts.pory"
-	msgbox Route111_EventScript_Archaeologist_Text_5
-# 746 "data/maps/Route111/scripts.pory"
-	msgbox Route111_EventScript_Archaeologist_Text_6
-# 747 "data/maps/Route111/scripts.pory"
-	msgbox Route111_EventScript_Archaeologist_Text_7
-# 748 "data/maps/Route111/scripts.pory"
-	releaseall
-# 749 "data/maps/Route111/scripts.pory"
-	end
-# 751 "data/maps/Route111/scripts.pory"
-Archaeologist_FoundFirstClue:
-# 752 "data/maps/Route111/scripts.pory"
-	checkitem ITEM_BOLT_TABLET, 1
-# 753 "data/maps/Route111/scripts.pory"
-	compare VAR_RESULT, TRUE
-	goto_if_eq Route111_EventScript_Archaeologist_5
-Route111_EventScript_Archaeologist_4:
-# 757 "data/maps/Route111/scripts.pory"
-	goto_if_set FLAG_ARCHAEOLOGIST_FOUND_FIRST_CLUE, Archaeologist_SecondClue
-# 759 "data/maps/Route111/scripts.pory"
-	msgbox Route111_EventScript_Archaeologist_Text_8
-# 760 "data/maps/Route111/scripts.pory"
-	playse SE_PIN
-# 761 "data/maps/Route111/scripts.pory"
-	waitse
-# 762 "data/maps/Route111/scripts.pory"
-	msgbox Route111_EventScript_Archaeologist_Text_9
-# 763 "data/maps/Route111/scripts.pory"
-	msgbox Route111_EventScript_Archaeologist_Text_10
-# 764 "data/maps/Route111/scripts.pory"
-	delay 16
-# 765 "data/maps/Route111/scripts.pory"
-	setflag FLAG_ARCHAEOLOGIST_FOUND_FIRST_CLUE
-# 767 "data/maps/Route111/scripts.pory"
-Archaeologist_SecondClue:
-# 769 "data/maps/Route111/scripts.pory"
-	msgbox Route111_EventScript_Archaeologist_Text_11
-# 770 "data/maps/Route111/scripts.pory"
-	msgbox Route111_EventScript_Archaeologist_Text_12
-# 771 "data/maps/Route111/scripts.pory"
-	delay 16
-# 772 "data/maps/Route111/scripts.pory"
-	msgbox Route111_EventScript_Archaeologist_Text_13
-# 773 "data/maps/Route111/scripts.pory"
-	releaseall
-# 774 "data/maps/Route111/scripts.pory"
-	end
-# 776 "data/maps/Route111/scripts.pory"
-Archaeologist_FoundSecondClue:
-# 777 "data/maps/Route111/scripts.pory"
-	checkitem ITEM_EARTH_TABLET, 1
-# 778 "data/maps/Route111/scripts.pory"
-	compare VAR_RESULT, TRUE
-	goto_if_eq Route111_EventScript_Archaeologist_8
-Route111_EventScript_Archaeologist_7:
-# 782 "data/maps/Route111/scripts.pory"
-	goto_if_set FLAG_ARCHAEOLOGIST_LOOK_THIRD_CLUE, Archaeologist_ThirdClue
-# 784 "data/maps/Route111/scripts.pory"
-	msgbox Route111_EventScript_Archaeologist_Text_14
-# 785 "data/maps/Route111/scripts.pory"
-	msgbox Route111_EventScript_Archaeologist_Text_15
-# 786 "data/maps/Route111/scripts.pory"
-	msgbox Route111_EventScript_Archaeologist_Text_16
-# 787 "data/maps/Route111/scripts.pory"
-	applymovement LOCALID_ARCHAEOLOGIST, Route111_EventScript_Archaeologist_Movement_0
-# 791 "data/maps/Route111/scripts.pory"
-	waitmovement 0
-# 792 "data/maps/Route111/scripts.pory"
-	delay 16
-# 793 "data/maps/Route111/scripts.pory"
-	playse SE_PIN
-# 794 "data/maps/Route111/scripts.pory"
-	waitse
-# 795 "data/maps/Route111/scripts.pory"
-	applymovement LOCALID_ARCHAEOLOGIST, Common_Movement_ExclamationMark
 # 796 "data/maps/Route111/scripts.pory"
-	delay 16
-# 797 "data/maps/Route111/scripts.pory"
-	waitmovement 0
-# 798 "data/maps/Route111/scripts.pory"
-	msgbox Route111_EventScript_Archaeologist_Text_17
-# 799 "data/maps/Route111/scripts.pory"
-	playse SE_M_SAND_ATTACK
-# 800 "data/maps/Route111/scripts.pory"
-	waitse
-# 801 "data/maps/Route111/scripts.pory"
-	applymovement LOCALID_ARCHAEOLOGIST, Route111_EventScript_Archaeologist_Movement_1
+	goto_if_set FLAG_ARCHAEOLOGIST_GAVE_WIND_TABLET, Route111_EventScript_Archaeologist_2
+Route111_EventScript_Archaeologist_1:
+# 802 "data/maps/Route111/scripts.pory"
+	msgbox Route111_Text_ArchaeologistFirstClueHint
+# 803 "data/maps/Route111/scripts.pory"
+	releaseall
+# 804 "data/maps/Route111/scripts.pory"
+	end
+# 806 "data/maps/Route111/scripts.pory"
+Archaeologist_FoundFirstClue:
 # 807 "data/maps/Route111/scripts.pory"
-	closemessage
+	checkitem ITEM_BOLT_TABLET, 1
 # 808 "data/maps/Route111/scripts.pory"
-	delay 16
-# 809 "data/maps/Route111/scripts.pory"
-	msgbox Route111_EventScript_Archaeologist_Text_18
-# 810 "data/maps/Route111/scripts.pory"
-	playse SE_BOO
-# 811 "data/maps/Route111/scripts.pory"
-	waitse
-# 812 "data/maps/Route111/scripts.pory"
-	faceplayer
+	compare VAR_RESULT, TRUE
+	goto_if_eq Route111_EventScript_Archaeologist_7
+# 808 "data/maps/Route111/scripts.pory"
+	goto_if_set FLAG_ARCHAEOLOGIST_GAVE_BOLT_TABLET, Route111_EventScript_Archaeologist_7
+Route111_EventScript_Archaeologist_6:
 # 813 "data/maps/Route111/scripts.pory"
-	delay 16
-# 814 "data/maps/Route111/scripts.pory"
-	setflag FLAG_ARCHAEOLOGIST_LOOK_THIRD_CLUE
+	goto_if_set FLAG_ARCHAEOLOGIST_FOUND_FIRST_CLUE, Archaeologist_SecondClue
 # 816 "data/maps/Route111/scripts.pory"
-Archaeologist_ThirdClue:
+	msgbox Route111_EventScript_Archaeologist_Text_0
+# 817 "data/maps/Route111/scripts.pory"
+	setvar VAR_0x8004, ITEM_WIND_TABLET
 # 818 "data/maps/Route111/scripts.pory"
-	msgbox Route111_EventScript_Archaeologist_Text_19
+	call Common_EventScript_PlayerHandedOverTheItem
 # 819 "data/maps/Route111/scripts.pory"
-	msgbox Route111_EventScript_Archaeologist_Text_20
+	setflag FLAG_ARCHAEOLOGIST_GAVE_WIND_TABLET
 # 820 "data/maps/Route111/scripts.pory"
-	msgbox Route111_EventScript_Archaeologist_Text_21
-# 821 "data/maps/Route111/scripts.pory"
-	msgbox Route111_EventScript_Archaeologist_Text_22
-# 822 "data/maps/Route111/scripts.pory"
-	msgbox Route111_EventScript_Archaeologist_Text_23
-# 823 "data/maps/Route111/scripts.pory"
-	releaseall
-# 824 "data/maps/Route111/scripts.pory"
-	end
-# 826 "data/maps/Route111/scripts.pory"
-Archaeologist_FoundThirdClue:
-# 827 "data/maps/Route111/scripts.pory"
-	goto_if_set FLAG_ARCHAEOLOGIST_FOUND_ALL_CLUES, Archaeologist_FoundAllClues
-# 829 "data/maps/Route111/scripts.pory"
-	playse SE_PIN
-# 830 "data/maps/Route111/scripts.pory"
 	waitse
-# 831 "data/maps/Route111/scripts.pory"
-	msgbox Route111_EventScript_Archaeologist_Text_24
-# 832 "data/maps/Route111/scripts.pory"
-	msgbox Route111_EventScript_Archaeologist_Text_25
-# 833 "data/maps/Route111/scripts.pory"
-	msgbox Route111_EventScript_Archaeologist_Text_26
-# 834 "data/maps/Route111/scripts.pory"
-	delay 16
-# 835 "data/maps/Route111/scripts.pory"
-	msgbox Route111_EventScript_Archaeologist_Text_27
-# 836 "data/maps/Route111/scripts.pory"
-	delay 16
-# 837 "data/maps/Route111/scripts.pory"
-	msgbox Route111_EventScript_Archaeologist_Text_28
-# 838 "data/maps/Route111/scripts.pory"
-	msgbox Route111_EventScript_Archaeologist_Text_29
-# 839 "data/maps/Route111/scripts.pory"
-	msgbox Route111_EventScript_Archaeologist_Text_30
-# 840 "data/maps/Route111/scripts.pory"
-	delay 16
-# 841 "data/maps/Route111/scripts.pory"
-	msgbox Route111_EventScript_Archaeologist_Text_31
-# 842 "data/maps/Route111/scripts.pory"
-	delay 16
-# 843 "data/maps/Route111/scripts.pory"
-	msgbox Route111_EventScript_Archaeologist_Text_32
-# 844 "data/maps/Route111/scripts.pory"
-	msgbox Route111_EventScript_Archaeologist_Text_33
-# 845 "data/maps/Route111/scripts.pory"
-	msgbox Route111_EventScript_Archaeologist_Text_34
-# 846 "data/maps/Route111/scripts.pory"
-	msgbox Route111_EventScript_Archaeologist_Text_35
-# 847 "data/maps/Route111/scripts.pory"
-	msgbox Route111_EventScript_Archaeologist_Text_36
-# 849 "data/maps/Route111/scripts.pory"
-	giveitem ITEM_REVEAL_GLASS
-# 850 "data/maps/Route111/scripts.pory"
-	setflag FLAG_ARCHAEOLOGIST_FOUND_ALL_CLUES
-# 851 "data/maps/Route111/scripts.pory"
-	msgbox Route111_EventScript_Archaeologist_Text_37
-# 852 "data/maps/Route111/scripts.pory"
+# 821 "data/maps/Route111/scripts.pory"
+	msgbox Route111_Text_ArchaeologistWindTablet
+# 822 "data/maps/Route111/scripts.pory"
+	setflag FLAG_ARCHAEOLOGIST_FOUND_FIRST_CLUE
+# 824 "data/maps/Route111/scripts.pory"
+Archaeologist_SecondClue:
+# 826 "data/maps/Route111/scripts.pory"
+	msgbox Route111_Text_ArchaeologistSecondClueRiddle
+# 827 "data/maps/Route111/scripts.pory"
+	delay 2
+# 828 "data/maps/Route111/scripts.pory"
+	msgbox Route111_EventScript_Archaeologist_Text_1
+# 829 "data/maps/Route111/scripts.pory"
 	releaseall
-# 853 "data/maps/Route111/scripts.pory"
+# 830 "data/maps/Route111/scripts.pory"
 	end
+# 832 "data/maps/Route111/scripts.pory"
+Archaeologist_FoundSecondClue:
+# 833 "data/maps/Route111/scripts.pory"
+	checkitem ITEM_EARTH_TABLET, 1
+# 834 "data/maps/Route111/scripts.pory"
+	compare VAR_RESULT, TRUE
+	goto_if_eq Route111_EventScript_Archaeologist_12
+# 834 "data/maps/Route111/scripts.pory"
+	goto_if_set FLAG_ARCHAEOLOGIST_GAVE_EARTH_TABLET, Route111_EventScript_Archaeologist_12
+Route111_EventScript_Archaeologist_11:
+# 839 "data/maps/Route111/scripts.pory"
+	goto_if_set FLAG_ARCHAEOLOGIST_LOOK_THIRD_CLUE, Archaeologist_ThirdClue
+# 842 "data/maps/Route111/scripts.pory"
+	msgbox Route111_EventScript_Archaeologist_Text_2
+# 843 "data/maps/Route111/scripts.pory"
+	setvar VAR_0x8004, ITEM_BOLT_TABLET
+# 844 "data/maps/Route111/scripts.pory"
+	call Common_EventScript_PlayerHandedOverTheItem
+# 845 "data/maps/Route111/scripts.pory"
+	setflag FLAG_ARCHAEOLOGIST_GAVE_BOLT_TABLET
+# 847 "data/maps/Route111/scripts.pory"
+	msgbox Route111_Text_ArchaeologistBoltTabletFound
+# 848 "data/maps/Route111/scripts.pory"
+	applymovement LOCALID_ARCHAEOLOGIST, Route111_EventScript_Archaeologist_Movement_0
+# 852 "data/maps/Route111/scripts.pory"
+	waitmovement 0
+# 853 "data/maps/Route111/scripts.pory"
+	playse SE_PIN
+# 854 "data/maps/Route111/scripts.pory"
+	applymovement LOCALID_ARCHAEOLOGIST, Common_Movement_ExclamationMark
 # 855 "data/maps/Route111/scripts.pory"
-Archaeologist_FoundAllClues:
+	waitse
+# 856 "data/maps/Route111/scripts.pory"
+	waitmovement 0
 # 857 "data/maps/Route111/scripts.pory"
-	msgbox Route111_EventScript_Archaeologist_Text_38
-# 858 "data/maps/Route111/scripts.pory"
+	faceplayer
+# 859 "data/maps/Route111/scripts.pory"
+	msgbox Route111_EventScript_Archaeologist_Text_3
+# 860 "data/maps/Route111/scripts.pory"
+	playse SE_M_SAND_ATTACK
+# 861 "data/maps/Route111/scripts.pory"
+	applymovement LOCALID_ARCHAEOLOGIST, Route111_EventScript_Archaeologist_Movement_1
+# 871 "data/maps/Route111/scripts.pory"
+	waitse
+# 872 "data/maps/Route111/scripts.pory"
+	waitmovement 0
+# 873 "data/maps/Route111/scripts.pory"
+	closemessage
+# 874 "data/maps/Route111/scripts.pory"
+	msgbox Route111_EventScript_Archaeologist_Text_4
+# 875 "data/maps/Route111/scripts.pory"
+	faceplayer
+# 876 "data/maps/Route111/scripts.pory"
+	setflag FLAG_ARCHAEOLOGIST_LOOK_THIRD_CLUE
+# 878 "data/maps/Route111/scripts.pory"
+Archaeologist_ThirdClue:
+# 880 "data/maps/Route111/scripts.pory"
+	msgbox Route111_Text_ArchaeologistThirdClueHint
+# 881 "data/maps/Route111/scripts.pory"
+	releaseall
+# 882 "data/maps/Route111/scripts.pory"
+	end
+# 884 "data/maps/Route111/scripts.pory"
+Archaeologist_FoundThirdClue:
+# 885 "data/maps/Route111/scripts.pory"
+	goto_if_set FLAG_ARCHAEOLOGIST_FOUND_ALL_CLUES, Archaeologist_FoundAllClues
+# 888 "data/maps/Route111/scripts.pory"
+	msgbox Route111_Text_ArchaeologistEarthTabletFound
+# 889 "data/maps/Route111/scripts.pory"
+	setvar VAR_0x8004, ITEM_EARTH_TABLET
+# 890 "data/maps/Route111/scripts.pory"
+	call Common_EventScript_PlayerHandedOverTheItem
+# 891 "data/maps/Route111/scripts.pory"
+	setflag FLAG_ARCHAEOLOGIST_GAVE_EARTH_TABLET
+# 893 "data/maps/Route111/scripts.pory"
+	msgbox Route111_EventScript_Archaeologist_Text_5
+# 894 "data/maps/Route111/scripts.pory"
+	delay 16
+# 895 "data/maps/Route111/scripts.pory"
+	msgbox Route111_Text_ArchaeologistTwoForms
+# 896 "data/maps/Route111/scripts.pory"
+	delay 16
+# 897 "data/maps/Route111/scripts.pory"
+	msgbox Route111_EventScript_Archaeologist_Text_6
+# 898 "data/maps/Route111/scripts.pory"
+	delay 16
+# 899 "data/maps/Route111/scripts.pory"
+	msgbox Route111_Text_ArchaeologistRevealGlassExplanation
+# 901 "data/maps/Route111/scripts.pory"
+	giveitem ITEM_REVEAL_GLASS
+# 902 "data/maps/Route111/scripts.pory"
+	setflag FLAG_ARCHAEOLOGIST_FOUND_ALL_CLUES
+# 903 "data/maps/Route111/scripts.pory"
+	msgbox Route111_Text_ArchaeologistFinalAdvice
+# 904 "data/maps/Route111/scripts.pory"
+	releaseall
+# 905 "data/maps/Route111/scripts.pory"
+	end
+# 907 "data/maps/Route111/scripts.pory"
+Archaeologist_FoundAllClues:
+# 909 "data/maps/Route111/scripts.pory"
+	msgbox Route111_EventScript_Archaeologist_Text_7
+# 910 "data/maps/Route111/scripts.pory"
 	releaseall
 	return
 
 Route111_EventScript_Archaeologist_2:
-# 741 "data/maps/Route111/scripts.pory"
+# 798 "data/maps/Route111/scripts.pory"
 	goto Archaeologist_FoundFirstClue
 	goto Route111_EventScript_Archaeologist_1
 
-Route111_EventScript_Archaeologist_5:
-# 754 "data/maps/Route111/scripts.pory"
+Route111_EventScript_Archaeologist_7:
+# 810 "data/maps/Route111/scripts.pory"
 	goto Archaeologist_FoundSecondClue
-	goto Route111_EventScript_Archaeologist_4
+	goto Route111_EventScript_Archaeologist_6
 
-Route111_EventScript_Archaeologist_8:
-# 779 "data/maps/Route111/scripts.pory"
+Route111_EventScript_Archaeologist_12:
+# 836 "data/maps/Route111/scripts.pory"
 	goto Archaeologist_FoundThirdClue
-	goto Route111_EventScript_Archaeologist_7
+	goto Route111_EventScript_Archaeologist_11
 
 
 Route111_Sign_FirstClue::
-# 862 "data/maps/Route111/scripts.pory"
+# 914 "data/maps/Route111/scripts.pory"
 	lockall
-# 863 "data/maps/Route111/scripts.pory"
+# 915 "data/maps/Route111/scripts.pory"
 	goto_if_set FLAG_CHECKED_ROUTE_111_ROCK, CheckedRock
-# 865 "data/maps/Route111/scripts.pory"
+# 917 "data/maps/Route111/scripts.pory"
 	msgbox Route111_Sign_FirstClue_Text_0
-# 866 "data/maps/Route111/scripts.pory"
+# 918 "data/maps/Route111/scripts.pory"
 	msgbox Route111_Sign_FirstClue_Text_1, MSGBOX_YESNO
-# 867 "data/maps/Route111/scripts.pory"
+# 919 "data/maps/Route111/scripts.pory"
 	compare VAR_RESULT, YES
 	goto_if_eq Route111_Sign_FirstClue_2
 Route111_Sign_FirstClue_1:
-# 871 "data/maps/Route111/scripts.pory"
+# 925 "data/maps/Route111/scripts.pory"
 	releaseall
-# 872 "data/maps/Route111/scripts.pory"
+# 926 "data/maps/Route111/scripts.pory"
 	end
-# 874 "data/maps/Route111/scripts.pory"
+# 928 "data/maps/Route111/scripts.pory"
 CheckedRock:
-# 875 "data/maps/Route111/scripts.pory"
+# 929 "data/maps/Route111/scripts.pory"
 	msgbox Route111_Sign_FirstClue_Text_2
-# 876 "data/maps/Route111/scripts.pory"
+# 930 "data/maps/Route111/scripts.pory"
 	releaseall
 	return
 
 Route111_Sign_FirstClue_2:
-# 868 "data/maps/Route111/scripts.pory"
+# 920 "data/maps/Route111/scripts.pory"
+	playse SE_M_SAND_ATTACK
+# 921 "data/maps/Route111/scripts.pory"
+	waitse
+# 922 "data/maps/Route111/scripts.pory"
 	giveitem ITEM_WIND_TABLET
-# 869 "data/maps/Route111/scripts.pory"
+# 923 "data/maps/Route111/scripts.pory"
 	setflag FLAG_CHECKED_ROUTE_111_ROCK
 	goto Route111_Sign_FirstClue_1
 
 
-# 787 "data/maps/Route111/scripts.pory"
+# 848 "data/maps/Route111/scripts.pory"
 Route111_EventScript_Archaeologist_Movement_0:
-# 788 "data/maps/Route111/scripts.pory"
+# 849 "data/maps/Route111/scripts.pory"
 	face_right
-# 789 "data/maps/Route111/scripts.pory"
+# 850 "data/maps/Route111/scripts.pory"
 	delay_16
 	step_end
 
-# 801 "data/maps/Route111/scripts.pory"
+# 861 "data/maps/Route111/scripts.pory"
 Route111_EventScript_Archaeologist_Movement_1:
-# 802 "data/maps/Route111/scripts.pory"
+# 862 "data/maps/Route111/scripts.pory"
 	face_up
-# 803 "data/maps/Route111/scripts.pory"
+# 863 "data/maps/Route111/scripts.pory"
 	delay_16
-# 804 "data/maps/Route111/scripts.pory"
+# 864 "data/maps/Route111/scripts.pory"
 	face_right
-# 805 "data/maps/Route111/scripts.pory"
+# 865 "data/maps/Route111/scripts.pory"
+	delay_16
+# 866 "data/maps/Route111/scripts.pory"
+	face_up
+# 867 "data/maps/Route111/scripts.pory"
+	delay_16
+# 868 "data/maps/Route111/scripts.pory"
+	face_right
+# 869 "data/maps/Route111/scripts.pory"
 	delay_16
 	step_end
 
 Route111_EventScript_Archaeologist_Text_0:
-# 730 "data/maps/Route111/scripts.pory"
-	.string "Ah, a fellow explorer!$"
-
-Route111_EventScript_Archaeologist_Text_1:
-# 731 "data/maps/Route111/scripts.pory"
-	.string "I'm an ARCHAEOLOGIST, and I'm here to\n"
-	.string "investigate the mysteries of HOENN!$"
-
-Route111_EventScript_Archaeologist_Text_2:
-# 732 "data/maps/Route111/scripts.pory"
-	.string "Have you heard the rumors about\n"
-	.string "the FORCES OF NATURE?$"
-
-Route111_EventScript_Archaeologist_Text_3:
-# 733 "data/maps/Route111/scripts.pory"
-	.string "I have been studying these LEGENDARY\n"
-	.string "POKéMON that are from a distant region.$"
-
-Route111_EventScript_Archaeologist_Text_4:
-# 734 "data/maps/Route111/scripts.pory"
-	.string "I'm following a puzzle I found in UNOVA,\n"
-	.string "and it led me here!$"
-
-Route111_EventScript_Archaeologist_Text_5:
-# 745 "data/maps/Route111/scripts.pory"
-	.string "I'm stuck on the first clue:$"
-
-Route111_EventScript_Archaeologist_Text_6:
-# 746 "data/maps/Route111/scripts.pory"
-	.string "“Beneath a rock near the DESERT RUINS\n"
-	.string "entrance, the first sleeps.”$"
-
-Route111_EventScript_Archaeologist_Text_7:
-# 747 "data/maps/Route111/scripts.pory"
-	.string "Wherever that could be...$"
-
-Route111_EventScript_Archaeologist_Text_8:
-# 759 "data/maps/Route111/scripts.pory"
+# 816 "data/maps/Route111/scripts.pory"
 	.string "Oh, you found the first clue!$"
 
-Route111_EventScript_Archaeologist_Text_9:
-# 762 "data/maps/Route111/scripts.pory"
-	.string "It's a WIND TABLET?$"
-
-Route111_EventScript_Archaeologist_Text_10:
-# 763 "data/maps/Route111/scripts.pory"
-	.string "I wonder if there are more tablets like\n"
-	.string "this one.$"
-
-Route111_EventScript_Archaeologist_Text_11:
-# 769 "data/maps/Route111/scripts.pory"
-	.string "Here's the next clue in the puzzle:$"
-
-Route111_EventScript_Archaeologist_Text_12:
-# 770 "data/maps/Route111/scripts.pory"
-	.string "By the first stair that climbs the sky,\n"
-	.string "beside its foot the next clue lies.$"
-
-Route111_EventScript_Archaeologist_Text_13:
-# 772 "data/maps/Route111/scripts.pory"
+Route111_EventScript_Archaeologist_Text_1:
+# 828 "data/maps/Route111/scripts.pory"
 	.string "I'm no good at riddles.$"
 
-Route111_EventScript_Archaeologist_Text_14:
-# 784 "data/maps/Route111/scripts.pory"
-	.string "Ah, you found a BOLT TABLET!$"
+Route111_EventScript_Archaeologist_Text_2:
+# 842 "data/maps/Route111/scripts.pory"
+	.string "Ah, you found the BOLT TABLET!$"
 
-Route111_EventScript_Archaeologist_Text_15:
-# 785 "data/maps/Route111/scripts.pory"
-	.string "There is one clue left. Perhaps it will\n"
-	.string "lead to the final tablet!$"
-
-Route111_EventScript_Archaeologist_Text_16:
-# 786 "data/maps/Route111/scripts.pory"
-	.string "I've deciphered the last clue and it\n"
-	.string "says...$"
-
-Route111_EventScript_Archaeologist_Text_17:
-# 798 "data/maps/Route111/scripts.pory"
+Route111_EventScript_Archaeologist_Text_3:
+# 859 "data/maps/Route111/scripts.pory"
 	.string "According to my calculations, it should\n"
 	.string "be right here!$"
 
-Route111_EventScript_Archaeologist_Text_18:
-# 809 "data/maps/Route111/scripts.pory"
+Route111_EventScript_Archaeologist_Text_4:
+# 874 "data/maps/Route111/scripts.pory"
 	.string "That's odd, it looks as if someone has\n"
 	.string "been digging here recently.$"
 
-Route111_EventScript_Archaeologist_Text_19:
-# 818 "data/maps/Route111/scripts.pory"
-	.string "Could it be... that someone found it\n"
-	.string "already?$"
-
-Route111_EventScript_Archaeologist_Text_20:
-# 819 "data/maps/Route111/scripts.pory"
-	.string "Wait. I spoke with a merchant last week\n"
-	.string "in MAUVILLE city.$"
-
-Route111_EventScript_Archaeologist_Text_21:
-# 820 "data/maps/Route111/scripts.pory"
-	.string "He mentioned that someone sold him a\n"
-	.string "sandy relic.$"
-
-Route111_EventScript_Archaeologist_Text_22:
-# 821 "data/maps/Route111/scripts.pory"
-	.string "I figured it was probably a fossil, but...$"
-
-Route111_EventScript_Archaeologist_Text_23:
-# 822 "data/maps/Route111/scripts.pory"
-	.string "If we're lucky, the merchant\n"
-	.string "might still have it!$"
-
-Route111_EventScript_Archaeologist_Text_24:
-# 831 "data/maps/Route111/scripts.pory"
-	.string "You found the EARTH TABLET!$"
-
-Route111_EventScript_Archaeologist_Text_25:
-# 832 "data/maps/Route111/scripts.pory"
-	.string "To think it was sitting in that\n"
-	.string "POKéMART this whole time.$"
-
-Route111_EventScript_Archaeologist_Text_26:
-# 833 "data/maps/Route111/scripts.pory"
-	.string "With all three tablets, I can decipher\n"
-	.string "the mystery of the FORCES OF NATURE!$"
-
-Route111_EventScript_Archaeologist_Text_27:
-# 835 "data/maps/Route111/scripts.pory"
+Route111_EventScript_Archaeologist_Text_5:
+# 893 "data/maps/Route111/scripts.pory"
 	.string "The ARCHAEOLOGIST laid the three\n"
 	.string "tablets side by side in the sand.$"
 
-Route111_EventScript_Archaeologist_Text_28:
-# 837 "data/maps/Route111/scripts.pory"
-	.string "Extraordinary... the engravings depict\n"
-	.string "two forms.$"
-
-Route111_EventScript_Archaeologist_Text_29:
-# 838 "data/maps/Route111/scripts.pory"
-	.string "One wild and free.\n"
-	.string "The other bound and purposeful.$"
-
-Route111_EventScript_Archaeologist_Text_30:
-# 839 "data/maps/Route111/scripts.pory"
-	.string "Of course! I brought this from UNOVA\n"
-	.string "when I began my expedition.$"
-
-Route111_EventScript_Archaeologist_Text_31:
-# 841 "data/maps/Route111/scripts.pory"
+Route111_EventScript_Archaeologist_Text_6:
+# 897 "data/maps/Route111/scripts.pory"
 	.string "The ARCHAEOLOGIST pulled an ornate\n"
 	.string "glass from his satchel...$"
 
-Route111_EventScript_Archaeologist_Text_32:
-# 843 "data/maps/Route111/scripts.pory"
-	.string "Through the REVEAL GLASS the\n"
-	.string "engravings seem almost... alive.$"
-
-Route111_EventScript_Archaeologist_Text_33:
-# 844 "data/maps/Route111/scripts.pory"
-	.string "Yes! This confirms everything. The\n"
-	.string "FORCES OF NATURE have a true form\l"
-	.string "beyond what we know.$"
-
-Route111_EventScript_Archaeologist_Text_34:
-# 845 "data/maps/Route111/scripts.pory"
-	.string "I have documented everything I need.\n"
-	.string "My research is complete.$"
-
-Route111_EventScript_Archaeologist_Text_35:
-# 846 "data/maps/Route111/scripts.pory"
-	.string "This REVEAL GLASS led me to the\n"
-	.string "greatest discovery of my career. But my\l"
-	.string "work is done.$"
-
-Route111_EventScript_Archaeologist_Text_36:
-# 847 "data/maps/Route111/scripts.pory"
-	.string "Take it. Something tells me you will have\n"
-	.string "far more use for it than I will.$"
-
-Route111_EventScript_Archaeologist_Text_37:
-# 851 "data/maps/Route111/scripts.pory"
-	.string "Use it well. And if you ever find\n"
-	.string "yourself in UNOVA... look up at the sky.$"
-
-Route111_EventScript_Archaeologist_Text_38:
-# 857 "data/maps/Route111/scripts.pory"
+Route111_EventScript_Archaeologist_Text_7:
+# 909 "data/maps/Route111/scripts.pory"
 	.string "Thanks to you, I was able to\n"
 	.string "solve the puzzle!$"
 
 Route111_Sign_FirstClue_Text_0:
-# 865 "data/maps/Route111/scripts.pory"
-	.string "The rock is heavy, but can be lifted\n"
-	.string "with some effort.$"
+# 917 "data/maps/Route111/scripts.pory"
+	.string "The rock is heavy, but it can be\n"
+	.string "lifted with some effort.$"
 
 Route111_Sign_FirstClue_Text_1:
-# 866 "data/maps/Route111/scripts.pory"
+# 918 "data/maps/Route111/scripts.pory"
 	.string "Lift the heavy rock?$"
 
 Route111_Sign_FirstClue_Text_2:
-# 875 "data/maps/Route111/scripts.pory"
+# 929 "data/maps/Route111/scripts.pory"
 	.string "An imprint of a tablet can be seen\n"
 	.string "beneath the rock.$"
+
+Route111_Text_ArchaeologistFirstMeeting::
+# 724 "data/maps/Route111/scripts.pory"
+	.string "Ah, a fellow explorer!\p"
+	.string "I'm an ARCHAEOLOGIST, and I'm here to\n"
+	.string "investigate the mysteries of HOENN!\p"
+	.string "Have you heard the rumors about the\n"
+	.string "FORCES OF NATURE?\p"
+	.string "I have been studying these LEGENDARY\n"
+	.string "POKéMON from a distant region.\p"
+	.string "I'm following a puzzle I found in UNOVA,\n"
+	.string "and it led me here!$"
+
+Route111_Text_ArchaeologistFirstClueHint::
+# 732 "data/maps/Route111/scripts.pory"
+	.string "I'm stuck on the first clue:\p"
+	.string "“Beneath a rock near the DESERT RUINS\n"
+	.string "entrance, the first sleeps.”\p"
+	.string "Wherever that could be...$"
+
+Route111_Text_ArchaeologistWindTablet::
+# 738 "data/maps/Route111/scripts.pory"
+	.string "It's a WIND TABLET?\p"
+	.string "I wonder if there are more\n"
+	.string "tablets like this one.$"
+
+Route111_Text_ArchaeologistSecondClueRiddle::
+# 743 "data/maps/Route111/scripts.pory"
+	.string "Here's the next clue in the puzzle:\p"
+	.string "By the first stair that climbs the sky,\n"
+	.string "beside its foot the next clue lies.$"
+
+Route111_Text_ArchaeologistBoltTabletFound::
+# 748 "data/maps/Route111/scripts.pory"
+	.string "There is one part of the puzzle left.\n"
+	.string "Perhaps it will lead to the final tablet!\p"
+	.string "I've deciphered the last clue,\n"
+	.string "and it says...$"
+
+Route111_Text_ArchaeologistThirdClueHint::
+# 753 "data/maps/Route111/scripts.pory"
+	.string "Could it be...\n"
+	.string "that someone found it already?\p"
+	.string "Wait. I spoke with a merchant last week\n"
+	.string "in MAUVILLE CITY.\p"
+	.string "He mentioned that someone sold him a\n"
+	.string "sandy relic.\p"
+	.string "I figured it was probably a fossil, but...\p"
+	.string "If we're lucky, the merchant\n"
+	.string "might still have it!$"
+
+Route111_Text_ArchaeologistEarthTabletFound::
+# 761 "data/maps/Route111/scripts.pory"
+	.string "You found the EARTH TABLET!\p"
+	.string "To think it was sitting in that\n"
+	.string "POKéMART this whole time.\p"
+	.string "With all three tablets, I can decipher\n"
+	.string "the mystery of the FORCES OF NATURE!$"
+
+Route111_Text_ArchaeologistTwoForms::
+# 767 "data/maps/Route111/scripts.pory"
+	.string "Extraordinary... the engravings\n"
+	.string "depict two forms.\p"
+	.string "One wild and free.\n"
+	.string "The other bound and purposeful.\p"
+	.string "Of course! I brought this from UNOVA\n"
+	.string "when I began my expedition.$"
+
+Route111_Text_ArchaeologistRevealGlassExplanation::
+# 773 "data/maps/Route111/scripts.pory"
+	.string "Through the REVEAL GLASS, the\n"
+	.string "engravings seem almost... alive.\p"
+	.string "Yes! This confirms everything. The\n"
+	.string "FORCES OF NATURE have a true\l"
+	.string "form beyond what we know.\p"
+	.string "I have documented everything I need.\n"
+	.string "My research is complete.\p"
+	.string "This REVEAL GLASS led me to the\n"
+	.string "greatest discovery of my career.\p"
+	.string "But my work is done. Take it.\n"
+	.string "Something tells me you will have far\l"
+	.string "more use for it than I will.$"
+
+Route111_Text_ArchaeologistFinalAdvice::
+# 781 "data/maps/Route111/scripts.pory"
+	.string "Use it well. And if you ever find\nyourself in UNOVA... look up at the sky.$"

@@ -721,134 +721,186 @@ Route111_Text_TrainerHillSign:
 	.string "TRAINERS!”$"
 `
 
+text Route111_Text_ArchaeologistFirstMeeting {
+	format("Ah, a fellow explorer!\p"
+		   "I'm an ARCHAEOLOGIST, and I'm here to investigate the mysteries of HOENN!\p"
+		   "Have you heard the rumors about the FORCES OF NATURE?\p"
+		   "I have been studying these LEGENDARY POKéMON from a distant region.\p"
+		   "I'm following a puzzle I found in UNOVA, and it led me here!")
+}
+
+text Route111_Text_ArchaeologistFirstClueHint {
+	format("I'm stuck on the first clue:\p"
+		   "“Beneath a rock near the DESERT RUINS entrance, the first sleeps.”\p"
+		   "Wherever that could be...")
+}
+
+text Route111_Text_ArchaeologistWindTablet {
+	format("It's a WIND TABLET?\p"
+		   "I wonder if there are more\ntablets like this one.")
+}
+
+text Route111_Text_ArchaeologistSecondClueRiddle {
+	format("Here's the next clue in the puzzle:\p"
+		   "By the first stair that climbs the sky, beside its foot the next clue lies.")
+}
+
+text Route111_Text_ArchaeologistBoltTabletFound {
+	format("There is one part of the puzzle left. Perhaps it will lead to the final tablet!\p"
+		   "I've deciphered the last clue,\nand it says...")
+}
+
+text Route111_Text_ArchaeologistThirdClueHint {
+	format("Could it be...\nthat someone found it already?\p"
+		   "Wait. I spoke with a merchant last week in MAUVILLE CITY.\p"
+		   "He mentioned that someone sold him a sandy relic.\p"
+		   "I figured it was probably a fossil, but...\p"
+		   "If we're lucky, the merchant\nmight still have it!")
+}
+
+text Route111_Text_ArchaeologistEarthTabletFound {
+	format("You found the EARTH TABLET!\p"
+		   "To think it was sitting in that POKéMART this whole time.\p"
+		   "With all three tablets, I can decipher the mystery of the FORCES OF NATURE!")
+}
+
+text Route111_Text_ArchaeologistTwoForms {
+	format("Extraordinary... the engravings\ndepict two forms.\p"
+		   "One wild and free.\nThe other bound and purposeful.\p"
+		   "Of course! I brought this from UNOVA when I began my expedition.")
+}
+
+text Route111_Text_ArchaeologistRevealGlassExplanation {
+	format("Through the REVEAL GLASS, the engravings seem almost... alive.\p"
+		   "Yes! This confirms everything. The FORCES OF NATURE have a true\lform beyond what we know.\p"
+		   "I have documented everything I need.\nMy research is complete.\p"
+		   "This REVEAL GLASS led me to the greatest discovery of my career.\p"
+		   "But my work is done. Take it.\nSomething tells me you will have far\lmore use for it than I will.")
+}
+
+text Route111_Text_ArchaeologistFinalAdvice {
+	"Use it well. And if you ever find\nyourself in UNOVA... look up at the sky."
+}
+
 script Route111_EventScript_Archaeologist {
 	lockall
 	faceplayer
     goto_if_set(FLAG_MET_ARCHAEOLOGIST, MetArchaeologist)
 
 	// First time meeting
-	msgbox(format("Ah, a fellow explorer!"))
-	msgbox(format("I'm an ARCHAEOLOGIST, and I'm here to investigate the mysteries of HOENN!"))
-    msgbox(format("Have you heard the rumors about\nthe FORCES OF NATURE?"))
-	msgbox(format("I have been studying these LEGENDARY POKéMON that are from a distant region."))
-	msgbox(format("I'm following a puzzle I found in UNOVA, and it led me here!"))
-	delay(16)
+	msgbox(Route111_Text_ArchaeologistFirstMeeting)
     setflag(FLAG_MET_ARCHAEOLOGIST)
 
 MetArchaeologist:
     checkitem(ITEM_WIND_TABLET, 1)
-	if (var(VAR_RESULT) == TRUE) {
+	if (var(VAR_RESULT) == TRUE || flag(FLAG_ARCHAEOLOGIST_GAVE_WIND_TABLET)) {
+		// Done with first tablet
 		goto(Archaeologist_FoundFirstClue)
 	}
 
 	// Haven't gotten first tablet yet
-    msgbox(format("I'm stuck on the first clue:"))
-    msgbox(format("“Beneath a rock near the DESERT RUINS entrance, the first sleeps.”"))
-    msgbox(format("Wherever that could be..."))
+	msgbox(Route111_Text_ArchaeologistFirstClueHint)
 	releaseall
 	end
 
 Archaeologist_FoundFirstClue:
 	checkitem(ITEM_BOLT_TABLET, 1)
-	if (var(VAR_RESULT) == TRUE) {
+	if (var(VAR_RESULT) == TRUE || flag(FLAG_ARCHAEOLOGIST_GAVE_BOLT_TABLET)) {
+		// Done with second tablet
 		goto(Archaeologist_FoundSecondClue)
 	}
 
 	goto_if_set(FLAG_ARCHAEOLOGIST_FOUND_FIRST_CLUE, Archaeologist_SecondClue)
+
 	// Just found first tablet
-    msgbox(format("Oh, you found the first clue!"))
-	playse(SE_PIN)
+	msgbox(format("Oh, you found the first clue!"))
+	setvar(VAR_0x8004, ITEM_WIND_TABLET)
+	call(Common_EventScript_PlayerHandedOverTheItem)
+	setflag(FLAG_ARCHAEOLOGIST_GAVE_WIND_TABLET)
 	waitse
-	msgbox(format("It's a WIND TABLET?"))
-	msgbox(format("I wonder if there are more tablets like this one."))
-	delay(16)
+	msgbox(Route111_Text_ArchaeologistWindTablet)
 	setflag(FLAG_ARCHAEOLOGIST_FOUND_FIRST_CLUE)
 
 Archaeologist_SecondClue:
 	// Haven't found second tablet yet
-    msgbox(format("Here's the next clue in the puzzle:"))
-	msgbox(format("By the first stair that climbs the sky, beside its foot the next clue lies."))
-	delay(16)
+	msgbox(Route111_Text_ArchaeologistSecondClueRiddle)
+	delay(2)
 	msgbox(format("I'm no good at riddles."))
 	releaseall
 	end
 	
 Archaeologist_FoundSecondClue:
 	checkitem(ITEM_EARTH_TABLET, 1)
-	if (var(VAR_RESULT) == TRUE) {
+	if (var(VAR_RESULT) == TRUE || flag(FLAG_ARCHAEOLOGIST_GAVE_EARTH_TABLET)) {
+		// Done with third tablet
 		goto(Archaeologist_FoundThirdClue)
 	}
 
 	goto_if_set(FLAG_ARCHAEOLOGIST_LOOK_THIRD_CLUE, Archaeologist_ThirdClue)
-	// Found second tablet
-	msgbox(format("Ah, you found a BOLT TABLET!"))
-	msgbox(format("There is one clue left. Perhaps it will lead to the final tablet!"))
-	msgbox(format("I've deciphered the last clue and it says..."))
+
+	// Just found second tablet
+	msgbox(format("Ah, you found the BOLT TABLET!"))
+	setvar(VAR_0x8004, ITEM_BOLT_TABLET)
+	call(Common_EventScript_PlayerHandedOverTheItem)
+	setflag(FLAG_ARCHAEOLOGIST_GAVE_BOLT_TABLET)
+
+	msgbox(Route111_Text_ArchaeologistBoltTabletFound)
 	applymovement(LOCALID_ARCHAEOLOGIST, moves(
         face_right
 		delay_16
     ))
     waitmovement(0)
-	delay(16)
 	playse(SE_PIN)
-	waitse
 	applymovement(LOCALID_ARCHAEOLOGIST, Common_Movement_ExclamationMark)
-	delay(16)
+	waitse
 	waitmovement(0)
+	faceplayer
+
 	msgbox(format("According to my calculations, it should be right here!"))
 	playse(SE_M_SAND_ATTACK)
-	waitse
 	applymovement(LOCALID_ARCHAEOLOGIST, moves(
         face_up
 		delay_16
 		face_right
 		delay_16
+		face_up
+		delay_16
+		face_right
+		delay_16
     ))
-	closemessage
-	delay(16)
-	msgbox(format("That's odd, it looks as if someone has been digging here recently."))
-	playse(SE_BOO)
 	waitse
+	waitmovement(0)
+	closemessage
+	msgbox(format("That's odd, it looks as if someone has been digging here recently."))
 	faceplayer
-	delay(16)
 	setflag(FLAG_ARCHAEOLOGIST_LOOK_THIRD_CLUE)
 
 Archaeologist_ThirdClue:
 	// Haven't found third tablet yet
-	msgbox(format("Could it be... that someone found it already?"))
-	msgbox(format("Wait. I spoke with a merchant last week in MAUVILLE city."))
-	msgbox(format("He mentioned that someone sold him a sandy relic."))
-	msgbox(format("I figured it was probably a fossil, but..."))
-	msgbox(format("If we're lucky, the merchant\nmight still have it!"))
+	msgbox(Route111_Text_ArchaeologistThirdClueHint)
 	releaseall
 	end
 
 Archaeologist_FoundThirdClue:
 	goto_if_set(FLAG_ARCHAEOLOGIST_FOUND_ALL_CLUES, Archaeologist_FoundAllClues)
-	// Found third clue
-	playse(SE_PIN)
-	waitse
-	msgbox(format("You found the EARTH TABLET!"))
-	msgbox(format("To think it was sitting in that POKéMART this whole time."))
-	msgbox(format("With all three tablets, I can decipher the mystery of the FORCES OF NATURE!"))
-	delay(16)
+
+	// Just found third tablet
+	msgbox(Route111_Text_ArchaeologistEarthTabletFound)
+	setvar(VAR_0x8004, ITEM_EARTH_TABLET)
+	call(Common_EventScript_PlayerHandedOverTheItem)
+	setflag(FLAG_ARCHAEOLOGIST_GAVE_EARTH_TABLET)
+
 	msgbox(format("The ARCHAEOLOGIST laid the three tablets side by side in the sand."))
 	delay(16)
-	msgbox(format("Extraordinary... the engravings depict two forms."))
-	msgbox(format("One wild and free.\nThe other bound and purposeful."))
-	msgbox(format("Of course! I brought this from UNOVA when I began my expedition."))
+	msgbox(Route111_Text_ArchaeologistTwoForms)
 	delay(16)
 	msgbox(format("The ARCHAEOLOGIST pulled an ornate glass from his satchel..."))
 	delay(16)
-	msgbox(format("Through the REVEAL GLASS the engravings seem almost... alive."))
-	msgbox(format("Yes! This confirms everything. The FORCES OF NATURE have a true form beyond what we know."))
-	msgbox(format("I have documented everything I need. My research is complete."))
-	msgbox(format("This REVEAL GLASS led me to the greatest discovery of my career. But my work is done."))
-	msgbox(format("Take it. Something tells me you will have far more use for it than I will."))
+	msgbox(Route111_Text_ArchaeologistRevealGlassExplanation)
 
 	giveitem(ITEM_REVEAL_GLASS)
 	setflag(FLAG_ARCHAEOLOGIST_FOUND_ALL_CLUES)
-	msgbox(format("Use it well. And if you ever find yourself in UNOVA... look up at the sky."))
+	msgbox(Route111_Text_ArchaeologistFinalAdvice)
 	releaseall
 	end
 	
@@ -862,9 +914,11 @@ script Route111_Sign_FirstClue {
 	lockall
 	goto_if_set(FLAG_CHECKED_ROUTE_111_ROCK, CheckedRock)
 
-    msgbox(format("The rock is heavy, but can be lifted with some effort."))
+	msgbox(format("The rock is heavy, but it can be\nlifted with some effort."))
 	msgbox("Lift the heavy rock?", MSGBOX_YESNO)
 	if (var(VAR_RESULT) == YES) {
+		playse(SE_M_SAND_ATTACK)
+		waitse
     	giveitem(ITEM_WIND_TABLET)
 		setflag(FLAG_CHECKED_ROUTE_111_ROCK)
 	}

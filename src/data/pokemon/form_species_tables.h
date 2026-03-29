@@ -2433,6 +2433,24 @@ static const u16 sTerapagosFormSpeciesIdTable[] = {
 };
 #endif //P_FAMILY_TERAPAGOS
 
+static const u16 sDialgaVFormSpeciesIdTable[] = {
+    SPECIES_DIALGA_V,
+    SPECIES_DIALGA_V_ORIGIN,
+    FORM_SPECIES_END,
+};
+
+static const u16 sPalkiaVFormSpeciesIdTable[] = {
+    SPECIES_PALKIA_V,
+    SPECIES_PALKIA_V_ORIGIN,
+    FORM_SPECIES_END,
+};
+
+static const u16 sGiratinaVFormSpeciesIdTable[] = {
+    SPECIES_GIRATINA_V_ALTERED,
+    SPECIES_GIRATINA_V_ORIGIN,
+    FORM_SPECIES_END,
+};
+
 static const u16 sTornadusVFormSpeciesIdTable[] = {
     SPECIES_TORNADUS_V_INCARNATE,
     SPECIES_TORNADUS_V_THERIAN,
@@ -2451,34 +2469,16 @@ static const u16 sLandorusVFormSpeciesIdTable[] = {
     FORM_SPECIES_END,
 };
 
-static const u16 sXerneasVFormSpeciesIdTable[] = {
-    SPECIES_XERNEAS_V_NEUTRAL,
-    SPECIES_XERNEAS_V_ACTIVE,
-    FORM_SPECIES_END,
-};
-
-static const u16 sGiratinaVFormSpeciesIdTable[] = {
-    SPECIES_GIRATINA_V_ALTERED,
-    SPECIES_GIRATINA_V_ORIGIN,
-    FORM_SPECIES_END,
-};
-
-static const u16 sDialgaVFormSpeciesIdTable[] = {
-    SPECIES_DIALGA_V,
-    SPECIES_DIALGA_V_ORIGIN,
-    FORM_SPECIES_END,
-};
-
-static const u16 sPalkiaVFormSpeciesIdTable[] = {
-    SPECIES_PALKIA_V,
-    SPECIES_PALKIA_V_ORIGIN,
-    FORM_SPECIES_END,
-};
-
 static const u16 sKyuremVFormSpeciesIdTable[] = {
     SPECIES_KYUREM_V,
     SPECIES_KYUREM_V_WHITE,
     SPECIES_KYUREM_V_BLACK,
+    FORM_SPECIES_END,
+};
+
+static const u16 sXerneasVFormSpeciesIdTable[] = {
+    SPECIES_XERNEAS_V_NEUTRAL,
+    SPECIES_XERNEAS_V_ACTIVE,
     FORM_SPECIES_END,
 };
 

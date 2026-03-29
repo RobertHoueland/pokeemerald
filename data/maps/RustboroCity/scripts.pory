@@ -1302,6 +1302,14 @@ script RustboroCity_OnTransition {
     }
 }
 
+text RustboroCity_Text_DrParkerIntroDialogue {
+	format("Oh, you're {PLAYER}?\p"
+		   "Did you happen to see anyone drop anything unusual around here?\p"
+		   "I'm DR. PARKER, a scientist over at DEVON CORPORATION.\p"
+		   "Just between you and me, I'm working on something in the attic of DEVON CORP.\p"
+		   "Let me know if you find anything that looks like it could be useful!")
+}
+
 script RustboroCity_EventScript_DrParkerIntro {
     lockall
 	playbgm(MUS_ENCOUNTER_SUSPICIOUS, TRUE)
@@ -1309,6 +1317,7 @@ script RustboroCity_EventScript_DrParkerIntro {
     setobjectmovementtype(LOCALID_RUSTBORO_DR_PARKER, MOVEMENT_TYPE_FACE_RIGHT)
 
     msgbox(format("I know it's around here somewhere..."))
+	closemessage
     applymovement(LOCALID_RUSTBORO_DR_PARKER, moves(
         walk_faster_right * 3
     	walk_right * 7
@@ -1329,16 +1338,13 @@ script RustboroCity_EventScript_DrParkerIntro {
     waitmovement(0)
 
 	playse(SE_PIN)
-    msgbox(format("Oh, you're {PLAYER}?"))
-    msgbox(format("Did you happen to see anyone drop anything unusual around here?"))
-    msgbox(format("I'm DR. PARKER, a scientist over at DEVON CORPORATION."))
-    msgbox(format("Just between you and me, I'm working on something in the attic of DEVON CORP."))
-    msgbox(format("Let me know if you find anything that looks like it could be useful!"))
+	msgbox(RustboroCity_Text_DrParkerIntroDialogue)
 	closemessage
 
     applymovement(LOCALID_RUSTBORO_DR_PARKER, moves(
         walk_left * 10
     ))
+	fadedefaultbgm
     waitmovement(0)
 
     removeobject(LOCALID_RUSTBORO_DR_PARKER)

@@ -33,17 +33,86 @@ movement DrParkerExcited_MoveRight {
 	face_player
 }
 
+text RustboroCity_DevonCorp_4F_Text_DrParkerGreeting {
+	format("Oh! I didn't see you there!\p"
+	       "I'm on the verge of a breakthrough\nin my research.\p"
+		   "All I need is a sample of Unstable DNA...")
+}
+
+text RustboroCity_DevonCorp_4F_Text_DrParkerFoundDna {
+	format("DR. PARKER: Wait... you found an Unstable DNA sample?\p"
+	       "What an incredible day this is!!!")
+}
+
+text RustboroCity_DevonCorp_4F_Text_DrParkerMainExplanation {
+	format("DR. PARKER: Wait...\nYou got it from ROXANNE?\p"
+	       "How in the world did ROXANNE\nget that Unstable DNA?\p"
+		   "If you are willing to part with it...\n"
+		   "I can finally stabilize my lab-grown\lexperiments.\p"
+		   "I call them... PROTO-LEGENDS!\p"
+		   "They are breathtaking POKéMON, forged with fragments of legendary power.\p"
+		   "Now, don't expect them to be perfect...\n"
+		   "They remain in the early stages of\ldevelopment.\p"
+		   "Though my research shows remarkable\n"
+		   "traits. They harness abilities unlike\ltheir legendary counterparts.\p"
+		   "And they mutate with unusual frequency!\p"
+		   "Keep in mind, each prototype belongs\nto a distinct genetic line.\p"
+		   "Meaning I can only create one POKéMON\n"
+		   "per lineage. This avoids conflicts\lwith their unstable genetics.")
+}
+
+text RustboroCity_DevonCorp_4F_Text_DrParkerReturnWithDna {
+	format("DR. PARKER: Is that Unstable DNA I see?\p"
+		   "Splendid! My research continues\nto evolve!")
+}
+
+text RustboroCity_DevonCorp_4F_Text_ShinyOffer {
+	format("I could attempt to alter your Proto-Legend's color scheme.\p"
+	       "But it requires expensive materials.\n"
+		   "It'll cost you ¥50000.")
+}
+
+text RustboroCity_DevonCorp_4F_Text_ShinyNoMoney {
+	"Come back when you have ¥50000.\nYour Proto-Legend will be waiting!"
+}
+
+text RustboroCity_DevonCorp_4F_Text_HasMonLine {
+	format("Wait... I see you already possess a\nProto-Legend from that genetic line.\p"
+	       "I cannot create multiple prototypes\nfrom the same lineage.\p"
+		   "The genetic instability would be\ntoo unpredictable.")
+}
+
+text RustboroCity_DevonCorp_4F_Text_TableProtoLegends {
+	format("Blueprints and sketches cover the\ntable.\p"
+	       "Each page is labeled: PROTO-LEGENDS.\p"
+		   "Several failed drafts are crossed out:\n"
+		   "“Mutation cascade risk: CRITICAL.”")
+}
+
+text RustboroCity_DevonCorp_4F_Text_MonitorMutations {
+	format("A DEVON monitor displays mutation logs.\p"
+	       "Proto-Legends adapt rapidly under stress.\p"
+		   "Note: sudden mutations can alter abilities and battle tendencies.")
+}
+
+text RustboroCity_DevonCorp_4F_Text_DisplayGeneticLines {
+	format("A warning label reads:\nGENETIC LINEAGE CONTAINMENT PROTOCOL\p"
+		   "Only one Proto-Legend may be stabilized per genetic line.")
+}
+
+text RustboroCity_DevonCorp_4F_Text_DisplayExperiment {
+	"A glass chamber hums softly.\nA glowing orb pulses inside."
+}
+
 script RustboroCity_DevonCorp_4F_EventScript_DrParker {
     lockall
     goto_if_set(FLAG_MET_DR_PARKER, Met_DrParker)
 	GetDirectionToFace (VAR_TEMP_0, LOCALID_DR_PARKER, OBJ_EVENT_ID_PLAYER)
 
-    msgbox("Come on... so close...")
+	msgbox(format("Come on... so close..."))
     faceplayer
-    msgbox(format("Oh! I didn't see you there!"))
+	msgbox(RustboroCity_DevonCorp_4F_Text_DrParkerGreeting)
 	// TODO backstory...
-    msgbox(format("I'm on the verge of a breakthrough\nin my research."))
-    msgbox(format("All I need is a sample of Unstable DNA..."))
 
 	checkitem(ITEM_UNSTABLE_DNA, 1)
 	if (var(VAR_RESULT) == FALSE) {
@@ -52,9 +121,9 @@ script RustboroCity_DevonCorp_4F_EventScript_DrParker {
 
 	playse(SE_PIN)
 	applymovement(LOCALID_DR_PARKER, Common_Movement_ExclamationMark)
+	waitse
 	waitmovement(0)
-	msgbox(format("DR PARKER: Wait... you found an Unstable DNA sample?"))
-	msgbox(format("What an incredible day today is!!!"))
+	msgbox(RustboroCity_DevonCorp_4F_Text_DrParkerFoundDna)
 
 	if (var(VAR_TEMP_0) == DIR_WEST) {
 		// if NPC had to look left, move on right side
@@ -65,20 +134,7 @@ script RustboroCity_DevonCorp_4F_EventScript_DrParker {
 	}
 	waitmovement(0)
 
-    msgbox(format("DR. PARKER: Wait...\nYou got it from ROXANNE?"))
-    msgbox(format("How in the world did ROXANNE\nget that Unstable DNA?"))
-	msgbox(format("If you are willing to separate with it..."))
-	msgbox(format("I can finally stabilize my lab grown experiments."))
-	msgbox(format("I call them... PROTO-LEGENDS!"))
-    msgbox(format("They are breathtaking POKéMON, forged with fragments of legendary power."))
-	msgbox(format("Now, don't expect them to be perfect..."))
-	msgbox(format("They remain in the early stages of development."))
-	msgbox(format("Though my research shows remarkable traits."))
-	msgbox(format("They harness abilities unlike their legendary counterparts."))
-	msgbox(format("And they mutate with unusual frequency!"))
-	msgbox(format("Keep in mind, each prototype belongs to a distinct genetic line."))
-	msgbox(format("Meaning I can only create one\nPOKéMON per lineage."))
-	msgbox(format("This ensures there are no conflicts with their unstable genetics."))
+	msgbox(RustboroCity_DevonCorp_4F_Text_DrParkerMainExplanation)
     setflag(FLAG_MET_DR_PARKER)
 	goto(FirstMeet_DrParker)
 
@@ -88,8 +144,7 @@ Met_DrParker:
 	if (var(VAR_RESULT) == FALSE) {
 		goto(RustboroCity_DevonCorp_4F_EventScript_DrParkerEnd)
 	}
-	msgbox(format("DR. PARKER: Is that Unstable DNA I see?"))
-	msgbox(format("Splendid! My research continues\nto evolve!"))
+	msgbox(RustboroCity_DevonCorp_4F_Text_DrParkerReturnWithDna)
 FirstMeet_DrParker:
 	msgbox(format("Please, accept a Proto-Legend as a thank you for the DNA sample."))
 	goto(RustboroCity_DevonCorp_4F_EventScript_SelectRegion)
@@ -413,10 +468,8 @@ script RustboroCity_DevonCorp_4F_EventScript_OfferShiny {
 	setvar(VAR_TEMP_2, 0)
 	msgbox(format("Oh, I almost forgot!"))
 	showmoneybox(0, 0)
-	msgbox(format("I could attempt to alter your\nProto-Legend's color scheme."))
-	msgbox(format("But it requires expensive materials.\nIt'll cost you ¥50000."))
+	msgbox(RustboroCity_DevonCorp_4F_Text_ShinyOffer)
 	multichoicedefault(20, 8, MULTI_YESNO, 1, FALSE)
-	hidemoneybox()
 
 	if (var(VAR_RESULT) == 0) {
 		// "Yes"
@@ -426,16 +479,19 @@ script RustboroCity_DevonCorp_4F_EventScript_OfferShiny {
 			removemoney(50000)
 			playse(SE_SHOP)
 			waitse
+			hidemoneybox()
 			setvar(VAR_TEMP_2, 1)
 			msgbox(format("Excellent! I'll prepare a special variant for you."))
 		} else {
-			msgbox(format("Come back when you have ¥50000.\nYour Proto-Legend will be waiting!"))
+			hidemoneybox()
+			msgbox(RustboroCity_DevonCorp_4F_Text_ShinyNoMoney)
 			setvar(VAR_RESULT, 0)
     		releaseall
 			return
 		}
 	} else {
 		// "No"
+		hidemoneybox()
 		msgbox(format("OK, I'll get to work..."))
 	}
 
@@ -453,9 +509,7 @@ script RustboroCity_DevonCorp_4F_EventScript_DrParkerEnd {
 }
 
 script RustboroCity_DevonCorp_4F_EventScript_HasMon {
-	msgbox(format("Wait... I see you already possess\na Proto-Legend from that genetic line."))
-	msgbox(format("I cannot create multiple prototypes from the same lineage."))
-	msgbox(format("The genetic instability would be\ntoo unpredictable."))
+	msgbox(RustboroCity_DevonCorp_4F_Text_HasMonLine)
 	setvar(VAR_RESULT, 0)
 	releaseall
 }
@@ -877,29 +931,24 @@ script RustboroCity_DevonCorp_4F_EventScript_GiveLegendary {
 
 script RustboroCity_DevonCorp_4F_EventScript_TableProtoLegends {
 	lockall
-	msgbox(format("Blueprints and sketches cover the table."))
-    msgbox(format("Each page is labeled: PROTO-LEGENDS."))
-    msgbox(format("Several failed drafts are crossed out:\n“Mutation cascade risk: CRITICAL.”"))
+	msgbox(RustboroCity_DevonCorp_4F_Text_TableProtoLegends)
 	releaseall
 }
 
 script RustboroCity_DevonCorp_4F_EventScript_MonitorMutations {
 	lockall
-	msgbox(format("A DEVON monitor displays mutation logs."))
-	msgbox(format("Proto-Legends adapt rapidly under stress."))
-	msgbox(format("Note: sudden mutations can alter abilities and battle tendencies."))
+	msgbox(RustboroCity_DevonCorp_4F_Text_MonitorMutations)
 	releaseall
 }
 
 script RustboroCity_DevonCorp_4F_EventScript_DisplayGeneticLines {
 	lockall
-	msgbox(format("A warning label reads:\nGENETIC LINEAGE CONTAINMENT PROTOCOL"))
-	msgbox(format("Only one Proto-Legend may be stabilized per genetic line."))
+	msgbox(RustboroCity_DevonCorp_4F_Text_DisplayGeneticLines)
 	releaseall
 }
 
 script RustboroCity_DevonCorp_4F_EventScript_DisplayExperiment {
 	lockall
-	msgbox(format("A glass chamber hums softly.\nA glowing orb pulses inside."))
+	msgbox(RustboroCity_DevonCorp_4F_Text_DisplayExperiment)
 	releaseall
 }

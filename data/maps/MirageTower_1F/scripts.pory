@@ -10,6 +10,10 @@ MirageTower_1F_OnTransition:
 	end
 `
 
+text MirageTower_Text_RicardFindersKeepers {
+	format("Oh, are you looking for that tablet that was lying around?\pFinders keepers!")
+}
+
 text MirageTower_Text_RicardDefeat {
     "Wow, you're really strong!\nI guess you can have the tablet."
 }
@@ -36,8 +40,7 @@ SecondClueMetArchaeologist:
     ))
     waitmovement(0)
 
-	msgbox(format("Oh, are you looking for the tablet?"))
-    msgbox(format("Finders keepers!"))
+	msgbox(MirageTower_Text_RicardFindersKeepers)
 	trainerbattle_no_intro(TRAINER_RICARD, MirageTower_Text_RicardDefeat)
     giveitem(ITEM_BOLT_TABLET)
     setflag(FLAG_ARCHAEOLOGIST_FOUND_SECOND_CLUE)
@@ -48,5 +51,6 @@ SecondClueMetArchaeologist:
         walk_faster_left * 8
     ))
     waitmovement(0)
+    removeobject(LOCALID_MIRAGE_TOWER_YOUNGSTER)
 	releaseall
 }

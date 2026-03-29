@@ -112,71 +112,56 @@ MauvilleCity_Mart_Text_DecisionsDetermineBattle:
 	.string "battles turn out, I think.$"
 
 MauvilleCity_Mart_EventScript_Clerk::
-# 60 "data/maps/MauvilleCity_Mart/scripts.pory"
-	lockall
-# 61 "data/maps/MauvilleCity_Mart/scripts.pory"
-	faceplayer
-# 62 "data/maps/MauvilleCity_Mart/scripts.pory"
-	goto_if_set FLAG_ARCHAEOLOGIST_LOOK_THIRD_CLUE, LookingForTablet
-# 63 "data/maps/MauvilleCity_Mart/scripts.pory"
-HasTablet:
-# 64 "data/maps/MauvilleCity_Mart/scripts.pory"
-	message gText_HowMayIServeYou
-# 65 "data/maps/MauvilleCity_Mart/scripts.pory"
-	waitmessage
-# 66 "data/maps/MauvilleCity_Mart/scripts.pory"
-	pokemart MauvilleCity_Mart_Pokemart
 # 67 "data/maps/MauvilleCity_Mart/scripts.pory"
-	msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
+	lockall
 # 68 "data/maps/MauvilleCity_Mart/scripts.pory"
-	releaseall
+	faceplayer
 # 69 "data/maps/MauvilleCity_Mart/scripts.pory"
-	end
+	goto_if_set FLAG_ARCHAEOLOGIST_LOOK_THIRD_CLUE, LookingForTablet
+# 70 "data/maps/MauvilleCity_Mart/scripts.pory"
+HasTablet:
 # 71 "data/maps/MauvilleCity_Mart/scripts.pory"
-LookingForTablet:
+	message gText_HowMayIServeYou
 # 72 "data/maps/MauvilleCity_Mart/scripts.pory"
-	checkitem ITEM_EARTH_TABLET, 1
+	waitmessage
 # 73 "data/maps/MauvilleCity_Mart/scripts.pory"
+	pokemart MauvilleCity_Mart_Pokemart
+# 74 "data/maps/MauvilleCity_Mart/scripts.pory"
+	msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
+# 75 "data/maps/MauvilleCity_Mart/scripts.pory"
+	releaseall
+# 76 "data/maps/MauvilleCity_Mart/scripts.pory"
+	end
+# 78 "data/maps/MauvilleCity_Mart/scripts.pory"
+LookingForTablet:
+# 79 "data/maps/MauvilleCity_Mart/scripts.pory"
+	checkitem ITEM_EARTH_TABLET, 1
+# 80 "data/maps/MauvilleCity_Mart/scripts.pory"
 	compare VAR_RESULT, TRUE
 	goto_if_eq MauvilleCity_Mart_EventScript_Clerk_2
 MauvilleCity_Mart_EventScript_Clerk_1:
-# 76 "data/maps/MauvilleCity_Mart/scripts.pory"
-	msgbox MauvilleCity_Mart_EventScript_Clerk_Text_0
-# 77 "data/maps/MauvilleCity_Mart/scripts.pory"
-	msgbox MauvilleCity_Mart_EventScript_Clerk_Text_1
-# 78 "data/maps/MauvilleCity_Mart/scripts.pory"
-	msgbox MauvilleCity_Mart_EventScript_Clerk_Text_2
-# 79 "data/maps/MauvilleCity_Mart/scripts.pory"
-	msgbox MauvilleCity_Mart_EventScript_Clerk_Text_3
-# 80 "data/maps/MauvilleCity_Mart/scripts.pory"
+# 83 "data/maps/MauvilleCity_Mart/scripts.pory"
+	msgbox MauvilleCity_Mart_Clerk_Tablet
+# 84 "data/maps/MauvilleCity_Mart/scripts.pory"
 	pokemart MauvilleCity_Mart_Pokemart_TabletQuest
-# 81 "data/maps/MauvilleCity_Mart/scripts.pory"
+# 85 "data/maps/MauvilleCity_Mart/scripts.pory"
 	msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
-# 82 "data/maps/MauvilleCity_Mart/scripts.pory"
+# 86 "data/maps/MauvilleCity_Mart/scripts.pory"
 	releaseall
 	return
 
 MauvilleCity_Mart_EventScript_Clerk_2:
-# 74 "data/maps/MauvilleCity_Mart/scripts.pory"
+# 81 "data/maps/MauvilleCity_Mart/scripts.pory"
 	goto HasTablet
 	goto MauvilleCity_Mart_EventScript_Clerk_1
 
 
-MauvilleCity_Mart_EventScript_Clerk_Text_0:
-# 76 "data/maps/MauvilleCity_Mart/scripts.pory"
+MauvilleCity_Mart_Clerk_Tablet::
+# 59 "data/maps/MauvilleCity_Mart/scripts.pory"
 	.string "Welcome!\p"
-	.string "How may I serve--$"
-
-MauvilleCity_Mart_EventScript_Clerk_Text_1:
-# 77 "data/maps/MauvilleCity_Mart/scripts.pory"
-	.string "Oh, you're looking for that old thing?$"
-
-MauvilleCity_Mart_EventScript_Clerk_Text_2:
-# 78 "data/maps/MauvilleCity_Mart/scripts.pory"
+	.string "How may I serve--\p"
+	.string "Oh, you're looking for that old thing?\p"
 	.string "I've got it right here! It's been\n"
-	.string "getting sand everywhere.$"
-
-MauvilleCity_Mart_EventScript_Clerk_Text_3:
-# 79 "data/maps/MauvilleCity_Mart/scripts.pory"
+	.string "getting sand everywhere.\p"
 	.string "You can have it for free if you clean up\n"
 	.string "the mess afterwards.$"

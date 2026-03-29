@@ -1228,9 +1228,9 @@
 #define FLAG_ARCHAEOLOGIST_FOUND_SECOND_CLUE                        0x496
 #define FLAG_ARCHAEOLOGIST_LOOK_THIRD_CLUE                          0x497
 #define FLAG_ARCHAEOLOGIST_FOUND_ALL_CLUES                          0x498
-#define FLAG_UNUSED_0x499                                           0x499 // Unused Flag
-#define FLAG_UNUSED_0x49A                                           0x49A // Unused Flag
-#define FLAG_UNUSED_0x49B                                           0x49B // Unused Flag
+#define FLAG_ARCHAEOLOGIST_GAVE_WIND_TABLET                         0x499
+#define FLAG_ARCHAEOLOGIST_GAVE_BOLT_TABLET                         0x49A
+#define FLAG_ARCHAEOLOGIST_GAVE_EARTH_TABLET                        0x49B
 #define FLAG_UNUSED_0x49C                                           0x49C // Unused Flag
 #define FLAG_UNUSED_0x49D                                           0x49D // Unused Flag
 #define FLAG_UNUSED_0x49E                                           0x49E // Unused Flag
