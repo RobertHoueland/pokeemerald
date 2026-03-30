@@ -151,7 +151,7 @@ FirstMeet_DrParker:
 }
 
 script RustboroCity_DevonCorp_4F_EventScript_SelectRegion {
-    message("From which region would you like\nyour Proto-Legend?")
+    message("From which region would you like\nyour Proto-Legend to be based?")
     dynmultichoice(0, 0, FALSE, 5, 0, DYN_MULTICHOICE_CB_NONE,
         "KANTO",
         "JOHTO",
@@ -327,6 +327,16 @@ script RustboroCity_DevonCorp_4F_EventScript_SelectSinnoh {
 			}
 			addvar(VAR_RESULT, OFFSET_MYTH)
 			break
+		case SINNOH_CHOICE_GIRATINA:
+			goto_if_set(FLAG_OBTAINED_GIRATINA_LINE, RustboroCity_DevonCorp_4F_EventScript_HasMon)
+			multichoice(0, 0, MULTI_MINI_LEGEND_GIRATINA, FALSE)
+			closemessage
+
+			if (var(VAR_RESULT) > NUM_CHOICES_GIRATINA - 1) {
+				goto(RustboroCity_DevonCorp_4F_EventScript_SelectSinnoh)
+			}
+			addvar(VAR_RESULT, OFFSET_GIRATINA)
+			break
 		case SINNOH_CHOICE_RELIC:
 			goto_if_set(FLAG_OBTAINED_RELIC_LINE, RustboroCity_DevonCorp_4F_EventScript_HasMon)
 			multichoice(0, 0, MULTI_MINI_LEGEND_RELIC, FALSE)
@@ -379,6 +389,16 @@ script RustboroCity_DevonCorp_4F_EventScript_SelectUnova {
 				goto(RustboroCity_DevonCorp_4F_EventScript_SelectUnova)
 			}
 			addvar(VAR_RESULT, OFFSET_TAO)
+			break
+		case UNOVA_CHOICE_KYUREM:
+			goto_if_set(FLAG_OBTAINED_KYUREM_LINE, RustboroCity_DevonCorp_4F_EventScript_HasMon)
+			multichoice(0, 0, MULTI_MINI_LEGEND_KYUREM, FALSE)
+			closemessage
+
+			if (var(VAR_RESULT) > NUM_CHOICES_KYUREM - 1) {
+				goto(RustboroCity_DevonCorp_4F_EventScript_SelectUnova)
+			}
+			addvar(VAR_RESULT, OFFSET_KYUREM)
 			break
 		default:
 			goto(RustboroCity_DevonCorp_4F_EventScript_SelectRegion)
@@ -702,7 +722,7 @@ script RustboroCity_DevonCorp_4F_EventScript_GiveLegendary {
 			setvar(VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_GIRATINA_V_ALTERED)
 			givemon(SPECIES_GIRATINA_V_ALTERED, 5, ITEM_NONE, ITEM_BEAST_BALL)
 			if (var(VAR_RESULT) < MON_CANT_GIVE) {
-				setflag(FLAG_OBTAINED_MYTH_LINE)
+				setflag(FLAG_OBTAINED_GIRATINA_LINE)
 			}
 			break
 		case 23:  // Heatran
@@ -798,7 +818,7 @@ script RustboroCity_DevonCorp_4F_EventScript_GiveLegendary {
 			setvar(VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_KYUREM_V)
 			givemon(SPECIES_KYUREM_V, 5, ITEM_NONE, ITEM_BEAST_BALL)
 			if (var(VAR_RESULT) < MON_CANT_GIVE) {
-				setflag(FLAG_OBTAINED_TAO_LINE)
+				setflag(FLAG_OBTAINED_KYUREM_LINE)
 			}
 			break
 		case 35:  // Xerneas

@@ -675,8 +675,8 @@
 #define FLAG_OBTAINED_TAPUS_LINE             0x274
 #define FLAG_OBTAINED_COSMOG_LINE            0x275
 #define FLAG_OBTAINED_NECROZMA_LINE          0x276
-#define FLAG_UNUSED_0x277  0x277 // Unused Flag
-#define FLAG_UNUSED_0x278  0x278 // Unused Flag
+#define FLAG_OBTAINED_GIRATINA_LINE          0x277
+#define FLAG_OBTAINED_KYUREM_LINE            0x278
 #define FLAG_UNUSED_0x279  0x279 // Unused Flag
 #define FLAG_UNUSED_0x27A  0x27A // Unused Flag
 #define FLAG_UNUSED_0x27B  0x27B // Unused Flag

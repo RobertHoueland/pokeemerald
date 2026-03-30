@@ -803,7 +803,8 @@ static const struct MenuAction MultichoiceList_MiniLegendHoenn[] =
 static const struct MenuAction MultichoiceList_MiniLegendSinnoh[] =
 {
     {COMPOUND_STRING("LAKE GUARDIAN LINE")},
-    {COMPOUND_STRING("MYTHICAL LINE")},
+    {COMPOUND_STRING("CREATION LINE")},
+    {COMPOUND_STRING("DISTORTION LINE")},
     {COMPOUND_STRING("RELIC LINE")},
     {gText_Exit},
 };
@@ -812,7 +813,8 @@ static const struct MenuAction MultichoiceList_MiniLegendUnova[] =
 {
     {COMPOUND_STRING("SWORDS OF JUSTICE LINE")},
     {COMPOUND_STRING("FORCES OF NATURE LINE")},
-    {COMPOUND_STRING("TAO TRIO LINE")},
+    {COMPOUND_STRING("TAO LINE")},
+    {COMPOUND_STRING("KYUREM LINE")},
     {gText_Exit},
 };
 
@@ -895,6 +897,11 @@ static const struct MenuAction MultichoiceList_MiniLegendMyth[] =
 {
     {COMPOUND_STRING("DIALGA-V")},
     {COMPOUND_STRING("PALKIA-V")},
+    {gText_Exit},
+};
+
+static const struct MenuAction MultichoiceList_MiniLegendGiratina[] =
+{
     {COMPOUND_STRING("GIRATINA-V")},
     {gText_Exit},
 };
@@ -927,6 +934,11 @@ static const struct MenuAction MultichoiceList_MiniLegendTao[] =
 {
     {COMPOUND_STRING("RESHIRAM-V")},
     {COMPOUND_STRING("ZEKROM-V")},
+    {gText_Exit},
+};
+
+static const struct MenuAction MultichoiceList_MiniLegendKyurem[] =
+{
     {COMPOUND_STRING("KYUREM-V")},
     {gText_Exit},
 };
@@ -1107,11 +1119,13 @@ static const struct MultichoiceListStruct sMultichoiceLists[] =
     [MULTI_MINI_LEGEND_SINNOH]         = MULTICHOICE(MultichoiceList_MiniLegendSinnoh),
     [MULTI_MINI_LEGEND_LAKE]           = MULTICHOICE(MultichoiceList_MiniLegendLake),
     [MULTI_MINI_LEGEND_MYTH]           = MULTICHOICE(MultichoiceList_MiniLegendMyth),
-    [MULTI_MINI_LEGEND_RELIC]        = MULTICHOICE(MultichoiceList_MiniLegendRelic),
+    [MULTI_MINI_LEGEND_GIRATINA]       = MULTICHOICE(MultichoiceList_MiniLegendGiratina),
+    [MULTI_MINI_LEGEND_RELIC]          = MULTICHOICE(MultichoiceList_MiniLegendRelic),
     [MULTI_MINI_LEGEND_UNOVA]          = MULTICHOICE(MultichoiceList_MiniLegendUnova),
     [MULTI_MINI_LEGEND_SWORDS]         = MULTICHOICE(MultichoiceList_MiniLegendSwords),
     [MULTI_MINI_LEGEND_FORCES]         = MULTICHOICE(MultichoiceList_MiniLegendForces),
     [MULTI_MINI_LEGEND_TAO]            = MULTICHOICE(MultichoiceList_MiniLegendTao),
+    [MULTI_MINI_LEGEND_KYUREM]         = MULTICHOICE(MultichoiceList_MiniLegendKyurem),
     [MULTI_MINI_LEGEND_KALOS]          = MULTICHOICE(MultichoiceList_MiniLegendKalos),
     [MULTI_MINI_LEGEND_AURA]           = MULTICHOICE(MultichoiceList_MiniLegendAura),
     [MULTI_MINI_LEGEND_ALOLA]          = MULTICHOICE(MultichoiceList_MiniLegendAlola),

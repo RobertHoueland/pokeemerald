@@ -150,6 +150,8 @@
 #define MULTI_MINI_LEGEND_TAPUS            139
 #define MULTI_MINI_LEGEND_COSMOG           140
 #define MULTI_MINI_LEGEND_NECROZMA         141
+#define MULTI_MINI_LEGEND_GIRATINA         142
+#define MULTI_MINI_LEGEND_KYUREM           143
 
 // Mini legendary region choices
 #define REGION_CHOICE_KANTO                0
@@ -176,11 +178,13 @@
 
 #define SINNOH_CHOICE_LAKE                 0
 #define SINNOH_CHOICE_MYTH                 1
-#define SINNOH_CHOICE_RELIC                2
+#define SINNOH_CHOICE_GIRATINA             2
+#define SINNOH_CHOICE_RELIC                3
 
 #define UNOVA_CHOICE_SWORDS                0
 #define UNOVA_CHOICE_FORCES                1
 #define UNOVA_CHOICE_TAO                   2
+#define UNOVA_CHOICE_KYUREM                3
 
 #define KALOS_CHOICE_AURA                  0
 
@@ -200,11 +204,13 @@
 #define NUM_CHOICES_EON                    2
 #define NUM_CHOICES_WEATHER                3
 #define NUM_CHOICES_LAKE                   3
-#define NUM_CHOICES_MYTH                   3
+#define NUM_CHOICES_MYTH                   2
+#define NUM_CHOICES_GIRATINA               1
 #define NUM_CHOICES_RELIC                  3
 #define NUM_CHOICES_SWORDS                 3
 #define NUM_CHOICES_FORCES                 3
-#define NUM_CHOICES_TAO                    3
+#define NUM_CHOICES_TAO                    2
+#define NUM_CHOICES_KYUREM                 1
 #define NUM_CHOICES_AURA                   3
 #define NUM_CHOICES_TAPUS                  4
 #define NUM_CHOICES_TYPENULL               1
@@ -221,11 +227,13 @@
 #define OFFSET_WEATHER      (OFFSET_EON + NUM_CHOICES_EON)
 #define OFFSET_LAKE         (OFFSET_WEATHER + NUM_CHOICES_WEATHER)
 #define OFFSET_MYTH         (OFFSET_LAKE + NUM_CHOICES_LAKE)
-#define OFFSET_RELIC        (OFFSET_MYTH + NUM_CHOICES_MYTH)
+#define OFFSET_GIRATINA     (OFFSET_MYTH + NUM_CHOICES_MYTH)
+#define OFFSET_RELIC        (OFFSET_GIRATINA + NUM_CHOICES_GIRATINA)
 #define OFFSET_SWORDS       (OFFSET_RELIC + NUM_CHOICES_RELIC)
 #define OFFSET_FORCES       (OFFSET_SWORDS + NUM_CHOICES_SWORDS)
 #define OFFSET_TAO          (OFFSET_FORCES + NUM_CHOICES_FORCES)
-#define OFFSET_AURA         (OFFSET_TAO + NUM_CHOICES_TAO)
+#define OFFSET_KYUREM       (OFFSET_TAO + NUM_CHOICES_TAO)
+#define OFFSET_AURA         (OFFSET_KYUREM + NUM_CHOICES_KYUREM)
 #define OFFSET_TAPUS        (OFFSET_AURA + NUM_CHOICES_AURA)
 #define OFFSET_TYPENULL     (OFFSET_TAPUS + NUM_CHOICES_TAPUS)
 #define OFFSET_COSMOG       (OFFSET_TYPENULL + NUM_CHOICES_TYPENULL)
