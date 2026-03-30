@@ -214,10 +214,10 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .height = 14,   // was 20
         .weight = 854,  // was 1220
         .description = COMPOUND_STRING(
-            "A Pokémon that was created by genetic\n"
-            "manipulation. However, even though the\n"
-            "scientific power of humans made its body,\n"
-            "they failed to give it a warm heart."),
+            "A PROTO-LEGEND that was created by\n"
+            "genetic manipulation. This time,\n"
+            "the scientist that created it\n"
+            "was successful in giving it a warm heart."),
         .pokemonScale = 333,  // was 256
         .pokemonOffset = 5,   // was 0
         .trainerScale = 309,
@@ -288,7 +288,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .height = 14,   // was 17
         .weight = 454,  // was 554
         .description = COMPOUND_STRING(
-            "Articuno is a legendary bird Pokémon that\n"
+            "Articuno-V is a PROTO-LEGEND bird that\n"
             "can control ice. The flapping of its wings\n"
             "chills the air. As a result, it is said that\n"
             "when this Pokémon flies, snow will fall."),
@@ -365,7 +365,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .height = 13,   // was 16
         .weight = 431,  // was 526
         .description = COMPOUND_STRING(
-            "Zapdos is a legendary bird Pokémon that\n"
+            "Zapdos-V is a PROTO-LEGEND bird that\n"
             "has the ability to control electricity.\n"
             "It usually lives in thunderclouds. It gains\n"
             "power if it is stricken by lightning bolts."),
@@ -442,7 +442,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .height = 16,   // was 20
         .weight = 491,  // was 600
         .description = COMPOUND_STRING(
-            "Moltres is a legendary bird Pokémon\n"
+            "Moltres-V is a PROTO-LEGEND bird\n"
             "that can control fire. If injured, it is said\n"
             "to dip its body in the molten magma of\n"
             "a volcano to burn and heal itself."),
@@ -548,7 +548,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .height = 16,   // was 19
         .weight = 1458, // was 1780
         .description = COMPOUND_STRING(
-            "Raikou embodies the speed of lightning.\n"
+            "Raikou-V embodies the speed of lightning.\n"
             "Its roars send shock waves shuddering\n"
             "through the air and ground as if\n"
             "lightning bolts were crashing down."),
@@ -624,7 +624,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .height = 17,   // was 21
         .weight = 1622, // was 1980
         .description = COMPOUND_STRING(
-            "Entei embodies the passion of magma.\n"
+            "Entei-V embodies the passion of magma.\n"
             "It is thought to have been born in the\n"
             "eruption of a volcano. It blasts fire that\n"
             "consumes all that it touches."),
@@ -699,7 +699,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .height = 16,   // was 20
         .weight = 1532, // was 1870
         .description = COMPOUND_STRING(
-            "Suicune embodies the compassion of\n"
+            "Suicune-V embodies the compassion of\n"
             "a pure spring of water. It runs across\n"
             "the land with gliding elegance. It has the\n"
             "power to purify dirty water."),
@@ -773,7 +773,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .height = 36,   // was 52
         .weight = 1510, // was 2160
         .description = COMPOUND_STRING(
-            "Lugia is so powerful even a light\n"
+            "Lugia-V is so powerful even a light\n"
             "fluttering of its wings can blow apart\n"
             "houses. As a result, it chooses to live out\n"
             "of sight deep under the sea."),
@@ -935,7 +935,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .height = 14,   // was 17
         .weight = 1884, // was 2300
         .description = COMPOUND_STRING(
-            "A Pokemon that is made entirely of rocks\n"
+            "A PROTO-LEGEND that is made entirely of rocks\n"
             "and boulders. If parts of its body chip off\n"
             "in battle, Regirock repairs itself by\n"
             "adding new rocks."),
@@ -1323,9 +1323,9 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .height = 32,   // was 45
         .weight = 2496, // was 3520
         .description = COMPOUND_STRING(
-            "Kyogre has appeared in mythology as the\n"
+            "Kyogre-V has appeared in mythology as the\n"
             "creator of the sea. After long years of\n"
-            "feuding with Groudon, it took to sleep at\n"
+            "feuding with Groudon-V, it took to sleep at\n"
             "the bottom of the sea."),
         .pokemonScale = 361,  // was 256
         .pokemonOffset = 3,   // was 0
@@ -1401,7 +1401,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .height = 25,   // was 35
         .weight = 6735, // was 9500
         .description = COMPOUND_STRING(
-            "Groudon has appeared in mythology as the\n"
+            "Groudon-V has appeared in mythology as the\n"
             "creator of the land. It sleeps in magma\n"
             "underground and is said to make volcanoes\n"
             "erupt on awakening."),
@@ -1479,9 +1479,9 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .height = 49,   // was 70
         .weight = 1442, // was 2065
         .description = COMPOUND_STRING(
-            "A Pokemon that flies endlessly in the\n"
+            "A PROTO-LEGEND that flies endlessly in the\n"
             "ozone layer. It is said it would descend\n"
-            "to the ground if Kyogre and Groudon\n"
+            "to the ground if Kyogre-V and Groudon-V\n"
             "were to fight."),
         .pokemonScale = 367,  // was 256
         .pokemonOffset = 7,   // was 0
@@ -1560,7 +1560,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .weight = 2,    // was 3
         .description = COMPOUND_STRING(
             "Known as ”The Being of Knowledge,”\n"
-            "according to some sources, this Pokémon\n"
+            "according to some sources, this PROTO-LEGEND\n"
             "provided people with the intelligence\n"
             "necessary to solve various problems."),
         .pokemonScale = 625,  // was 530
@@ -1719,10 +1719,10 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .height = 2,    // was 3
         .weight = 2,    // was 3
         .description = COMPOUND_STRING(
-            "This Pokémon is said to have endowed\n"
+            "This PROTO-LEGEND is said to have endowed\n"
             "humans with the determination needed to\n"
-            "do things. It is thought that Uxie, Mesprit\n"
-            "and Azelf all came from the same egg."),
+            "do things. It is thought that Uxie-V, Mesprit-V\n"
+            "and Azelf-V all came from the same egg."),
         .pokemonScale = 625,  // was 530
         .pokemonOffset = 12,  // was 13
         .trainerScale = 256,
@@ -1795,7 +1795,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .height = 38,   // was 54
         .weight = 4771, // was 6830
         .description = COMPOUND_STRING(
-            "A Pokémon spoken of in legend.\n"
+            "A PROTO-LEGEND spoken of in legend.\n"
             "It completely controls the flow of time.\n"
             "It uses its power to travel at will\n"
             "through the past and future."),
@@ -1871,9 +1871,9 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .height = 49,   // was 70
         .weight = 5950, // was 8500
         .description = COMPOUND_STRING(
-            "Radiant light caused Dialga to take on a\n"
+            "Radiant light caused Dialga-V to take on a\n"
             "form bearing a striking resemblance to the\n"
-            "creator Pokémon. It wields such a colossal\n"
+            "creator PROTO-LEGEND. It wields such a colossal\n"
             "strength that this might be its true form."),
         .pokemonScale = 333,
         .pokemonOffset = 6,
@@ -1942,7 +1942,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .height = 29,   // was 42
         .weight = 2347, // was 3360
         .description = COMPOUND_STRING(
-            "Palkia has the ability to distort space.\n"
+            "Palkia-V has the ability to distort space.\n"
             "Its total control over the boundaries of\n"
             "space enable it to transport itself to\n"
             "faraway places and other dimensions."),
@@ -2089,7 +2089,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .height = 31,   // was 45
         .weight = 5239, // was 7500
         .description = COMPOUND_STRING(
-            "This Pokémon is said to live in a world\n"
+            "This PROTO-LEGEND is said to live in a world\n"
             "on the reverse side of ours, where common\n"
             "knowledge is distorted and strange.\n"
             "It was banished for its violence."),
@@ -2166,7 +2166,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .height = 48,   // was 69
         .weight = 4550, // was 6500
         .description = COMPOUND_STRING(
-            "Giratina loses its legs upon changing into\n"
+            "Giratina-V loses its legs upon changing into\n"
             "this form. It's believed it hails from a\n"
             "world where the heavens and the earth\n"
             "are as one."),
@@ -2322,8 +2322,8 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .weight = 2978, // was 4200
         .description = COMPOUND_STRING(
             "There is an enduring legend that\n"
-            "states this Pokémon shaped Regirock,\n"
-            "Regice, and Registeel out of clay, ice,\n"
+            "states this PROTO-LEGEND shaped Regirock-V,\n"
+            "Regice-V, and Registeel-V out of clay, ice,\n"
             "and magma."),
         .pokemonScale = 330,  // was 256
         .pokemonOffset = 2,
@@ -2396,7 +2396,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .weight = 678, // was 856
         .description = COMPOUND_STRING(
             "Those who sleep holding one of\n"
-            "Cresselia's feathers are assured of\n"
+            "Cresselia-V's feathers are assured of\n"
             "joyful dreams. It is said to represent\n"
             "the crescent moon."),
         .pokemonScale = 324,  // was 268
@@ -2469,7 +2469,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .weight = 2050, // was 2500
         .description = COMPOUND_STRING(
             "It has a body and heart of steel. This\n"
-            "legendary Pokémon battled against humans\n"
+            "PROTO-LEGEND battled against humans\n"
             "to protect Pokémon. Its personality\n"
             "is calm and composed."),
         .pokemonScale = 302,  // was 256
@@ -2537,7 +2537,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .height = 16,   // was 19
         .weight = 2132, // was 2600
         .description = COMPOUND_STRING(
-            "Spoken of in legend, this Pokémon used\n"
+            "Spoken of in legend, this PROTO-LEGEND used\n"
             "its phenomenal power to destroy a castle\n"
             "in its effort to protect Pokémon that had\n"
             "lost their homes in a war among humans."),
@@ -2611,7 +2611,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .weight = 1640, // was 2000
         .description = COMPOUND_STRING(
             "Its head sprouts horns as sharp as blades.\n"
-            "Legends say this Pokémon used\n"
+            "Legends say this PROTO-LEGEND used\n"
             "whirlwind-like movements to confound\n"
             "and swiftly cut its opponents."),
         .pokemonScale = 308,  // was 261
@@ -2770,7 +2770,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .weight = 517, // was 630
         .description = COMPOUND_STRING(
             "An example of what is known as a\n"
-            "“form change”. Tornadus has been\n"
+            "“form change”. Tornadus-V has been\n"
             "sighted crossing the ocean while in this\n"
             "form."),
         .pokemonScale = 316,  // was 268
@@ -2845,7 +2845,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
             "The spikes on its tail discharge immense\n"
             "bolts of lightning. Countless charred\n"
             "remains mar the landscape of places\n"
-            "through which Thundurus has passed."),
+            "through which Thundurus-V has passed."),
         .pokemonScale = 316,  // was 268
         .pokemonOffset = 2,
         .trainerScale = 271,
@@ -2924,7 +2924,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .friendship = 90,
         .growthRate = GROWTH_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
-        .abilities = { ABILITY_VOLT_ABSORB, ABILITY_NONE, ABILITY_VOLT_ABSORB },
+        .abilities = { ABILITY_REGENERATOR, ABILITY_NONE, ABILITY_REGENERATOR },
         .bodyColor = BODY_COLOR_BLUE,
         .speciesName = _("Thundurus-V"),
         .cryId = CRY_THUNDURUS_THERIAN,
@@ -3109,7 +3109,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .height = 10,  // was 13
         .weight = 537, // was 680
         .description = COMPOUND_STRING(
-            "Landorus soars through the sky in\n"
+            "Landorus-V soars through the sky in\n"
             "this form, bestowing plentiful\n"
             "harvests upon the land and earning the\n"
             "people's reverence."),
@@ -3182,7 +3182,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .height = 22,   // was 32
         .weight = 2310, // was 3300
         .description = COMPOUND_STRING(
-            "This Pokémon appears in legends. It\n"
+            "This PROTO-LEGEND appears in legends. It\n"
             "sends flames into the air from its tail,\n"
             "burning up everything around it. It helps\n"
             "those who want to build a world of truth."),
@@ -3321,7 +3321,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .height = 21,   // was 30
         .weight = 2275, // was 3250
         .description = COMPOUND_STRING(
-            "This legendary ice Pokémon waits for a\n"
+            "This PROTO-LEGEND waits for a\n"
             "hero to fill in the missing parts of its\n"
             "body with truth or ideals. Its body became\n"
             "frozen when its energy leaked out."),
@@ -3393,9 +3393,9 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .height = 24,   // was 36
         .weight = 2210, // was 3250
         .description = COMPOUND_STRING(
-            "The sameness of Reshiram's and\n"
-            "Kyurem's genes allowed Kyurem to\n"
-            "absorb Reshiram. Kyurem can now use the\n"
+            "The sameness of Reshiram-V's and\n"
+            "Kyurem-V's genes allowed Kyurem-V to\n"
+            "absorb Reshiram-V. Kyurem-V can now use the\n"
             "power of both fire and ice."),
         .pokemonScale = 393,
         .pokemonOffset = 6,
@@ -3464,9 +3464,9 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .height = 22,   // was 33
         .weight = 2210, // was 3250
         .description = COMPOUND_STRING(
-            "The sameness of Zekrom's and\n"
-            "Kyurem's genes allowed Kyurem to absorb\n"
-            "Zekrom. Kyurem can now use the\n"
+            "The sameness of Zekrom-V's and\n"
+            "Kyurem-V's genes allowed Kyurem-V to absorb\n"
+            "Zekrom-V. Kyurem-V can now use the\n"
             "power of both electricity and ice."),
         .pokemonScale = 393,
         .pokemonOffset = 6,
@@ -3801,7 +3801,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .friendship = 0,
         .growthRate = GROWTH_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
-        .abilities = { ABILITY_ELECTRIC_SURGE, ABILITY_NONE, ABILITY_TELEPATHY },
+        .abilities = { ABILITY_ELECTRIC_SURGE, ABILITY_NONE, ABILITY_NONE },
         .bodyColor = BODY_COLOR_YELLOW,
         .speciesName = _("Tapu Koko-V"),
         .cryId = CRY_TAPU_KOKO,
@@ -3874,7 +3874,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .friendship = 0,
         .growthRate = GROWTH_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
-        .abilities = { ABILITY_PSYCHIC_SURGE, ABILITY_NONE, ABILITY_TELEPATHY },
+        .abilities = { ABILITY_PSYCHIC_SURGE, ABILITY_NONE, ABILITY_NONE },
         .bodyColor = BODY_COLOR_PINK,
         .speciesName = _("Tapu Lele-V"),
         .cryId = CRY_TAPU_LELE,
@@ -3943,7 +3943,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .friendship = 0,
         .growthRate = GROWTH_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
-        .abilities = { ABILITY_GRASSY_SURGE, ABILITY_NONE, ABILITY_TELEPATHY },
+        .abilities = { ABILITY_GRASSY_SURGE, ABILITY_NONE, ABILITY_NONE },
         .bodyColor = BODY_COLOR_RED,
         .speciesName = _("Tapu Bulu-V"),
         .cryId = CRY_TAPU_BULU,
@@ -4014,7 +4014,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .friendship = 0,
         .growthRate = GROWTH_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
-        .abilities = { ABILITY_MISTY_SURGE, ABILITY_NONE, ABILITY_TELEPATHY },
+        .abilities = { ABILITY_MISTY_SURGE, ABILITY_NONE, ABILITY_NONE },
         .bodyColor = BODY_COLOR_PURPLE,
         .speciesName = _("Tapu Fini-V"),
         .cryId = CRY_TAPU_FINI,
@@ -4296,7 +4296,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .weight = 840,  // was 1200
         .description = COMPOUND_STRING(
             "When its third eye activates, away it flies\n"
-            "to another world. This Pokemon devours\n"
+            "to another world. This PROTO-LEGEND devours\n"
             "light, drawing the moonless dark veil of\n"
             "night over the brightness of day."),
         .pokemonScale = 333,  // was 256
@@ -4616,6 +4616,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
     },
     */
 
+    //
     // Notes for other parameters https://rh-hideout.github.io/pokeemerald-expansion/tutorials/how_to_new_pokemon.html
     // isLegendary - does nothing
     // isMythical - skipped during pokedex evals, cannot obtain gigantamax factor
@@ -4628,4 +4629,5 @@ const struct SpeciesInfo gSpeciesInfo[] =
     // isGigantamax - only for gigantamax forms
     // isAlolanForm, isGalarianForm, isHisuianForm, isPaldeanForm - regionals
     // tmIlliterate - can't learn universal TMs
+    //
 };
