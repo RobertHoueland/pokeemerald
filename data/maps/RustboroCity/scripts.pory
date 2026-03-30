@@ -1078,10 +1078,8 @@ RustboroCity_Text_PokemonChangeShape:
 	.string "If one did that, I would be shocked!$"
 
 RustboroCity_Text_TradePokemonGrowFast:
-	.string "A POKéMON you get in a trade from\n"
-	.string "someone grows fast.\p"
-	.string "But if you don't have certain GYM\n"
-	.string "BADGES, it may not obey you…$"
+	.string "Did anyone else just see that guy in\n"
+	.string "a lab coat sneak into DEVON CORP?$"
 
 RustboroCity_Text_OutOfTheWay:
 	.string "Get out!\n"
@@ -1316,7 +1314,7 @@ script RustboroCity_EventScript_DrParkerIntro {
     addobject(LOCALID_RUSTBORO_DR_PARKER)
     setobjectmovementtype(LOCALID_RUSTBORO_DR_PARKER, MOVEMENT_TYPE_FACE_RIGHT)
 
-    msgbox(format("I know it's around here somewhere..."))
+    msgbox(format("I know it's around here somewhere…"))
 	closemessage
     applymovement(LOCALID_RUSTBORO_DR_PARKER, moves(
         walk_faster_right * 3

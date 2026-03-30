@@ -270,9 +270,9 @@ RustboroCity_DevonCorp_2F_EventScript_WorkOnNext::
 	end
 
 RustboroCity_DevonCorp_2F_Text_DeviceForTalkingToPokemon:
-	.string "We're developing a device for talking\n"
-	.string "with POKéMON.\p"
-	.string "But we haven't had much success…$"
+	.string "Why did they build an attic if\n"
+	.string "we can't even use it for anything?\p"
+	.string "It's a waste of space!$"
 
 RustboroCity_DevonCorp_2F_Text_DevelopingNewBalls:
 	.string "I'm developing new kinds of\n"
@@ -307,10 +307,8 @@ RustboroCity_DevonCorp_2F_Text_WowThatsAPokenav:
 	.string "trying the POKéNAV out.$"
 
 RustboroCity_DevonCorp_2F_Text_DeviceToVisualizePokemonDreams:
-	.string "I'm trying to develop a device that\n"
-	.string "visually reproduces the dreams of\l"
-	.string "POKéMON…\p"
-	.string "But it's not going well.$"
+	.string "They say the 4th floor is off limits.\p"
+	.string "I wonder what's up there?$"
 
 RustboroCity_DevonCorp_2F_Text_DevelopDeviceToResurrectFossils:
 	.string "I've been trying to develop a device\n"

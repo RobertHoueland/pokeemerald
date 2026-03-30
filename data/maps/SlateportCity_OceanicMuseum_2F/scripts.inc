@@ -1142,16 +1142,16 @@ SlateportCity_OceanicMuseum_2F_EventScript_MutSci_Text_3:
 
 SlateportCity_OceanicMuseum_2F_Text_MutSciIntro::
 # 439 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
-	.string "Fascinating...\p"
+	.string "Fascinating…\p"
 	.string "I couldn't help but notice your\n"
 	.string "POKéMON.\p"
-	.string "Their biological signatures...\n"
+	.string "Their biological signatures…\n"
 	.string "This is exactly what I need for my\l"
 	.string "research!$"
 
 SlateportCity_OceanicMuseum_2F_Text_MutSciNoMutations::
 # 446 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
-	.string "Hmm... I don't see any genetic mutations\n"
+	.string "Hmm… I don't see any genetic mutations\n"
 	.string "on your team.\p"
 	.string "Come back to me if you encounter any!$"
 

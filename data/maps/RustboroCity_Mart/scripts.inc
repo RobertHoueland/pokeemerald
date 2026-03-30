@@ -75,10 +75,9 @@ RustboroCity_Mart_Text_BuyingHealsInCaseOfShroomish:
 	.string "in PETALBURG WOODS.$"
 
 RustboroCity_Mart_Text_ShouldBuySuperPotionsInstead:
-	.string "My POKéMON evolved.\n"
-	.string "It has a lot of HP now.\p"
-	.string "I should buy SUPER POTIONS for it\n"
-	.string "instead of ordinary POTIONS.$"
+	.string "DEVON CORP says they only make\n"
+	.string "trainer gear, but I saw crates\l"
+	.string "marked ‘BIO-SECURE’ go upstairs.$"
 
 RustboroCity_Mart_Text_GettingEscapeRopeJustInCase:
 	.string "I'm getting an ESCAPE ROPE just in\n"

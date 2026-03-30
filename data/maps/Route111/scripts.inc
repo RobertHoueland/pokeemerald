@@ -1723,7 +1723,7 @@ Route111_EventScript_Archaeologist_Text_5:
 Route111_EventScript_Archaeologist_Text_6:
 # 897 "data/maps/Route111/scripts.pory"
 	.string "The ARCHAEOLOGIST pulled an ornate\n"
-	.string "glass from his satchel...$"
+	.string "glass from his satchel…$"
 
 Route111_EventScript_Archaeologist_Text_7:
 # 909 "data/maps/Route111/scripts.pory"
@@ -1761,7 +1761,7 @@ Route111_Text_ArchaeologistFirstClueHint::
 	.string "I'm stuck on the first clue:\p"
 	.string "“Beneath a rock near the DESERT RUINS\n"
 	.string "entrance, the first sleeps.”\p"
-	.string "Wherever that could be...$"
+	.string "Wherever that could be…$"
 
 Route111_Text_ArchaeologistWindTablet::
 # 738 "data/maps/Route111/scripts.pory"
@@ -1780,17 +1780,17 @@ Route111_Text_ArchaeologistBoltTabletFound::
 	.string "There is one part of the puzzle left.\n"
 	.string "Perhaps it will lead to the final tablet!\p"
 	.string "I've deciphered the last clue,\n"
-	.string "and it says...$"
+	.string "and it says…$"
 
 Route111_Text_ArchaeologistThirdClueHint::
 # 753 "data/maps/Route111/scripts.pory"
-	.string "Could it be...\n"
+	.string "Could it be…\n"
 	.string "that someone found it already?\p"
 	.string "Wait. I spoke with a merchant last week\n"
 	.string "in MAUVILLE CITY.\p"
 	.string "He mentioned that someone sold him a\n"
 	.string "sandy relic.\p"
-	.string "I figured it was probably a fossil, but...\p"
+	.string "I figured it was probably a fossil, but…\p"
 	.string "If we're lucky, the merchant\n"
 	.string "might still have it!$"
 
@@ -1804,7 +1804,7 @@ Route111_Text_ArchaeologistEarthTabletFound::
 
 Route111_Text_ArchaeologistTwoForms::
 # 767 "data/maps/Route111/scripts.pory"
-	.string "Extraordinary... the engravings\n"
+	.string "Extraordinary… the engravings\n"
 	.string "depict two forms.\p"
 	.string "One wild and free.\n"
 	.string "The other bound and purposeful.\p"
@@ -1814,7 +1814,7 @@ Route111_Text_ArchaeologistTwoForms::
 Route111_Text_ArchaeologistRevealGlassExplanation::
 # 773 "data/maps/Route111/scripts.pory"
 	.string "Through the REVEAL GLASS, the\n"
-	.string "engravings seem almost... alive.\p"
+	.string "engravings seem almost… alive.\p"
 	.string "Yes! This confirms everything. The\n"
 	.string "FORCES OF NATURE have a true\l"
 	.string "form beyond what we know.\p"
@@ -1828,4 +1828,4 @@ Route111_Text_ArchaeologistRevealGlassExplanation::
 
 Route111_Text_ArchaeologistFinalAdvice::
 # 781 "data/maps/Route111/scripts.pory"
-	.string "Use it well. And if you ever find\nyourself in UNOVA... look up at the sky.$"
+	.string "Use it well. And if you ever find\nyourself in UNOVA… look up at the sky.$"

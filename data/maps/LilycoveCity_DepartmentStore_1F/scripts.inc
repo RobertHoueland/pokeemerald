@@ -142,9 +142,10 @@ LilycoveCity_DepartmentStore_1F_Text_WelcomeToDeptStore:
 	.string "Welcome to LILYCOVE DEPARTMENT STORE.$"
 
 LilycoveCity_DepartmentStore_1F_Text_IBuyAllSortsOfThings:
-	.string "Whenever I come to the DEPARTMENT\n"
-	.string "STORE, I always end up buying all sorts\l"
-	.string "of things because it's so fun.$"
+	.string "I've been investigating rumors of\n"
+	.string "genetic experimentation in RUSTBORO.\p"
+	.string "Every lead goes cold.\n"
+	.string "Someone doesn't want this story told.$"
 
 LilycoveCity_DepartmentStore_1F_Text_MomBuyingMeFurniture:
 	.string "Today, my mom is going to buy me some\n"

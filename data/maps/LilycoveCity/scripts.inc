@@ -657,11 +657,10 @@ LilycoveCity_Text_TeamAquaRenovatedCavern:
 	.string "don't match at all!$"
 
 LilycoveCity_Text_TeamAquaLotGoneForGood:
-	.string "That cave in the cove…\p"
-	.string "I didn't notice it right away,\n"
-	.string "but it's completely empty now.\p"
-	.string "That TEAM AQUA lot, they must\n"
-	.string "have gone away for good.$"
+	.string "TEAM AQUA may be gone, but they\n"
+	.string "weren't the only ones chasing power.\p"
+	.string "Corporate labs are doing it cleaner,\n"
+	.string "quieter, and maybe even worse.$"
 
 LilycoveCity_Text_CitySign:
 	.string "LILYCOVE CITY\p"

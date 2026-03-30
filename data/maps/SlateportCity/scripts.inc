@@ -962,11 +962,9 @@ SlateportCity_Text_SeaweedFullOfLife:
 	.string "and attack!$"
 
 SlateportCity_Text_HowTownIsBornAndGrows:
-	.string "Where the water is clean, the fruits\n"
-	.string "of bountiful harvest gather.\p"
-	.string "And where people gather, a market\n"
-	.string "soon starts.\p"
-	.string "That is how a town is born and grows.$"
+	.string "Have you heard? LEGENDARY POKéMON\n"
+	.string "are being created in a lab!\p"
+	.string "Sounds like dock gossip…$"
 
 SlateportCity_Text_SlateportWonderfulPlace:
 	.string "Shopping where you can breathe the\n"

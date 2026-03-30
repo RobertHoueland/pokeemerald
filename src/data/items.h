@@ -15119,7 +15119,7 @@ const struct Item gItemsInfo[] =
         .price = 0,
         .importance = 1,
         .description = COMPOUND_STRING(
-        "A volatile sample\n"
+        "A volatile vile\n"
         "of DNA with highly\n"
         "reactive traits."),
         .pocket = POCKET_KEY_ITEMS,

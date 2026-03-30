@@ -273,12 +273,10 @@ RustboroCity_PokemonSchool_Text_PokemontCantUseManMadeItems:
 	.string "items like POTION and ANTIDOTE.$"
 
 RustboroCity_PokemonSchool_Text_ConfusedPokemonAttacksItself:
-	.string "You know how some POKéMON moves can\n"
-	.string "confuse a POKéMON?\p"
-	.string "A confused POKéMON will sometimes\n"
-	.string "attack itself without meaning to.\p"
-	.string "But once it leaves battle, it will\n"
-	.string "return to normal.$"
+	.string "I heard the top of DEVON CORP\n"
+	.string "has a secret lab.\p"
+	.string "My friend said she saw someone carrying\n"
+	.string "supplies into the building.$"
 
 RustboroCity_PokemonSchool_Text_PokemonHealItselfWithBerry:
 	.string "A POKéMON holding a BERRY will heal\n"

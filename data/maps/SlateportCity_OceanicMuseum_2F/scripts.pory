@@ -437,14 +437,14 @@ SlateportCity_OceanicMuseum_2F_Text_SSAnneReplica:
 `
 
 text SlateportCity_OceanicMuseum_2F_Text_MutSciIntro {
-	format("Fascinating...\p"
+	format("Fascinating…\p"
 	       "I couldn't help but notice your POKéMON.\p"
-		   "Their biological signatures...\n"
+		   "Their biological signatures…\n"
 		   "This is exactly what I need for my research!")
 }
 
 text SlateportCity_OceanicMuseum_2F_Text_MutSciNoMutations {
-	format("Hmm... I don't see any genetic mutations on your team.\p"
+	format("Hmm… I don't see any genetic mutations on your team.\p"
 	       "Come back to me if you encounter any!")
 }
 

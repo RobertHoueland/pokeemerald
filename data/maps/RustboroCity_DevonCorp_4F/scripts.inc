@@ -1866,7 +1866,7 @@ RustboroCity_DevonCorp_4F_EventScript_TableProtoLegends::
 # 953 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	lockall
 # 954 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	msgbox RustboroCity_DevonCorp_4F_Text_TableProtoLegends
+	msgbox RustboroCity_DevonCorp_4F_Text_TableProtoLegends, MSGBOX_SIGN
 # 955 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	releaseall
 	return
@@ -1876,7 +1876,7 @@ RustboroCity_DevonCorp_4F_EventScript_MonitorMutations::
 # 959 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	lockall
 # 960 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	msgbox RustboroCity_DevonCorp_4F_Text_MonitorMutations
+	msgbox RustboroCity_DevonCorp_4F_Text_MonitorMutations, MSGBOX_SIGN
 # 961 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	releaseall
 	return
@@ -1886,7 +1886,7 @@ RustboroCity_DevonCorp_4F_EventScript_DisplayGeneticLines::
 # 965 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	lockall
 # 966 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	msgbox RustboroCity_DevonCorp_4F_Text_DisplayGeneticLines
+	msgbox RustboroCity_DevonCorp_4F_Text_DisplayGeneticLines, MSGBOX_SIGN
 # 967 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	releaseall
 	return
@@ -1896,7 +1896,7 @@ RustboroCity_DevonCorp_4F_EventScript_DisplayExperiment::
 # 971 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	lockall
 # 972 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	msgbox RustboroCity_DevonCorp_4F_Text_DisplayExperiment
+	msgbox RustboroCity_DevonCorp_4F_Text_DisplayExperiment, MSGBOX_SIGN
 # 973 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	releaseall
 	return
@@ -1904,7 +1904,7 @@ RustboroCity_DevonCorp_4F_EventScript_DisplayExperiment::
 
 RustboroCity_DevonCorp_4F_EventScript_DrParker_Text_0:
 # 112 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	.string "Come on... so close...$"
+	.string "Come on… so close…$"
 
 RustboroCity_DevonCorp_4F_EventScript_DrParker_Text_1:
 # 149 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
@@ -1913,7 +1913,7 @@ RustboroCity_DevonCorp_4F_EventScript_DrParker_Text_1:
 
 RustboroCity_DevonCorp_4F_EventScript_SelectRegion_Text_0:
 # 154 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	.string "From which region would you like\nyour Proto-Legend?$"
+	.string "From which region would you like\nyour Proto-Legend to be based?$"
 
 RustboroCity_DevonCorp_4F_EventScript_SelectRegion_Text_1:
 # 156 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
@@ -1962,7 +1962,7 @@ RustboroCity_DevonCorp_4F_EventScript_OfferShiny_Text_1:
 
 RustboroCity_DevonCorp_4F_EventScript_OfferShiny_Text_2:
 # 515 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	.string "OK, I'll get to work...$"
+	.string "OK, I'll get to work…$"
 
 RustboroCity_DevonCorp_4F_EventScript_DrParkerEnd_Text_0:
 # 526 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
@@ -1988,27 +1988,27 @@ RustboroCity_DevonCorp_4F_Text_DrParkerGreeting::
 	.string "Oh! I didn't see you there!\p"
 	.string "I'm on the verge of a breakthrough\n"
 	.string "in my research.\p"
-	.string "All I need is a sample of Unstable DNA...$"
+	.string "All I need is a sample of Unstable DNA…$"
 
 RustboroCity_DevonCorp_4F_Text_DrParkerFoundDna::
 # 42 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	.string "DR. PARKER: Wait... you found an\n"
-	.string "Unstable DNA sample?\p"
+	.string "DR. PARKER: Wait… you found an Unstable\n"
+	.string "DNA sample?\p"
 	.string "What an incredible day this is!!!$"
 
 RustboroCity_DevonCorp_4F_Text_DrParkerMainExplanation::
 # 47 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	.string "DR. PARKER: Wait...\n"
+	.string "DR. PARKER: Wait…\n"
 	.string "You got it from ROXANNE?\p"
 	.string "How in the world did ROXANNE\n"
 	.string "get that Unstable DNA?\p"
-	.string "If you are willing to part with it...\n"
+	.string "If you are willing to part with it…\n"
 	.string "I can finally stabilize my lab-grown\l"
 	.string "experiments.\p"
-	.string "I call them... PROTO-LEGENDS!\p"
+	.string "I call them… PROTO-LEGENDS!\p"
 	.string "They are breathtaking POKéMON, forged\n"
 	.string "with fragments of legendary power.\p"
-	.string "Now, don't expect them to be perfect...\n"
+	.string "Now, don't expect them to be perfect…\n"
 	.string "They remain in the early stages of\l"
 	.string "development.\p"
 	.string "Though my research shows remarkable\n"
@@ -2041,7 +2041,7 @@ RustboroCity_DevonCorp_4F_Text_ShinyNoMoney::
 
 RustboroCity_DevonCorp_4F_Text_HasMonLine::
 # 79 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	.string "Wait... I see you already possess a\n"
+	.string "Wait… I see you already possess a\n"
 	.string "Proto-Legend from that genetic line.\p"
 	.string "I cannot create multiple prototypes\n"
 	.string "from the same lineage.\p"

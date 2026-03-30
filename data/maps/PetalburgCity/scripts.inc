@@ -719,11 +719,11 @@ PetalburgCity_Text_ThisIsGymSign:
 	.string "whenever you're looking for a GYM.$"
 
 PetalburgCity_Text_WaterReflection:
-	.string "My face is reflected in the water.\p"
-	.string "It's a shining grin full of hope…\p"
-	.string "Or it could be a look of somber silence\n"
-	.string "struggling with fear…\p"
-	.string "What do you see reflected in your face?$"
+	.string "The sun reflects in the water.\n"
+	.string "It reminds me of RUSTBORO CITY.\p"
+	.string "My dad works there, and says there's\n"
+	.string "always weird lights coming\l"
+	.string "from DEVON CORP…$"
 
 PetalburgCity_Text_FullPartyExplanation:
 	.string "Let's say you have six POKéMON.\n"

@@ -751,8 +751,10 @@ MauvilleCity_GameCorner_Text_RouletteOnlyLuck:
 	.string "Win or lose, it's only by luck.$"
 
 MauvilleCity_GameCorner_Text_UpTo3CoinsCanBeUsed:
-	.string "Up to three COINS can be used to play\n"
-	.string "the SLOTS.$"
+	.string "The strangest thing happened to me\n"
+	.string "last week.\p"
+	.string "My MANECTRIC learned a move it\n"
+	.string "shouldn't have been able to learn!$"
 
 MauvilleCity_GameCorner_Text_DifficultToStopOn7:
 	.string "It's very difficult to make it stop\n"

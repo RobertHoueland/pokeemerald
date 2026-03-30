@@ -732,7 +732,7 @@ text Route111_Text_ArchaeologistFirstMeeting {
 text Route111_Text_ArchaeologistFirstClueHint {
 	format("I'm stuck on the first clue:\p"
 		   "“Beneath a rock near the DESERT RUINS entrance, the first sleeps.”\p"
-		   "Wherever that could be...")
+		   "Wherever that could be…")
 }
 
 text Route111_Text_ArchaeologistWindTablet {
@@ -747,14 +747,14 @@ text Route111_Text_ArchaeologistSecondClueRiddle {
 
 text Route111_Text_ArchaeologistBoltTabletFound {
 	format("There is one part of the puzzle left. Perhaps it will lead to the final tablet!\p"
-		   "I've deciphered the last clue,\nand it says...")
+		   "I've deciphered the last clue,\nand it says…")
 }
 
 text Route111_Text_ArchaeologistThirdClueHint {
-	format("Could it be...\nthat someone found it already?\p"
+	format("Could it be…\nthat someone found it already?\p"
 		   "Wait. I spoke with a merchant last week in MAUVILLE CITY.\p"
 		   "He mentioned that someone sold him a sandy relic.\p"
-		   "I figured it was probably a fossil, but...\p"
+		   "I figured it was probably a fossil, but…\p"
 		   "If we're lucky, the merchant\nmight still have it!")
 }
 
@@ -765,13 +765,13 @@ text Route111_Text_ArchaeologistEarthTabletFound {
 }
 
 text Route111_Text_ArchaeologistTwoForms {
-	format("Extraordinary... the engravings\ndepict two forms.\p"
+	format("Extraordinary… the engravings\ndepict two forms.\p"
 		   "One wild and free.\nThe other bound and purposeful.\p"
 		   "Of course! I brought this from UNOVA when I began my expedition.")
 }
 
 text Route111_Text_ArchaeologistRevealGlassExplanation {
-	format("Through the REVEAL GLASS, the engravings seem almost... alive.\p"
+	format("Through the REVEAL GLASS, the engravings seem almost… alive.\p"
 		   "Yes! This confirms everything. The FORCES OF NATURE have a true\lform beyond what we know.\p"
 		   "I have documented everything I need.\nMy research is complete.\p"
 		   "This REVEAL GLASS led me to the greatest discovery of my career.\p"
@@ -779,7 +779,7 @@ text Route111_Text_ArchaeologistRevealGlassExplanation {
 }
 
 text Route111_Text_ArchaeologistFinalAdvice {
-	"Use it well. And if you ever find\nyourself in UNOVA... look up at the sky."
+	"Use it well. And if you ever find\nyourself in UNOVA… look up at the sky."
 }
 
 script Route111_EventScript_Archaeologist {
@@ -894,7 +894,7 @@ Archaeologist_FoundThirdClue:
 	delay(16)
 	msgbox(Route111_Text_ArchaeologistTwoForms)
 	delay(16)
-	msgbox(format("The ARCHAEOLOGIST pulled an ornate glass from his satchel..."))
+	msgbox(format("The ARCHAEOLOGIST pulled an ornate glass from his satchel…"))
 	delay(16)
 	msgbox(Route111_Text_ArchaeologistRevealGlassExplanation)
 
