@@ -55,7 +55,7 @@
 #define FLAG_100_MUTATIONS   0x29
 #define FLAG_125_MUTATIONS   0x2A
 #define FLAG_150_MUTATIONS   0x2B
-#define FLAG_UNUSED_0x02C    0x2C // Unused Flag
+#define FLAG_MET_MUT_SCI     0x2C
 #define FLAG_UNUSED_0x02D    0x2D // Unused Flag
 #define FLAG_UNUSED_0x02E    0x2E // Unused Flag
 #define FLAG_UNUSED_0x02F    0x2F // Unused Flag
@@ -677,7 +677,7 @@
 #define FLAG_OBTAINED_NECROZMA_LINE          0x276
 #define FLAG_OBTAINED_GIRATINA_LINE          0x277
 #define FLAG_OBTAINED_KYUREM_LINE            0x278
-#define FLAG_UNUSED_0x279  0x279 // Unused Flag
+#define FLAG_DR_PARKER_TALKED_AFTER_150      0x279
 #define FLAG_UNUSED_0x27A  0x27A // Unused Flag
 #define FLAG_UNUSED_0x27B  0x27B // Unused Flag
 #define FLAG_UNUSED_0x27C  0x27C // Unused Flag

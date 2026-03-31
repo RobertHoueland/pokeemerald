@@ -104,19 +104,28 @@ text RustboroCity_DevonCorp_4F_Text_DisplayExperiment {
 	"A glass chamber hums softly.\nA glowing orb pulses inside."
 }
 
+text RustboroCity_DevonCorp_4F_Text_DrParkerOldFriend {
+	format("DR. PARKER: Ah, there you are {PLAYER}!\p"
+	       "Thanks to you, I'm going to catch up with an old friend soon.\p"
+		   "It's been a long time coming, and I need to catch him up on"
+		   "all my work with the Proto-Legends.\p"
+		   "And an apology is likely long overdue too…")
+}
+
 script RustboroCity_DevonCorp_4F_EventScript_DrParker {
     lockall
     goto_if_set(FLAG_MET_DR_PARKER, Met_DrParker)
-	GetDirectionToFace (VAR_TEMP_0, LOCALID_DR_PARKER, OBJ_EVENT_ID_PLAYER)
+	GetDirectionToFace(VAR_TEMP_0, LOCALID_DR_PARKER, OBJ_EVENT_ID_PLAYER)
 
+	// First meeting:
 	msgbox(format("Come on… so close…"))
     faceplayer
 	msgbox(RustboroCity_DevonCorp_4F_Text_DrParkerGreeting)
-	// TODO backstory…
 
 	checkitem(ITEM_UNSTABLE_DNA, 1)
 	if (var(VAR_RESULT) == FALSE) {
-		goto(RustboroCity_DevonCorp_4F_EventScript_DrParkerEnd)
+		releaseall
+		end
 	}
 
 	playse(SE_PIN)
@@ -140,6 +149,12 @@ script RustboroCity_DevonCorp_4F_EventScript_DrParker {
 
 Met_DrParker:
     faceplayer
+	if (flag(FLAG_150_MUTATIONS) && !flag(FLAG_DR_PARKER_TALKED_AFTER_150)) {
+		msgbox(RustboroCity_DevonCorp_4F_Text_DrParkerOldFriend)
+		setflag(FLAG_DR_PARKER_TALKED_AFTER_150)
+		releaseall
+		end
+	}
 	checkitem(ITEM_UNSTABLE_DNA, 1)
 	if (var(VAR_RESULT) == FALSE) {
 		goto(RustboroCity_DevonCorp_4F_EventScript_DrParkerEnd)
@@ -165,6 +180,7 @@ script RustboroCity_DevonCorp_4F_EventScript_SelectRegion {
         "{COLOR GREEN}EXIT")
 	closemessage
 	if (var(VAR_RESULT) > NUM_REGION_CHOICES - 1) {
+		// Exit button
         goto(RustboroCity_DevonCorp_4F_EventScript_DrParkerEnd)
     }
 
@@ -523,7 +539,7 @@ script RustboroCity_DevonCorp_4F_EventScript_OfferShiny {
 }
 
 script RustboroCity_DevonCorp_4F_EventScript_DrParkerEnd {
-    msgbox(format("If you come across any Unstable DNA samples, please come see me!"))
+    msgbox(format("DR. PARKER: If you come across any Unstable DNA samples, please come see me!"))
 	setvar(VAR_RESULT, 0)
     releaseall
 }

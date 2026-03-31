@@ -439,160 +439,286 @@ SlateportCity_OceanicMuseum_2F_Text_SSAnneReplica:
 text SlateportCity_OceanicMuseum_2F_Text_MutSciIntro {
 	format("Fascinating…\p"
 	       "I couldn't help but notice your POKéMON.\p"
-		   "Their biological signatures…\n"
-		   "This is exactly what I need for my research!")
+		   "Their biological signatures…\p"
+		   "HAHA! This is exactly what I need for my research.")
 }
 
 text SlateportCity_OceanicMuseum_2F_Text_MutSciNoMutations {
-	format("Hmm… I don't see any genetic mutations on your team.\p"
-	       "Come back to me if you encounter any!")
+	format("Argh… I don't see any genetic\nmutations on your team.\p"
+	       "Come back to me if you encounter any.")
+}
+
+text SlateportCity_OceanicMuseum_2F_Text_ThankYou {
+	format("Thank you for letting me examine your team.\p"
+	       "Please, take this gift.")
+}
+
+text SlateportCity_OceanMusseum_2F_Text_MutSciSecret {
+	format("Oh. And try to keep my work a secret, will you?\p"
+		   "I can't afford to get this place shut down.")
+}
+
+text SlateportCity_OceanMusseum_2F_Text_MutSciOldFriend {
+	format("If you ever run into my old coworker, tell him"
+		   "my research has surpassed what he could ever know!")
+}
+
+text SlateportCity_OceanicMuseum_2F_Text_MutSciStatisticalNoise {
+	format("DR. PARKER used to call results like this “statistical noise.”\p"
+		   "But your team proves my theory was correct all along!")
+}
+
+text SlateportCity_OceanicMuseum_2F_Text_MutSciLookWhosLaughing {
+	format("I remember being laughed out of my own lab when I first proposed my research.\p"
+		   "Look who's laughing now!")
+}
+
+text SlateportCity_OceanicMuseum_2F_Text_MutSciAdmitDrParkerWasRight {
+    format("Hey, listen. I've been doing a lot of thinking.\p"
+		   "Maybe DR. PARKER was right about some things.\p"
+		   "I admit it. I was wrong.\p"
+		   "I hope he's doing well.\nI really loved that guy.")
+}
+
+text SlateportCity_OceanicMuseum_2F_Text_MutSciEarnedPlaceInPaper {
+    format("This surpasses every result from my old lab.\p"
+           "You've earned a place in my paper.")
 }
 
 text SlateportCity_OceanicMuseum_2F_Text_MutSciReward5 {
-	format("Your POKéMON team has mutated 5 times!\p"
-	       "Thank you for letting me study your team.\n"
-		   "Please, take this gift.")
+	format("Your POKéMON team has\nmutated 5 times!")
 }
 
 text SlateportCity_OceanicMuseum_2F_Text_MutSciReward10 {
-	format("Wow, your POKéMON team has mutated\n10 times!\p"
-	       "Thank you for letting me study your team.\n"
-		   "Please, take this gift.")
+	format("Wow, your POKéMON team has\nmutated 10 times!")
 }
 
 text SlateportCity_OceanicMuseum_2F_Text_MutSciReward15 {
-	format("Amazing, your POKéMON team has mutated\n15 times!\p"
-	       "Thank you for letting me study your team.\n"
-		   "Please, take this gift.")
+	format("Amazing, your POKéMON team has\nmutated 15 times!")
 }
 
 text SlateportCity_OceanicMuseum_2F_Text_MutSciReward25 {
-	format("Wonderful, your POKéMON team has mutated\n25 times!\p"
-	       "Thank you for letting me study your team.\n"
-		   "Please, take this gift.")
+	format("Wonderful, your POKéMON team has\nmutated 25 times!")
 }
 
 text SlateportCity_OceanicMuseum_2F_Text_MutSciReward40 {
-	format("Huzzah, your POKéMON team has mutated\n40 times!\p"
-	       "Thank you for letting me study your team.\n"
-		   "Please, take this gift.")
+	format("Huzzah, your POKéMON team has\nmutated 40 times!")
 }
 
 text SlateportCity_OceanicMuseum_2F_Text_MutSciReward50 {
-	format("Spectacular, your POKéMON team has\nmutated 50 times!\p"
-	       "Thank you for letting me study your team.\n"
-		   "Please, take this gift.")
+	format("Spectacular, your POKéMON team has\nmutated 50 times!")
 }
 
 text SlateportCity_OceanicMuseum_2F_Text_MutSciReward60 {
-	format("Hallelujah, your POKéMON team has\nmutated 60 times!\p"
-	       "Thank you for letting me study your team.\n"
-		   "Please, take this gift.")
+	format("Hallelujah, your POKéMON team has\nmutated 60 times!")
 }
 
 text SlateportCity_OceanicMuseum_2F_Text_MutSciReward75 {
-	format("Blimey, your POKéMON team has mutated\n75 times!\p"
-	       "Thank you for letting me study your team.\n"
-		   "Please, take this gift.")
+	format("Blimey, your POKéMON team has\nmutated 75 times!")
 }
 
 text SlateportCity_OceanicMuseum_2F_Text_MutSciReward100 {
-	format("Marvelous! Your POKéMON team has\nmutated 100 times!\p"
-	       "Thank you for letting me study your team.\n"
-		   "Please, take this gift.")
+	format("Marvelous! Your POKéMON team has\nmutated 100 times!")
 }
 
 text SlateportCity_OceanicMuseum_2F_Text_MutSciReward125 {
-	format("Yippee! Your POKéMON team has mutated\n125 times!\p"
-	       "Thank you for letting me study your team.\n"
-		   "Please, take this gift.")
+	format("Yippee! Your POKéMON team has\nmutated 125 times!")
 }
 
 text SlateportCity_OceanicMuseum_2F_Text_MutSciReward150 {
-	format("Incredible! Your POKéMON team has\nmutated 150 times!\p"
-	       "Thank you for letting me study your team.\n"
-		   "Please, take this gift.")
+	format("Incredible! Your POKéMON team has\nmutated 150 times!")
+}
+
+text SlateportCity_OceanicMuseum_2F_Text_MutSciDoneAllRewards {
+	format("I'll be publishing my mutation research soon, and your"
+		   "team has earned a place in the paper!\p"
+           "I even reached out to DR. PARKER to catch up over tea."
+           "Things are really looking up for me, all thanks to you!")
+}
+
+script SlateportCity_OceanicMuseum_2F_DelayPin {
+	delay(12)
+	playse(SE_PIN)
+	waitse
+	delay(12)
 }
 
 script SlateportCity_OceanicMuseum_2F_EventScript_MutSci {
     lockall
     faceplayer
+
+	goto_if_set(FLAG_MET_MUT_SCI, MutSci_Met)
+	// First meeting:
 	msgbox(SlateportCity_OceanicMuseum_2F_Text_MutSciIntro)
-    msgbox(format("If you don't mind, may I examine your team?"), MSGBOX_YESNO)
+	setflag(FLAG_MET_MUT_SCI)
+
+MutSci_Met:
+	if (flag(FLAG_150_MUTATIONS)) {
+		// Done with all rewards
+		msgbox(SlateportCity_OceanicMuseum_2F_Text_MutSciDoneAllRewards)
+		releaseall
+		end
+	}
+
+    msgbox(format("If you don't mind,\nmay I examine your team?"), MSGBOX_YESNO)
     if (var(VAR_RESULT) == 1) {
-        setvar(VAR_RESULT, 0)
-        specialvar(VAR_RESULT, GetPartyTotalMutations)
-        if (var(VAR_RESULT) == 0) {
+        setvar(VAR_TEMP_0, 0)
+        specialvar(VAR_TEMP_0, GetPartyTotalMutations)
+
+        if (var(VAR_TEMP_0) == 0) {
+			// No mutations
 			msgbox(SlateportCity_OceanicMuseum_2F_Text_MutSciNoMutations)
-            goto(MutSci_End)
+            releaseall
+			end
+        }
+        
+        if (var(VAR_TEMP_0) < 5) {
+			// Nothing note worthy
+            msgbox(format("These POKéMON are genetically mutated?!"))
         }
 
-        if (var(VAR_RESULT) < 5) {
-            msgbox(format("These POKéMON are genetically mutated!"))
-        }
-        if (var(VAR_RESULT) > 5 && !flag(FLAG_5_MUTATIONS)) {
+		// 5+
+        if (var(VAR_TEMP_0) >= 5 && !flag(FLAG_5_MUTATIONS)) {
+			call(SlateportCity_OceanicMuseum_2F_DelayPin)
 			msgbox(SlateportCity_OceanicMuseum_2F_Text_MutSciReward5)
+			msgbox(SlateportCity_OceanicMuseum_2F_Text_ThankYou)
+
             setflag(FLAG_5_MUTATIONS)
             giveitem(ITEM_EXP_CANDY_XS, 5)
+
+			msgbox(SlateportCity_OceanMusseum_2F_Text_MutSciSecret)
+			delay(8)
         }
-        if (var(VAR_RESULT) > 10 && !flag(FLAG_10_MUTATIONS)) {
+		// 10+
+        if (var(VAR_TEMP_0) >= 10 && !flag(FLAG_10_MUTATIONS)) {
+			call(SlateportCity_OceanicMuseum_2F_DelayPin)
 			msgbox(SlateportCity_OceanicMuseum_2F_Text_MutSciReward10)
+			msgbox(SlateportCity_OceanicMuseum_2F_Text_ThankYou)
+
             setflag(FLAG_10_MUTATIONS)
             giveitem(ITEM_ULTRA_BALL, 10)
+
+			msgbox(SlateportCity_OceanMusseum_2F_Text_MutSciOldFriend)
+			delay(8)
         }
-        if (var(VAR_RESULT) > 15 && !flag(FLAG_15_MUTATIONS)) {
+		// 15+
+        if (var(VAR_TEMP_0) >= 15 && !flag(FLAG_15_MUTATIONS)) {
+			call(SlateportCity_OceanicMuseum_2F_DelayPin)
 			msgbox(SlateportCity_OceanicMuseum_2F_Text_MutSciReward15)
+			msgbox(SlateportCity_OceanicMuseum_2F_Text_ThankYou)
+
             setflag(FLAG_15_MUTATIONS)
             giveitem(ITEM_EXP_CANDY_S, 10)
         }
-        if (var(VAR_RESULT) > 25 && !flag(FLAG_25_MUTATIONS)) {
+		// 25+
+        if (var(VAR_TEMP_0) >= 25 && !flag(FLAG_25_MUTATIONS)) {
+			call(SlateportCity_OceanicMuseum_2F_DelayPin)
 			msgbox(SlateportCity_OceanicMuseum_2F_Text_MutSciReward25)
+			msgbox(SlateportCity_OceanicMuseum_2F_Text_ThankYou)
+
             setflag(FLAG_25_MUTATIONS)
             giveitem(ITEM_MUTATION_SHARD)
+
+			msgbox(SlateportCity_OceanicMuseum_2F_Text_MutSciStatisticalNoise)
+			delay(8)
         }
-        if (var(VAR_RESULT) > 40 && !flag(FLAG_40_MUTATIONS)) {
+		// 40+
+        if (var(VAR_TEMP_0) >= 40 && !flag(FLAG_40_MUTATIONS)) {
+			call(SlateportCity_OceanicMuseum_2F_DelayPin)
 			msgbox(SlateportCity_OceanicMuseum_2F_Text_MutSciReward40)
+			msgbox(SlateportCity_OceanicMuseum_2F_Text_ThankYou)
+
             setflag(FLAG_40_MUTATIONS)
             giveitem(ITEM_ABILITY_CAPSULE, 5)
         }
-        if (var(VAR_RESULT) > 50 && !flag(FLAG_50_MUTATIONS)) {
+		// 50+
+        if (var(VAR_TEMP_0) >= 50 && !flag(FLAG_50_MUTATIONS)) {
+			call(SlateportCity_OceanicMuseum_2F_DelayPin)
 			msgbox(SlateportCity_OceanicMuseum_2F_Text_MutSciReward50)
+			msgbox(SlateportCity_OceanicMuseum_2F_Text_ThankYou)
+
             setflag(FLAG_50_MUTATIONS)
             giveitem(ITEM_EXP_CANDY_M, 5)
+
+			msgbox(SlateportCity_OceanicMuseum_2F_Text_MutSciLookWhosLaughing)
+			delay(8)
         }
-        if (var(VAR_RESULT) > 60 && !flag(FLAG_60_MUTATIONS)) {
+		// 60+
+        if (var(VAR_TEMP_0) >= 60 && !flag(FLAG_60_MUTATIONS)) {
+			call(SlateportCity_OceanicMuseum_2F_DelayPin)
 			msgbox(SlateportCity_OceanicMuseum_2F_Text_MutSciReward60)
+			msgbox(SlateportCity_OceanicMuseum_2F_Text_ThankYou)
+
             setflag(FLAG_60_MUTATIONS)
             giveitem(ITEM_GENE_LOCK)
         }
-        if (var(VAR_RESULT) > 75 && !flag(FLAG_75_MUTATIONS)) {
+		// 75+
+        if (var(VAR_TEMP_0) >= 75 && !flag(FLAG_75_MUTATIONS)) {
+			call(SlateportCity_OceanicMuseum_2F_DelayPin)
 			msgbox(SlateportCity_OceanicMuseum_2F_Text_MutSciReward75)
+			msgbox(SlateportCity_OceanicMuseum_2F_Text_ThankYou)
+
             setflag(FLAG_75_MUTATIONS)
             giveitem(ITEM_EXP_CANDY_L, 5)
+
+			msgbox(format("I can't wait to rub this in DR. PARKER's face when I see him again."))
+			delay(12)
+            msgbox(format("But then again, what's the point?\nI should be"
+                          "doing this research for the sake of science,"
+                          "not to one-up my old friend."))
         }
-        if (var(VAR_RESULT) > 100 && !flag(FLAG_100_MUTATIONS)) {
+		// 100+
+        if (var(VAR_TEMP_0) >= 100 && !flag(FLAG_100_MUTATIONS)) {
+			call(SlateportCity_OceanicMuseum_2F_DelayPin)
 			msgbox(SlateportCity_OceanicMuseum_2F_Text_MutSciReward100)
+			msgbox(SlateportCity_OceanicMuseum_2F_Text_ThankYou)
+
             setflag(FLAG_100_MUTATIONS)
 			giveitem(ITEM_UNSTABLE_DNA)
+
+			msgbox(SlateportCity_OceanicMuseum_2F_Text_MutSciAdmitDrParkerWasRight)
+			delay(8)
         }
-        if (var(VAR_RESULT) > 125 && !flag(FLAG_125_MUTATIONS)) {
+		// 125+
+        if (var(VAR_TEMP_0) >= 125 && !flag(FLAG_125_MUTATIONS)) {
+			call(SlateportCity_OceanicMuseum_2F_DelayPin)
 			msgbox(SlateportCity_OceanicMuseum_2F_Text_MutSciReward125)
+			msgbox(SlateportCity_OceanicMuseum_2F_Text_ThankYou)
+
             setflag(FLAG_125_MUTATIONS)
             giveitem(ITEM_EXP_CANDY_XL, 5)
         }
-        if (var(VAR_RESULT) > 150 && !flag(FLAG_150_MUTATIONS)) {
+		// 150
+        if (var(VAR_TEMP_0) >= 150 && !flag(FLAG_150_MUTATIONS)) {
+			call(SlateportCity_OceanicMuseum_2F_DelayPin)
 			msgbox(SlateportCity_OceanicMuseum_2F_Text_MutSciReward150)
+			msgbox(SlateportCity_OceanicMuseum_2F_Text_ThankYou)
+
             setflag(FLAG_150_MUTATIONS)
             giveitem(ITEM_SHINY_CHARM)
+
+			msgbox(SlateportCity_OceanicMuseum_2F_Text_MutSciEarnedPlaceInPaper)
+			delay(8)
         }
 
-        msgbox(format("Bring me more mutated POKéMON to study!"))
+        msgbox(format("I'll be waiting for more mutated POKéMON to study."))
     }
     else {
         msgbox("Oh. Maybe next time.")
     }
 
-MutSci_End:
-    setvar(VAR_RESULT, 0)
     releaseall
+}
+
+script SlateportCity_OceanicMuseum_2F_Text_MutSciComputer {
+	lockall
+    if (flag(FLAG_150_MUTATIONS)) {
+        msgbox(format("A computer screen reads:\n“Congratulations on your paper!\p"
+                      "I'm looking forward to\nseeing you soon ;) - DR. PARKER”"), MSGBOX_SIGN)
+    } else {
+	    msgbox(format("A computer screen reads:\n“And I never want to see your"
+	                  "face in my lab again! - DR. PARKER”"), MSGBOX_SIGN)
+	    msgbox(format("It's probably rude to read any further…"))
+    }
+	releaseall
 }

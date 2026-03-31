@@ -871,374 +871,544 @@ SlateportCity_OceanicMuseum_2F_Text_SSAnneReplica:
 # 436 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
 	.string "circles the globe.”$"
 
+SlateportCity_OceanicMuseum_2F_DelayPin::
+# 540 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	delay 12
+# 541 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	playse SE_PIN
+# 542 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	waitse
+# 543 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	delay 12
+	return
+
+
 SlateportCity_OceanicMuseum_2F_EventScript_MutSci::
-# 518 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+# 547 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
 	lockall
-# 519 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+# 548 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
 	faceplayer
-# 520 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+# 550 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	goto_if_set FLAG_MET_MUT_SCI, MutSci_Met
+# 552 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
 	msgbox SlateportCity_OceanicMuseum_2F_Text_MutSciIntro
-# 521 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+# 553 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	setflag FLAG_MET_MUT_SCI
+# 555 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+MutSci_Met:
+# 556 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	goto_if_set FLAG_150_MUTATIONS, SlateportCity_OceanicMuseum_2F_EventScript_MutSci_2
+# 563 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
 	msgbox SlateportCity_OceanicMuseum_2F_EventScript_MutSci_Text_0, MSGBOX_YESNO
-# 522 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+# 564 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
 	compare VAR_RESULT, 1
-	goto_if_eq SlateportCity_OceanicMuseum_2F_EventScript_MutSci_2
-# 592 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
-	msgbox SlateportCity_OceanicMuseum_2F_EventScript_MutSci_Text_3
-SlateportCity_OceanicMuseum_2F_EventScript_MutSci_1:
-# 595 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
-MutSci_End:
-# 596 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
-	setvar VAR_RESULT, 0
-# 597 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	goto_if_eq SlateportCity_OceanicMuseum_2F_EventScript_MutSci_5
+# 707 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	msgbox SlateportCity_OceanicMuseum_2F_EventScript_MutSci_Text_5
+SlateportCity_OceanicMuseum_2F_EventScript_MutSci_4:
+# 710 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
 	releaseall
 	return
 
 SlateportCity_OceanicMuseum_2F_EventScript_MutSci_2:
-# 523 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
-	setvar VAR_RESULT, 0
-# 524 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
-	specialvar VAR_RESULT, GetPartyTotalMutations
-# 525 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
-	compare VAR_RESULT, 0
-	goto_if_eq SlateportCity_OceanicMuseum_2F_EventScript_MutSci_6
-SlateportCity_OceanicMuseum_2F_EventScript_MutSci_5:
-# 530 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
-	compare VAR_RESULT, 5
-	goto_if_lt SlateportCity_OceanicMuseum_2F_EventScript_MutSci_9
-SlateportCity_OceanicMuseum_2F_EventScript_MutSci_8:
-# 533 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
-	compare VAR_RESULT, 5
-	goto_if_gt SlateportCity_OceanicMuseum_2F_EventScript_MutSci_13
-SlateportCity_OceanicMuseum_2F_EventScript_MutSci_11:
-# 538 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
-	compare VAR_RESULT, 10
-	goto_if_gt SlateportCity_OceanicMuseum_2F_EventScript_MutSci_18
-SlateportCity_OceanicMuseum_2F_EventScript_MutSci_16:
-# 543 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
-	compare VAR_RESULT, 15
-	goto_if_gt SlateportCity_OceanicMuseum_2F_EventScript_MutSci_23
-SlateportCity_OceanicMuseum_2F_EventScript_MutSci_21:
-# 548 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
-	compare VAR_RESULT, 25
-	goto_if_gt SlateportCity_OceanicMuseum_2F_EventScript_MutSci_28
-SlateportCity_OceanicMuseum_2F_EventScript_MutSci_26:
-# 553 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
-	compare VAR_RESULT, 40
-	goto_if_gt SlateportCity_OceanicMuseum_2F_EventScript_MutSci_33
-SlateportCity_OceanicMuseum_2F_EventScript_MutSci_31:
 # 558 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
-	compare VAR_RESULT, 50
-	goto_if_gt SlateportCity_OceanicMuseum_2F_EventScript_MutSci_38
-SlateportCity_OceanicMuseum_2F_EventScript_MutSci_36:
-# 563 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
-	compare VAR_RESULT, 60
-	goto_if_gt SlateportCity_OceanicMuseum_2F_EventScript_MutSci_43
-SlateportCity_OceanicMuseum_2F_EventScript_MutSci_41:
-# 568 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
-	compare VAR_RESULT, 75
-	goto_if_gt SlateportCity_OceanicMuseum_2F_EventScript_MutSci_48
-SlateportCity_OceanicMuseum_2F_EventScript_MutSci_46:
-# 573 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
-	compare VAR_RESULT, 100
-	goto_if_gt SlateportCity_OceanicMuseum_2F_EventScript_MutSci_53
-SlateportCity_OceanicMuseum_2F_EventScript_MutSci_51:
-# 578 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
-	compare VAR_RESULT, 125
-	goto_if_gt SlateportCity_OceanicMuseum_2F_EventScript_MutSci_58
-SlateportCity_OceanicMuseum_2F_EventScript_MutSci_56:
-# 583 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
-	compare VAR_RESULT, 150
-	goto_if_gt SlateportCity_OceanicMuseum_2F_EventScript_MutSci_63
-SlateportCity_OceanicMuseum_2F_EventScript_MutSci_61:
-# 589 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
-	msgbox SlateportCity_OceanicMuseum_2F_EventScript_MutSci_Text_2
-	goto SlateportCity_OceanicMuseum_2F_EventScript_MutSci_1
+	msgbox SlateportCity_OceanicMuseum_2F_Text_MutSciDoneAllRewards
+# 559 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	releaseall
+	end
 
-SlateportCity_OceanicMuseum_2F_EventScript_MutSci_6:
-# 526 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
-	msgbox SlateportCity_OceanicMuseum_2F_Text_MutSciNoMutations
-# 527 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
-	goto MutSci_End
-	goto SlateportCity_OceanicMuseum_2F_EventScript_MutSci_5
+SlateportCity_OceanicMuseum_2F_EventScript_MutSci_5:
+# 565 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	setvar VAR_TEMP_0, 0
+# 566 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	specialvar VAR_TEMP_0, GetPartyTotalMutations
+# 568 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	compare VAR_TEMP_0, 0
+	goto_if_eq SlateportCity_OceanicMuseum_2F_EventScript_MutSci_9
+# 575 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	compare VAR_TEMP_0, 5
+	goto_if_lt SlateportCity_OceanicMuseum_2F_EventScript_MutSci_12
+SlateportCity_OceanicMuseum_2F_EventScript_MutSci_11:
+# 581 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	compare VAR_TEMP_0, 5
+	goto_if_ge SlateportCity_OceanicMuseum_2F_EventScript_MutSci_16
+SlateportCity_OceanicMuseum_2F_EventScript_MutSci_14:
+# 593 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	compare VAR_TEMP_0, 10
+	goto_if_ge SlateportCity_OceanicMuseum_2F_EventScript_MutSci_21
+SlateportCity_OceanicMuseum_2F_EventScript_MutSci_19:
+# 605 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	compare VAR_TEMP_0, 15
+	goto_if_ge SlateportCity_OceanicMuseum_2F_EventScript_MutSci_26
+SlateportCity_OceanicMuseum_2F_EventScript_MutSci_24:
+# 614 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	compare VAR_TEMP_0, 25
+	goto_if_ge SlateportCity_OceanicMuseum_2F_EventScript_MutSci_31
+SlateportCity_OceanicMuseum_2F_EventScript_MutSci_29:
+# 626 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	compare VAR_TEMP_0, 40
+	goto_if_ge SlateportCity_OceanicMuseum_2F_EventScript_MutSci_36
+SlateportCity_OceanicMuseum_2F_EventScript_MutSci_34:
+# 635 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	compare VAR_TEMP_0, 50
+	goto_if_ge SlateportCity_OceanicMuseum_2F_EventScript_MutSci_41
+SlateportCity_OceanicMuseum_2F_EventScript_MutSci_39:
+# 647 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	compare VAR_TEMP_0, 60
+	goto_if_ge SlateportCity_OceanicMuseum_2F_EventScript_MutSci_46
+SlateportCity_OceanicMuseum_2F_EventScript_MutSci_44:
+# 656 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	compare VAR_TEMP_0, 75
+	goto_if_ge SlateportCity_OceanicMuseum_2F_EventScript_MutSci_51
+SlateportCity_OceanicMuseum_2F_EventScript_MutSci_49:
+# 671 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	compare VAR_TEMP_0, 100
+	goto_if_ge SlateportCity_OceanicMuseum_2F_EventScript_MutSci_56
+SlateportCity_OceanicMuseum_2F_EventScript_MutSci_54:
+# 683 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	compare VAR_TEMP_0, 125
+	goto_if_ge SlateportCity_OceanicMuseum_2F_EventScript_MutSci_61
+SlateportCity_OceanicMuseum_2F_EventScript_MutSci_59:
+# 692 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	compare VAR_TEMP_0, 150
+	goto_if_ge SlateportCity_OceanicMuseum_2F_EventScript_MutSci_66
+SlateportCity_OceanicMuseum_2F_EventScript_MutSci_64:
+# 704 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	msgbox SlateportCity_OceanicMuseum_2F_EventScript_MutSci_Text_4
+	goto SlateportCity_OceanicMuseum_2F_EventScript_MutSci_4
 
 SlateportCity_OceanicMuseum_2F_EventScript_MutSci_9:
-# 531 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
-	msgbox SlateportCity_OceanicMuseum_2F_EventScript_MutSci_Text_1
-	goto SlateportCity_OceanicMuseum_2F_EventScript_MutSci_8
+# 570 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	msgbox SlateportCity_OceanicMuseum_2F_Text_MutSciNoMutations
+# 571 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	releaseall
+	end
 
 SlateportCity_OceanicMuseum_2F_EventScript_MutSci_12:
-# 534 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
-	msgbox SlateportCity_OceanicMuseum_2F_Text_MutSciReward5
-# 535 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
-	setflag FLAG_5_MUTATIONS
-# 536 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
-	giveitem ITEM_EXP_CANDY_XS, 5
+# 577 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	msgbox SlateportCity_OceanicMuseum_2F_EventScript_MutSci_Text_1
 	goto SlateportCity_OceanicMuseum_2F_EventScript_MutSci_11
 
-SlateportCity_OceanicMuseum_2F_EventScript_MutSci_13:
-# 533 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
-	goto_if_unset FLAG_5_MUTATIONS, SlateportCity_OceanicMuseum_2F_EventScript_MutSci_12
-	goto SlateportCity_OceanicMuseum_2F_EventScript_MutSci_11
-
-SlateportCity_OceanicMuseum_2F_EventScript_MutSci_17:
-# 539 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
-	msgbox SlateportCity_OceanicMuseum_2F_Text_MutSciReward10
-# 540 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
-	setflag FLAG_10_MUTATIONS
-# 541 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
-	giveitem ITEM_ULTRA_BALL, 10
-	goto SlateportCity_OceanicMuseum_2F_EventScript_MutSci_16
-
-SlateportCity_OceanicMuseum_2F_EventScript_MutSci_18:
-# 538 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
-	goto_if_unset FLAG_10_MUTATIONS, SlateportCity_OceanicMuseum_2F_EventScript_MutSci_17
-	goto SlateportCity_OceanicMuseum_2F_EventScript_MutSci_16
-
-SlateportCity_OceanicMuseum_2F_EventScript_MutSci_22:
-# 544 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
-	msgbox SlateportCity_OceanicMuseum_2F_Text_MutSciReward15
-# 545 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
-	setflag FLAG_15_MUTATIONS
-# 546 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
-	giveitem ITEM_EXP_CANDY_S, 10
-	goto SlateportCity_OceanicMuseum_2F_EventScript_MutSci_21
-
-SlateportCity_OceanicMuseum_2F_EventScript_MutSci_23:
-# 543 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
-	goto_if_unset FLAG_15_MUTATIONS, SlateportCity_OceanicMuseum_2F_EventScript_MutSci_22
-	goto SlateportCity_OceanicMuseum_2F_EventScript_MutSci_21
-
-SlateportCity_OceanicMuseum_2F_EventScript_MutSci_27:
-# 549 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
-	msgbox SlateportCity_OceanicMuseum_2F_Text_MutSciReward25
-# 550 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
-	setflag FLAG_25_MUTATIONS
-# 551 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
-	giveitem ITEM_MUTATION_SHARD
-	goto SlateportCity_OceanicMuseum_2F_EventScript_MutSci_26
-
-SlateportCity_OceanicMuseum_2F_EventScript_MutSci_28:
-# 548 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
-	goto_if_unset FLAG_25_MUTATIONS, SlateportCity_OceanicMuseum_2F_EventScript_MutSci_27
-	goto SlateportCity_OceanicMuseum_2F_EventScript_MutSci_26
-
-SlateportCity_OceanicMuseum_2F_EventScript_MutSci_32:
-# 554 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
-	msgbox SlateportCity_OceanicMuseum_2F_Text_MutSciReward40
-# 555 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
-	setflag FLAG_40_MUTATIONS
-# 556 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
-	giveitem ITEM_ABILITY_CAPSULE, 5
-	goto SlateportCity_OceanicMuseum_2F_EventScript_MutSci_31
-
-SlateportCity_OceanicMuseum_2F_EventScript_MutSci_33:
-# 553 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
-	goto_if_unset FLAG_40_MUTATIONS, SlateportCity_OceanicMuseum_2F_EventScript_MutSci_32
-	goto SlateportCity_OceanicMuseum_2F_EventScript_MutSci_31
-
-SlateportCity_OceanicMuseum_2F_EventScript_MutSci_37:
-# 559 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
-	msgbox SlateportCity_OceanicMuseum_2F_Text_MutSciReward50
-# 560 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
-	setflag FLAG_50_MUTATIONS
-# 561 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
-	giveitem ITEM_EXP_CANDY_M, 5
-	goto SlateportCity_OceanicMuseum_2F_EventScript_MutSci_36
-
-SlateportCity_OceanicMuseum_2F_EventScript_MutSci_38:
-# 558 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
-	goto_if_unset FLAG_50_MUTATIONS, SlateportCity_OceanicMuseum_2F_EventScript_MutSci_37
-	goto SlateportCity_OceanicMuseum_2F_EventScript_MutSci_36
-
-SlateportCity_OceanicMuseum_2F_EventScript_MutSci_42:
-# 564 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
-	msgbox SlateportCity_OceanicMuseum_2F_Text_MutSciReward60
-# 565 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
-	setflag FLAG_60_MUTATIONS
-# 566 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
-	giveitem ITEM_GENE_LOCK
-	goto SlateportCity_OceanicMuseum_2F_EventScript_MutSci_41
-
-SlateportCity_OceanicMuseum_2F_EventScript_MutSci_43:
-# 563 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
-	goto_if_unset FLAG_60_MUTATIONS, SlateportCity_OceanicMuseum_2F_EventScript_MutSci_42
-	goto SlateportCity_OceanicMuseum_2F_EventScript_MutSci_41
-
-SlateportCity_OceanicMuseum_2F_EventScript_MutSci_47:
-# 569 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
-	msgbox SlateportCity_OceanicMuseum_2F_Text_MutSciReward75
-# 570 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
-	setflag FLAG_75_MUTATIONS
-# 571 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
-	giveitem ITEM_EXP_CANDY_L, 5
-	goto SlateportCity_OceanicMuseum_2F_EventScript_MutSci_46
-
-SlateportCity_OceanicMuseum_2F_EventScript_MutSci_48:
-# 568 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
-	goto_if_unset FLAG_75_MUTATIONS, SlateportCity_OceanicMuseum_2F_EventScript_MutSci_47
-	goto SlateportCity_OceanicMuseum_2F_EventScript_MutSci_46
-
-SlateportCity_OceanicMuseum_2F_EventScript_MutSci_52:
-# 574 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
-	msgbox SlateportCity_OceanicMuseum_2F_Text_MutSciReward100
-# 575 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
-	setflag FLAG_100_MUTATIONS
-# 576 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
-	giveitem ITEM_UNSTABLE_DNA
-	goto SlateportCity_OceanicMuseum_2F_EventScript_MutSci_51
-
-SlateportCity_OceanicMuseum_2F_EventScript_MutSci_53:
-# 573 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
-	goto_if_unset FLAG_100_MUTATIONS, SlateportCity_OceanicMuseum_2F_EventScript_MutSci_52
-	goto SlateportCity_OceanicMuseum_2F_EventScript_MutSci_51
-
-SlateportCity_OceanicMuseum_2F_EventScript_MutSci_57:
-# 579 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
-	msgbox SlateportCity_OceanicMuseum_2F_Text_MutSciReward125
-# 580 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
-	setflag FLAG_125_MUTATIONS
-# 581 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
-	giveitem ITEM_EXP_CANDY_XL, 5
-	goto SlateportCity_OceanicMuseum_2F_EventScript_MutSci_56
-
-SlateportCity_OceanicMuseum_2F_EventScript_MutSci_58:
-# 578 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
-	goto_if_unset FLAG_125_MUTATIONS, SlateportCity_OceanicMuseum_2F_EventScript_MutSci_57
-	goto SlateportCity_OceanicMuseum_2F_EventScript_MutSci_56
-
-SlateportCity_OceanicMuseum_2F_EventScript_MutSci_62:
-# 584 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
-	msgbox SlateportCity_OceanicMuseum_2F_Text_MutSciReward150
-# 585 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
-	setflag FLAG_150_MUTATIONS
-# 586 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
-	giveitem ITEM_SHINY_CHARM
-	goto SlateportCity_OceanicMuseum_2F_EventScript_MutSci_61
-
-SlateportCity_OceanicMuseum_2F_EventScript_MutSci_63:
+SlateportCity_OceanicMuseum_2F_EventScript_MutSci_15:
+# 582 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	call SlateportCity_OceanicMuseum_2F_DelayPin
 # 583 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
-	goto_if_unset FLAG_150_MUTATIONS, SlateportCity_OceanicMuseum_2F_EventScript_MutSci_62
-	goto SlateportCity_OceanicMuseum_2F_EventScript_MutSci_61
+	msgbox SlateportCity_OceanicMuseum_2F_Text_MutSciReward5
+# 584 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	msgbox SlateportCity_OceanicMuseum_2F_Text_ThankYou
+# 586 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	setflag FLAG_5_MUTATIONS
+# 587 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	giveitem ITEM_EXP_CANDY_XS, 5
+# 589 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	msgbox SlateportCity_OceanMusseum_2F_Text_MutSciSecret
+# 590 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	delay 8
+	goto SlateportCity_OceanicMuseum_2F_EventScript_MutSci_14
+
+SlateportCity_OceanicMuseum_2F_EventScript_MutSci_16:
+# 581 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	goto_if_unset FLAG_5_MUTATIONS, SlateportCity_OceanicMuseum_2F_EventScript_MutSci_15
+	goto SlateportCity_OceanicMuseum_2F_EventScript_MutSci_14
+
+SlateportCity_OceanicMuseum_2F_EventScript_MutSci_20:
+# 594 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	call SlateportCity_OceanicMuseum_2F_DelayPin
+# 595 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	msgbox SlateportCity_OceanicMuseum_2F_Text_MutSciReward10
+# 596 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	msgbox SlateportCity_OceanicMuseum_2F_Text_ThankYou
+# 598 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	setflag FLAG_10_MUTATIONS
+# 599 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	giveitem ITEM_ULTRA_BALL, 10
+# 601 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	msgbox SlateportCity_OceanMusseum_2F_Text_MutSciOldFriend
+# 602 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	delay 8
+	goto SlateportCity_OceanicMuseum_2F_EventScript_MutSci_19
+
+SlateportCity_OceanicMuseum_2F_EventScript_MutSci_21:
+# 593 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	goto_if_unset FLAG_10_MUTATIONS, SlateportCity_OceanicMuseum_2F_EventScript_MutSci_20
+	goto SlateportCity_OceanicMuseum_2F_EventScript_MutSci_19
+
+SlateportCity_OceanicMuseum_2F_EventScript_MutSci_25:
+# 606 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	call SlateportCity_OceanicMuseum_2F_DelayPin
+# 607 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	msgbox SlateportCity_OceanicMuseum_2F_Text_MutSciReward15
+# 608 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	msgbox SlateportCity_OceanicMuseum_2F_Text_ThankYou
+# 610 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	setflag FLAG_15_MUTATIONS
+# 611 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	giveitem ITEM_EXP_CANDY_S, 10
+	goto SlateportCity_OceanicMuseum_2F_EventScript_MutSci_24
+
+SlateportCity_OceanicMuseum_2F_EventScript_MutSci_26:
+# 605 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	goto_if_unset FLAG_15_MUTATIONS, SlateportCity_OceanicMuseum_2F_EventScript_MutSci_25
+	goto SlateportCity_OceanicMuseum_2F_EventScript_MutSci_24
+
+SlateportCity_OceanicMuseum_2F_EventScript_MutSci_30:
+# 615 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	call SlateportCity_OceanicMuseum_2F_DelayPin
+# 616 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	msgbox SlateportCity_OceanicMuseum_2F_Text_MutSciReward25
+# 617 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	msgbox SlateportCity_OceanicMuseum_2F_Text_ThankYou
+# 619 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	setflag FLAG_25_MUTATIONS
+# 620 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	giveitem ITEM_MUTATION_SHARD
+# 622 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	msgbox SlateportCity_OceanicMuseum_2F_Text_MutSciStatisticalNoise
+# 623 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	delay 8
+	goto SlateportCity_OceanicMuseum_2F_EventScript_MutSci_29
+
+SlateportCity_OceanicMuseum_2F_EventScript_MutSci_31:
+# 614 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	goto_if_unset FLAG_25_MUTATIONS, SlateportCity_OceanicMuseum_2F_EventScript_MutSci_30
+	goto SlateportCity_OceanicMuseum_2F_EventScript_MutSci_29
+
+SlateportCity_OceanicMuseum_2F_EventScript_MutSci_35:
+# 627 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	call SlateportCity_OceanicMuseum_2F_DelayPin
+# 628 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	msgbox SlateportCity_OceanicMuseum_2F_Text_MutSciReward40
+# 629 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	msgbox SlateportCity_OceanicMuseum_2F_Text_ThankYou
+# 631 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	setflag FLAG_40_MUTATIONS
+# 632 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	giveitem ITEM_ABILITY_CAPSULE, 5
+	goto SlateportCity_OceanicMuseum_2F_EventScript_MutSci_34
+
+SlateportCity_OceanicMuseum_2F_EventScript_MutSci_36:
+# 626 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	goto_if_unset FLAG_40_MUTATIONS, SlateportCity_OceanicMuseum_2F_EventScript_MutSci_35
+	goto SlateportCity_OceanicMuseum_2F_EventScript_MutSci_34
+
+SlateportCity_OceanicMuseum_2F_EventScript_MutSci_40:
+# 636 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	call SlateportCity_OceanicMuseum_2F_DelayPin
+# 637 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	msgbox SlateportCity_OceanicMuseum_2F_Text_MutSciReward50
+# 638 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	msgbox SlateportCity_OceanicMuseum_2F_Text_ThankYou
+# 640 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	setflag FLAG_50_MUTATIONS
+# 641 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	giveitem ITEM_EXP_CANDY_M, 5
+# 643 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	msgbox SlateportCity_OceanicMuseum_2F_Text_MutSciLookWhosLaughing
+# 644 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	delay 8
+	goto SlateportCity_OceanicMuseum_2F_EventScript_MutSci_39
+
+SlateportCity_OceanicMuseum_2F_EventScript_MutSci_41:
+# 635 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	goto_if_unset FLAG_50_MUTATIONS, SlateportCity_OceanicMuseum_2F_EventScript_MutSci_40
+	goto SlateportCity_OceanicMuseum_2F_EventScript_MutSci_39
+
+SlateportCity_OceanicMuseum_2F_EventScript_MutSci_45:
+# 648 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	call SlateportCity_OceanicMuseum_2F_DelayPin
+# 649 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	msgbox SlateportCity_OceanicMuseum_2F_Text_MutSciReward60
+# 650 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	msgbox SlateportCity_OceanicMuseum_2F_Text_ThankYou
+# 652 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	setflag FLAG_60_MUTATIONS
+# 653 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	giveitem ITEM_GENE_LOCK
+	goto SlateportCity_OceanicMuseum_2F_EventScript_MutSci_44
+
+SlateportCity_OceanicMuseum_2F_EventScript_MutSci_46:
+# 647 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	goto_if_unset FLAG_60_MUTATIONS, SlateportCity_OceanicMuseum_2F_EventScript_MutSci_45
+	goto SlateportCity_OceanicMuseum_2F_EventScript_MutSci_44
+
+SlateportCity_OceanicMuseum_2F_EventScript_MutSci_50:
+# 657 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	call SlateportCity_OceanicMuseum_2F_DelayPin
+# 658 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	msgbox SlateportCity_OceanicMuseum_2F_Text_MutSciReward75
+# 659 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	msgbox SlateportCity_OceanicMuseum_2F_Text_ThankYou
+# 661 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	setflag FLAG_75_MUTATIONS
+# 662 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	giveitem ITEM_EXP_CANDY_L, 5
+# 664 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	msgbox SlateportCity_OceanicMuseum_2F_EventScript_MutSci_Text_2
+# 665 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	delay 12
+# 666 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	msgbox SlateportCity_OceanicMuseum_2F_EventScript_MutSci_Text_3
+	goto SlateportCity_OceanicMuseum_2F_EventScript_MutSci_49
+
+SlateportCity_OceanicMuseum_2F_EventScript_MutSci_51:
+# 656 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	goto_if_unset FLAG_75_MUTATIONS, SlateportCity_OceanicMuseum_2F_EventScript_MutSci_50
+	goto SlateportCity_OceanicMuseum_2F_EventScript_MutSci_49
+
+SlateportCity_OceanicMuseum_2F_EventScript_MutSci_55:
+# 672 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	call SlateportCity_OceanicMuseum_2F_DelayPin
+# 673 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	msgbox SlateportCity_OceanicMuseum_2F_Text_MutSciReward100
+# 674 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	msgbox SlateportCity_OceanicMuseum_2F_Text_ThankYou
+# 676 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	setflag FLAG_100_MUTATIONS
+# 677 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	giveitem ITEM_UNSTABLE_DNA
+# 679 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	msgbox SlateportCity_OceanicMuseum_2F_Text_MutSciAdmitDrParkerWasRight
+# 680 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	delay 8
+	goto SlateportCity_OceanicMuseum_2F_EventScript_MutSci_54
+
+SlateportCity_OceanicMuseum_2F_EventScript_MutSci_56:
+# 671 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	goto_if_unset FLAG_100_MUTATIONS, SlateportCity_OceanicMuseum_2F_EventScript_MutSci_55
+	goto SlateportCity_OceanicMuseum_2F_EventScript_MutSci_54
+
+SlateportCity_OceanicMuseum_2F_EventScript_MutSci_60:
+# 684 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	call SlateportCity_OceanicMuseum_2F_DelayPin
+# 685 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	msgbox SlateportCity_OceanicMuseum_2F_Text_MutSciReward125
+# 686 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	msgbox SlateportCity_OceanicMuseum_2F_Text_ThankYou
+# 688 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	setflag FLAG_125_MUTATIONS
+# 689 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	giveitem ITEM_EXP_CANDY_XL, 5
+	goto SlateportCity_OceanicMuseum_2F_EventScript_MutSci_59
+
+SlateportCity_OceanicMuseum_2F_EventScript_MutSci_61:
+# 683 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	goto_if_unset FLAG_125_MUTATIONS, SlateportCity_OceanicMuseum_2F_EventScript_MutSci_60
+	goto SlateportCity_OceanicMuseum_2F_EventScript_MutSci_59
+
+SlateportCity_OceanicMuseum_2F_EventScript_MutSci_65:
+# 693 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	call SlateportCity_OceanicMuseum_2F_DelayPin
+# 694 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	msgbox SlateportCity_OceanicMuseum_2F_Text_MutSciReward150
+# 695 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	msgbox SlateportCity_OceanicMuseum_2F_Text_ThankYou
+# 697 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	setflag FLAG_150_MUTATIONS
+# 698 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	giveitem ITEM_SHINY_CHARM
+# 700 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	msgbox SlateportCity_OceanicMuseum_2F_Text_MutSciEarnedPlaceInPaper
+# 701 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	delay 8
+	goto SlateportCity_OceanicMuseum_2F_EventScript_MutSci_64
+
+SlateportCity_OceanicMuseum_2F_EventScript_MutSci_66:
+# 692 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	goto_if_unset FLAG_150_MUTATIONS, SlateportCity_OceanicMuseum_2F_EventScript_MutSci_65
+	goto SlateportCity_OceanicMuseum_2F_EventScript_MutSci_64
+
+
+SlateportCity_OceanicMuseum_2F_Text_MutSciComputer::
+# 714 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	lockall
+# 715 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	goto_if_set FLAG_150_MUTATIONS, SlateportCity_OceanicMuseum_2F_Text_MutSciComputer_2
+# 719 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	msgbox SlateportCity_OceanicMuseum_2F_Text_MutSciComputer_Text_1, MSGBOX_SIGN
+# 721 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	msgbox SlateportCity_OceanicMuseum_2F_Text_MutSciComputer_Text_2
+SlateportCity_OceanicMuseum_2F_Text_MutSciComputer_1:
+# 723 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	releaseall
+	return
+
+SlateportCity_OceanicMuseum_2F_Text_MutSciComputer_2:
+# 716 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	msgbox SlateportCity_OceanicMuseum_2F_Text_MutSciComputer_Text_0, MSGBOX_SIGN
+	goto SlateportCity_OceanicMuseum_2F_Text_MutSciComputer_1
 
 
 SlateportCity_OceanicMuseum_2F_EventScript_MutSci_Text_0:
-# 521 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
-	.string "If you don't mind, may I examine your\n"
-	.string "team?$"
+# 563 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	.string "If you don't mind,\n"
+	.string "may I examine your team?$"
 
 SlateportCity_OceanicMuseum_2F_EventScript_MutSci_Text_1:
-# 531 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
-	.string "These POKéMON are genetically mutated!$"
+# 577 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	.string "These POKéMON are genetically\n"
+	.string "mutated?!$"
 
 SlateportCity_OceanicMuseum_2F_EventScript_MutSci_Text_2:
-# 589 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
-	.string "Bring me more mutated POKéMON to\n"
-	.string "study!$"
+# 664 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	.string "I can't wait to rub this in DR. PARKER's\n"
+	.string "face when I see him again.$"
 
 SlateportCity_OceanicMuseum_2F_EventScript_MutSci_Text_3:
-# 592 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+# 666 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	.string "But then again, what's the point?\n"
+	.string "I should be doing this research for the\l"
+	.string "sake of science, not to one-up my old\l"
+	.string "friend.$"
+
+SlateportCity_OceanicMuseum_2F_EventScript_MutSci_Text_4:
+# 704 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	.string "I'll be waiting for more mutated\n"
+	.string "POKéMON to study.$"
+
+SlateportCity_OceanicMuseum_2F_EventScript_MutSci_Text_5:
+# 707 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
 	.string "Oh. Maybe next time.$"
+
+SlateportCity_OceanicMuseum_2F_Text_MutSciComputer_Text_0:
+# 716 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	.string "A computer screen reads:\n"
+	.string "“Congratulations on your paper!\p"
+	.string "I'm looking forward to\n"
+	.string "seeing you soon ;) - DR. PARKER”$"
+
+SlateportCity_OceanicMuseum_2F_Text_MutSciComputer_Text_1:
+# 719 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	.string "A computer screen reads:\n"
+	.string "“And I never want to see your face in\l"
+	.string "my lab again! - DR. PARKER”$"
+
+SlateportCity_OceanicMuseum_2F_Text_MutSciComputer_Text_2:
+# 721 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	.string "It's probably rude to read any further…$"
 
 SlateportCity_OceanicMuseum_2F_Text_MutSciIntro::
 # 439 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
 	.string "Fascinating…\p"
 	.string "I couldn't help but notice your\n"
 	.string "POKéMON.\p"
-	.string "Their biological signatures…\n"
-	.string "This is exactly what I need for my\l"
-	.string "research!$"
+	.string "Their biological signatures…\p"
+	.string "HAHA! This is exactly what I need for my\n"
+	.string "research.$"
 
 SlateportCity_OceanicMuseum_2F_Text_MutSciNoMutations::
 # 446 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
-	.string "Hmm… I don't see any genetic mutations\n"
-	.string "on your team.\p"
-	.string "Come back to me if you encounter any!$"
+	.string "Argh… I don't see any genetic\n"
+	.string "mutations on your team.\p"
+	.string "Come back to me if you encounter any.$"
+
+SlateportCity_OceanicMuseum_2F_Text_ThankYou::
+# 451 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	.string "Thank you for letting me examine your\n"
+	.string "team.\p"
+	.string "Please, take this gift.$"
+
+SlateportCity_OceanMusseum_2F_Text_MutSciSecret::
+# 456 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	.string "Oh. And try to keep my work a secret,\n"
+	.string "will you?\p"
+	.string "I can't afford to get this place shut\n"
+	.string "down.$"
+
+SlateportCity_OceanMusseum_2F_Text_MutSciOldFriend::
+# 461 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	.string "If you ever run into my old coworker,\n"
+	.string "tell him my research has surpassed what\l"
+	.string "he could ever know!$"
+
+SlateportCity_OceanicMuseum_2F_Text_MutSciStatisticalNoise::
+# 466 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	.string "DR. PARKER used to call results like\n"
+	.string "this “statistical noise.”\p"
+	.string "But your team proves my theory was\n"
+	.string "correct all along!$"
+
+SlateportCity_OceanicMuseum_2F_Text_MutSciLookWhosLaughing::
+# 471 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	.string "I remember being laughed out of my own\n"
+	.string "lab when I first proposed my research.\p"
+	.string "Look who's laughing now!$"
+
+SlateportCity_OceanicMuseum_2F_Text_MutSciAdmitDrParkerWasRight::
+# 476 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	.string "Hey, listen. I've been doing a lot of\n"
+	.string "thinking.\p"
+	.string "Maybe DR. PARKER was right about some\n"
+	.string "things.\p"
+	.string "I admit it. I was wrong.\p"
+	.string "I hope he's doing well.\n"
+	.string "I really loved that guy.$"
+
+SlateportCity_OceanicMuseum_2F_Text_MutSciEarnedPlaceInPaper::
+# 483 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	.string "This surpasses every result from my old\n"
+	.string "lab.\p"
+	.string "You've earned a place in my paper.$"
 
 SlateportCity_OceanicMuseum_2F_Text_MutSciReward5::
-# 451 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
-	.string "Your POKéMON team has mutated 5 times!\p"
-	.string "Thank you for letting me study your\n"
-	.string "team.\n"
-	.string "Please, take this gift.$"
+# 488 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	.string "Your POKéMON team has\n"
+	.string "mutated 5 times!$"
 
 SlateportCity_OceanicMuseum_2F_Text_MutSciReward10::
-# 457 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
-	.string "Wow, your POKéMON team has mutated\n"
-	.string "10 times!\p"
-	.string "Thank you for letting me study your\n"
-	.string "team.\n"
-	.string "Please, take this gift.$"
+# 492 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	.string "Wow, your POKéMON team has\n"
+	.string "mutated 10 times!$"
 
 SlateportCity_OceanicMuseum_2F_Text_MutSciReward15::
-# 463 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
-	.string "Amazing, your POKéMON team has mutated\n"
-	.string "15 times!\p"
-	.string "Thank you for letting me study your\n"
-	.string "team.\n"
-	.string "Please, take this gift.$"
+# 496 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	.string "Amazing, your POKéMON team has\n"
+	.string "mutated 15 times!$"
 
 SlateportCity_OceanicMuseum_2F_Text_MutSciReward25::
-# 469 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+# 500 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
 	.string "Wonderful, your POKéMON team has\n"
-	.string "mutated\n"
-	.string "25 times!\p"
-	.string "Thank you for letting me study your\n"
-	.string "team.\n"
-	.string "Please, take this gift.$"
+	.string "mutated 25 times!$"
 
 SlateportCity_OceanicMuseum_2F_Text_MutSciReward40::
-# 475 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
-	.string "Huzzah, your POKéMON team has mutated\n"
-	.string "40 times!\p"
-	.string "Thank you for letting me study your\n"
-	.string "team.\n"
-	.string "Please, take this gift.$"
+# 504 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	.string "Huzzah, your POKéMON team has\n"
+	.string "mutated 40 times!$"
 
 SlateportCity_OceanicMuseum_2F_Text_MutSciReward50::
-# 481 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+# 508 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
 	.string "Spectacular, your POKéMON team has\n"
-	.string "mutated 50 times!\p"
-	.string "Thank you for letting me study your\n"
-	.string "team.\n"
-	.string "Please, take this gift.$"
+	.string "mutated 50 times!$"
 
 SlateportCity_OceanicMuseum_2F_Text_MutSciReward60::
-# 487 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+# 512 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
 	.string "Hallelujah, your POKéMON team has\n"
-	.string "mutated 60 times!\p"
-	.string "Thank you for letting me study your\n"
-	.string "team.\n"
-	.string "Please, take this gift.$"
+	.string "mutated 60 times!$"
 
 SlateportCity_OceanicMuseum_2F_Text_MutSciReward75::
-# 493 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
-	.string "Blimey, your POKéMON team has mutated\n"
-	.string "75 times!\p"
-	.string "Thank you for letting me study your\n"
-	.string "team.\n"
-	.string "Please, take this gift.$"
+# 516 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	.string "Blimey, your POKéMON team has\n"
+	.string "mutated 75 times!$"
 
 SlateportCity_OceanicMuseum_2F_Text_MutSciReward100::
-# 499 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+# 520 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
 	.string "Marvelous! Your POKéMON team has\n"
-	.string "mutated 100 times!\p"
-	.string "Thank you for letting me study your\n"
-	.string "team.\n"
-	.string "Please, take this gift.$"
+	.string "mutated 100 times!$"
 
 SlateportCity_OceanicMuseum_2F_Text_MutSciReward125::
-# 505 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
-	.string "Yippee! Your POKéMON team has mutated\n"
-	.string "125 times!\p"
-	.string "Thank you for letting me study your\n"
-	.string "team.\n"
-	.string "Please, take this gift.$"
+# 524 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	.string "Yippee! Your POKéMON team has\n"
+	.string "mutated 125 times!$"
 
 SlateportCity_OceanicMuseum_2F_Text_MutSciReward150::
-# 511 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+# 528 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
 	.string "Incredible! Your POKéMON team has\n"
-	.string "mutated 150 times!\p"
-	.string "Thank you for letting me study your\n"
-	.string "team.\n"
-	.string "Please, take this gift.$"
+	.string "mutated 150 times!$"
+
+SlateportCity_OceanicMuseum_2F_Text_MutSciDoneAllRewards::
+# 532 "data/maps/SlateportCity_OceanicMuseum_2F/scripts.pory"
+	.string "I'll be publishing my mutation research\n"
+	.string "soon, and your team has earned a place\l"
+	.string "in the paper!\p"
+	.string "I even reached out to DR. PARKER to\n"
+	.string "catch up over tea. Things are really\l"
+	.string "looking up for me, all thanks to you!$"
