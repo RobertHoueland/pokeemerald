@@ -47,6 +47,7 @@ EverGrandeCity_PhoebesRoom_EventScript_Phoebe::
 	end
 
 EverGrandeCity_PhoebesRoom_EventScript_PostBattleSpeech::
+	goto_if_unset FLAG_RECEIVED_UNSTABLE_DNA_PHOEBE, EverGrandeCity_PhoebesRoom_EventScript_GiveUnstableDNA2
 	msgbox EverGrandeCity_PhoebesRoom_Text_PostBattleSpeech, MSGBOX_DEFAULT
 	release
 	end
@@ -54,7 +55,30 @@ EverGrandeCity_PhoebesRoom_EventScript_PostBattleSpeech::
 EverGrandeCity_PhoebesRoom_EventScript_Defeated::
 	setflag FLAG_DEFEATED_ELITE_4_PHOEBE
 	call PokemonLeague_EliteFour_SetAdvanceToNextRoomMetatiles
+	call EverGrandeCity_PhoebesRoom_EventScript_GiveUnstableDNA
+	closemessage
+	delay 24
 	msgbox EverGrandeCity_PhoebesRoom_Text_PostBattleSpeech, MSGBOX_DEFAULT
+	release
+	end
+
+EverGrandeCity_PhoebesRoom_EventScript_GiveUnstableDNA::
+	goto_if_set FLAG_SYS_GAME_CLEAR, EverGrandeCity_PhoebesRoom_EventScript_GiveUnstableDNARematchText
+	msgbox EverGrandeCity_PhoebesRoom_Text_GiveUnstableDNA, MSGBOX_DEFAULT
+	goto EverGrandeCity_PhoebesRoom_EventScript_GiveUnstableDNAItem
+	return
+
+EverGrandeCity_PhoebesRoom_EventScript_GiveUnstableDNARematchText::
+	msgbox EverGrandeCity_PhoebesRoom_Text_GiveUnstableDNARematch, MSGBOX_DEFAULT
+
+EverGrandeCity_PhoebesRoom_EventScript_GiveUnstableDNAItem::
+	giveitem ITEM_UNSTABLE_DNA
+	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_BagIsFull
+	setflag FLAG_RECEIVED_UNSTABLE_DNA_PHOEBE
+	return
+
+EverGrandeCity_PhoebesRoom_EventScript_GiveUnstableDNA2::
+	call EverGrandeCity_PhoebesRoom_EventScript_GiveUnstableDNA
 	release
 	end
 
@@ -81,4 +105,16 @@ EverGrandeCity_PhoebesRoom_Text_PostBattleSpeech:
 	.string "Yup, I'd like to see how far your bond\n"
 	.string "will carry you.\p"
 	.string "Go ahead, move on to the next room.$"
+
+EverGrandeCity_PhoebesRoom_Text_GiveUnstableDNA:
+	.string "Oh! This little vial came\n"
+	.string "through the LEAGUE desk for you.\p"
+	.string "No sender, no explanation, just\n"
+	.string "that same crest SIDNEY described.\p"
+	.string "Whoever started this is still\n"
+	.string "watching your climb.$"
+
+EverGrandeCity_PhoebesRoom_Text_GiveUnstableDNARematch:
+	.string "Hehe! You beat me again.\n"
+	.string "Take another vial, then press on.$"
 

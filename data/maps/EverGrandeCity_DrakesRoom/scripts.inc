@@ -48,6 +48,7 @@ EverGrandeCity_DrakesRoom_EventScript_Drake::
 	end
 
 EverGrandeCity_DrakesRoom_EventScript_PostBattleSpeech::
+	goto_if_unset FLAG_RECEIVED_UNSTABLE_DNA_DRAKE, EverGrandeCity_DrakesRoom_EventScript_GiveUnstableDNA2
 	msgbox EverGrandeCity_DrakesRoom_Text_PostBattleSpeech, MSGBOX_DEFAULT
 	release
 	end
@@ -57,7 +58,28 @@ EverGrandeCity_DrakesRoom_EventScript_Defeated::
 	special Script_TryGainNewFanFromCounter
 	setflag FLAG_DEFEATED_ELITE_4_DRAKE
 	call PokemonLeague_EliteFour_SetAdvanceToNextRoomMetatiles
+	call EverGrandeCity_DrakesRoom_EventScript_GiveUnstableDNA
 	msgbox EverGrandeCity_DrakesRoom_Text_PostBattleSpeech, MSGBOX_DEFAULT
+	release
+	end
+
+EverGrandeCity_DrakesRoom_EventScript_GiveUnstableDNA::
+	goto_if_set FLAG_SYS_GAME_CLEAR, EverGrandeCity_DrakesRoom_EventScript_GiveUnstableDNARematchText
+	msgbox EverGrandeCity_DrakesRoom_Text_GiveUnstableDNA, MSGBOX_DEFAULT
+	goto EverGrandeCity_DrakesRoom_EventScript_GiveUnstableDNAItem
+	return
+
+EverGrandeCity_DrakesRoom_EventScript_GiveUnstableDNARematchText::
+	msgbox EverGrandeCity_DrakesRoom_Text_GiveUnstableDNARematch, MSGBOX_DEFAULT
+
+EverGrandeCity_DrakesRoom_EventScript_GiveUnstableDNAItem::
+	giveitem ITEM_UNSTABLE_DNA
+	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_BagIsFull
+	setflag FLAG_RECEIVED_UNSTABLE_DNA_DRAKE
+	return
+
+EverGrandeCity_DrakesRoom_EventScript_GiveUnstableDNA2::
+	call EverGrandeCity_DrakesRoom_EventScript_GiveUnstableDNA
 	release
 	end
 
@@ -89,4 +111,14 @@ EverGrandeCity_DrakesRoom_Text_PostBattleSpeech:
 	.string "TRAINERS and grow strong.\p"
 	.string "Go! Go onwards!\n"
 	.string "The CHAMPION is waiting!$"
+
+EverGrandeCity_DrakesRoom_Text_GiveUnstableDNA:
+	.string "{PLAYER}. This final vial was placed\n"
+	.string "in my hands with a clear purpose.\p"
+	.string "No signature. No title.\n"
+	.string "You did not arrive here by chance.$"
+
+EverGrandeCity_DrakesRoom_Text_GiveUnstableDNARematch:
+	.string "Still steadfast, I see.\n"
+	.string "Take this sample and hold your course.$"
 

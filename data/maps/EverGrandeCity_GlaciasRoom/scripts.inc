@@ -47,6 +47,7 @@ EverGrandeCity_GlaciasRoom_EventScript_Glacia::
 	end
 
 EverGrandeCity_GlaciasRoom_EventScript_PostBattleSpeech::
+	goto_if_unset FLAG_RECEIVED_UNSTABLE_DNA_GLACIA, EverGrandeCity_GlaciasRoom_EventScript_GiveUnstableDNA2
 	msgbox EverGrandeCity_GlaciasRoom_Text_PostBattleSpeech, MSGBOX_DEFAULT
 	release
 	end
@@ -55,6 +56,27 @@ EverGrandeCity_GlaciasRoom_EventScript_Defeated::
 	setflag FLAG_DEFEATED_ELITE_4_GLACIA
 	call PokemonLeague_EliteFour_SetAdvanceToNextRoomMetatiles
 	msgbox EverGrandeCity_GlaciasRoom_Text_PostBattleSpeech, MSGBOX_DEFAULT
+	call EverGrandeCity_GlaciasRoom_EventScript_GiveUnstableDNA
+	release
+	end
+
+EverGrandeCity_GlaciasRoom_EventScript_GiveUnstableDNA::
+	goto_if_set FLAG_SYS_GAME_CLEAR, EverGrandeCity_GlaciasRoom_EventScript_GiveUnstableDNARematchText
+	msgbox EverGrandeCity_GlaciasRoom_Text_GiveUnstableDNA, MSGBOX_DEFAULT
+	goto EverGrandeCity_GlaciasRoom_EventScript_GiveUnstableDNAItem
+	return
+
+EverGrandeCity_GlaciasRoom_EventScript_GiveUnstableDNARematchText::
+	msgbox EverGrandeCity_GlaciasRoom_Text_GiveUnstableDNARematch, MSGBOX_DEFAULT
+
+EverGrandeCity_GlaciasRoom_EventScript_GiveUnstableDNAItem::
+	giveitem ITEM_UNSTABLE_DNA
+	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_BagIsFull
+	setflag FLAG_RECEIVED_UNSTABLE_DNA_GLACIA
+	return
+
+EverGrandeCity_GlaciasRoom_EventScript_GiveUnstableDNA2::
+	call EverGrandeCity_GlaciasRoom_EventScript_GiveUnstableDNA
 	release
 	end
 
@@ -80,4 +102,16 @@ EverGrandeCity_GlaciasRoom_Text_PostBattleSpeech:
 	.string "Advance to the next room.\p"
 	.string "And there, confirm the truly fearsome\n"
 	.string "side of the POKéMON LEAGUE.$"
+
+EverGrandeCity_GlaciasRoom_Text_GiveUnstableDNA:
+	.string "Before you go. This sample arrived\n"
+	.string "by official LEAGUE courier.\p"
+	.string "Its paperwork was blank except\n"
+	.string "for that now-familiar crest.\p"
+	.string "Your victories are being tracked\n"
+	.string "with unusual care.$"
+
+EverGrandeCity_GlaciasRoom_Text_GiveUnstableDNARematch:
+	.string "Your resolve remains sharp.\n"
+	.string "Accept another sample and advance.$"
 

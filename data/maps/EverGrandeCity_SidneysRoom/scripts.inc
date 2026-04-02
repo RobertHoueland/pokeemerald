@@ -53,6 +53,7 @@ EverGrandeCity_SidneysRoom_EventScript_Sidney::
 	end
 
 EverGrandeCity_SidneysRoom_EventScript_PostBattleSpeech::
+	goto_if_unset FLAG_RECEIVED_UNSTABLE_DNA_SIDNEY, EverGrandeCity_SidneysRoom_EventScript_GiveUnstableDNA2
 	msgbox EverGrandeCity_SidneysRoom_Text_PostBattleSpeech, MSGBOX_DEFAULT
 	release
 	end
@@ -61,6 +62,29 @@ EverGrandeCity_SidneysRoom_EventScript_Defeated::
 	setflag FLAG_DEFEATED_ELITE_4_SIDNEY
 	call PokemonLeague_EliteFour_SetAdvanceToNextRoomMetatiles
 	msgbox EverGrandeCity_SidneysRoom_Text_PostBattleSpeech, MSGBOX_DEFAULT
+	closemessage
+	delay 24
+	call EverGrandeCity_SidneysRoom_EventScript_GiveUnstableDNA
+	release
+	end
+
+EverGrandeCity_SidneysRoom_EventScript_GiveUnstableDNA::
+	goto_if_set FLAG_SYS_GAME_CLEAR, EverGrandeCity_SidneysRoom_EventScript_GiveUnstableDNARematchText
+	msgbox EverGrandeCity_SidneysRoom_Text_GiveUnstableDNA, MSGBOX_DEFAULT
+	goto EverGrandeCity_SidneysRoom_EventScript_GiveUnstableDNAItem
+	return
+
+EverGrandeCity_SidneysRoom_EventScript_GiveUnstableDNARematchText::
+	msgbox EverGrandeCity_SidneysRoom_Text_GiveUnstableDNARematch, MSGBOX_DEFAULT
+
+EverGrandeCity_SidneysRoom_EventScript_GiveUnstableDNAItem::
+	giveitem ITEM_UNSTABLE_DNA
+	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_BagIsFull
+	setflag FLAG_RECEIVED_UNSTABLE_DNA_SIDNEY
+	return
+
+EverGrandeCity_SidneysRoom_EventScript_GiveUnstableDNA2::
+	call EverGrandeCity_SidneysRoom_EventScript_GiveUnstableDNA
 	release
 	end
 
@@ -85,3 +109,14 @@ EverGrandeCity_SidneysRoom_Text_PostBattleSpeech:
 	.string "Now, go on to the next room and enjoy\l"
 	.string "your next battle!$"
 
+EverGrandeCity_SidneysRoom_Text_GiveUnstableDNA:
+	.string "Before you go, I owe you this\n"
+	.string "sealed vial.\p"
+	.string "A dockhand in SLATEPORT handed it\n"
+	.string "to me with no name attached.\p"
+	.string "Just one line: “Pass it on when a\n"
+	.string "real contender appears.”$"
+
+EverGrandeCity_SidneysRoom_Text_GiveUnstableDNARematch:
+	.string "You still hit like a truck.\n"
+	.string "Take a vial and keep moving!$"
