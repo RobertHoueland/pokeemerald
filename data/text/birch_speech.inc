@@ -10,6 +10,10 @@ gText_Birch_Pokemon::
 gText_Birch_MainSpeech::
 	.string "There are many, many\n"
 	.string "secrets surrounding POKéMON...\p"
+	.string "I've heard rumors of strange\n"
+	.string "mutations in the wild...\p"
+	.string "But so far, there isn't any\n"
+	.string "solid evidence yet.\p"
 	.string "$"
 
 gText_Birch_AndYouAre::

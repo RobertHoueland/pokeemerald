@@ -22,6 +22,7 @@ FortreeCity_Gym_EventScript_Winona::
 	specialvar VAR_RESULT, ShouldTryRematchBattle
 	goto_if_eq VAR_RESULT, TRUE, FortreeCity_Gym_EventScript_WinonaRematch
 	goto_if_unset FLAG_RECEIVED_TM_AERIAL_ACE, FortreeCity_Gym_EventScript_GiveAerialAce2
+	goto_if_unset FLAG_RECEIVED_UNSTABLE_DNA_WINONA, FortreeCity_Gym_EventScript_GiveUnstableDNA2
 	msgbox FortreeCity_Gym_Text_WinonaPostBattle, MSGBOX_DEFAULT
 	release
 	end
@@ -36,6 +37,7 @@ FortreeCity_Gym_EventScript_WinonaDefeated::
 	setvar VAR_0x8008, 6
 	call Common_EventScript_SetGymTrainers
 	call FortreeCity_Gym_EventScript_GiveAerialAce
+	call FortreeCity_Gym_EventScript_GiveUnstableDNA
 	closemessage
 	delay 30
 	playfanfare MUS_REGISTER_MATCH_CALL
@@ -63,6 +65,18 @@ FortreeCity_Gym_EventScript_GiveAerialAce::
 	msgbox FortreeCity_Gym_Text_ExplainAerialAce, MSGBOX_DEFAULT
 	setflag FLAG_RECEIVED_TM_AERIAL_ACE
 	return
+
+FortreeCity_Gym_EventScript_GiveUnstableDNA::
+	msgbox FortreeCity_Gym_Text_WinonaGiveUnstableDNA, MSGBOX_DEFAULT
+	giveitem ITEM_UNSTABLE_DNA
+	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_BagIsFull
+	setflag FLAG_RECEIVED_UNSTABLE_DNA_WINONA
+	return
+
+FortreeCity_Gym_EventScript_GiveUnstableDNA2::
+	call FortreeCity_Gym_EventScript_GiveUnstableDNA
+	release
+	end
 
 FortreeCity_Gym_EventScript_WinonaRematch::
 	trainerbattle_rematch_double TRAINER_WINONA_1, FortreeCity_Gym_Text_WinonaPreRematch, FortreeCity_Gym_Text_WinonaRematchDefeat, FortreeCity_Gym_Text_WinonaRematchNeedTwoMons
@@ -133,6 +147,14 @@ FortreeCity_Gym_EventScript_GymStatue::
 	msgbox FortreeCity_Gym_Text_GymStatue, MSGBOX_DEFAULT
 	releaseall
 	end
+
+FortreeCity_Gym_Text_WinonaGiveUnstableDNA:
+	.string "Oh! A SWELLOW dropped this on the\n"
+	.string "railing outside, and it was gone\l"
+	.string "before I could even blink.\p"
+	.string "I've trained birds my whole life.\n"
+	.string "They don't deliver things for\l"
+	.string "just anyone!$"
 
 FortreeCity_Gym_Text_GymGuideAdvice:
 	.string "Yo, how's it going, CHAMPION-\n"

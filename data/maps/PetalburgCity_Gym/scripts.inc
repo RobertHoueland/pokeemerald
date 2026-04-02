@@ -329,6 +329,7 @@ PetalburgCity_Gym_EventScript_NormanPostBattle::
 	call PetalburgCity_Gym_EventScript_ShouldGiveEnigmaBerry
 	goto_if_eq VAR_RESULT, TRUE, PetalburgCity_Gym_EventScript_GiveEnigmaBerry
 	goto_if_unset FLAG_RECEIVED_TM_FACADE, PetalburgCity_Gym_EventScript_GiveFacade2
+	goto_if_unset FLAG_RECEIVED_UNSTABLE_DNA_NORMAN, PetalburgCity_Gym_EventScript_GiveUnstableDNA2
 	goto_if_set FLAG_SYS_GAME_CLEAR, PetalburgCity_Gym_EventScript_NoAmountOfTrainingIsEnough
 	msgbox PetalburgCity_Gym_Text_DadGoingToKeepTraining, MSGBOX_DEFAULT
 	release
@@ -336,6 +337,11 @@ PetalburgCity_Gym_EventScript_NormanPostBattle::
 
 PetalburgCity_Gym_EventScript_GiveFacade2::
 	call PetalburgCity_Gym_EventScript_GiveFacade
+	release
+	end
+
+PetalburgCity_Gym_EventScript_GiveUnstableDNA2::
+	call PetalburgCity_Gym_EventScript_GiveUnstableDNA
 	release
 	end
 
@@ -387,6 +393,9 @@ PetalburgCity_Gym_EventScript_NormanBattle::
 	call PetalburgCity_Gym_EventScript_UnlockAllDoors
 	special DrawWholeMapView
 	call PetalburgCity_Gym_EventScript_GiveFacade
+	closemessage
+	delay 24
+	call PetalburgCity_Gym_EventScript_GiveUnstableDNA
 	delay 30
 	msgbox PetalburgCity_Gym_Text_DadHappyAndSad, MSGBOX_DEFAULT
 	closemessage
@@ -405,6 +414,13 @@ PetalburgCity_Gym_EventScript_GiveFacade::
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_BagIsFull
 	setflag FLAG_RECEIVED_TM_FACADE
 	msgbox PetalburgCity_Gym_Text_ExplainFacade, MSGBOX_DEFAULT
+	return
+
+PetalburgCity_Gym_EventScript_GiveUnstableDNA::
+	msgbox PetalburgCity_Gym_Text_NormanGiveUnstableDNA, MSGBOX_DEFAULT
+	giveitem ITEM_UNSTABLE_DNA
+	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_BagIsFull
+	setflag FLAG_RECEIVED_UNSTABLE_DNA_NORMAN
 	return
 
 PetalburgCity_Gym_EventScript_WallysDadArrivesNorth::
@@ -1293,6 +1309,15 @@ PetalburgCity_Gym_Text_ExplainFacade:
 	.string "or burned.\p"
 	.string "It might be able to turn a bad\n"
 	.string "situation into an advantage.$"
+
+PetalburgCity_Gym_Text_NormanGiveUnstableDNA:
+	.string "Ah, and a traveler passed through\n"
+	.string "PETALBURG and left this with me.\p"
+	.string "Said I'd know the right challenger\n"
+	.string "when I saw them.\p"
+	.string "I might be a little biased…\n"
+	.string "but I can't think of anyone more\l"
+	.string "deserving.$"
 
 PetalburgCity_Gym_Text_DadHappyAndSad:
 	.string "DAD: As the GYM LEADER, I can't\n"

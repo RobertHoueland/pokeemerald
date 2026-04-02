@@ -2639,20 +2639,24 @@ RustboroCity_EventScript_DrParkerIntro::
 # 1338 "data/maps/RustboroCity/scripts.pory"
 	playse SE_PIN
 # 1339 "data/maps/RustboroCity/scripts.pory"
-	msgbox RustboroCity_Text_DrParkerIntroDialogue
+	waitse
 # 1340 "data/maps/RustboroCity/scripts.pory"
-	closemessage
+	delay 8
+# 1341 "data/maps/RustboroCity/scripts.pory"
+	msgbox RustboroCity_Text_DrParkerIntroDialogue
 # 1342 "data/maps/RustboroCity/scripts.pory"
+	closemessage
+# 1344 "data/maps/RustboroCity/scripts.pory"
 	applymovement LOCALID_RUSTBORO_DR_PARKER, RustboroCity_EventScript_DrParkerIntro_Movement_2
-# 1345 "data/maps/RustboroCity/scripts.pory"
+# 1347 "data/maps/RustboroCity/scripts.pory"
 	fadedefaultbgm
-# 1346 "data/maps/RustboroCity/scripts.pory"
-	waitmovement 0
 # 1348 "data/maps/RustboroCity/scripts.pory"
-	removeobject LOCALID_RUSTBORO_DR_PARKER
-# 1349 "data/maps/RustboroCity/scripts.pory"
-	setvar VAR_RUSTBORO_GYM_STATE, 3
+	waitmovement 0
 # 1350 "data/maps/RustboroCity/scripts.pory"
+	removeobject LOCALID_RUSTBORO_DR_PARKER
+# 1351 "data/maps/RustboroCity/scripts.pory"
+	setvar VAR_RUSTBORO_GYM_STATE, 3
+# 1352 "data/maps/RustboroCity/scripts.pory"
 	releaseall
 	return
 
@@ -2703,27 +2707,27 @@ RustboroCity_EventScript_DrParkerIntro_Movement_1:
 	face_player
 	step_end
 
-# 1342 "data/maps/RustboroCity/scripts.pory"
+# 1344 "data/maps/RustboroCity/scripts.pory"
 RustboroCity_EventScript_DrParkerIntro_Movement_2:
-# 1343 "data/maps/RustboroCity/scripts.pory"
+# 1345 "data/maps/RustboroCity/scripts.pory"
 	walk_left
-# 1343 "data/maps/RustboroCity/scripts.pory"
+# 1345 "data/maps/RustboroCity/scripts.pory"
 	walk_left
-# 1343 "data/maps/RustboroCity/scripts.pory"
+# 1345 "data/maps/RustboroCity/scripts.pory"
 	walk_left
-# 1343 "data/maps/RustboroCity/scripts.pory"
+# 1345 "data/maps/RustboroCity/scripts.pory"
 	walk_left
-# 1343 "data/maps/RustboroCity/scripts.pory"
+# 1345 "data/maps/RustboroCity/scripts.pory"
 	walk_left
-# 1343 "data/maps/RustboroCity/scripts.pory"
+# 1345 "data/maps/RustboroCity/scripts.pory"
 	walk_left
-# 1343 "data/maps/RustboroCity/scripts.pory"
+# 1345 "data/maps/RustboroCity/scripts.pory"
 	walk_left
-# 1343 "data/maps/RustboroCity/scripts.pory"
+# 1345 "data/maps/RustboroCity/scripts.pory"
 	walk_left
-# 1343 "data/maps/RustboroCity/scripts.pory"
+# 1345 "data/maps/RustboroCity/scripts.pory"
 	walk_left
-# 1343 "data/maps/RustboroCity/scripts.pory"
+# 1345 "data/maps/RustboroCity/scripts.pory"
 	walk_left
 	step_end
 
@@ -2740,5 +2744,5 @@ RustboroCity_Text_DrParkerIntroDialogue::
 	.string "DEVON CORPORATION.\p"
 	.string "Just between you and me, I'm working on\n"
 	.string "something in the attic of DEVON CORP.\p"
-	.string "Let me know if you find anything that\n"
-	.string "looks like it could be useful!$"
+	.string "Now if you'll excuse me, I need to get\n"
+	.string "back to important business.$"

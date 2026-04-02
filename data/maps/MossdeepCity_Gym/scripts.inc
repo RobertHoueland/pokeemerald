@@ -58,6 +58,7 @@ MossdeepCity_Gym_EventScript_TateAndLiza::
 	specialvar VAR_RESULT, ShouldTryRematchBattle
 	goto_if_eq VAR_RESULT, TRUE, MossdeepCity_Gym_EventScript_TateAndLizaRematch
 	goto_if_unset FLAG_RECEIVED_TM_CALM_MIND, MossdeepCity_Gym_EventScript_GiveCalmMind2
+	goto_if_unset FLAG_RECEIVED_UNSTABLE_DNA_TATELIZA, MossdeepCity_Gym_EventScript_GiveUnstableDNA2
 	msgbox MossdeepCity_Gym_Text_TateAndLizaPostBattle, MSGBOX_DEFAULT
 	release
 	end
@@ -83,6 +84,7 @@ MossdeepCity_Gym_EventScript_TateAndLizaDefeated::
 	setflag FLAG_HIDE_MOSSDEEP_CITY_SPACE_CENTER_1F_STEVEN
 	setvar VAR_MOSSDEEP_SPACE_CENTER_STATE, 1
 	call MossdeepCity_Gym_EventScript_GiveCalmMind
+	call MossdeepCity_Gym_EventScript_GiveUnstableDNA
 	closemessage
 	delay 30
 	playfanfare MUS_REGISTER_MATCH_CALL
@@ -108,6 +110,18 @@ MossdeepCity_Gym_EventScript_GiveCalmMind::
 	msgbox MossdeepCity_Gym_Text_ExplainCalmMind, MSGBOX_DEFAULT
 	setflag FLAG_RECEIVED_TM_CALM_MIND
 	return
+
+MossdeepCity_Gym_EventScript_GiveUnstableDNA::
+	msgbox MossdeepCity_Gym_Text_TateAndLizaGiveUnstableDNA, MSGBOX_DEFAULT
+	giveitem ITEM_UNSTABLE_DNA
+	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_BagIsFull
+	setflag FLAG_RECEIVED_UNSTABLE_DNA_TATELIZA
+	return
+
+MossdeepCity_Gym_EventScript_GiveUnstableDNA2::
+	call MossdeepCity_Gym_EventScript_GiveUnstableDNA
+	release
+	end
 
 MossdeepCity_Gym_EventScript_TateAndLizaRematch::
 	trainerbattle_rematch_double TRAINER_TATE_AND_LIZA_1, MossdeepCity_Gym_Text_TateAndLizaPreRematch, MossdeepCity_Gym_Text_TateAndLizaRematchDefeat, MossdeepCity_Gym_Text_TateAndLizaRematchNeedTwoMons
@@ -308,6 +322,16 @@ MossdeepCity_Gym_EventScript_GymStatue::
 	msgbox MossdeepCity_Gym_Text_GymStatue, MSGBOX_DEFAULT
 	releaseall
 	end
+
+MossdeepCity_Gym_Text_TateAndLizaGiveUnstableDNA:
+	.string "LIZA: … … … … … …\n"
+	.string "Aren't you forgetting something?\p"
+	.string "TATE: Right… A parcel arrived full\n"
+	.string "of star charts, and no sender.\p"
+	.string "LIZA: We read them together and saw\n"
+	.string "your name in the constellations.\p"
+	.string "TATE: We've been waiting for you\n"
+	.string "to arrive.$"
 
 MossdeepCity_Gym_EventScript_YellowFloorSwitch::
 	playse SE_SWITCH

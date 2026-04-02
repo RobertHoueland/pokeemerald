@@ -961,6 +961,10 @@ LittlerootTown_Text_BirchSpendsDaysInLab:
 	.string "PROF. BIRCH spends days in his LAB\n"
 	.string "studying, then he'll suddenly go out in\l"
 	.string "the wild to do more research…\p"
+	.string "People keep spreading rumors about\n"
+	.string "strange POKéMON mutations, too.\p"
+	.string "Maybe that's why he's always rushing\n"
+	.string "between the LAB and the tall grass…\p"
 	.string "When does PROF. BIRCH spend time\n"
 	.string "at home?$"
 

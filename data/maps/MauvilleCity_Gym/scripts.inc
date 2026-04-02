@@ -78,6 +78,7 @@ MauvilleCity_Gym_EventScript_Wattson::
 	specialvar VAR_RESULT, ShouldTryRematchBattle
 	goto_if_eq VAR_RESULT, TRUE, MauvilleCity_Gym_EventScript_WattsonRematch
 	goto_if_unset FLAG_RECEIVED_TM_SHOCK_WAVE, MauvilleCity_Gym_EventScript_GiveShockWave2
+	goto_if_unset FLAG_RECEIVED_UNSTABLE_DNA_WATTSON, MauvilleCity_Gym_EventScript_GiveUnstableDNA2
 	goto_if_eq VAR_NEW_MAUVILLE_STATE, 2, MauvilleCity_Gym_EventScript_CompletedNewMauville
 	msgbox MauvilleCity_Gym_Text_WattsonPostBattle, MSGBOX_DEFAULT
 	release
@@ -100,6 +101,7 @@ MauvilleCity_Gym_EventScript_WattsonDefeated::
 	special DrawWholeMapView
 	playse SE_UNLOCK
 	call MauvilleCity_Gym_EventScript_GiveShockWave
+	call MauvilleCity_Gym_EventScript_GiveUnstableDNA
 	closemessage
 	delay 30
 	playfanfare MUS_REGISTER_MATCH_CALL
@@ -125,6 +127,18 @@ MauvilleCity_Gym_EventScript_GiveShockWave::
 	msgbox MauvilleCity_Gym_Text_ExplainShockWave, MSGBOX_DEFAULT
 	setflag FLAG_RECEIVED_TM_SHOCK_WAVE
 	return
+
+MauvilleCity_Gym_EventScript_GiveUnstableDNA::
+	msgbox MauvilleCity_Gym_Text_WattsonGiveUnstableDNA, MSGBOX_DEFAULT
+	giveitem ITEM_UNSTABLE_DNA
+	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_BagIsFull
+	setflag FLAG_RECEIVED_UNSTABLE_DNA_WATTSON
+	return
+
+MauvilleCity_Gym_EventScript_GiveUnstableDNA2::
+	call MauvilleCity_Gym_EventScript_GiveUnstableDNA
+	release
+	end
 
 MauvilleCity_Gym_EventScript_CompletedNewMauville::
 	msgbox MauvilleCity_Gym_Text_WattsonGoForthAndEndeavor, MSGBOX_DEFAULT
@@ -255,6 +269,16 @@ MauvilleCity_Gym_EventScript_GymStatue::
 	msgbox MauvilleCity_Gym_Text_GymStatue, MSGBOX_DEFAULT
 	releaseall
 	end
+
+MauvilleCity_Gym_Text_WattsonGiveUnstableDNA:
+	.string "WATTSON: Hoho! I almost forgot!\n"
+	.string "This old canister powered up a\l"
+	.string "dead PC monitor yesterday.\p"
+	.string "A message flashed just once:\n"
+	.string "“Find the trainer sharp enough\l"
+	.string "to clear your maze.”\p"
+	.string "Whoever sent it has quite the\n"
+	.string "sense of humor!$"
 
 MauvilleCity_Gym_Text_GymGuideAdvice:
 	.string "Hey, how's it going, CHAMPION-\n"

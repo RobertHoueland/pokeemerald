@@ -137,6 +137,7 @@ DewfordTown_Gym_EventScript_Brawly::
 	specialvar VAR_RESULT, ShouldTryRematchBattle
 	goto_if_eq VAR_RESULT, TRUE, DewfordTown_Gym_EventScript_BrawlyRematch
 	goto_if_unset FLAG_RECEIVED_TM_BULK_UP, DewfordTown_Gym_EventScript_GiveBulkUp2
+	goto_if_unset FLAG_RECEIVED_UNSTABLE_DNA_BRAWLY, DewfordTown_Gym_EventScript_GiveUnstableDNA2
 	msgbox DewfordTown_Gym_Text_BrawlyPostBattle, MSGBOX_DEFAULT
 	release
 	end
@@ -154,6 +155,7 @@ DewfordTown_Gym_EventScript_BrawlyDefeated::
 	setvar VAR_0x8008, 2
 	call Common_EventScript_SetGymTrainers
 	call DewfordTown_Gym_EventScript_GiveBulkUp
+	call DewfordTown_Gym_EventScript_GiveUnstableDNA
 	closemessage
 	delay 30
 	playfanfare MUS_REGISTER_MATCH_CALL
@@ -173,6 +175,18 @@ DewfordTown_Gym_EventScript_GiveBulkUp::
 	msgbox DewfordTown_Gym_Text_ExplainBulkUp, MSGBOX_DEFAULT
 	setflag FLAG_RECEIVED_TM_BULK_UP
 	return
+
+DewfordTown_Gym_EventScript_GiveUnstableDNA::
+	msgbox DewfordTown_Gym_Text_BrawlyGiveUnstableDNA, MSGBOX_DEFAULT
+	giveitem ITEM_UNSTABLE_DNA
+	goto_if_eq VAR_RESULT, 0, Common_EventScript_BagIsFull
+	setflag FLAG_RECEIVED_UNSTABLE_DNA_BRAWLY
+	return
+
+DewfordTown_Gym_EventScript_GiveUnstableDNA2:
+	call DewfordTown_Gym_EventScript_GiveUnstableDNA
+	release
+	end
 
 DewfordTown_Gym_EventScript_GiveBulkUp2:
 	giveitem ITEM_TM_BULK_UP
@@ -281,6 +295,12 @@ DewfordTown_Gym_EventScript_GymStatue::
 	msgbox DewfordTown_Gym_Text_GymStatue, MSGBOX_DEFAULT
 	releaseall
 	end
+
+DewfordTown_Gym_Text_BrawlyGiveUnstableDNA:
+	.string "Also. The tide washed this up to my\n"
+	.string "door last night.\p"
+	.string "The waves must have decided that\n"
+	.string "it belonged to you.$"
 
 DewfordTown_Gym_Text_GymGuideAdvice:
 	.string "Hey, how's it going, CHAMPION-\n"

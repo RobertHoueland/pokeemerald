@@ -48,6 +48,7 @@ LavaridgeTown_Gym_1F_EventScript_Flannery::
 	specialvar VAR_RESULT, ShouldTryRematchBattle
 	goto_if_eq VAR_RESULT, TRUE, LavaridgeTown_Gym_1F_EventScript_FlanneryRematch
 	goto_if_unset FLAG_RECEIVED_TM_OVERHEAT, LavaridgeTown_Gym_1F_EventScript_GiveOverheat2
+	goto_if_unset FLAG_RECEIVED_UNSTABLE_DNA_FLANNERY, LavaridgeTown_Gym_1F_EventScript_GiveUnstableDNA2
 	msgbox LavaridgeTown_Gym_1F_Text_FlanneryPostBattle, MSGBOX_DEFAULT
 	release
 	end
@@ -67,6 +68,9 @@ LavaridgeTown_Gym_1F_EventScript_FlanneryDefeated::
 	setflag FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WALLY
 	setvar VAR_LAVARIDGE_TOWN_STATE, 1
 	call LavaridgeTown_Gym_1F_EventScript_GiveOverheat
+	closemessage
+	delay 24
+	call LavaridgeTown_Gym_1F_EventScript_GiveUnstableDNA
 	closemessage
 	delay 30
 	playfanfare MUS_REGISTER_MATCH_CALL
@@ -92,6 +96,18 @@ LavaridgeTown_Gym_1F_EventScript_GiveOverheat::
 	msgbox LavaridgeTown_Gym_1F_Text_ExplainOverheat, MSGBOX_DEFAULT
 	setflag FLAG_RECEIVED_TM_OVERHEAT
 	return
+
+LavaridgeTown_Gym_1F_EventScript_GiveUnstableDNA::
+	msgbox LavaridgeTown_Gym_1F_Text_FlanneryGiveUnstableDNA, MSGBOX_DEFAULT
+	giveitem ITEM_UNSTABLE_DNA
+	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_BagIsFull
+	setflag FLAG_RECEIVED_UNSTABLE_DNA_FLANNERY
+	return
+
+LavaridgeTown_Gym_1F_EventScript_GiveUnstableDNA2::
+	call LavaridgeTown_Gym_1F_EventScript_GiveUnstableDNA
+	release
+	end
 
 LavaridgeTown_Gym_1F_EventScript_FlanneryRematch::
 	trainerbattle_rematch_double TRAINER_FLANNERY_1, LavaridgeTown_Gym_1F_Text_FlanneryPreRematch, LavaridgeTown_Gym_1F_Text_FlanneryRematchDefeat, LavaridgeTown_Gym_1F_Text_FlanneryRematchNeedTwoMons
@@ -179,6 +195,13 @@ LavaridgeTown_Gym_1F_EventScript_GymStatue::
 	msgbox LavaridgeTown_Gym_1F_Text_GymStatue, MSGBOX_DEFAULT
 	releaseall
 	end
+
+LavaridgeTown_Gym_1F_Text_FlanneryGiveUnstableDNA:
+	.string "Oh yea, this tube sat in a magma vent\n"
+	.string "all night and never melted.\p"
+	.string "I don't know who sent it.\n"
+	.string "But something tells me it was meant\l"
+	.string "for someone who runs hot.$"
 
 LavaridgeTown_Gym_1F_Text_GymGuideAdvice:
 	.string "Hey, how's it going, CHAMPION-\n"

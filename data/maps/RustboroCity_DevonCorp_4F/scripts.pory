@@ -120,10 +120,13 @@ script RustboroCity_DevonCorp_4F_EventScript_DrParker {
 	// First meeting:
 	msgbox(format("Come on… so close…"))
     faceplayer
+	delay(8)
 	msgbox(RustboroCity_DevonCorp_4F_Text_DrParkerGreeting)
 
 	checkitem(ITEM_UNSTABLE_DNA, 1)
 	if (var(VAR_RESULT) == FALSE) {
+		applymovement(LOCALID_DR_PARKER, Common_Movement_FaceUp)
+		waitmovement(0)
 		releaseall
 		end
 	}
@@ -132,6 +135,7 @@ script RustboroCity_DevonCorp_4F_EventScript_DrParker {
 	applymovement(LOCALID_DR_PARKER, Common_Movement_ExclamationMark)
 	waitse
 	waitmovement(0)
+	delay(12)
 	msgbox(RustboroCity_DevonCorp_4F_Text_DrParkerFoundDna)
 
 	if (var(VAR_TEMP_0) == DIR_WEST) {
@@ -142,6 +146,7 @@ script RustboroCity_DevonCorp_4F_EventScript_DrParker {
 		applymovement(LOCALID_DR_PARKER, DrParkerExcited_MoveLeft)
 	}
 	waitmovement(0)
+	delay(16)
 
 	msgbox(RustboroCity_DevonCorp_4F_Text_DrParkerMainExplanation)
     setflag(FLAG_MET_DR_PARKER)
@@ -149,6 +154,7 @@ script RustboroCity_DevonCorp_4F_EventScript_DrParker {
 
 Met_DrParker:
     faceplayer
+	delay(8)
 	if (flag(FLAG_150_MUTATIONS) && !flag(FLAG_DR_PARKER_TALKED_AFTER_150)) {
 		msgbox(RustboroCity_DevonCorp_4F_Text_DrParkerOldFriend)
 		setflag(FLAG_DR_PARKER_TALKED_AFTER_150)
@@ -160,8 +166,10 @@ Met_DrParker:
 		goto(RustboroCity_DevonCorp_4F_EventScript_DrParkerEnd)
 	}
 	msgbox(RustboroCity_DevonCorp_4F_Text_DrParkerReturnWithDna)
+	delay(8)
 FirstMeet_DrParker:
 	msgbox(format("Please, accept a Proto-Legend as a thank you for the DNA sample."))
+	delay(8)
 	goto(RustboroCity_DevonCorp_4F_EventScript_SelectRegion)
 }
 
@@ -503,8 +511,10 @@ script RustboroCity_DevonCorp_4F_EventScript_SelectAlola {
 script RustboroCity_DevonCorp_4F_EventScript_OfferShiny {
 	setvar(VAR_TEMP_2, 0)
 	msgbox(format("Oh, I almost forgot!"))
+	delay(12)
 	showmoneybox(0, 0)
 	msgbox(RustboroCity_DevonCorp_4F_Text_ShinyOffer)
+	delay(8)
 	multichoicedefault(20, 8, MULTI_YESNO, 1, FALSE)
 
 	if (var(VAR_RESULT) == 0) {
@@ -515,6 +525,7 @@ script RustboroCity_DevonCorp_4F_EventScript_OfferShiny {
 			removemoney(50000)
 			playse(SE_SHOP)
 			waitse
+			delay(8)
 			hidemoneybox()
 			setvar(VAR_TEMP_2, 1)
 			msgbox(format("Excellent! I'll prepare a special variant for you."))
@@ -932,7 +943,9 @@ script RustboroCity_DevonCorp_4F_EventScript_GiveLegendary {
 		// flash screen and do cry
 		playmoncry(VAR_TEMP_TRANSFERRED_SPECIES, CRY_MODE_ENCOUNTER)
 		fadescreenspeed(FADE_TO_BLACK, 1)
+		delay(12)
 		msgbox(format("{STR_VAR_1} materialized from the Unstable DNA!"))
+		delay(8)
 		fadescreenspeed(FADE_FROM_BLACK, 1)
 		waitmoncry
 
@@ -940,6 +953,7 @@ script RustboroCity_DevonCorp_4F_EventScript_GiveLegendary {
         message(format("{PLAYER} received {STR_VAR_1}!"))
         waitmessage
         waitfanfare
+		delay(8)
 	}
 
     if (var(VAR_RESULT) == MON_GIVEN_TO_PARTY) {
@@ -961,6 +975,7 @@ script RustboroCity_DevonCorp_4F_EventScript_GiveLegendary {
     }
 
     msgbox(format("DR. PARKER: Enjoy your new Proto-Legend!"))
+	delay(8)
     setvar(VAR_RESULT, 0)
     releaseall
 }

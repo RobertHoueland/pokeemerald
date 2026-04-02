@@ -6,6 +6,7 @@ RustboroCity_Gym_EventScript_Roxanne::
 	specialvar VAR_RESULT, ShouldTryRematchBattle
 	goto_if_eq VAR_RESULT, TRUE, RustboroCity_Gym_EventScript_RoxanneRematch
 	goto_if_unset FLAG_RECEIVED_TM_ROCK_TOMB, RustboroCity_Gym_EventScript_GiveRockTomb
+	goto_if_unset FLAG_RECEIVED_UNSTABLE_DNA_ROXANNE, RustboroCity_Gym_EventScript_GiveUnstableDNA
 	msgbox RustboroCity_Gym_Text_RoxannePostBattle, MSGBOX_DEFAULT
 	release
 	end
@@ -31,6 +32,16 @@ RustboroCity_Gym_EventScript_GiveRockTomb::
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
 	setflag FLAG_RECEIVED_TM_ROCK_TOMB
 	msgbox RustboroCity_Gym_Text_ExplainRockTomb, MSGBOX_DEFAULT
+	closemessage
+	delay 24
+	goto RustboroCity_Gym_EventScript_GiveUnstableDNA
+	end
+
+RustboroCity_Gym_EventScript_GiveUnstableDNA::
+	msgbox RustboroCity_Gym_Text_RoxanneGiveUnstableDNA, MSGBOX_DEFAULT
+	giveitem ITEM_UNSTABLE_DNA
+	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_BagIsFull
+	setflag FLAG_RECEIVED_UNSTABLE_DNA_ROXANNE
 	release
 	end
 
@@ -88,6 +99,16 @@ RustboroCity_Gym_EventScript_GymStatue::
 	msgbox RustboroCity_Gym_Text_GymStatue, MSGBOX_DEFAULT
 	releaseall
 	end
+
+RustboroCity_Gym_Text_RoxanneGiveUnstableDNA:
+	.string "One more thing before you go.\p"
+	.string "Someone left this at the TRAINER'S\n"
+	.string "SCHOOL before dawn.\p"
+	.string "No name. Just a note that read:\n"
+	.string "“For the challenger who battles\l"
+	.string "with discipline.”\p"
+	.string "I know exactly who they were\n"
+	.string "referring to.$"
 
 RustboroCity_Gym_EventScript_RegisterRoxanne::
 	lockall

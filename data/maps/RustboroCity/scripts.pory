@@ -1305,7 +1305,7 @@ text RustboroCity_Text_DrParkerIntroDialogue {
 		   "Did you happen to see anyone drop anything unusual around here?\p"
 		   "I'm DR. PARKER, a scientist over at DEVON CORPORATION.\p"
 		   "Just between you and me, I'm working on something in the attic of DEVON CORP.\p"
-		   "Let me know if you find anything that looks like it could be useful!")
+		   "Now if you'll excuse me, I need to get back to important business.")
 }
 
 script RustboroCity_EventScript_DrParkerIntro {
@@ -1336,6 +1336,8 @@ script RustboroCity_EventScript_DrParkerIntro {
     waitmovement(0)
 
 	playse(SE_PIN)
+	waitse
+	delay(8)
 	msgbox(RustboroCity_Text_DrParkerIntroDialogue)
 	closemessage
 

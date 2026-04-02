@@ -85,6 +85,7 @@ SootopolisCity_Gym_1F_EventScript_Juan::
 	goto_if_eq VAR_RESULT, TRUE, SootopolisCity_Gym_1F_EventScript_JuanRematch
 	goto_if_unset FLAG_RECEIVED_TM_WATER_PULSE, SootopolisCity_Gym_1F_EventScript_GiveWaterPulse2
 	goto_if_unset FLAG_BADGE06_GET, SootopolisCity_Gym_1F_EventScript_GoGetFortreeBadge
+	goto_if_unset FLAG_RECEIVED_UNSTABLE_DNA_JUAN, SootopolisCity_Gym_1F_EventScript_GiveUnstableDNA2
 	msgbox SootopolisCity_Gym_1F_Text_JuanPostBattle, MSGBOX_DEFAULT
 	release
 	end
@@ -104,6 +105,7 @@ SootopolisCity_Gym_1F_EventScript_JuanDefeated::
 	setvar VAR_0x8008, 8
 	call Common_EventScript_SetGymTrainers
 	call SootopolisCity_Gym_1F_EventScript_GiveWaterPulse
+	call SootopolisCity_Gym_1F_EventScript_GiveUnstableDNA
 	closemessage
 	delay 30
 	playfanfare MUS_REGISTER_MATCH_CALL
@@ -121,6 +123,18 @@ SootopolisCity_Gym_1F_EventScript_GiveWaterPulse::
 	msgbox SootopolisCity_Gym_1F_Text_ExplainWaterPulse, MSGBOX_DEFAULT
 	setflag FLAG_RECEIVED_TM_WATER_PULSE
 	return
+
+SootopolisCity_Gym_1F_EventScript_GiveUnstableDNA::
+	msgbox SootopolisCity_Gym_1F_Text_JuanGiveUnstableDNA, MSGBOX_DEFAULT
+	giveitem ITEM_UNSTABLE_DNA
+	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_BagIsFull
+	setflag FLAG_RECEIVED_UNSTABLE_DNA_JUAN
+	return
+
+SootopolisCity_Gym_1F_EventScript_GiveUnstableDNA2::
+	call SootopolisCity_Gym_1F_EventScript_GiveUnstableDNA
+	release
+	end
 
 SootopolisCity_Gym_1F_EventScript_GiveWaterPulse2::
 	giveitem ITEM_TM_WATER_PULSE
@@ -174,6 +188,16 @@ SootopolisCity_Gym_1F_EventScript_GymStatue::
 	msgbox SootopolisCity_Gym_1F_Text_GymStatue, MSGBOX_DEFAULT
 	releaseall
 	end
+
+SootopolisCity_Gym_1F_Text_JuanGiveUnstableDNA:
+	.string "And you know what's really crazy?\p"
+	.string "This appeared beside my mirror this\n"
+	.string "morning, sealed in sea-wax.\p"
+	.string "I've been a GYM LEADER for many\n"
+	.string "years now.\p"
+	.string "In all that time, I've never seen\n"
+	.string "anything like it.\l"
+	.string "Or a challenger quite like you!$"
 
 SootopolisCity_Gym_1F_Text_GymGuideAdvice:
 	.string "Yo! How's it going, CHAMPION-\n"
