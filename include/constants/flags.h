@@ -690,24 +690,24 @@
 #define FLAG_RECEIVED_UNSTABLE_DNA_PHOEBE    0x283
 #define FLAG_RECEIVED_UNSTABLE_DNA_GLACIA    0x284
 #define FLAG_RECEIVED_UNSTABLE_DNA_DRAKE     0x285
-#define FLAG_UNUSED_0x286  0x286 // Unused Flag
-#define FLAG_UNUSED_0x287  0x287 // Unused Flag
-#define FLAG_UNUSED_0x288  0x288 // Unused Flag
-#define FLAG_UNUSED_0x289  0x289 // Unused Flag
-#define FLAG_UNUSED_0x28A  0x28A // Unused Flag
-#define FLAG_UNUSED_0x28B  0x28B // Unused Flag
-#define FLAG_UNUSED_0x28C  0x28C // Unused Flag
-#define FLAG_UNUSED_0x28D  0x28D // Unused Flag
-#define FLAG_UNUSED_0x28E  0x28E // Unused Flag
-#define FLAG_UNUSED_0x28F  0x28F // Unused Flag
-#define FLAG_UNUSED_0x290  0x290 // Unused Flag
-#define FLAG_UNUSED_0x291  0x291 // Unused Flag
-#define FLAG_UNUSED_0x292  0x292 // Unused Flag
-#define FLAG_UNUSED_0x293  0x293 // Unused Flag
-#define FLAG_UNUSED_0x294  0x294 // Unused Flag
-#define FLAG_UNUSED_0x295  0x295 // Unused Flag
-#define FLAG_UNUSED_0x296  0x296 // Unused Flag
-#define FLAG_UNUSED_0x297  0x297 // Unused Flag
+#define FLAG_RECEIVED_FIGHTING_MEMORY        0x286
+#define FLAG_RECEIVED_FLYING_MEMORY          0x287
+#define FLAG_RECEIVED_POISON_MEMORY          0x288
+#define FLAG_RECEIVED_GROUND_MEMORY          0x289
+#define FLAG_RECEIVED_ROCK_MEMORY            0x28A
+#define FLAG_RECEIVED_BUG_MEMORY             0x28B
+#define FLAG_RECEIVED_GHOST_MEMORY           0x28C
+#define FLAG_RECEIVED_STEEL_MEMORY           0x28D
+#define FLAG_RECEIVED_FIRE_MEMORY            0x28E
+#define FLAG_RECEIVED_WATER_MEMORY           0x28F
+#define FLAG_RECEIVED_GRASS_MEMORY           0x290
+#define FLAG_RECEIVED_ELECTRIC_MEMORY        0x291
+#define FLAG_RECEIVED_PSYCHIC_MEMORY         0x292
+#define FLAG_RECEIVED_ICE_MEMORY             0x293
+#define FLAG_RECEIVED_DRAGON_MEMORY          0x294
+#define FLAG_RECEIVED_DARK_MEMORY            0x295
+#define FLAG_RECEIVED_FAIRY_MEMORY           0x296
+#define FLAG_SAW_BIRCH_SILVALLY_MSG          0x297
 #define FLAG_UNUSED_0x298  0x298 // Unused Flag
 #define FLAG_UNUSED_0x299  0x299 // Unused Flag
 #define FLAG_UNUSED_0x29A  0x29A // Unused Flag

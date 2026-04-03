@@ -232,6 +232,10 @@ gSpecials::
 	def_special InitBirchState
 	def_special ScriptGetPokedexInfo
 	def_special ShowPokedexRatingMessage
+    def_special GetNextMemoryItemToGive
+    def_special SetNextMemoryItemFlag
+    def_special BufferNextMemoryItemType
+    def_special CheckHasAllMemories
 	def_special DoPCTurnOnEffect
 	def_special DoPCTurnOffEffect
 	def_special SetDeptStoreFloor
