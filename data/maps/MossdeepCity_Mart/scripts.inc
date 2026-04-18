@@ -21,6 +21,7 @@ MossdeepCity_Mart_Pokemart:
 	.2byte ITEM_FULL_HEAL
 	.2byte ITEM_REVIVE
 	.2byte ITEM_MAX_REPEL
+	.2byte ITEM_DUSK_STONE
 	.2byte ITEM_X_ATTACK
 	.2byte ITEM_X_DEFENSE
 	pokemartlistend

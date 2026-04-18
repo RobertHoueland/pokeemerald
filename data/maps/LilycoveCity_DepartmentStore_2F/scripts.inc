@@ -38,6 +38,8 @@ LilycoveCity_DepartmentStore_2F_Pokemart1:
 	.2byte ITEM_TART_APPLE
 	.2byte ITEM_SWEET_APPLE
 	.2byte ITEM_SYRUPY_APPLE
+	.2byte ITEM_AUSPICIOUS_ARMOR
+	.2byte ITEM_MALICIOUS_ARMOR
 	.2byte ITEM_FLUFFY_TAIL
 	pokemartlistend
 
