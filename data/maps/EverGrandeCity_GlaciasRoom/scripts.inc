@@ -106,8 +106,10 @@ EverGrandeCity_GlaciasRoom_Text_PostBattleSpeech:
 EverGrandeCity_GlaciasRoom_Text_GiveUnstableDNA:
 	.string "Before you go. This sample arrived\n"
 	.string "by official LEAGUE courier.\p"
-	.string "Its paperwork was blank except\n"
-	.string "for that now-familiar crest.\p"
+	.string "It came in a cryo-case with transfer\n"
+	.string "papers redacted line by line.\p"
+	.string "Only the crest remained, just\n"
+	.string "as on the others.\p"
 	.string "Your victories are being tracked\n"
 	.string "with unusual care.$"
 

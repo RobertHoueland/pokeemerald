@@ -36,17 +36,17 @@ movement DrParkerExcited_MoveRight {
 text RustboroCity_DevonCorp_4F_Text_DrParkerGreeting {
 	format("Oh! I didn't see you there!\p"
 	       "I'm on the verge of a breakthrough\nin my research.\p"
-		   "All I need is a sample of Unstable DNA…")
+		   "All I need is a sample of UNSTABLE DNA…")
 }
 
 text RustboroCity_DevonCorp_4F_Text_DrParkerFoundDna {
-	format("DR. PARKER: Wait… you found an Unstable DNA sample?\p"
+	format("DR. PARKER: Wait… you found an UNSTABLE DNA sample?\p"
 	       "What an incredible day this is!!!")
 }
 
 text RustboroCity_DevonCorp_4F_Text_DrParkerMainExplanation {
 	format("DR. PARKER: Wait…\nYou got it from ROXANNE?\p"
-	       "How in the world did ROXANNE\nget that Unstable DNA?\p"
+	       "How in the world did ROXANNE\nget that UNSTABLE DNA?\p"
 		   "If you are willing to part with it…\n"
 		   "I can finally stabilize my lab-grown\lexperiments.\p"
 		   "I call them… PROTO-LEGENDS!\p"
@@ -62,7 +62,7 @@ text RustboroCity_DevonCorp_4F_Text_DrParkerMainExplanation {
 }
 
 text RustboroCity_DevonCorp_4F_Text_DrParkerReturnWithDna {
-	format("DR. PARKER: Is that Unstable DNA I see?\p"
+	format("DR. PARKER: Is that UNSTABLE DNA I see?\p"
 		   "Splendid! My research continues\nto evolve!")
 }
 
@@ -550,7 +550,7 @@ script RustboroCity_DevonCorp_4F_EventScript_OfferShiny {
 }
 
 script RustboroCity_DevonCorp_4F_EventScript_DrParkerEnd {
-    msgbox(format("DR. PARKER: If you come across any Unstable DNA samples, please come see me!"))
+    msgbox(format("DR. PARKER: If you come across any UNSTABLE DNA samples, please come see me!"))
 	setvar(VAR_RESULT, 0)
     releaseall
 }
@@ -944,7 +944,7 @@ script RustboroCity_DevonCorp_4F_EventScript_GiveLegendary {
 		playmoncry(VAR_TEMP_TRANSFERRED_SPECIES, CRY_MODE_ENCOUNTER)
 		fadescreenspeed(FADE_TO_BLACK, 1)
 		delay(12)
-		msgbox(format("{STR_VAR_1} materialized from the Unstable DNA!"))
+		msgbox(format("{STR_VAR_1} materialized from the UNSTABLE DNA!"))
 		delay(8)
 		fadescreenspeed(FADE_FROM_BLACK, 1)
 		waitmoncry

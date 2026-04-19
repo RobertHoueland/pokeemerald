@@ -113,9 +113,8 @@ EverGrandeCity_DrakesRoom_Text_PostBattleSpeech:
 	.string "The CHAMPION is waiting!$"
 
 EverGrandeCity_DrakesRoom_Text_GiveUnstableDNA:
-	.string "{PLAYER}. This final vial was placed\n"
-	.string "in my hands with a clear purpose.\p"
-	.string "No signature. No title.\n"
+	.string "{PLAYER}. This final vial was placed in\n"
+	.string "my hands with a clear recipient in mind.\p"
 	.string "You did not arrive here by chance.$"
 
 EverGrandeCity_DrakesRoom_Text_GiveUnstableDNARematch:

@@ -2013,13 +2013,13 @@ RustboroCity_DevonCorp_4F_EventScript_OfferShiny_Text_2:
 RustboroCity_DevonCorp_4F_EventScript_DrParkerEnd_Text_0:
 # 553 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	.string "DR. PARKER: If you come across any\n"
-	.string "Unstable DNA samples, please come see\l"
+	.string "UNSTABLE DNA samples, please come see\l"
 	.string "me!$"
 
 RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_Text_0:
 # 947 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
 	.string "{STR_VAR_1} materialized from the\n"
-	.string "Unstable DNA!$"
+	.string "UNSTABLE DNA!$"
 
 RustboroCity_DevonCorp_4F_EventScript_GiveLegendary_Text_1:
 # 953 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
@@ -2035,12 +2035,12 @@ RustboroCity_DevonCorp_4F_Text_DrParkerGreeting::
 	.string "Oh! I didn't see you there!\p"
 	.string "I'm on the verge of a breakthrough\n"
 	.string "in my research.\p"
-	.string "All I need is a sample of Unstable DNA…$"
+	.string "All I need is a sample of UNSTABLE DNA…$"
 
 RustboroCity_DevonCorp_4F_Text_DrParkerFoundDna::
 # 42 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	.string "DR. PARKER: Wait… you found an Unstable\n"
-	.string "DNA sample?\p"
+	.string "DR. PARKER: Wait… you found an\n"
+	.string "UNSTABLE DNA sample?\p"
 	.string "What an incredible day this is!!!$"
 
 RustboroCity_DevonCorp_4F_Text_DrParkerMainExplanation::
@@ -2048,7 +2048,7 @@ RustboroCity_DevonCorp_4F_Text_DrParkerMainExplanation::
 	.string "DR. PARKER: Wait…\n"
 	.string "You got it from ROXANNE?\p"
 	.string "How in the world did ROXANNE\n"
-	.string "get that Unstable DNA?\p"
+	.string "get that UNSTABLE DNA?\p"
 	.string "If you are willing to part with it…\n"
 	.string "I can finally stabilize my lab-grown\l"
 	.string "experiments.\p"
@@ -2071,7 +2071,8 @@ RustboroCity_DevonCorp_4F_Text_DrParkerMainExplanation::
 
 RustboroCity_DevonCorp_4F_Text_DrParkerReturnWithDna::
 # 64 "data/maps/RustboroCity_DevonCorp_4F/scripts.pory"
-	.string "DR. PARKER: Is that Unstable DNA I see?\p"
+	.string "DR. PARKER: Is that UNSTABLE DNA I\n"
+	.string "see?\p"
 	.string "Splendid! My research continues\n"
 	.string "to evolve!$"
 

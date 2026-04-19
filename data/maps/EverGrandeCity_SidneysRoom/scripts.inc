@@ -110,12 +110,12 @@ EverGrandeCity_SidneysRoom_Text_PostBattleSpeech:
 	.string "your next battle!$"
 
 EverGrandeCity_SidneysRoom_Text_GiveUnstableDNA:
-	.string "Before you go, I owe you this\n"
-	.string "sealed vial.\p"
-	.string "A dockhand in SLATEPORT handed it\n"
-	.string "to me with no name attached.\p"
-	.string "Just one line: “Pass it on when a\n"
-	.string "real contender appears.”$"
+	.string "Before you go, I owe you this sealed\n"
+	.string "vial, with a fascinating crest etched\l"
+	.string "onto the side.\p"
+	.string "A dockhand in SLATEPORT pulled it from\n"
+	.string "a LEAGUE crate with no sender listed.\p"
+	.string "The shipment log was scrubbed clean.$"
 
 EverGrandeCity_SidneysRoom_Text_GiveUnstableDNARematch:
 	.string "You still hit like a truck.\n"

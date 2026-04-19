@@ -708,8 +708,8 @@
 #define FLAG_RECEIVED_DARK_MEMORY            0x295
 #define FLAG_RECEIVED_FAIRY_MEMORY           0x296
 #define FLAG_SAW_BIRCH_SILVALLY_MSG          0x297
-#define FLAG_UNUSED_0x298  0x298 // Unused Flag
-#define FLAG_UNUSED_0x299  0x299 // Unused Flag
+#define FLAG_CHAMPION_DNA_REVEAL             0x298
+#define FLAG_HIDE_PROCTOR_NIMA               0x299
 #define FLAG_UNUSED_0x29A  0x29A // Unused Flag
 #define FLAG_UNUSED_0x29B  0x29B // Unused Flag
 #define FLAG_UNUSED_0x29C  0x29C // Unused Flag

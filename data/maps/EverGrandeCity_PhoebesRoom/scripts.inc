@@ -107,12 +107,14 @@ EverGrandeCity_PhoebesRoom_Text_PostBattleSpeech:
 	.string "Go ahead, move on to the next room.$"
 
 EverGrandeCity_PhoebesRoom_Text_GiveUnstableDNA:
-	.string "Oh! This little vial came\n"
-	.string "through the LEAGUE desk for you.\p"
-	.string "No sender, no explanation, just\n"
-	.string "that same crest SIDNEY described.\p"
-	.string "Whoever started this is still\n"
-	.string "watching your climb.$"
+	.string "Oh! This little vial came through\n"
+	.string "the LEAGUE desk for you.\p"
+	.string "The clerk said it carried the same\n"
+	.string "shipping tag as SIDNEY'S parcel.\p"
+	.string "No sender or note, just that crest\n"
+	.string "sealed in old wax.\p"
+	.string "Whoever sent this is watching\n"
+	.string "your climb. Exciting!$"
 
 EverGrandeCity_PhoebesRoom_Text_GiveUnstableDNARematch:
 	.string "Hehe! You beat me again.\n"
