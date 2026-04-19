@@ -21,6 +21,7 @@ extern struct HallofFameTeam *gHoFSaveBuffer;
 void CB2_DoHallOfFameScreen(void);
 void CB2_DoHallOfFameScreenDontSaveData(void);
 void CB2_DoHallOfFamePC(void);
+void SetHallOfFameShouldSkipCredits(bool8 skipCredits);
 
 // hof_pc.c
 void ReturnFromHallOfFamePC(void);

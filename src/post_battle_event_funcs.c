@@ -12,6 +12,7 @@
 int GameClear(void)
 {
     int i;
+    bool32 isRematchChampion;
     bool32 ribbonGet;
     struct RibbonCounter {
         u8 partyIndex;
@@ -19,6 +20,7 @@ int GameClear(void)
     } ribbonCounts[6];
 
     HealPlayerParty();
+    isRematchChampion = FlagGet(FLAG_SYS_GAME_CLEAR);
 
     if (FlagGet(FLAG_SYS_GAME_CLEAR) == TRUE)
     {
@@ -81,6 +83,7 @@ int GameClear(void)
         }
     }
 
+    SetHallOfFameShouldSkipCredits(isRematchChampion);
     SetMainCallback2(CB2_DoHallOfFameScreen);
     return 0;
 }

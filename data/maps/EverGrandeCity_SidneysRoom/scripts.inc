@@ -47,25 +47,53 @@ EverGrandeCity_SidneysRoom_EventScript_Sidney::
 	faceplayer
 	goto_if_set FLAG_DEFEATED_ELITE_4_SIDNEY, EverGrandeCity_SidneysRoom_EventScript_PostBattleSpeech
 	playbgm MUS_ENCOUNTER_ELITE_FOUR, FALSE
+	goto_if_set FLAG_SYS_GAME_CLEAR, EverGrandeCity_SidneysRoom_EventScript_RematchBattle
 	msgbox EverGrandeCity_SidneysRoom_Text_IntroSpeech, MSGBOX_DEFAULT
 	trainerbattle_no_intro TRAINER_SIDNEY, EverGrandeCity_SidneysRoom_Text_Defeat
 	goto EverGrandeCity_SidneysRoom_EventScript_Defeated
 	end
 
+EverGrandeCity_SidneysRoom_EventScript_RematchBattle::
+	msgbox EverGrandeCity_SidneysRoom_Text_RematchIntroSpeech, MSGBOX_DEFAULT
+	trainerbattle_no_intro TRAINER_SIDNEY_2, EverGrandeCity_SidneysRoom_Text_Defeat
+	goto EverGrandeCity_SidneysRoom_EventScript_Defeated
+	end
+
 EverGrandeCity_SidneysRoom_EventScript_PostBattleSpeech::
 	goto_if_unset FLAG_RECEIVED_UNSTABLE_DNA_SIDNEY, EverGrandeCity_SidneysRoom_EventScript_GiveUnstableDNA2
+	goto_if_set FLAG_SYS_GAME_CLEAR, EverGrandeCity_SidneysRoom_EventScript_PostBattleSpeechRematch
 	msgbox EverGrandeCity_SidneysRoom_Text_PostBattleSpeech, MSGBOX_DEFAULT
+	release
+	end
+
+EverGrandeCity_SidneysRoom_EventScript_PostBattleSpeechRematch::
+	msgbox EverGrandeCity_SidneysRoom_Text_PostBattleSpeechRematch, MSGBOX_DEFAULT
 	release
 	end
 
 EverGrandeCity_SidneysRoom_EventScript_Defeated::
 	setflag FLAG_DEFEATED_ELITE_4_SIDNEY
 	call PokemonLeague_EliteFour_SetAdvanceToNextRoomMetatiles
+	goto_if_set FLAG_SYS_GAME_CLEAR, EverGrandeCity_SidneysRoom_EventScript_DefeatedRematch
 	msgbox EverGrandeCity_SidneysRoom_Text_PostBattleSpeech, MSGBOX_DEFAULT
+	goto_if_set FLAG_RECEIVED_UNSTABLE_DNA_SIDNEY, EverGrandeCity_SidneysRoom_EventScript_DefeatedDone
 	closemessage
 	delay 24
 	call EverGrandeCity_SidneysRoom_EventScript_GiveUnstableDNA
+	goto EverGrandeCity_SidneysRoom_EventScript_DefeatedDone
+	end
+
+EverGrandeCity_SidneysRoom_EventScript_DefeatedDone::
 	release
+	end
+
+EverGrandeCity_SidneysRoom_EventScript_DefeatedRematch::
+	msgbox EverGrandeCity_SidneysRoom_Text_PostBattleSpeechRematch, MSGBOX_DEFAULT
+	goto_if_set FLAG_RECEIVED_UNSTABLE_DNA_SIDNEY, EverGrandeCity_SidneysRoom_EventScript_DefeatedDone
+	closemessage
+	delay 24
+	call EverGrandeCity_SidneysRoom_EventScript_GiveUnstableDNA
+	goto EverGrandeCity_SidneysRoom_EventScript_DefeatedDone
 	end
 
 EverGrandeCity_SidneysRoom_EventScript_GiveUnstableDNA::
@@ -98,6 +126,12 @@ EverGrandeCity_SidneysRoom_Text_IntroSpeech:
 	.string "a battle that can only be staged\l"
 	.string "here in the POKéMON LEAGUE!$"
 
+EverGrandeCity_SidneysRoom_Text_RematchIntroSpeech:
+	.string "Back for another round?\n"
+	.string "You don't waste any time.\p"
+	.string "Let's cut loose and see if your style\n"
+	.string "still hits as hard as last time!$"
+
 EverGrandeCity_SidneysRoom_Text_Defeat:
 	.string "Well, how do you like that? I lost!\n"
 	.string "Eh, it was fun, so it doesn't matter.$"
@@ -109,6 +143,12 @@ EverGrandeCity_SidneysRoom_Text_PostBattleSpeech:
 	.string "Now, go on to the next room and enjoy\l"
 	.string "your next battle!$"
 
+EverGrandeCity_SidneysRoom_Text_PostBattleSpeechRematch:
+	.string "Still sharp, still fearless.\n"
+	.string "You're not climbing anymore, are you?\p"
+	.string "Now you're defending your place\n"
+	.string "at the top.$"
+
 EverGrandeCity_SidneysRoom_Text_GiveUnstableDNA:
 	.string "Before you go, I owe you this sealed\n"
 	.string "vial, with a fascinating crest etched\l"
@@ -118,5 +158,5 @@ EverGrandeCity_SidneysRoom_Text_GiveUnstableDNA:
 	.string "The shipment log was scrubbed clean.$"
 
 EverGrandeCity_SidneysRoom_Text_GiveUnstableDNARematch:
-	.string "You still hit like a truck.\n"
-	.string "Take a vial and keep moving!$"
+	.string "Before you move on…\n"
+	.string "Take this vial, and keep moving!$"

@@ -41,23 +41,49 @@ EverGrandeCity_GlaciasRoom_EventScript_Glacia::
 	faceplayer
 	goto_if_set FLAG_DEFEATED_ELITE_4_GLACIA, EverGrandeCity_GlaciasRoom_EventScript_PostBattleSpeech
 	playbgm MUS_ENCOUNTER_ELITE_FOUR, FALSE
+	goto_if_set FLAG_SYS_GAME_CLEAR, EverGrandeCity_GlaciasRoom_EventScript_RematchBattle
 	msgbox EverGrandeCity_GlaciasRoom_Text_IntroSpeech, MSGBOX_DEFAULT
 	trainerbattle_no_intro TRAINER_GLACIA, EverGrandeCity_GlaciasRoom_Text_Defeat
 	goto EverGrandeCity_GlaciasRoom_EventScript_Defeated
 	end
 
+EverGrandeCity_GlaciasRoom_EventScript_RematchBattle::
+	msgbox EverGrandeCity_GlaciasRoom_Text_RematchIntroSpeech, MSGBOX_DEFAULT
+	trainerbattle_no_intro TRAINER_GLACIA_2, EverGrandeCity_GlaciasRoom_Text_Defeat
+	goto EverGrandeCity_GlaciasRoom_EventScript_Defeated
+	end
+
 EverGrandeCity_GlaciasRoom_EventScript_PostBattleSpeech::
 	goto_if_unset FLAG_RECEIVED_UNSTABLE_DNA_GLACIA, EverGrandeCity_GlaciasRoom_EventScript_GiveUnstableDNA2
+	goto_if_set FLAG_SYS_GAME_CLEAR, EverGrandeCity_GlaciasRoom_EventScript_PostBattleSpeechRematch
 	msgbox EverGrandeCity_GlaciasRoom_Text_PostBattleSpeech, MSGBOX_DEFAULT
+	release
+	end
+
+EverGrandeCity_GlaciasRoom_EventScript_PostBattleSpeechRematch::
+	msgbox EverGrandeCity_GlaciasRoom_Text_PostBattleSpeechRematch, MSGBOX_DEFAULT
 	release
 	end
 
 EverGrandeCity_GlaciasRoom_EventScript_Defeated::
 	setflag FLAG_DEFEATED_ELITE_4_GLACIA
 	call PokemonLeague_EliteFour_SetAdvanceToNextRoomMetatiles
+	goto_if_set FLAG_SYS_GAME_CLEAR, EverGrandeCity_GlaciasRoom_EventScript_DefeatedRematch
 	msgbox EverGrandeCity_GlaciasRoom_Text_PostBattleSpeech, MSGBOX_DEFAULT
+	goto_if_set FLAG_RECEIVED_UNSTABLE_DNA_GLACIA, EverGrandeCity_GlaciasRoom_EventScript_DefeatedDone
 	call EverGrandeCity_GlaciasRoom_EventScript_GiveUnstableDNA
+	goto EverGrandeCity_GlaciasRoom_EventScript_DefeatedDone
+	end
+
+EverGrandeCity_GlaciasRoom_EventScript_DefeatedDone::
 	release
+	end
+
+EverGrandeCity_GlaciasRoom_EventScript_DefeatedRematch::
+	msgbox EverGrandeCity_GlaciasRoom_Text_PostBattleSpeechRematch, MSGBOX_DEFAULT
+	goto_if_set FLAG_RECEIVED_UNSTABLE_DNA_GLACIA, EverGrandeCity_GlaciasRoom_EventScript_DefeatedDone
+	call EverGrandeCity_GlaciasRoom_EventScript_GiveUnstableDNA
+	goto EverGrandeCity_GlaciasRoom_EventScript_DefeatedDone
 	end
 
 EverGrandeCity_GlaciasRoom_EventScript_GiveUnstableDNA::
@@ -91,6 +117,12 @@ EverGrandeCity_GlaciasRoom_Text_IntroSpeech:
 	.string "It would please me to no end if I could\n"
 	.string "go all out against you!$"
 
+EverGrandeCity_GlaciasRoom_Text_RematchIntroSpeech:
+	.string "You have returned with poise.\p"
+	.string "Very well. I shall meet you with\n"
+	.string "an even colder gale than before.\p"
+	.string "Let us see whose resolve freezes first.$"
+
 EverGrandeCity_GlaciasRoom_Text_Defeat:
 	.string "You and your POKéMON…\n"
 	.string "How hot your spirits burn!\p"
@@ -103,6 +135,11 @@ EverGrandeCity_GlaciasRoom_Text_PostBattleSpeech:
 	.string "And there, confirm the truly fearsome\n"
 	.string "side of the POKéMON LEAGUE.$"
 
+EverGrandeCity_GlaciasRoom_Text_PostBattleSpeechRematch:
+	.string "Your fire did not fade.\p"
+	.string "The final chamber awaits\n"
+	.string "your challenge.$"
+
 EverGrandeCity_GlaciasRoom_Text_GiveUnstableDNA:
 	.string "Before you go. This sample arrived\n"
 	.string "by official LEAGUE courier.\p"
@@ -114,6 +151,4 @@ EverGrandeCity_GlaciasRoom_Text_GiveUnstableDNA:
 	.string "with unusual care.$"
 
 EverGrandeCity_GlaciasRoom_Text_GiveUnstableDNARematch:
-	.string "Your resolve remains sharp.\n"
-	.string "Accept another sample and advance.$"
-
+	.string "Accept this, and advance.$"

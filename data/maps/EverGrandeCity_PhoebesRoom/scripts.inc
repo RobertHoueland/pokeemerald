@@ -41,24 +41,62 @@ EverGrandeCity_PhoebesRoom_EventScript_Phoebe::
 	faceplayer
 	goto_if_set FLAG_DEFEATED_ELITE_4_PHOEBE, EverGrandeCity_PhoebesRoom_EventScript_PostBattleSpeech
 	playbgm MUS_ENCOUNTER_ELITE_FOUR, FALSE
+	goto_if_set FLAG_SYS_GAME_CLEAR, EverGrandeCity_PhoebesRoom_EventScript_RematchBattle
 	msgbox EverGrandeCity_PhoebesRoom_Text_IntroSpeech, MSGBOX_DEFAULT
 	trainerbattle_no_intro TRAINER_PHOEBE, EverGrandeCity_PhoebesRoom_Text_Defeat
 	goto EverGrandeCity_PhoebesRoom_EventScript_Defeated
 	end
 
+EverGrandeCity_PhoebesRoom_EventScript_RematchBattle::
+	msgbox EverGrandeCity_PhoebesRoom_Text_RematchIntroSpeech, MSGBOX_DEFAULT
+	trainerbattle_no_intro TRAINER_PHOEBE_2, EverGrandeCity_PhoebesRoom_Text_Defeat
+	goto EverGrandeCity_PhoebesRoom_EventScript_Defeated
+	end
+
 EverGrandeCity_PhoebesRoom_EventScript_PostBattleSpeech::
 	goto_if_unset FLAG_RECEIVED_UNSTABLE_DNA_PHOEBE, EverGrandeCity_PhoebesRoom_EventScript_GiveUnstableDNA2
+	goto_if_set FLAG_SYS_GAME_CLEAR, EverGrandeCity_PhoebesRoom_EventScript_PostBattleSpeechRematch
 	msgbox EverGrandeCity_PhoebesRoom_Text_PostBattleSpeech, MSGBOX_DEFAULT
+	release
+	end
+
+EverGrandeCity_PhoebesRoom_EventScript_PostBattleSpeechRematch::
+	msgbox EverGrandeCity_PhoebesRoom_Text_PostBattleSpeechRematch, MSGBOX_DEFAULT
 	release
 	end
 
 EverGrandeCity_PhoebesRoom_EventScript_Defeated::
 	setflag FLAG_DEFEATED_ELITE_4_PHOEBE
 	call PokemonLeague_EliteFour_SetAdvanceToNextRoomMetatiles
+	goto_if_set FLAG_SYS_GAME_CLEAR, EverGrandeCity_PhoebesRoom_EventScript_DefeatedRematch
+	goto_if_set FLAG_RECEIVED_UNSTABLE_DNA_PHOEBE, EverGrandeCity_PhoebesRoom_EventScript_DefeatedNoDNA
 	call EverGrandeCity_PhoebesRoom_EventScript_GiveUnstableDNA
 	closemessage
 	delay 24
 	msgbox EverGrandeCity_PhoebesRoom_Text_PostBattleSpeech, MSGBOX_DEFAULT
+	goto EverGrandeCity_PhoebesRoom_EventScript_DefeatedEnd
+	end
+
+EverGrandeCity_PhoebesRoom_EventScript_DefeatedNoDNA::
+	msgbox EverGrandeCity_PhoebesRoom_Text_PostBattleSpeech, MSGBOX_DEFAULT
+	goto EverGrandeCity_PhoebesRoom_EventScript_DefeatedEnd
+	end
+
+EverGrandeCity_PhoebesRoom_EventScript_DefeatedRematch::
+	goto_if_set FLAG_RECEIVED_UNSTABLE_DNA_PHOEBE, EverGrandeCity_PhoebesRoom_EventScript_DefeatedRematchNoDNA
+	call EverGrandeCity_PhoebesRoom_EventScript_GiveUnstableDNA
+	closemessage
+	delay 24
+	msgbox EverGrandeCity_PhoebesRoom_Text_PostBattleSpeechRematch, MSGBOX_DEFAULT
+	goto EverGrandeCity_PhoebesRoom_EventScript_DefeatedEnd
+	end
+
+EverGrandeCity_PhoebesRoom_EventScript_DefeatedRematchNoDNA::
+	msgbox EverGrandeCity_PhoebesRoom_Text_PostBattleSpeechRematch, MSGBOX_DEFAULT
+	goto EverGrandeCity_PhoebesRoom_EventScript_DefeatedEnd
+	end
+
+EverGrandeCity_PhoebesRoom_EventScript_DefeatedEnd::
 	release
 	end
 
@@ -93,6 +131,12 @@ EverGrandeCity_PhoebesRoom_Text_IntroSpeech:
 	.string "So, come on, just try and see if you can\n"
 	.string "even inflict damage on my POKéMON!$"
 
+EverGrandeCity_PhoebesRoom_Text_RematchIntroSpeech:
+	.string "Ehehe! You came back!\p"
+	.string "You and your POKéMON grew closer,\n"
+	.string "didn't you? I can feel it already.\p"
+	.string "Let's test that bond again!$"
+
 EverGrandeCity_PhoebesRoom_Text_Defeat:
 	.string "Oh, darn.\n"
 	.string "I've gone and lost.$"
@@ -106,6 +150,12 @@ EverGrandeCity_PhoebesRoom_Text_PostBattleSpeech:
 	.string "will carry you.\p"
 	.string "Go ahead, move on to the next room.$"
 
+EverGrandeCity_PhoebesRoom_Text_PostBattleSpeechRematch:
+	.string "Ooooh, that bond is blazing now!\p"
+	.string "The spirits around us are cheering\n"
+	.string "for your team.\p"
+	.string "Now go on. The LEAGUE still has more\n"
+	.string "to throw at you!$"
 EverGrandeCity_PhoebesRoom_Text_GiveUnstableDNA:
 	.string "Oh! This little vial came through\n"
 	.string "the LEAGUE desk for you.\p"
@@ -118,5 +168,4 @@ EverGrandeCity_PhoebesRoom_Text_GiveUnstableDNA:
 
 EverGrandeCity_PhoebesRoom_Text_GiveUnstableDNARematch:
 	.string "Hehe! You beat me again.\n"
-	.string "Take another vial, then press on.$"
-
+	.string "Here's the vial I owe you.$"

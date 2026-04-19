@@ -51,6 +51,7 @@ struct HofGfx
 static EWRAM_DATA u32 sHofFadePalettes = 0;
 static EWRAM_DATA struct HallofFameTeam *sHofMonPtr = NULL;
 static EWRAM_DATA struct HofGfx *sHofGfxPtr = NULL;
+static EWRAM_DATA bool8 sSkipCreditsAfterHallOfFame = FALSE;
 EWRAM_DATA struct HallofFameTeam *gHoFSaveBuffer = NULL;
 
 static void ClearVramOamPltt_LoadHofPal(void);
@@ -428,6 +429,11 @@ void CB2_DoHallOfFameScreenDontSaveData(void)
     }
 }
 
+void SetHallOfFameShouldSkipCredits(bool8 skipCredits)
+{
+    sSkipCreditsAfterHallOfFame = skipCredits;
+}
+
 static void Task_Hof_InitMonData(u8 taskId)
 {
     u16 i, j;
@@ -771,7 +777,16 @@ static void Task_Hof_HandleExit(u8 taskId)
         ResetBgsAndClearDma3BusyFlags(0);
         DestroyTask(taskId);
         FreeAllHoFMem();
-        StartCredits();
+
+        if (sSkipCreditsAfterHallOfFame)
+        {
+            sSkipCreditsAfterHallOfFame = FALSE;
+            SetMainCallback2(CB2_ReturnToFieldContinueScriptPlayMapMusic);
+        }
+        else
+        {
+            StartCredits();
+        }
     }
 }
 

@@ -42,14 +42,27 @@ EverGrandeCity_DrakesRoom_EventScript_Drake::
 	faceplayer
 	goto_if_set FLAG_DEFEATED_ELITE_4_DRAKE, EverGrandeCity_DrakesRoom_EventScript_PostBattleSpeech
 	playbgm MUS_ENCOUNTER_ELITE_FOUR, FALSE
+	goto_if_set FLAG_SYS_GAME_CLEAR, EverGrandeCity_DrakesRoom_EventScript_RematchBattle
 	msgbox EverGrandeCity_DrakesRoom_Text_IntroSpeech, MSGBOX_DEFAULT
 	trainerbattle_no_intro TRAINER_DRAKE, EverGrandeCity_DrakesRoom_Text_Defeat
 	goto EverGrandeCity_DrakesRoom_EventScript_Defeated
 	end
 
+EverGrandeCity_DrakesRoom_EventScript_RematchBattle::
+	msgbox EverGrandeCity_DrakesRoom_Text_RematchIntroSpeech, MSGBOX_DEFAULT
+	trainerbattle_no_intro TRAINER_DRAKE_2, EverGrandeCity_DrakesRoom_Text_Defeat
+	goto EverGrandeCity_DrakesRoom_EventScript_Defeated
+	end
+
 EverGrandeCity_DrakesRoom_EventScript_PostBattleSpeech::
 	goto_if_unset FLAG_RECEIVED_UNSTABLE_DNA_DRAKE, EverGrandeCity_DrakesRoom_EventScript_GiveUnstableDNA2
+	goto_if_set FLAG_SYS_GAME_CLEAR, EverGrandeCity_DrakesRoom_EventScript_PostBattleSpeechRematch
 	msgbox EverGrandeCity_DrakesRoom_Text_PostBattleSpeech, MSGBOX_DEFAULT
+	release
+	end
+
+EverGrandeCity_DrakesRoom_EventScript_PostBattleSpeechRematch::
+	msgbox EverGrandeCity_DrakesRoom_Text_PostBattleSpeechRematch, MSGBOX_DEFAULT
 	release
 	end
 
@@ -58,8 +71,35 @@ EverGrandeCity_DrakesRoom_EventScript_Defeated::
 	special Script_TryGainNewFanFromCounter
 	setflag FLAG_DEFEATED_ELITE_4_DRAKE
 	call PokemonLeague_EliteFour_SetAdvanceToNextRoomMetatiles
+	goto_if_set FLAG_SYS_GAME_CLEAR, EverGrandeCity_DrakesRoom_EventScript_DefeatedRematch
+	goto_if_set FLAG_RECEIVED_UNSTABLE_DNA_DRAKE, EverGrandeCity_DrakesRoom_EventScript_DefeatedNoDNA
 	call EverGrandeCity_DrakesRoom_EventScript_GiveUnstableDNA
+	closemessage
+	delay 24
 	msgbox EverGrandeCity_DrakesRoom_Text_PostBattleSpeech, MSGBOX_DEFAULT
+	goto EverGrandeCity_DrakesRoom_EventScript_DefeatedDone
+	end
+
+EverGrandeCity_DrakesRoom_EventScript_DefeatedNoDNA::
+	msgbox EverGrandeCity_DrakesRoom_Text_PostBattleSpeech, MSGBOX_DEFAULT
+	goto EverGrandeCity_DrakesRoom_EventScript_DefeatedDone
+	end
+
+EverGrandeCity_DrakesRoom_EventScript_DefeatedRematch::
+	goto_if_set FLAG_RECEIVED_UNSTABLE_DNA_DRAKE, EverGrandeCity_DrakesRoom_EventScript_DefeatedRematchNoDNA
+	call EverGrandeCity_DrakesRoom_EventScript_GiveUnstableDNA
+	closemessage
+	delay 24
+	msgbox EverGrandeCity_DrakesRoom_Text_PostBattleSpeechRematch, MSGBOX_DEFAULT
+	goto EverGrandeCity_DrakesRoom_EventScript_DefeatedDone
+	end
+
+EverGrandeCity_DrakesRoom_EventScript_DefeatedRematchNoDNA::
+	msgbox EverGrandeCity_DrakesRoom_Text_PostBattleSpeechRematch, MSGBOX_DEFAULT
+	goto EverGrandeCity_DrakesRoom_EventScript_DefeatedDone
+	end
+
+EverGrandeCity_DrakesRoom_EventScript_DefeatedDone::
 	release
 	end
 
@@ -96,6 +136,13 @@ EverGrandeCity_DrakesRoom_Text_IntroSpeech:
 	.string "If you don't, then you will never\n"
 	.string "prevail over me!$"
 
+EverGrandeCity_DrakesRoom_Text_RematchIntroSpeech:
+	.string "So, you return to test your heart\n"
+	.string "once more. Good.\p"
+	.string "A true TRAINER grows through repeated\n"
+	.string "trials, not a single victory.\p"
+	.string "Show me that growth!$"
+
 EverGrandeCity_DrakesRoom_Text_Defeat:
 	.string "Superb, it should be said.$"
 
@@ -112,12 +159,17 @@ EverGrandeCity_DrakesRoom_Text_PostBattleSpeech:
 	.string "Go! Go onwards!\n"
 	.string "The CHAMPION is waiting!$"
 
+EverGrandeCity_DrakesRoom_Text_PostBattleSpeechRematch:
+	.string "Well met. Your heart has only grown\n"
+	.string "steadier with each return.\p"
+	.string "Carry that conviction with you.\n"
+	.string "The final chamber awaits.$"
+
 EverGrandeCity_DrakesRoom_Text_GiveUnstableDNA:
-	.string "{PLAYER}. This final vial was placed in\n"
+	.string "This final vial was placed in\n"
 	.string "my hands with a clear recipient in mind.\p"
 	.string "You did not arrive here by chance.$"
 
 EverGrandeCity_DrakesRoom_Text_GiveUnstableDNARematch:
-	.string "Still steadfast, I see.\n"
-	.string "Take this sample and hold your course.$"
+	.string "Take this sample, then hold your course.$"
 

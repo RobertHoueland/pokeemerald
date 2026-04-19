@@ -42,9 +42,9 @@ EverGrandeCity_ChampionsRoom_Movement_PlayerApproachWallace:
 EverGrandeCity_ChampionsRoom_EventScript_Wallace::
 	playbgm MUS_ENCOUNTER_CHAMPION, FALSE
 	msgbox EverGrandeCity_ChampionsRoom_Text_WallaceGreeting, MSGBOX_DEFAULT
+	goto_if_set FLAG_SYS_GAME_CLEAR, EverGrandeCity_ChampionsRoom_EventScript_WallacePostgameChallenge
 	msgbox EverGrandeCity_ChampionsRoom_Text_IntroSpeech, MSGBOX_DEFAULT
 	call EverGrandeCity_ChampionsRoom_EventScript_TryWallacePreBattleHint
-	goto_if_set FLAG_SYS_GAME_CLEAR, EverGrandeCity_ChampionsRoom_EventScript_WallacePostgameChallenge
 	goto EverGrandeCity_ChampionsRoom_EventScript_WallaceStartBattle
 	end
 
@@ -52,7 +52,13 @@ EverGrandeCity_ChampionsRoom_EventScript_WallacePostgameChallenge::
 	msgbox EverGrandeCity_ChampionsRoom_Text_WallaceBattleChallenge, MSGBOX_DEFAULT
 
 EverGrandeCity_ChampionsRoom_EventScript_WallaceStartBattle::
+	goto_if_set FLAG_SYS_GAME_CLEAR, EverGrandeCity_ChampionsRoom_EventScript_WallaceStartRematchBattle
 	trainerbattle_no_intro TRAINER_WALLACE, EverGrandeCity_ChampionsRoom_Text_Defeat
+	goto EverGrandeCity_ChampionsRoom_EventScript_Defeated
+	end
+
+EverGrandeCity_ChampionsRoom_EventScript_WallaceStartRematchBattle::
+	trainerbattle_no_intro TRAINER_WALLACE_2, EverGrandeCity_ChampionsRoom_Text_DefeatRematch
 	goto EverGrandeCity_ChampionsRoom_EventScript_Defeated
 	end
 
@@ -63,6 +69,7 @@ EverGrandeCity_ChampionsRoom_EventScript_Defeated::
 	setmetatile 6, 2, METATILE_EliteFour_OpenDoorChampion_Opening, FALSE
 	special DrawWholeMapView
 	call EverGrandeCity_ChampionsRoom_EventScript_TryProctorReveal
+	goto_if_set FLAG_SYS_GAME_CLEAR, EverGrandeCity_ChampionsRoom_EventScript_DefeatedRematch
 	msgbox EverGrandeCity_ChampionsRoom_Text_PostBattleSpeech, MSGBOX_DEFAULT
 	closemessage
 	playse SE_DOOR
@@ -74,6 +81,23 @@ EverGrandeCity_ChampionsRoom_EventScript_Defeated::
 	checkplayergender
 	goto_if_eq VAR_RESULT, MALE, EverGrandeCity_ChampionsRoom_EventScript_MayAdvice
 	goto_if_eq VAR_RESULT, FEMALE, EverGrandeCity_ChampionsRoom_EventScript_BrendanAdvice
+	end
+
+EverGrandeCity_ChampionsRoom_EventScript_DefeatedRematch::
+	msgbox EverGrandeCity_ChampionsRoom_Text_PostBattleSpeechRematch, MSGBOX_DEFAULT
+	closemessage
+	delay 30
+	applymovement LOCALID_CHAMPIONS_ROOM_WALLACE, EverGrandeCity_ChampionsRoom_Movement_WallaceExitStart
+	applymovement LOCALID_PLAYER, EverGrandeCity_ChampionsRoom_Movement_PlayerExitStart
+	waitmovement 0
+	delay 20
+	applymovement LOCALID_CHAMPIONS_ROOM_WALLACE, EverGrandeCity_ChampionsRoom_Movement_WallaceExit
+	applymovement LOCALID_PLAYER, EverGrandeCity_ChampionsRoom_Movement_PlayerExit
+	waitmovement 0
+	setflag FLAG_HIDE_PETALBURG_GYM_GREETER
+	warp MAP_EVER_GRANDE_CITY_HALL_OF_FAME, 7, 16
+	waitstate
+	releaseall
 	end
 
 EverGrandeCity_ChampionsRoom_EventScript_ClearUnstableDNAFlags::
@@ -267,6 +291,11 @@ EverGrandeCity_ChampionsRoom_Text_Defeat:
 	.string "You are a truly noble POKéMON\n"
 	.string "TRAINER!$"
 
+EverGrandeCity_ChampionsRoom_Text_DefeatRematch:
+	.string "Once again, I am unseated.\p"
+	.string "Magnificent, {PLAYER}{KUN}.\p"
+	.string "You've turned victory into an art form.$"
+
 EverGrandeCity_ChampionsRoom_Text_PostBattleSpeech:
 	.string "WALLACE: The POKéMON you sent into\n"
 	.string "battle…\p"
@@ -281,6 +310,13 @@ EverGrandeCity_ChampionsRoom_Text_PostBattleSpeech:
 	.string "of the POKéMON LEAGUE.\p"
 	.string "I now proclaim you to be the new\n"
 	.string "HOENN region…$"
+
+EverGrandeCity_ChampionsRoom_Text_PostBattleSpeechRematch:
+	.string "WALLACE: Splendid.\p"
+	.string "Your command is sharper than ever,\n"
+	.string "and your team moved in perfect rhythm.\p"
+	.string "Let's record this victory in the\n"
+	.string "HALL OF FAME once more.$"
 
 EverGrandeCity_ChampionsRoom_Text_MayAdvice:
 	.string "MAY: {PLAYER}{KUN}!\p"
@@ -378,7 +414,7 @@ script EverGrandeCity_ChampionsRoom_EventScript_TryProctorReveal {
     delay(16)
 	applymovement(LOCALID_PROCTOR_NIMA, EverGrandeCity_ChampionsRoom_Movement_ProctorNimaReveal)
 	waitmovement(0)
-    msgbox(format("PROCTOR NIMA: Enough, WALLACE."))
+    msgbox(format("???: Enough, WALLACE."))
     closemessage()
 	applymovement(LOCALID_PROCTOR_NIMA, EverGrandeCity_ChampionsRoom_Movement_ProctorNimaReveal2)
 	waitmovement(0)
@@ -430,7 +466,7 @@ text EverGrandeCity_ChampionsRoom_Text_WallaceBattleChallenge {
 	format("Now!\p"
 	       "Who can most elegantly dance with\n"
 	       "their POKéMON in HOENN?\p"
-	       "Show me right here and now!$")
+	       "Show me again, right here and now!$")
 }
 
 text EverGrandeCity_ChampionsRoom_Text_ProctorNimaReveal {

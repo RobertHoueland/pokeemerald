@@ -510,7 +510,7 @@
 #define FLAG_ENABLE_TATE_AND_LIZA_MATCH_CALL 0x1D8
 #define FLAG_ENABLE_JUAN_MATCH_CALL          0x1D9
 
-#define FLAG_UNUSED_0x1DA                    0x1DA // Unused Flag
+#define FLAG_HIDE_PROCTOR_NIMA               0x1DA // Was unused
 
 #define FLAG_SHOWN_MYSTIC_TICKET             0x1DB
 #define FLAG_DEFEATED_HO_OH                  0x1DC
@@ -709,7 +709,7 @@
 #define FLAG_RECEIVED_FAIRY_MEMORY           0x296
 #define FLAG_SAW_BIRCH_SILVALLY_MSG          0x297
 #define FLAG_CHAMPION_DNA_REVEAL             0x298
-#define FLAG_HIDE_PROCTOR_NIMA               0x299
+#define FLAG_UNUSED_0x299  0x299 // Unused Flag
 #define FLAG_UNUSED_0x29A  0x29A // Unused Flag
 #define FLAG_UNUSED_0x29B  0x29B // Unused Flag
 #define FLAG_UNUSED_0x29C  0x29C // Unused Flag

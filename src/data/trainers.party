@@ -6324,6 +6324,269 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Ice Beam
 - Toxic
 
+=== TRAINER_SIDNEY_2 ===
+Name: SIDNEY
+Class: Elite Four
+Pic: Elite Four Sidney
+Gender: Male
+Music: Elite Four
+Items: Full Restore / Full Restore
+Double Battle: No
+AI: Basic Trainer / Force Setup First Turn
+Mugshot: Purple
+
+Mightyena @ Leftovers
+Level: 56
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Crunch
+- Taunt
+- Double Edge
+- Sand Attack
+
+Shiftry @ Lum Berry
+Level: 58
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Sucker Punch
+- Leaf Blade
+- Extrasensory
+- Fake Out
+
+Cacturne @ Bright Powder
+Level: 56
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Needle Arm
+- Crunch
+- Leech Seed
+- Brick Break
+
+Crawdaunt @ Mystic Water
+Level: 58
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Crabhammer
+- Crunch
+- Swords Dance
+- Brick Break
+
+Absol @ Scope Lens
+Level: 59
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Slash
+- Sucker Punch
+- Rock Slide
+- Swords Dance
+
+=== TRAINER_PHOEBE_2 ===
+Name: PHOEBE
+Class: Elite Four
+Pic: Elite Four Phoebe
+Gender: Female
+Music: Elite Four
+Items: Full Restore / Full Restore
+Double Battle: No
+AI: Basic Trainer
+Mugshot: Green
+
+Dusclops @ Leftovers
+Level: 58
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Shadow Punch
+- Will O Wisp
+- Confuse Ray
+- Protect
+
+Banette @ Spell Tag
+Level: 59
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Shadow Ball
+- Thunderbolt
+- Psychic
+- Destiny Bond
+
+Sableye @ Lum Berry
+Level: 60
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Shadow Ball
+- Feint Attack
+- Confuse Ray
+- Recover
+
+Banette @ Quick Claw
+Level: 59
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Shadow Ball
+- Thunderbolt
+- Will O Wisp
+- Psychic
+
+Dusclops @ Sitrus Berry
+Level: 61
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Shadow Ball
+- Ice Beam
+- Earthquake
+- Protect
+
+=== TRAINER_GLACIA_2 ===
+Name: GLACIA
+Class: Elite Four
+Pic: Elite Four Glacia
+Gender: Female
+Music: Elite Four
+Items: Full Restore / Full Restore
+Double Battle: No
+AI: Basic Trainer
+Mugshot: Pink
+
+Sealeo @ Never Melt Ice
+Level: 60
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Surf
+- Ice Beam
+- Body Slam
+- Hail
+
+Glalie @ Leftovers
+Level: 60
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Crunch
+- Ice Beam
+- Icy Wind
+- Light Screen
+
+Sealeo @ Quick Claw
+Level: 61
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Surf
+- Blizzard
+- Body Slam
+- Attract
+
+Glalie @ Lum Berry
+Level: 61
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Ice Beam
+- Shadow Ball
+- Explosion
+- Protect
+
+Walrein @ Chesto Berry
+Level: 63
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Surf
+- Sheer Cold
+- Body Slam
+- Rest
+
+=== TRAINER_DRAKE_2 ===
+Name: DRAKE
+Class: Elite Four
+Pic: Elite Four Drake
+Gender: Male
+Music: Elite Four
+Items: Full Restore / Full Restore / Full Restore
+Double Battle: No
+AI: Basic Trainer
+Mugshot: Blue
+
+Shelgon @ Lum Berry
+Level: 62
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Dragon Claw
+- Rock Tomb
+- Protect
+- Double Edge
+
+Altaria @ Leftovers
+Level: 64
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Dragon Claw
+- Dragon Dance
+- Earthquake
+- Aerial Ace
+
+Kingdra @ Mystic Water
+Level: 63
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Surf
+- Dragon Dance
+- Body Slam
+- Ice Beam
+
+Flygon @ Soft Sand
+Level: 63
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Earthquake
+- Dragon Claw
+- Flamethrower
+- Crunch
+
+Salamence @ Sitrus Berry
+Level: 65
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Dragon Claw
+- Flamethrower
+- Rock Slide
+- Crunch
+
+=== TRAINER_WALLACE_2 ===
+Name: WALLACE
+Class: Champion
+Pic: Champion Wallace
+Gender: Male
+Music: Male
+Items: Full Restore / Full Restore / Full Restore / Full Restore
+Double Battle: No
+AI: Basic Trainer
+Mugshot: Yellow
+
+Wailord @ Mystic Water
+Level: 67
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Rain Dance
+- Water Spout
+- Blizzard
+- Double Edge
+
+Tentacruel @ Leftovers
+Level: 65
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Hydro Pump
+- Sludge Bomb
+- Ice Beam
+- Toxic
+
+Ludicolo @ Miracle Seed
+Level: 66
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Giga Drain
+- Surf
+- Leech Seed
+- Ice Beam
+
+Whiscash @ Soft Sand
+Level: 66
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Earthquake
+- Surf
+- Amnesia
+- Hyper Beam
+
+Gyarados @ Leftovers
+Level: 66
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Dragon Dance
+- Earthquake
+- Surf
+- Hyper Beam
+
+Milotic @ Lum Berry
+Level: 68
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Recover
+- Surf
+- Ice Beam
+- Toxic
+
 === TRAINER_ANDREW ===
 Name: ANDREW
 Class: Fisherman
