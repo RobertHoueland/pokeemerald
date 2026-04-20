@@ -33,6 +33,26 @@ movement DrParkerExcited_MoveRight {
 	face_player
 }
 
+movement DevonCorp4F_Movement_ProctorNimaEnter {
+	walk_down * 4
+	walk_left * 4
+}
+
+movement DevonCorp4F_Movement_ProctorNimaEnter_PlayerRight {
+	walk_down * 4
+	walk_left * 3
+}
+
+movement DevonCorp4F_Movement_ProctorNimaExit {
+	walk_right * 4
+	walk_up * 4
+}
+
+movement DevonCorp4F_Movement_ProctorNimaExit_PlayerRight {
+	walk_right * 3
+	walk_up * 4
+}
+
 text RustboroCity_DevonCorp_4F_Text_DrParkerGreeting {
 	format("Oh! I didn't see you there!\p"
 	       "I'm on the verge of a breakthrough\nin my research.\p"
@@ -64,6 +84,11 @@ text RustboroCity_DevonCorp_4F_Text_DrParkerMainExplanation {
 text RustboroCity_DevonCorp_4F_Text_DrParkerReturnWithDna {
 	format("DR. PARKER: Is that UNSTABLE DNA I see?\p"
 		   "Splendid! My research continues\nto evolve!")
+}
+
+text RustboroCity_DevonCorp_4F_Text_DrParkerReturnWithDnaPostgame {
+	format("DR. PARKER: Another UNSTABLE DNA sample?\p"
+	       "Perfect. I'll be sure to log this in the LEAGUE's database.")
 }
 
 text RustboroCity_DevonCorp_4F_Text_ShinyOffer {
@@ -123,7 +148,27 @@ text RustboroCity_DevonCorp_4F_Text_DrParkerPostgameDnaOrigin {
 		   "my research!\p"
 		   "He could have easily shut me down, but a small bribe and a "
 		   "passionate plea about the potential of the Proto-Legends "
-		   "convinced him to let me continue.\p")
+		   "convinced him to let me continue.")
+}
+
+text RustboroCity_DevonCorp_4F_Text_ProctorNimaDevonCheckpoint1 {
+	format("PROCTOR NIMA: It's nice to see you again DR. PARKER.\p"
+		   "I'm here to check on your progress with the Proto-Legends.")
+}
+
+text RustboroCity_DevonCorp_4F_Text_ProctorNimaDevonCheckpoint2 {
+	format("What? You have successfully stabilized one "
+	       "Proto-Legend from each generation line?!\p"
+	       "That level of control does not happen by accident.\p"
+		   "DR. PARKER, I suppose it's time we discuss the next phase of "
+		   "your research.\p"
+	       "{PLAYER}, I would like to reward you with access to our"
+		   "new program that I have been funding.\p"
+		   "DR. PARKER: Of course, sir. Thank you again for your support.\p"
+	       "A researcher named MYRA has been training under "
+	       "DR. PARKER, and studying MYTHICAL POKéMON signatures.\p"
+	       "When she finalizes a route, you will be directed to "
+	       "new locations where each MYTHICAL can be encountered.")
 }
 
 script RustboroCity_DevonCorp_4F_EventScript_DrParker {
@@ -169,21 +214,30 @@ script RustboroCity_DevonCorp_4F_EventScript_DrParker {
 Met_DrParker:
     faceplayer
 	delay(8)
+	// Dialogue after 150 mutations and interaction with mutation scientst
 	if (flag(FLAG_150_MUTATIONS) && !flag(FLAG_DR_PARKER_TALKED_AFTER_150)) {
 		msgbox(RustboroCity_DevonCorp_4F_Text_DrParkerOldFriend)
 		setflag(FLAG_DR_PARKER_TALKED_AFTER_150)
 		releaseall
 		end
 	}
+	// Beat the game and learned about Proctor Nima
 	if (flag(FLAG_SYS_GAME_CLEAR) && !flag(FLAG_CHAMPION_DNA_REVEAL)) {
 		msgbox(RustboroCity_DevonCorp_4F_Text_DrParkerPostgameDnaOrigin)
 		setflag(FLAG_CHAMPION_DNA_REVEAL)
 	}
+
 	checkitem(ITEM_UNSTABLE_DNA, 1)
 	if (var(VAR_RESULT) == FALSE) {
+		// no DNAs
 		goto(RustboroCity_DevonCorp_4F_EventScript_DrParkerEnd)
 	}
-	msgbox(RustboroCity_DevonCorp_4F_Text_DrParkerReturnWithDna)
+	
+	if (flag(FLAG_SYS_GAME_CLEAR)) {
+		msgbox(RustboroCity_DevonCorp_4F_Text_DrParkerReturnWithDnaPostgame)
+	} else {
+		msgbox(RustboroCity_DevonCorp_4F_Text_DrParkerReturnWithDna)
+	}
 	delay(8)
 FirstMeet_DrParker:
 	msgbox(format("Please, accept a Proto-Legend as a thank you for the DNA sample."))
@@ -982,20 +1036,94 @@ script RustboroCity_DevonCorp_4F_EventScript_GiveLegendary {
         }
         closemessage
     } elif (var(VAR_RESULT) == MON_GIVEN_TO_PC) {
-        call(Common_EventScript_TransferredToPC)
         msgbox(gText_NicknameThisPokemon, MSGBOX_YESNO)
         if (var(VAR_RESULT) == YES) {
             call(Common_EventScript_NameReceivedBoxMon)
         }
         closemessage
+		call(Common_EventScript_TransferredToPC)
     } else {
         goto(Common_EventScript_NoMoreRoomForPokemon)
     }
+
+	call(RustboroCity_DevonCorp_4F_EventScript_TryProctorNimaGenerationReview)
 
     msgbox(format("DR. PARKER: Enjoy your new Proto-Legend!"))
 	delay(8)
     setvar(VAR_RESULT, 0)
     releaseall
+}
+
+script RustboroCity_DevonCorp_4F_EventScript_TryProctorNimaGenerationReview {
+	// Require beating the game (to have met Proctor)
+	if (!flag(FLAG_SYS_GAME_CLEAR)) {
+		return
+	}
+	// One time event
+	if (flag(FLAG_MET_PROCTOR_DEVON_CORP)) {
+		return
+	}
+	// Require at least one proto legend from each generation
+	if (!(flag(FLAG_OBTAINED_MEWTWO_LINE) || flag(FLAG_OBTAINED_BIRD_LINE))) {
+		return
+	}
+	if (!(flag(FLAG_OBTAINED_BEASTS_LINE) || flag(FLAG_OBTAINED_TOWER_LINE))) {
+		return
+	}
+	if (!(flag(FLAG_OBTAINED_REGI_LINE) || flag(FLAG_OBTAINED_EON_LINE) || flag(FLAG_OBTAINED_WEATHER_LINE))) {
+		return
+	}
+	if (!(flag(FLAG_OBTAINED_LAKE_LINE) || flag(FLAG_OBTAINED_MYTH_LINE) || flag(FLAG_OBTAINED_RELIC_LINE) || flag(FLAG_OBTAINED_GIRATINA_LINE))) {
+		return
+	}
+	if (!(flag(FLAG_OBTAINED_SWORDS_LINE) || flag(FLAG_OBTAINED_FORCES_LINE) || flag(FLAG_OBTAINED_TAO_LINE) || flag(FLAG_OBTAINED_KYUREM_LINE))) {
+		return
+	}
+	if (!flag(FLAG_OBTAINED_AURA_LINE)) {
+		return
+	}
+	if (!(flag(FLAG_OBTAINED_TYPENULL_LINE) || flag(FLAG_OBTAINED_TAPUS_LINE) || flag(FLAG_OBTAINED_COSMOG_LINE) || flag(FLAG_OBTAINED_NECROZMA_LINE))) {
+		return
+	}
+
+	closemessage()
+	GetDirectionToFace(VAR_TEMP_0, LOCALID_DR_PARKER, OBJ_EVENT_ID_PLAYER)
+	clearflag(FLAG_HIDE_PROCTOR_NIMA)
+	addobject(LOCALID_DEVON_PROCTOR_NIMA)
+	delay(16)
+	playse(SE_PIN)
+	waitse()
+
+	// If player talked to dr parker from the right side,
+	// have Proctor walk one space less so he doesn't walk over the player
+	if (var(VAR_TEMP_0) == DIR_EAST) {
+		applymovement(LOCALID_DEVON_PROCTOR_NIMA, DevonCorp4F_Movement_ProctorNimaEnter_PlayerRight)
+	} else {
+		applymovement(LOCALID_DEVON_PROCTOR_NIMA, DevonCorp4F_Movement_ProctorNimaEnter)
+	}
+	waitmovement(0)
+
+	msgbox(RustboroCity_DevonCorp_4F_Text_ProctorNimaDevonCheckpoint1)
+	playse(SE_PIN)
+	applymovement(LOCALID_DEVON_PROCTOR_NIMA, Common_Movement_ExclamationMark)
+	waitmovement(0)
+	waitse()
+	msgbox(RustboroCity_DevonCorp_4F_Text_ProctorNimaDevonCheckpoint2)
+
+	if (var(VAR_TEMP_0) == DIR_EAST) {
+		applymovement(LOCALID_DEVON_PROCTOR_NIMA, DevonCorp4F_Movement_ProctorNimaExit_PlayerRight)
+	} else {
+		applymovement(LOCALID_DEVON_PROCTOR_NIMA, DevonCorp4F_Movement_ProctorNimaExit)
+	}
+	waitmovement(0)
+
+	setflag(FLAG_MYRA_MYTHICAL_PATH_UNLOCKED)
+	setflag(FLAG_MET_PROCTOR_DEVON_CORP)
+	setflag(FLAG_HIDE_PROCTOR_NIMA)
+	removeobject(LOCALID_DEVON_PROCTOR_NIMA)
+
+    releaseall
+	end
 }
 
 script RustboroCity_DevonCorp_4F_EventScript_TableProtoLegends {

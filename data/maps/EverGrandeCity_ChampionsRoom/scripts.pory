@@ -313,8 +313,8 @@ EverGrandeCity_ChampionsRoom_Text_PostBattleSpeech:
 
 EverGrandeCity_ChampionsRoom_Text_PostBattleSpeechRematch:
 	.string "WALLACE: Splendid.\p"
-	.string "Your command is sharper than ever,\n"
-	.string "and your team moved in perfect rhythm.\p"
+	.string "The LEAGUE's hidden trial is behind us,\n"
+	.string "and your command remains flawless.\p"
 	.string "Let's record this victory in the\n"
 	.string "HALL OF FAME once more.$"
 
@@ -410,7 +410,7 @@ script EverGrandeCity_ChampionsRoom_EventScript_TryProctorReveal {
 	clearflag(FLAG_HIDE_PROCTOR_NIMA)
 	addobject(LOCALID_PROCTOR_NIMA)
     applymovement(LOCALID_PROCTOR_NIMA, Common_Movement_WalkDown)
-    waitse()
+    waitse() // doors opening
     delay(16)
 	applymovement(LOCALID_PROCTOR_NIMA, EverGrandeCity_ChampionsRoom_Movement_ProctorNimaReveal)
 	waitmovement(0)
