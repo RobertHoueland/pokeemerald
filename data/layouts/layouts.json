@@ -4420,6 +4420,16 @@
       "secondary_tileset": "gTileset_Facility",
       "border_filepath": "data/layouts/RustboroCity_DevonCorp_4F/border.bin",
       "blockdata_filepath": "data/layouts/RustboroCity_DevonCorp_4F/map.bin"
+    },
+    {
+      "id": "LAYOUT_SHADY_FOREST",
+      "name": "ShadyForest_Layout",
+      "width": 42,
+      "height": 42,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_ShadyForest",
+      "border_filepath": "data/layouts/ShadyForest/border.bin",
+      "blockdata_filepath": "data/layouts/ShadyForest/map.bin"
     }
   ]
 }
