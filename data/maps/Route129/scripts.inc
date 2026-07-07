@@ -49,3 +49,15 @@ Route129_EventScript_Clarence::
 	msgbox Route129_Text_ClarencePostBattle, MSGBOX_AUTOCLOSE
 	end
 
+Route129_EventScript_WhirlpoolWarp::
+	applymovement LOCALID_PLAYER, Common_Movement_ExclamationMark
+	playse SE_PIN
+	waitmovement 0
+	delay 20
+	msgbox Route129_Text_WhirlpoolFound
+	warpspinenter MAP_SHADY_FOREST, 0
+	end
+
+Route129_Text_WhirlpoolFound:
+	.string "The current pulls you down!$"
+

@@ -1,0 +1,42 @@
+raw `
+ShadyForest_Lab_MapScripts::
+	.byte 0
+`
+
+text Myra_IntroText {
+    format("I was starting to think nobody could find this place!\p"
+           "I'm MYRA, and this is basically my new home. So welcome!\p"
+           "This place is super cool actually, there's a time rift right "
+           "outside apparently! It's making POKéMON from the past "
+           "and the future end up here somehow.\pI don't really understand "
+           "it all, but it's a lot of fun to watch from my window.\p"
+           "I've been calling them PARADOX POKéMON. It seems like there's "
+           "ancient ones from a longgg time ago, and ones that shouldn't even "
+           "exist yet.\pI guess different ones show up at different times of day...\p"
+           "Anyways, you should go explore out there. Just don't annoy the big ones, "
+           "I learned that the hard way.")
+}
+
+script ShadyForest_Lab_EventScript_Myra {
+    lockall
+    faceplayer
+    goto_if_set(FLAG_MET_MYRA, Met_Myra)
+
+    # First meeting
+    msgbox(format("MYRA: Oh my gosh, a visitor!"))
+    msgbox(Myra_IntroText)
+    setflag(FLAG_MET_MYRA)
+    releaseall
+    end
+
+Met_Myra:
+    goto_if_set(FLAG_MYRA_MYTHICAL_PATH_UNLOCKED, Mythical_Path_Unlocked)
+    msgbox(format("MYRA: I think the ancient PARADOX POKéMON might be ancestors of modern POKéMON, and the future ones might be what they'll be someday. Maybe!!"))
+    releaseall
+    end
+
+Mythical_Path_Unlocked:
+    msgbox(format("MYRA: Hello! I need to implement this still..."))
+    #msgbox(Myra_MythicalResearchText)
+    releaseall
+}
