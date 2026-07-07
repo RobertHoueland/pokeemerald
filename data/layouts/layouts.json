@@ -4430,6 +4430,16 @@
       "secondary_tileset": "gTileset_ShadyForest",
       "border_filepath": "data/layouts/ShadyForest/border.bin",
       "blockdata_filepath": "data/layouts/ShadyForest/map.bin"
+    },
+    {
+      "id": "LAYOUT_SHADY_FOREST_LAB",
+      "name": "ShadyForest_Lab_Layout",
+      "width": 10,
+      "height": 8,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_GenericBuilding",
+      "border_filepath": "data/layouts/ShadyForest_Lab/border.bin",
+      "blockdata_filepath": "data/layouts/ShadyForest_Lab/map.bin"
     }
   ]
 }

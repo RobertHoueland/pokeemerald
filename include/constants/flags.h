@@ -711,7 +711,7 @@
 #define FLAG_CHAMPION_DNA_REVEAL             0x298
 #define FLAG_MET_PROCTOR_DEVON_CORP          0x299
 #define FLAG_MYRA_MYTHICAL_PATH_UNLOCKED     0x29A
-#define FLAG_UNUSED_0x29B  0x29B // Unused Flag
+#define FLAG_MET_MYRA                        0x29B
 #define FLAG_UNUSED_0x29C  0x29C // Unused Flag
 #define FLAG_UNUSED_0x29D  0x29D // Unused Flag
 #define FLAG_UNUSED_0x29E  0x29E // Unused Flag
