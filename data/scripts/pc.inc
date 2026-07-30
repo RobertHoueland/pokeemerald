@@ -68,7 +68,7 @@ EventScript_AccessHallOfFame::
 EventScript_AccessPokemonBoxLink::
 	playse SE_PC_LOGIN
 	msgbox gText_StorageSystemOpened, MSGBOX_DEFAULT
-	special ShowPokemonStorageSystemPC
+	special ShowPokemonStorageSystemPC_MoveMons
 	waitstate
 	goto EventScript_TurnOffPC
 	end

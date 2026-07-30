@@ -1633,6 +1633,28 @@ void ShowPokemonStorageSystemPC(void)
     LockPlayerFieldControls();
 }
 
+static void Task_OpenPokeStorageMoveMons(u8 taskId)
+{
+    if (gTasks[taskId].data[0] == 0)
+    {
+        FadeScreen(FADE_TO_BLACK, 0);
+        gTasks[taskId].data[0]++;
+    }
+    else if (!gPaletteFade.active)
+    {
+        CleanupOverworldWindowsAndTilemaps();
+        EnterPokeStorage(OPTION_MOVE_MONS);
+        DestroyTask(taskId);
+    }
+}
+
+void ShowPokemonStorageSystemPC_MoveMons(void)
+{
+    u8 taskId = CreateTask(Task_OpenPokeStorageMoveMons, 80);
+    gTasks[taskId].data[0] = 0;
+    LockPlayerFieldControls();
+}
+
 static void FieldTask_ReturnToPcMenu(void)
 {
     u8 taskId;

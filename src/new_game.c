@@ -189,8 +189,9 @@ void NewGameInitData(void)
     ZeroPlayerPartyMons();
     ResetPokemonStorageSystem();
     DeactivateAllRoamers();
-    gSaveBlock1Ptr->registeredItem = ITEM_NONE;
+    gSaveBlock1Ptr->registeredItem = ITEM_POKEMON_BOX_LINK;
     ClearBag();
+    AddBagItem(ITEM_POKEMON_BOX_LINK, 1);
     NewGameInitPCItems();
     ClearPokeblocks();
     ClearDecorationInventories();
