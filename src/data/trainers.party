@@ -17161,3 +17161,105 @@ Double Battle: No
 Kyogre
 Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_WARDEN_ALEC ===
+Name: ALEC
+Class: Ruin Maniac
+Pic: Expert M
+Gender: Male
+Music: Intense
+Items: Hyper Potion / Hyper Potion
+Double Battle: No
+AI: Smart Trainer
+
+Steelix @ Sitrus Berry
+Level: 47
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Iron Tail
+- Rock Slide
+- Earthquake
+- Crunch
+
+Metagross @ Leftovers
+Level: 48
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Meteor Mash
+- Zen Headbutt
+- Earthquake
+- Bullet Punch
+
+Druddigon @ Life Orb
+Level: 49
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Dragon Claw
+- Crunch
+- Iron Head
+- Poison Jab
+
+=== TRAINER_MS_MADELINE ===
+Name: MADELINE
+Class: Hex Maniac
+Pic: Hex Maniac
+Gender: Female
+Music: Female
+Items: Hyper Potion / Hyper Potion
+Double Battle: No
+AI: Smart Trainer
+
+Milotic @ Sitrus Berry
+Level: 47
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Surf
+- Ice Beam
+- Dragon Pulse
+- Recover
+
+Kingdra @ Wacan Berry
+Level: 48
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Dragon Pulse
+- Surf
+- Ice Beam
+- Flash Cannon
+
+Altaria @ Leftovers
+Level: 49
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Dragon Pulse
+- Moonblast
+- Flamethrower
+- Cotton Guard
+
+=== TRAINER_SIR_BILLIAM ===
+Name: BILLIAM
+Class: Psychic
+Pic: Psychic M
+Gender: Male
+Music: Suspicious
+Items: Hyper Potion / Hyper Potion
+Double Battle: No
+AI: Smart Trainer
+
+Dusknoir @ Sitrus Berry
+Level: 47
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Shadow Punch
+- Ice Punch
+- Earthquake
+- Thunder Punch
+
+Gengar @ Life Orb
+Level: 48
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Shadow Ball
+- Sludge Bomb
+- Thunderbolt
+- Focus Blast
+
+Dragalge @ Leftovers
+Level: 49
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Dragon Pulse
+- Sludge Wave
+- Surf
+- Toxic

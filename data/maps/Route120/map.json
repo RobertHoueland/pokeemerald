@@ -619,9 +619,25 @@
       "elevation": 1,
       "dest_map": "MAP_SCORCHED_SLAB",
       "dest_warp_id": "0"
+    },
+    {
+      "x": 5,
+      "y": 57,
+      "elevation": 0,
+      "dest_map": "MAP_ANCIENT_TOMB",
+      "dest_warp_id": "0"
     }
   ],
   "coord_events": [
+    {
+      "type": "trigger",
+      "x": 5,
+      "y": 56,
+      "elevation": 3,
+      "var": "VAR_TEMP_2",
+      "var_value": "0",
+      "script": "Route120_EventScript_DistortionShrineTrigger"
+    },
     {
       "type": "weather",
       "x": 7,

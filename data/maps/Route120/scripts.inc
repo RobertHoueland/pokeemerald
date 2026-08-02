@@ -54,6 +54,7 @@ Route120_EventScript_SetBridgeKecleonMovement::
 	return
 
 Route120_OnTransition:
+	setvar VAR_TEMP_2, 0
 	call GabbyAndTy_EventScript_UpdateLocation
 	call Route120_EventScript_SetWeather
 	end
@@ -427,3 +428,48 @@ Route120_Text_RouteSignFortree:
 Route120_Text_RouteSign121:
 	.string "{RIGHT_ARROW} ROUTE 121\n"
 	.string "{LEFT_ARROW} ROUTE 120$"
+
+Route120_EventScript_DistortionShrineTrigger::
+	setvar VAR_TEMP_2, 1
+	playse SE_PIN
+	goto_if_unset FLAG_TALKED_TO_HISTORIAN, Route120_EventScript_DistortionShrineSealed
+	lockall
+	msgbox Route120_Text_DistortionShrineWarp, MSGBOX_DEFAULT
+	releaseall
+	playse SE_WARP_IN
+	applymovement LOCALID_PLAYER, Route120_Movement_ShrineWarpSpin
+	delay 30
+	warp MAP_DISTORTION_SHRINE, 0
+	end
+
+Route120_EventScript_DistortionShrineSealed::
+	lockall
+	msgbox Route120_Text_DistortionShrineSealed, MSGBOX_DEFAULT
+	releaseall
+	end
+
+Route120_Text_DistortionShrineSealed:
+	.string "The shadows here are too deep for the\n"
+	.string "time of day. Something feels wrong.\p"
+	.string "A scholar of the ancient world might\n"
+	.string "know how to dispel the darkness.$"
+
+Route120_Text_DistortionShrineWarp:
+	.string "The shadows writhe and part, revealing\n"
+	.string "a path to the DISTORTION SHRINE!\p"
+	.string "The world beyond calls out to you...$"
+
+Route120_Movement_ShrineWarpSpin:
+	walk_in_place_faster_down
+	walk_in_place_faster_left
+	walk_in_place_faster_up
+	walk_in_place_faster_right
+	walk_in_place_faster_down
+	walk_in_place_faster_left
+	walk_in_place_faster_up
+	walk_in_place_faster_right
+	walk_in_place_faster_down
+	walk_in_place_faster_left
+	walk_in_place_faster_up
+	walk_in_place_faster_right
+	step_end

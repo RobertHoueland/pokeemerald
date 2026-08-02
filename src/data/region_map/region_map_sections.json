@@ -1234,6 +1234,18 @@
     {
       "id": "MAPSEC_SHADY_FOREST",
       "name": "???"
+    },
+    {
+      "id": "MAPSEC_TIME_SHRINE",
+      "name": "TIME SHRINE"
+    },
+    {
+      "id": "MAPSEC_SPACE_SHRINE",
+      "name": "SPACE SHRINE"
+    },
+    {
+      "id": "MAPSEC_DISTORTION_SHRINE",
+      "name": "DISTORTION SHRINE"
     }
   ]
 }

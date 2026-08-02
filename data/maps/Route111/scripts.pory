@@ -40,6 +40,7 @@ Route111_EventScript_ShowTemporaryMirageTower::
 
 Route111_OnTransition:
 	setvar VAR_TRAINER_HILL_IS_ACTIVE, 0
+	setvar VAR_TEMP_2, 0
 	special SetMirageTowerVisibility
 	call_if_unset FLAG_MIRAGE_TOWER_VISIBLE, Route111_EventScript_SetLayoutNoMirageTower
 	call_if_eq VAR_MIRAGE_TOWER_STATE, 1, Route111_EventScript_SetFallingPlayerGfx
@@ -908,6 +909,45 @@ Archaeologist_FoundAllClues:
 	// Done with quest
 	msgbox(format("Thanks to you, I was able to\nsolve the puzzle!"))
 	releaseall
+}
+
+script Route111_EventScript_TimeShrineTrigger {
+	setvar(VAR_TEMP_2, 1)
+	playse(SE_PIN)
+	goto_if_unset(FLAG_TALKED_TO_HISTORIAN, Route111_EventScript_TimeShrineSealed)
+	lockall
+	msgbox(format("The sand shifts beneath your feet, and a hidden stairway opens into the earth!\p"
+				  "The warmth of ancient time calls to you..."))
+	releaseall
+	playse(SE_WARP_IN)
+	applymovement(LOCALID_PLAYER, Route111_Movement_ShrineWarpSpin)
+	delay(30)
+	warp(MAP_TIME_SHRINE, 0)
+	end
+}
+
+script Route111_EventScript_TimeShrineSealed {
+	lockall
+	msgbox(format("The ground here feels strangely warm, as if something sleeps beneath.\p"
+				  "A scholar of the ancient world might know how to awaken it."))
+	releaseall
+	end
+}
+
+movement Route111_Movement_ShrineWarpSpin {
+	walk_in_place_faster_down
+	walk_in_place_faster_left
+	walk_in_place_faster_up
+	walk_in_place_faster_right
+	walk_in_place_faster_down
+	walk_in_place_faster_left
+	walk_in_place_faster_up
+	walk_in_place_faster_right
+	walk_in_place_faster_down
+	walk_in_place_faster_left
+	walk_in_place_faster_up
+	walk_in_place_faster_right
+	step_end
 }
 
 script Route111_Sign_FirstClue {

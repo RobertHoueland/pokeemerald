@@ -712,10 +712,10 @@
 #define FLAG_MET_PROCTOR_DEVON_CORP          0x299
 #define FLAG_MYRA_MYTHICAL_PATH_UNLOCKED     0x29A
 #define FLAG_MET_MYRA                        0x29B
-#define FLAG_UNUSED_0x29C  0x29C // Unused Flag
-#define FLAG_UNUSED_0x29D  0x29D // Unused Flag
-#define FLAG_UNUSED_0x29E  0x29E // Unused Flag
-#define FLAG_UNUSED_0x29F  0x29F // Unused Flag
+#define FLAG_TALKED_TO_HISTORIAN             0x29C
+#define FLAG_RECEIVED_ADAMANT_CRYSTAL        0x29D
+#define FLAG_RECEIVED_LUSTROUS_GLOBE         0x29E
+#define FLAG_RECEIVED_GRISEOUS_ORB           0x29F
 #define FLAG_UNUSED_0x2A0  0x2A0 // Unused Flag
 #define FLAG_UNUSED_0x2A1  0x2A1 // Unused Flag
 #define FLAG_UNUSED_0x2A2  0x2A2 // Unused Flag
@@ -1507,9 +1507,9 @@
 
 #define FLAG_RECEIVED_POKEDEX_FROM_BIRCH            (SYSTEM_FLAGS + 0x84)
 
-#define FLAG_UNUSED_0x8E5                           (SYSTEM_FLAGS + 0x85) // Unused Flag
-#define FLAG_UNUSED_0x8E6                           (SYSTEM_FLAGS + 0x86) // Unused Flag
-#define FLAG_UNUSED_0x8E7                           (SYSTEM_FLAGS + 0x87) // Unused Flag
+#define FLAG_LANDMARK_TIME_SHRINE                   (SYSTEM_FLAGS + 0x85)
+#define FLAG_LANDMARK_SPACE_SHRINE                  (SYSTEM_FLAGS + 0x86)
+#define FLAG_LANDMARK_DISTORTION_SHRINE             (SYSTEM_FLAGS + 0x87)
 #define FLAG_UNUSED_0x8E8                           (SYSTEM_FLAGS + 0x88) // Unused Flag
 #define FLAG_UNUSED_0x8E9                           (SYSTEM_FLAGS + 0x89) // Unused Flag
 #define FLAG_UNUSED_0x8EA                           (SYSTEM_FLAGS + 0x8A) // Unused Flag

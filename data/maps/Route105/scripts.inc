@@ -16,6 +16,7 @@ Route105_CloseRegiEntrance::
 	return
 
 Route105_OnTransition:
+	setvar VAR_TEMP_2, 0
 	call_if_eq VAR_SHOULD_END_ABNORMAL_WEATHER, 1, AbnormalWeather_EventScript_HideMapNamePopup
 	call_if_eq VAR_ABNORMAL_WEATHER_LOCATION, ABNORMAL_WEATHER_ROUTE_105_NORTH, AbnormalWeather_StartKyogreWeather
 	call_if_eq VAR_ABNORMAL_WEATHER_LOCATION, ABNORMAL_WEATHER_ROUTE_105_SOUTH, AbnormalWeather_StartKyogreWeather
@@ -95,3 +96,48 @@ Route104_Text_DadPokenavCall:
 Route104_Text_RegisteredDadInPokenav:
 	.string "Registered DAD NORMAN\n"
 	.string "in the POKéNAV.$"
+
+Route105_EventScript_SpaceShrineTrigger::
+	setvar VAR_TEMP_2, 1
+	playse SE_PIN
+	goto_if_unset FLAG_TALKED_TO_HISTORIAN, Route105_EventScript_SpaceShrineSealed
+	lockall
+	msgbox Route105_Text_SpaceShrineWarp, MSGBOX_DEFAULT
+	releaseall
+	playse SE_WARP_IN
+	applymovement LOCALID_PLAYER, Route105_Movement_ShrineWarpSpin
+	delay 30
+	warp MAP_SPACE_SHRINE, 0
+	end
+
+Route105_EventScript_SpaceShrineSealed::
+	lockall
+	msgbox Route105_Text_SpaceShrineSealed, MSGBOX_DEFAULT
+	releaseall
+	end
+
+Route105_Text_SpaceShrineSealed:
+	.string "The air here shimmers oddly, as if the\n"
+	.string "sea and sky are not quite aligned.\p"
+	.string "A scholar of the ancient world might\n"
+	.string "know how to open the way.$"
+
+Route105_Text_SpaceShrineWarp:
+	.string "The sand's surface trembles and shakes,\n"
+	.string "pulling you into a hidden SPACE SHRINE!\p"
+	.string "The currents of space swirl around you...$"
+
+Route105_Movement_ShrineWarpSpin:
+	walk_in_place_faster_down
+	walk_in_place_faster_left
+	walk_in_place_faster_up
+	walk_in_place_faster_right
+	walk_in_place_faster_down
+	walk_in_place_faster_left
+	walk_in_place_faster_up
+	walk_in_place_faster_right
+	walk_in_place_faster_down
+	walk_in_place_faster_left
+	walk_in_place_faster_up
+	walk_in_place_faster_right
+	step_end

@@ -142,9 +142,26 @@
       "elevation": 0,
       "dest_map": "MAP_ISLAND_CAVE",
       "dest_warp_id": "0"
+    },
+    {
+      "x": 10,
+      "y": 22,
+      "elevation": 0,
+      "dest_map": "MAP_ISLAND_CAVE",
+      "dest_warp_id": "0"
     }
   ],
-  "coord_events": [],
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 10,
+      "y": 21,
+      "elevation": 3,
+      "var": "VAR_TEMP_2",
+      "var_value": "0",
+      "script": "Route105_EventScript_SpaceShrineTrigger"
+    }
+  ],
   "bg_events": [
     {
       "type": "hidden_item",
