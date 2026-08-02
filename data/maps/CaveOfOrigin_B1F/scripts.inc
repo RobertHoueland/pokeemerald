@@ -80,6 +80,10 @@ CaveOfOrigin_B1F_Text_WallaceStory:
 	.string "It's said that it was RAYQUAZA that\n"
 	.string "becalmed the two combatants in\l"
 	.string "the distant past.\p"
+	.string "Some legends say RAYQUAZA itself is\n"
+	.string "a living remnant of an age when\l"
+	.string "POKéMON genetics were still fluid--\l"
+	.string "the oldest mutation of them all.\p"
 	.string "But even I have no clue as to\n"
 	.string "RAYQUAZA's whereabouts…$"
 

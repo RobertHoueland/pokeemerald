@@ -207,7 +207,10 @@ MagmaHideout_4F_Text_MaxieOhItWasYou:
 
 MagmaHideout_4F_Text_MaxieDefeat:
 	.string "What makes you so adept at handling\n"
-	.string "POKéMON?$"
+	.string "POKéMON?\p"
+	.string "Is it because you've been around those\n"
+	.string "mutated creatures so much?\p"
+	.string "Have they changed you, too?$"
 
 MagmaHideout_4F_Text_MaxieImGoingAfterGroudon:
 	.string "MAXIE: There has to be some reason\n"

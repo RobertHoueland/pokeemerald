@@ -275,7 +275,10 @@ Route128_Text_MaxieThisDefiesBelief:
 	.string "MAXIE: This defies belief…\p"
 	.string "Those super-ancient POKéMON…\p"
 	.string "Their power is unbelievable.\n"
-	.string "They've upset the balance of nature…$"
+	.string "They've upset the balance of nature…\p"
+	.string "The weather, the land, the sea--and\n"
+	.string "even the POKéMON themselves seem\l"
+	.string "to be shifting under their influence…$"
 
 Route128_Text_StevenWhatIsHappening:
 	.string "STEVEN: {PLAYER}{KUN}!\n"
