@@ -435,7 +435,8 @@
     "MeteorFalls_StevensCave",
     "TimeShrine",
     "SpaceShrine",
-    "DistortionShrine"
+    "DistortionShrine",
+    "PrismChamber"
   ],
   "gMapGroup_IndoorDynamic": [
     "SecretBase_RedCave1",

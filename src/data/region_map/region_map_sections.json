@@ -1246,6 +1246,10 @@
     {
       "id": "MAPSEC_DISTORTION_SHRINE",
       "name": "DISTORTION SHRINE"
+    },
+    {
+      "id": "MAPSEC_PRISM_CHAMBER",
+      "name": "PRISM CHAMBER"
     }
   ]
 }

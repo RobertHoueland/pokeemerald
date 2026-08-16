@@ -429,6 +429,7 @@ gStdScripts_End::
 	.include "data/maps/TimeShrine/scripts.inc"
 	.include "data/maps/SpaceShrine/scripts.inc"
 	.include "data/maps/DistortionShrine/scripts.inc"
+	.include "data/maps/PrismChamber/scripts.inc"
 	.include "data/maps/ScorchedSlab/scripts.inc"
 	.include "data/maps/AquaHideout_UnusedRubyMap1/scripts.inc"
 	.include "data/maps/AquaHideout_UnusedRubyMap2/scripts.inc"

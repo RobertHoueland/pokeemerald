@@ -1,5 +1,10 @@
 ShadyForest_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, ShadyForest_OnTransition
 	.byte 0
+
+ShadyForest_OnTransition:
+	setflag FLAG_LANDMARK_SHADY_FOREST
+	end
 
 ShadyForest_EntranceSign::
 	msgbox ShadyForest_Text_EntranceSign, MSGBOX_SIGN
@@ -31,7 +36,7 @@ ShadyForest_Text_EntranceSign:
 ShadyForest_Text_BarrelSign:
 	.string "These barrels are for research\n"
 	.string "purposes only.\p"
-	.string "Do not go near them unless\n"
+	.string "Please stay away unless\n"
 	.string "you are a researcher.$"
 
 ShadyForest_Text_WhirlpoolBarrelPrompt:

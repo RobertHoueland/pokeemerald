@@ -5,6 +5,12 @@ Route114_MapScripts::
 	.byte 0
 
 Route114_OnTransition:
+	setvar VAR_TEMP_2, 0
+	setvar VAR_TEMP_3, 0
+	setvar VAR_TEMP_4, 0
+	setvar VAR_TEMP_5, 0
+	call_if_set FLAG_RECEIVED_SOLARIZER, Route114_EventScript_DisablePrismSparkleTriggers
+	call_if_set FLAG_RECEIVED_LUNARIZER, Route114_EventScript_DisablePrismSparkleTriggers
 	call_if_eq VAR_SHOULD_END_ABNORMAL_WEATHER, 1, AbnormalWeather_EventScript_HideMapNamePopup
 	call_if_eq VAR_ABNORMAL_WEATHER_LOCATION, ABNORMAL_WEATHER_ROUTE_114_NORTH, AbnormalWeather_StartGroudonWeather
 	call_if_eq VAR_ABNORMAL_WEATHER_LOCATION, ABNORMAL_WEATHER_ROUTE_114_SOUTH, AbnormalWeather_StartGroudonWeather
@@ -200,3 +206,72 @@ Route114_Text_FossilManiacsHouseSign:
 Route114_Text_LanettesHouse:
 	.string "LANETTE'S HOUSE$"
 
+Route114_EventScript_PrismChamberSign::
+	lock
+	goto_if_unset FLAG_MYRA_PRISM_HINT, Route114_EventScript_PrismChamberSign_NoHint
+	dofieldeffectsparkle 10, 63, 0
+	waitfieldeffect FLDEFF_SPARKLE
+	msgbox Route114_Text_PrismChamberSignOpen, MSGBOX_DEFAULT
+	closemessage
+	playse SE_WARP_IN
+	warp MAP_PRISM_CHAMBER, 0
+	waitstate
+	end
+
+Route114_EventScript_PrismChamberSign_NoHint::
+	dofieldeffectsparkle 10, 63, 0
+	waitfieldeffect FLDEFF_SPARKLE
+	msgbox Route114_Text_PrismChamberSignSparkle, MSGBOX_SIGN
+	end
+
+Route114_EventScript_PrismSparkleTrigger_2::
+	dofieldeffectsparkle 10, 63, 0
+	waitfieldeffect FLDEFF_SPARKLE
+	setvar VAR_TEMP_2, 1
+	setvar VAR_TEMP_3, 1
+	setvar VAR_TEMP_4, 1
+	setvar VAR_TEMP_5, 1
+	end
+
+Route114_EventScript_PrismSparkleTrigger_3::
+	dofieldeffectsparkle 10, 63, 0
+	waitfieldeffect FLDEFF_SPARKLE
+	setvar VAR_TEMP_2, 1
+	setvar VAR_TEMP_3, 1
+	setvar VAR_TEMP_4, 1
+	setvar VAR_TEMP_5, 1
+	end
+
+Route114_EventScript_PrismSparkleTrigger_4::
+	dofieldeffectsparkle 10, 63, 0
+	waitfieldeffect FLDEFF_SPARKLE
+	setvar VAR_TEMP_2, 1
+	setvar VAR_TEMP_3, 1
+	setvar VAR_TEMP_4, 1
+	setvar VAR_TEMP_5, 1
+	end
+
+Route114_EventScript_PrismSparkleTrigger_5::
+	dofieldeffectsparkle 10, 63, 0
+	waitfieldeffect FLDEFF_SPARKLE
+	setvar VAR_TEMP_2, 1
+	setvar VAR_TEMP_3, 1
+	setvar VAR_TEMP_4, 1
+	setvar VAR_TEMP_5, 1
+	end
+
+Route114_EventScript_DisablePrismSparkleTriggers::
+	setvar VAR_TEMP_2, 1
+	setvar VAR_TEMP_3, 1
+	setvar VAR_TEMP_4, 1
+	setvar VAR_TEMP_5, 1
+	return
+
+Route114_Text_PrismChamberSignSparkle:
+	.string "A strange crystal is embedded in the\n"
+	.string "wall. It shimmers with faint light…$"
+
+Route114_Text_PrismChamberSignOpen:
+	.string "The crystal shimmers brightly and a\n"
+	.string "hidden path to the PRISM CHAMBER\l"
+	.string "opens before you!$"

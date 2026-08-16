@@ -4,7 +4,8 @@ ShadyForest_Lab_MapScripts::
 `
 
 text Myra_IntroText {
-    format("I was starting to think nobody could find this place!\p"
+    format("MYRA: Oh my gosh, a visitor!\p"
+           "I was starting to think nobody could find this place!\p"
            "I'm MYRA, and this is basically my new home. So welcome!\p"
            "This place is super cool actually, there's a time rift right "
            "outside apparently! It's making POKéMON from the past "
@@ -13,8 +14,20 @@ text Myra_IntroText {
            "I've been calling them PARADOX POKéMON. It seems like there's "
            "ancient ones from a longgg time ago, and ones that shouldn't even "
            "exist yet.\pI guess different ones show up at different times of day...\p"
-           "Anyways, you should go explore out there. Just don't annoy the big ones, "
+           "Anyways, you should go explore out there. Just don't annoy the big ones,\p"
            "I learned that the hard way.")
+}
+
+text Myra_PrismHint {
+    format("Oh! You got NECROZMA-V?\pFrom DR. PARKER?\p"
+           "That's amazing! It's like a living prism...\p"
+           "Actually, I've been noticing something weird lately.\p"
+           "There's this spot on ROUTE 114 near METEOR FALLS, where "
+           "the light does this strange fracturing thing. It's like the "
+           "air itself is splitting into rainbows.\p"
+           "I think it might be connected to NECROZMA-V somehow. "
+           "Maybe if you have the right POKéMON with you, you could "
+           "unlock whatever's hiding there?")
 }
 
 script ShadyForest_Lab_EventScript_Myra {
@@ -23,20 +36,43 @@ script ShadyForest_Lab_EventScript_Myra {
     goto_if_set(FLAG_MET_MYRA, Met_Myra)
 
     # First meeting
-    msgbox(format("MYRA: Oh my gosh, a visitor!"))
     msgbox(Myra_IntroText)
     setflag(FLAG_MET_MYRA)
     releaseall
     end
 
 Met_Myra:
-    goto_if_set(FLAG_MYRA_MYTHICAL_PATH_UNLOCKED, Mythical_Path_Unlocked)
+    #goto_if_set(FLAG_MYRA_MYTHICAL_PATH_UNLOCKED, Mythical_Path_Unlocked)
+
+    # Already heard prism hint
+    goto_if_set(FLAG_MYRA_PRISM_HINT, PrismHint_Given)
+    # Give prism hint if got Necrozma
+    goto_if_set(FLAG_OBTAINED_NECROZMA_LINE, PrismHint)
+    # Nothing else to say
+    goto(Myra_Finished)
+    releaseall
+    end
+
+PrismHint:
+    msgbox(Myra_PrismHint)
+    setflag(FLAG_MYRA_PRISM_HINT)
+    releaseall
+    end
+
+PrismHint_Given:
+    # Remind player where to go if they haven't done it yet
+    goto_if_set(FLAG_RECEIVED_SOLARIZER, Myra_Finished)
+    goto_if_set(FLAG_RECEIVED_LUNARIZER, Myra_Finished)
+    msgbox(format("MYRA: Don't forget to check out that strange fracturing light on ROUTE 114 near METEOR FALLS!\pI'm sure it's tied to your NECROZMA-V."))
+    releaseall
+    end
+
+Myra_Finished:
     msgbox(format("MYRA: I think the ancient PARADOX POKéMON might be ancestors of modern POKéMON, and the future ones might be what they'll be someday. Maybe!!"))
     releaseall
     end
 
 Mythical_Path_Unlocked:
-    msgbox(format("MYRA: Hello! I need to implement this still..."))
     #msgbox(Myra_MythicalResearchText)
     releaseall
 }

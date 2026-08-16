@@ -716,9 +716,9 @@
 #define FLAG_RECEIVED_ADAMANT_CRYSTAL        0x29D
 #define FLAG_RECEIVED_LUSTROUS_GLOBE         0x29E
 #define FLAG_RECEIVED_GRISEOUS_ORB           0x29F
-#define FLAG_UNUSED_0x2A0  0x2A0 // Unused Flag
-#define FLAG_UNUSED_0x2A1  0x2A1 // Unused Flag
-#define FLAG_UNUSED_0x2A2  0x2A2 // Unused Flag
+#define FLAG_MYRA_PRISM_HINT                 0x2A0
+#define FLAG_RECEIVED_SOLARIZER              0x2A1
+#define FLAG_RECEIVED_LUNARIZER              0x2A2
 #define FLAG_UNUSED_0x2A3  0x2A3 // Unused Flag
 #define FLAG_UNUSED_0x2A4  0x2A4 // Unused Flag
 #define FLAG_UNUSED_0x2A5  0x2A5 // Unused Flag
@@ -1510,8 +1510,8 @@
 #define FLAG_LANDMARK_TIME_SHRINE                   (SYSTEM_FLAGS + 0x85)
 #define FLAG_LANDMARK_SPACE_SHRINE                  (SYSTEM_FLAGS + 0x86)
 #define FLAG_LANDMARK_DISTORTION_SHRINE             (SYSTEM_FLAGS + 0x87)
-#define FLAG_UNUSED_0x8E8                           (SYSTEM_FLAGS + 0x88) // Unused Flag
-#define FLAG_UNUSED_0x8E9                           (SYSTEM_FLAGS + 0x89) // Unused Flag
+#define FLAG_LANDMARK_PRISM_CHAMBER                 (SYSTEM_FLAGS + 0x88)
+#define FLAG_LANDMARK_SHADY_FOREST                  (SYSTEM_FLAGS + 0x89)
 #define FLAG_UNUSED_0x8EA                           (SYSTEM_FLAGS + 0x8A) // Unused Flag
 #define FLAG_UNUSED_0x8EB                           (SYSTEM_FLAGS + 0x8B) // Unused Flag
 #define FLAG_UNUSED_0x8EC                           (SYSTEM_FLAGS + 0x8C) // Unused Flag
