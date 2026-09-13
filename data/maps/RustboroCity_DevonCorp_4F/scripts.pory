@@ -168,7 +168,8 @@ text RustboroCity_DevonCorp_4F_Text_ProctorNimaDevonCheckpoint2 {
 	       "A researcher named MYRA has been training under "
 	       "DR. PARKER, and studying MYTHICAL POKéMON signatures.\p"
 	       "When she finalizes a route, you will be directed to "
-	       "new locations where each MYTHICAL can be encountered.")
+	       "new locations where each MYTHICAL can be encountered.\p"
+		   "Good luck, {PLAYER}. I hope you enjoy the program!")
 }
 
 script RustboroCity_DevonCorp_4F_EventScript_DrParker {
@@ -1007,6 +1008,9 @@ script RustboroCity_DevonCorp_4F_EventScript_GiveLegendary {
 
 	// Successful give?
 	if (var(VAR_RESULT) != MON_CANT_GIVE) {
+		// Register the species selected for this line
+		callnative(Script_RegisterProtoLegend)
+
 		// Make shiny if player paid for it
 		if (var(VAR_TEMP_2) == 1) {
 			callnative(Script_SetLastGiftMonShiny)

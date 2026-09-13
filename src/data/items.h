@@ -15117,12 +15117,11 @@ const struct Item gItemsInfo[] =
         .name = ITEM_NAME("Unstable DNA"),
         .pluralName = ITEM_PLURAL_NAME("Unstable DNA"),
         .price = 0,
-        .importance = 1,
         .description = COMPOUND_STRING(
         "A volatile vile\n"
         "of DNA with highly\n"
         "reactive traits."),
-        .pocket = POCKET_KEY_ITEMS,
+        .pocket = POCKET_ITEMS,
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .iconPic = gItemIcon_StellarTeraShard,
