@@ -88,6 +88,43 @@ PetalburgCity_Gym_EventScript_ReturnFromWallyTutorial::
 	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
 	msgbox PetalburgCity_Gym_Text_DadGoCollectBadges, MSGBOX_DEFAULT
+	setvar VAR_PETALBURG_GYM_STATE, 9
+	releaseall
+	end
+
+PetalburgCity_Gym_EventScript_NormanResearchLogSouthWest::
+	lockall
+	msgbox PetalburgCity_Gym_Text_DadWait, MSGBOX_DEFAULT
+	applymovement LOCALID_PETALBURG_GYM_NORMAN, PetalburgCity_Gym_Movement_NormanApproachPlayerSouthWest
+	waitmovement 0
+	goto PetalburgCity_Gym_EventScript_NormanResearchLogAfterApproach
+
+PetalburgCity_Gym_EventScript_NormanResearchLogSouthEast::
+	lockall
+	msgbox PetalburgCity_Gym_Text_DadWait, MSGBOX_DEFAULT
+	applymovement LOCALID_PETALBURG_GYM_NORMAN, PetalburgCity_Gym_Movement_NormanApproachPlayerSouthEast
+	waitmovement 0
+	goto PetalburgCity_Gym_EventScript_NormanResearchLogAfterApproach
+
+PetalburgCity_Gym_EventScript_NormanResearchLogWest::
+	lockall
+	msgbox PetalburgCity_Gym_Text_DadWait, MSGBOX_DEFAULT
+	applymovement LOCALID_PETALBURG_GYM_NORMAN, PetalburgCity_Gym_Movement_NormanApproachPlayerWest
+	waitmovement 0
+	goto PetalburgCity_Gym_EventScript_NormanResearchLogAfterApproach
+
+PetalburgCity_Gym_EventScript_NormanResearchLogEast::
+	lockall
+	msgbox PetalburgCity_Gym_Text_DadWait, MSGBOX_DEFAULT
+	applymovement LOCALID_PETALBURG_GYM_NORMAN, PetalburgCity_Gym_Movement_NormanApproachPlayerEast
+	waitmovement 0
+	goto PetalburgCity_Gym_EventScript_NormanResearchLogAfterApproach
+
+PetalburgCity_Gym_EventScript_NormanResearchLogAfterApproach::
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterUp
+	waitmovement 0
+	msgbox PetalburgCity_Gym_Text_DadResearchLog, MSGBOX_DEFAULT
+	setflag FLAG_RESEARCH_LOG
 	setvar VAR_PETALBURG_GYM_STATE, 2
 	releaseall
 	end
@@ -97,6 +134,32 @@ PetalburgCity_Gym_Movement_WallyExitGym:
 	walk_down
 	walk_down
 	delay_16
+	step_end
+
+PetalburgCity_Gym_Movement_NormanApproachPlayerSouthWest:
+	walk_down
+	walk_down
+	step_end
+
+PetalburgCity_Gym_Movement_NormanApproachPlayerSouthEast:
+	walk_down
+	walk_right
+	walk_down
+	step_end
+
+PetalburgCity_Gym_Movement_NormanApproachPlayerWest:
+	walk_left
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
+PetalburgCity_Gym_Movement_NormanApproachPlayerEast:
+	walk_right
+	walk_right
+	walk_down
+	walk_down
+	walk_down
 	step_end
 
 PetalburgCity_Gym_EventScript_Norman::
@@ -1165,6 +1228,20 @@ PetalburgCity_Gym_Text_DadYoureHereWithYourPokemon:
 	.string "become a TRAINER like me, {PLAYER}.\p"
 	.string "That's great news!\n"
 	.string "I'll be looking forward to it!$"
+
+PetalburgCity_Gym_Text_DadWait:
+	.string "DAD: {PLAYER}! Wait just a moment!$"
+
+PetalburgCity_Gym_Text_DadResearchLog:
+	.string "I have something for you.\p"
+	.string "PROFESSOR BIRCH has been studying\n"
+	.string "reports of unusual changes in\l"
+	.string "POKéMON apparently…\p"
+	.string "He asked me to give you this\n"
+	.string "RESEARCH LOG.\p"
+	.string "He says you can review your research\n"
+	.string "notes from the START menu.\p"
+	.string "Keep a close eye on that log!$"
 
 PetalburgCity_Gym_Text_WallyIdLikeAPokemon:
 	.string "Um… I…\n"

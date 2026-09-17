@@ -55,6 +55,7 @@
 #include "pokemon_storage_system.h"
 #include "pokemon_summary_screen.h"
 #include "region_map.h"
+#include "research.h"
 #include "reshow_battle_screen.h"
 #include "scanline_effect.h"
 #include "script.h"
@@ -5728,6 +5729,8 @@ static void Task_PartyMenuReplaceMove(u8 taskId)
         RemoveMonPPBonus(mon, GetMoveSlotToReplace());
         move = gPartyMenu.data1;
         SetMonMoveSlot(mon, move, GetMoveSlotToReplace());
+        if (gPartyMenu.learnMoveState == 3)
+            Research_RecordMutation(mon, MUTATION_CHOSEN_MOVE);
         Task_LearnedMove(taskId);
     }
 }
@@ -6043,6 +6046,7 @@ static void Task_DoMutation(u8 taskId)
             if (result == randomMove)
             {
                 // Learned immediately
+                Research_RecordMutation(mon, MUTATION_CHOSEN_MOVE);
                 StringCopy(gStringVar2, GetMoveName(randomMove));
                 StringExpandPlaceholders(gStringVar4, gText_PkmnLearnedMove3); 
                 gPartyMenu.data1 = randomMove;
@@ -6053,6 +6057,10 @@ static void Task_DoMutation(u8 taskId)
                 gPartyMenu.learnMoveState = 3;
                 DisplayMonNeedsToReplaceMove(taskId);
                 return;  // this is needed
+            }
+            else
+            {
+                successfulMutation = FALSE;
             }
             break;
         case MUTATION_CHOSEN_FORM:
@@ -6135,7 +6143,10 @@ static void Task_TryLearnNewMoves(u8 taskId)
             {
             case 0: // No moves to learn
                 if (sInitialLevel >= sFinalLevel)
+                {
                     PartyMenuTryEvolution(taskId);
+                    return;  // This is needed to prevent crash
+                }
                 break;
             case MON_HAS_MAX_MOVES:
                 DisplayMonNeedsToReplaceMove(taskId);

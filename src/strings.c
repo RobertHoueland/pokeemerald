@@ -1300,3 +1300,4 @@ const u8 gText_MutationNature[] = _("{STR_VAR_1} shows a new temperament!\nIt lo
 const u8 gText_MutationForm[] = _("{STR_VAR_1} adapted to a distant region!\nA new form emerged!{PAUSE_UNTIL_PRESS}");
 const u8 gText_MutationShiny[] = _("{STR_VAR_1} sparkles brightly!{PAUSE_UNTIL_PRESS}");
 const u8 gText_MutationPokerus[] = _("{STR_VAR_1} is infected with a virus!{PAUSE_UNTIL_PRESS}");
+const u8 gText_MenuResearch[] = _("RESEARCH");

@@ -21,6 +21,7 @@
 #include "sound.h"
 #include "pokedex.h"
 #include "recorded_battle.h"
+#include "research.h"
 #include "window.h"
 #include "reshow_battle_screen.h"
 #include "main.h"
@@ -78,6 +79,8 @@
 extern const u8 BattleScript_LearnedNewMove[];
 extern const u8 BattleScript_AskToLearnMove[];
 extern const enum TrainerClassID GetTrainerClassFromId(u16 trainerId);
+
+EWRAM_DATA static bool8 sResearchMutationMovePending = FALSE;
 
 // table to avoid ugly powing on gba (courtesy of doesnt)
 // this returns (i^2.5)/4
@@ -8205,6 +8208,9 @@ static void Cmd_handlelearnnewmove(void)
 {
     CMD_ARGS(const u8 *learnedMovePtr, const u8 *nothingToLearnPtr, bool8 isFirstMove);
 
+    // Reaching here means a mutation move was declined
+    sResearchMutationMovePending = FALSE;
+
     u16 learnMove = MOVE_NONE;
     u32 monId = gBattleStruct->expGetterMonId;
     u32 currLvl = GetMonData(&gPlayerParty[monId], MON_DATA_LEVEL);
@@ -8364,6 +8370,11 @@ static void Cmd_yesnoboxlearnmove(void)
 
                     RemoveMonPPBonus(&gPlayerParty[gBattleStruct->expGetterMonId], movePosition);
                     SetMonMoveSlot(&gPlayerParty[gBattleStruct->expGetterMonId], gMoveToLearn, movePosition);
+                    if (sResearchMutationMovePending)
+                    {
+                        Research_RecordMutation(&gPlayerParty[gBattleStruct->expGetterMonId], MUTATION_CHOSEN_MOVE);
+                        sResearchMutationMovePending = FALSE;
+                    }
 
                     if (gBattlerPartyIndexes[0] == gBattleStruct->expGetterMonId && MOVE_IS_PERMANENT(0, movePosition))
                     {
@@ -18151,6 +18162,7 @@ void BS_DoMutation(void)
     u16 item = GetMonData(mon, MON_DATA_HELD_ITEM);
 
     enum Mutation mutationType = MUTATION_CHOSEN_NONE;
+    sResearchMutationMovePending = FALSE;
     while (mutationType == MUTATION_CHOSEN_NONE)
     {
         mutationType = DoMutation(mon, item);
@@ -18196,6 +18208,7 @@ void BS_DoMutation(void)
         if (result == randomMove)
         {
             // Learned immediately
+            Research_RecordMutation(mon, MUTATION_CHOSEN_MOVE);
             BattleScriptPush(cmd->nextInstr);
             gBattlescriptCurrInstr = BattleScript_LearnedNewMove;
             return; // this is needed
@@ -18203,6 +18216,7 @@ void BS_DoMutation(void)
         else if (result == MON_HAS_MAX_MOVES)
         {
             // Ask to replace a move
+            sResearchMutationMovePending = TRUE;
             BattleScriptPush(cmd->nextInstr);
             gBattlescriptCurrInstr = BattleScript_AskToLearnMove;
             return; // this is needed

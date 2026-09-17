@@ -56,7 +56,7 @@
 #define FLAG_125_MUTATIONS   0x2A
 #define FLAG_150_MUTATIONS   0x2B
 #define FLAG_MET_MUT_SCI     0x2C
-#define FLAG_UNUSED_0x02D    0x2D // Unused Flag
+#define FLAG_RESEARCH_LOG    0x2D
 #define FLAG_UNUSED_0x02E    0x2E // Unused Flag
 #define FLAG_UNUSED_0x02F    0x2F // Unused Flag
 #define FLAG_UNUSED_0x030    0x30 // Unused Flag

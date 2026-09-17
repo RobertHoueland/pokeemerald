@@ -429,7 +429,44 @@
       "dest_warp_id": "33"
     }
   ],
-  "coord_events": [],
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 4,
+      "y": 110,
+      "elevation": 0,
+      "var": "VAR_PETALBURG_GYM_STATE",
+      "var_value": "9",
+      "script": "PetalburgCity_Gym_EventScript_NormanResearchLogSouthWest"
+    },
+    {
+      "type": "trigger",
+      "x": 5,
+      "y": 110,
+      "elevation": 0,
+      "var": "VAR_PETALBURG_GYM_STATE",
+      "var_value": "9",
+      "script": "PetalburgCity_Gym_EventScript_NormanResearchLogSouthEast"
+    },
+    {
+      "type": "trigger",
+      "x": 3,
+      "y": 111,
+      "elevation": 0,
+      "var": "VAR_PETALBURG_GYM_STATE",
+      "var_value": "9",
+      "script": "PetalburgCity_Gym_EventScript_NormanResearchLogWest"
+    },
+    {
+      "type": "trigger",
+      "x": 6,
+      "y": 111,
+      "elevation": 0,
+      "var": "VAR_PETALBURG_GYM_STATE",
+      "var_value": "9",
+      "script": "PetalburgCity_Gym_EventScript_NormanResearchLogEast"
+    }
+  ],
   "bg_events": [
     {
       "type": "sign",

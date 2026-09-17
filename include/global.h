@@ -21,6 +21,7 @@
 #include "constants/easy_chat.h"
 #include "constants/trainer_hill.h"
 #include "constants/items.h"
+#include "constants/research.h"
 #include "config/save.h"
 
 // Prevent cross-jump optimization.
@@ -1057,6 +1058,28 @@ struct ExternalEventFlags
 
 } __attribute__((packed));/*size = 0x15*/
 
+struct ResearchMutationLogEntry
+{
+    u16 species;
+    u8 mutation;
+    u8 nickname[POKEMON_NAME_LENGTH + 1];
+};
+
+struct ResearchSaveData
+{
+    u16 formatVersion;
+    u16 lifetimeMutationTotal;
+    u16 mutationCategoryCounts[RESEARCH_MUTATION_CATEGORY_COUNT];
+    u16 statMutationCounts[NUM_STATS];
+    u16 protoLegendSpecies[RESEARCH_PROTO_LINE_COUNT];
+    u8 recentMutationCount;
+    u8 recentMutationNext;
+    struct ResearchMutationLogEntry recentMutations[RESEARCH_RECENT_MUTATION_LOG_CAPACITY];
+    // Stored as playtime seconds plus one (zero means the entry predates timestamps)
+    u32 recentMutationTimestamps[RESEARCH_RECENT_MUTATION_LOG_CAPACITY];
+    u8 recentMutationLevels[RESEARCH_RECENT_MUTATION_LOG_CAPACITY];
+};
+
 struct Bag
 {
     struct ItemSlot items[BAG_ITEMS_COUNT];
@@ -1174,6 +1197,7 @@ struct SaveBlock1
     /*0x3???*/ struct TrainerHillSave trainerHill;
 #endif //FREE_TRAINER_HILL
     /*0x3???*/ struct WaldaPhrase waldaPhrase;
+    /*0x3???*/ struct ResearchSaveData research;
     // sizeof: 0x3???
 };
 

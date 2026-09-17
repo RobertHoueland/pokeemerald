@@ -42,6 +42,7 @@
 #include "random.h"
 #include "recorded_battle.h"
 #include "regions.h"
+#include "research.h"
 #include "rtc.h"
 #include "sound.h"
 #include "string_util.h"
@@ -1781,6 +1782,7 @@ enum Mutation DoMutation(struct Pokemon *mon, u16 item)
         }
         CalculateMonStats(mon);
         IncrementMonTotalMutations(mon);
+        Research_RecordMutation(mon, statMutation);
         return statMutation;
     case MUTATION_TYPE:
         enum Type newType;
@@ -1795,6 +1797,7 @@ enum Mutation DoMutation(struct Pokemon *mon, u16 item)
         // Add as a tera type, used as a "3rd type" in battle
         SetMonData(mon, MON_DATA_TERA_TYPE, &newType);
         IncrementMonTotalMutations(mon);
+        Research_RecordMutation(mon, MUTATION_CHOSEN_TYPE);
         return MUTATION_CHOSEN_TYPE;
     case MUTATION_ABILITY:
         u8 currSlot = GetMonData(mon, MON_DATA_ABILITY_NUM);
@@ -1808,6 +1811,7 @@ enum Mutation DoMutation(struct Pokemon *mon, u16 item)
         SetMonData(mon, MON_DATA_ABILITY_NUM, &hiddenSlot);
         CalculateMonStats(mon);
         IncrementMonTotalMutations(mon);
+        Research_RecordMutation(mon, MUTATION_CHOSEN_ABILITY);
         return MUTATION_CHOSEN_ABILITY;
     case MUTATION_NATURE:
         u8 currNature = GetNature(mon);
@@ -1821,6 +1825,7 @@ enum Mutation DoMutation(struct Pokemon *mon, u16 item)
         SetMonData(mon, MON_DATA_HIDDEN_NATURE, &newNature);
         CalculateMonStats(mon);
         IncrementMonTotalMutations(mon);
+        Research_RecordMutation(mon, MUTATION_CHOSEN_NATURE);
         return MUTATION_CHOSEN_NATURE;
     case MUTATION_MOVE:
         IncrementMonTotalMutations(mon);
@@ -1848,6 +1853,7 @@ enum Mutation DoMutation(struct Pokemon *mon, u16 item)
                 SetMonData(mon, MON_DATA_SPECIES, &randomForm);
                 CalculateMonStats(mon);
                 IncrementMonTotalMutations(mon);
+                Research_RecordMutation(mon, MUTATION_CHOSEN_FORM);
                 return MUTATION_CHOSEN_FORM;
             }
         }
@@ -1864,6 +1870,7 @@ enum Mutation DoMutation(struct Pokemon *mon, u16 item)
             isShiny = TRUE;
             SetMonData(mon, MON_DATA_IS_SHINY, &isShiny);
             IncrementMonTotalMutations(mon);
+            Research_RecordMutation(mon, MUTATION_CHOSEN_SHINY);
             // handle sound effect in return function
             return MUTATION_CHOSEN_SHINY;
         }
@@ -1873,6 +1880,7 @@ enum Mutation DoMutation(struct Pokemon *mon, u16 item)
             hasPokerus = TRUE;
             SetMonData(mon, MON_DATA_POKERUS, &hasPokerus);
             IncrementMonTotalMutations(mon);
+            Research_RecordMutation(mon, MUTATION_CHOSEN_POKERUS);
             return MUTATION_CHOSEN_POKERUS;
         }
         return MUTATION_CHOSEN_NONE;

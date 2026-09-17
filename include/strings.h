@@ -2430,4 +2430,7 @@ extern const u8 gText_MutationForm[];
 extern const u8 gText_MutationShiny[];
 extern const u8 gText_MutationPokerus[];
 
+// Menu addition
+extern const u8 gText_MenuResearch[];
+
 #endif // GUARD_STRINGS_H
