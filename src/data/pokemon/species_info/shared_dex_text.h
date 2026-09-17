@@ -168,6 +168,18 @@ const u8 gSilvallyMemoryPokedexText[] = _(
     "memories, this Pokémon can adapt its\n"
     "type to confound its enemies.");
 
+const u8 gSilvallyVNormalPokedexText[] = _(
+    "Trust awakened the synthetic genes that\n"
+    "its control mask once kept suppressed.\n"
+    "Freed of their conflict, it runs beside its\n"
+    "Trainer with remarkable speed and grace.");
+
+const u8 gSilvallyVMemoryPokedexText[] = _(
+    "Its RKS System reads data from a Memory\n"
+    "and reorganizes its synthetic cells.\n"
+    "Each change is stable only because of the\n"
+    "unshakable trust it places in its Trainer.");
+
 const u8 gMiniorMeteorPokedexText[] = _(
     "Originally making its home in the ozone\n"
     "layer, it hurtles to the ground when the\n"
