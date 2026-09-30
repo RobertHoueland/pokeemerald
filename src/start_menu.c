@@ -1,4 +1,5 @@
 #include "global.h"
+#include "config/save.h"
 #include "battle_pike.h"
 #include "battle_pyramid.h"
 #include "battle_pyramid_bag.h"
@@ -87,8 +88,11 @@ COMMON_DATA bool8 (*gMenuCallback)(void) = NULL;
 
 // EWRAM
 EWRAM_DATA static u8 sSafariBallsWindowId = 0;
+EWRAM_DATA static bool8 sSafariBallsWindowActive = FALSE;
 EWRAM_DATA static u8 sStartClockWindowId = 0;
+EWRAM_DATA static bool8 sStartClockWindowActive = FALSE;
 EWRAM_DATA static u8 sBattlePyramidFloorWindowId = 0;
+EWRAM_DATA static bool8 sBattlePyramidFloorWindowActive = FALSE;
 EWRAM_DATA static u8 sStartMenuCursorPos = 0;
 EWRAM_DATA static u8 sNumStartMenuActions = 0;
 EWRAM_DATA static u8 sCurrentStartMenuActions[10] = {0};
@@ -295,13 +299,6 @@ static void HideStartMenuWindow(void);
 static void HideStartMenuDebug(void);
 static void ShowTimeWindow(void);
 
-void SetDexPokemonPokenavFlags(void) // unused
-{
-    FlagSet(FLAG_SYS_POKEDEX_GET);
-    FlagSet(FLAG_SYS_POKEMON_GET);
-    FlagSet(FLAG_SYS_POKENAV_GET);
-}
-
 static void BuildStartMenuActions(void)
 {
     sNumStartMenuActions = 0;
@@ -456,11 +453,28 @@ static void BuildMultiPartnerRoomStartMenu(void)
 static void ShowSafariBallsWindow(void)
 {
     sSafariBallsWindowId = AddWindow(&sWindowTemplate_SafariBalls);
+    if (sSafariBallsWindowId == WINDOW_NONE)
+    {
+        sSafariBallsWindowActive = FALSE;
+        return;
+    }
+    sSafariBallsWindowActive = TRUE;
     PutWindowTilemap(sSafariBallsWindowId);
     DrawStdWindowFrame(sSafariBallsWindowId, FALSE);
-    ConvertIntToDecimalStringN(gStringVar1, gNumSafariBalls, STR_CONV_MODE_RIGHT_ALIGN, 2);
-    StringExpandPlaceholders(gStringVar4, gText_SafariBallStock);
-    AddTextPrinterParameterized(sSafariBallsWindowId, FONT_NORMAL, gStringVar4, 0, 1, TEXT_SKIP_DRAW, NULL);
+    if (IS_FRLG)
+    {
+        ConvertIntToDecimalStringN(gStringVar1, gSafariZoneStepCounter, STR_CONV_MODE_RIGHT_ALIGN, 3);
+        ConvertIntToDecimalStringN(gStringVar2, 600, STR_CONV_MODE_RIGHT_ALIGN, 3);
+        ConvertIntToDecimalStringN(gStringVar3, gNumSafariBalls, STR_CONV_MODE_RIGHT_ALIGN, 2);
+        StringExpandPlaceholders(gStringVar4, gText_MenuSafariStats);
+        AddTextPrinterParameterized(sSafariBallsWindowId, FONT_NORMAL, gStringVar4, 4, 3, 0xFF, NULL);
+    }
+    else
+    {
+        ConvertIntToDecimalStringN(gStringVar1, gNumSafariBalls, STR_CONV_MODE_RIGHT_ALIGN, 2);
+        StringExpandPlaceholders(gStringVar4, gText_SafariBallStock);
+        AddTextPrinterParameterized(sSafariBallsWindowId, FONT_NORMAL, gStringVar4, 0, 1, TEXT_SKIP_DRAW, NULL);
+    }
     CopyWindowToVram(sSafariBallsWindowId, COPYWIN_GFX);
 }
 
@@ -471,6 +485,12 @@ static void ShowPyramidFloorWindow(void)
     else
         sBattlePyramidFloorWindowId = AddWindow(&sWindowTemplate_PyramidFloor);
 
+    if (sBattlePyramidFloorWindowId == WINDOW_NONE)
+    {
+        sBattlePyramidFloorWindowActive = FALSE;
+        return;
+    }
+    sBattlePyramidFloorWindowActive = TRUE;
     PutWindowTilemap(sBattlePyramidFloorWindowId);
     DrawStdWindowFrame(sBattlePyramidFloorWindowId, FALSE);
     StringCopy(gStringVar1, sPyramidFloorNames[gSaveBlock2Ptr->frontier.curChallengeBattleNum]);
@@ -489,6 +509,8 @@ const u8 gText_Tuesday[] = _("Tue");
 const u8 gText_Wednesday[] = _("Wed");
 const u8 gText_Thursday[] = _("Thu");
 const u8 gText_Friday[] = _("Fri");
+static const u8 sText_AM[] = _("AM");
+static const u8 sText_PM[] = _("PM");
 
 const u8 *const gDayNameStringsTable[7] = {
     gText_Saturday,
@@ -508,6 +530,12 @@ static void ShowTimeWindow(void)
 
     // print window
     sStartClockWindowId = AddWindow(&sWindowTemplate_StartClock);
+    if (sStartClockWindowId == WINDOW_NONE)
+    {
+        sStartClockWindowActive = FALSE;
+        return;
+    }
+    sStartClockWindowActive = TRUE;
     PutWindowTilemap(sStartClockWindowId);
     DrawStdWindowFrame(sStartClockWindowId, FALSE);
 
@@ -517,18 +545,17 @@ static void ShowTimeWindow(void)
             convertedHours = 12;
         else
             convertedHours = gLocalTime.hours;
-        suffix = gText_AM;
+        suffix = sText_AM;
     }
     else if (gLocalTime.hours == 12)
     {
         convertedHours = 12;
-        if (suffix == gText_AM);
-            suffix = gText_PM;
+        suffix = sText_PM;
     }
     else
     {
         convertedHours = gLocalTime.hours - 12;
-        suffix = gText_PM;
+        suffix = sText_PM;
     }
 
     StringExpandPlaceholders(gStringVar4, gDayNameStringsTable[(gLocalTime.days % 7)]);
@@ -548,19 +575,26 @@ static void ShowTimeWindow(void)
 
 static void RemoveExtraStartMenuWindows(void)
 {
-    if (GetSafariZoneFlag())
+    if (GetSafariZoneFlag() && sSafariBallsWindowActive)
     {
         ClearStdWindowAndFrameToTransparent(sSafariBallsWindowId, FALSE);
         //CopyWindowToVram(sSafariBallsWindowId, COPYWIN_GFX);
         RemoveWindow(sSafariBallsWindowId);
+        sSafariBallsWindowActive = FALSE;
     }
-    else if (CurrentBattlePyramidLocation() != PYRAMID_LOCATION_NONE)
+    else if (CurrentBattlePyramidLocation() != PYRAMID_LOCATION_NONE && sBattlePyramidFloorWindowActive)
     {
         ClearStdWindowAndFrameToTransparent(sBattlePyramidFloorWindowId, FALSE);
         RemoveWindow(sBattlePyramidFloorWindowId);
+        sBattlePyramidFloorWindowActive = FALSE;
     }
-    ClearStdWindowAndFrameToTransparent(sStartClockWindowId, FALSE);
-    RemoveWindow(sStartClockWindowId);
+
+    if (sStartClockWindowActive)
+    {
+        ClearStdWindowAndFrameToTransparent(sStartClockWindowId, FALSE);
+        RemoveWindow(sStartClockWindowId);
+        sStartClockWindowActive = FALSE;
+    }
 }
 
 static bool32 PrintStartMenuActions(s8 *pIndex, u32 count)
@@ -683,7 +717,7 @@ void Task_ShowStartMenu(u8 taskId)
 {
     struct Task *task = &gTasks[taskId];
 
-    switch(task->data[0])
+    switch (task->data[0])
     {
     case 0:
         if (InUnionRoom() == TRUE)
@@ -1178,7 +1212,7 @@ static u8 SaveConfirmInputCallback(void)
         {
         case SAVE_STATUS_EMPTY:
         case SAVE_STATUS_CORRUPT:
-            if (gDifferentSaveFile == FALSE)
+            if (gDifferentSaveFile == FALSE && !SKIP_SAVE_CONFIRMATION)
             {
                 sSaveDialogCallback = SaveFileExistsCallback;
                 return SAVE_IN_PROGRESS;
@@ -1187,7 +1221,10 @@ static u8 SaveConfirmInputCallback(void)
             sSaveDialogCallback = SaveSavingMessageCallback;
             return SAVE_IN_PROGRESS;
         default:
-            sSaveDialogCallback = SaveFileExistsCallback;
+            if (SKIP_SAVE_CONFIRMATION)
+                sSaveDialogCallback = SaveSavingMessageCallback;
+            else
+                sSaveDialogCallback = SaveFileExistsCallback;
             return SAVE_IN_PROGRESS;
         }
     case MENU_B_PRESSED:
@@ -1273,7 +1310,7 @@ static u8 SaveDoSaveCallback(void)
 
 static u8 SaveSuccessCallback(void)
 {
-    if (!IsTextPrinterActive(0))
+    if (!IsTextPrinterActiveOnWindow(0))
     {
         PlaySE(SE_SAVE);
         sSaveDialogCallback = SaveReturnSuccessCallback;
@@ -1297,7 +1334,7 @@ static u8 SaveReturnSuccessCallback(void)
 
 static u8 SaveErrorCallback(void)
 {
-    if (!IsTextPrinterActive(0))
+    if (!IsTextPrinterActiveOnWindow(0))
     {
         PlaySE(SE_BOO);
         sSaveDialogCallback = SaveReturnErrorCallback;
@@ -1371,7 +1408,7 @@ static bool32 InitSaveWindowAfterLinkBattle(u8 *state)
         SetVBlankCallback(NULL);
         ScanlineEffect_Stop();
         DmaClear16(3, PLTT, PLTT_SIZE);
-        DmaFillLarge16(3, 0, (void *)VRAM, VRAM_SIZE, 0x1000);
+        DmaClearLarge16(3, (void *)VRAM, VRAM_SIZE, 0x1000);
         break;
     case 1:
         ResetSpriteData();
@@ -1494,7 +1531,7 @@ static void Task_SaveAfterLinkBattle(u8 taskId)
 static void ShowSaveInfoWindow(void)
 {
     struct WindowTemplate saveInfoWindow = sSaveInfoWindowTemplate;
-    u8 gender;
+    enum Gender gender;
     u8 color;
     u32 xOffset;
     u32 yOffset;
@@ -1511,9 +1548,7 @@ static void ShowSaveInfoWindow(void)
     color = TEXT_COLOR_RED;  // Red when female, blue when male.
 
     if (gender == MALE)
-    {
         color = TEXT_COLOR_BLUE;
-    }
 
     // Print region name
     yOffset = 1;

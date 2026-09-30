@@ -1,6 +1,11 @@
 const struct Fusion *const gFusionTablePointers[NUM_SPECIES] =
 {
 #if P_FUSION_FORMS
+    [SPECIES_KYUREM_V] = sKyuremVFusionTable,
+    [SPECIES_KYUREM_V_WHITE] = sKyuremVFusionTable,
+    [SPECIES_KYUREM_V_BLACK] = sKyuremVFusionTable,
+    [SPECIES_RESHIRAM_V] = sKyuremVFusionTable,
+    [SPECIES_ZEKROM_V] = sKyuremVFusionTable,
 #if P_FAMILY_KYUREM
     [SPECIES_KYUREM] = sKyuremFusionTable,
 #if P_FAMILY_RESHIRAM

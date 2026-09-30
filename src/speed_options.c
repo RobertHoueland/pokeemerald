@@ -75,12 +75,6 @@ static const u8 gText_BattleSpeed2[]       = _("{COLOR GREEN}{SHADOW LIGHT_GREEN
 static const u8 gText_BattleSpeed3[]       = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}3X");
 static const u8 gText_BattleSpeed4[]       = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}4X");
 
-// Use same window templates and BG templates as main option menu
-extern const struct WindowTemplate sOptionMenuWinTemplates[];
-extern const struct BgTemplate sOptionMenuBgTemplates[];
-extern const u16 sOptionMenuBg_Pal[];
-extern const u16 sOptionMenuText_Pal[];
-
 static bool8 sArrowPressed = FALSE;
 
 static void MainCB2(void)

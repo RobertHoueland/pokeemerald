@@ -1,5 +1,6 @@
 #include "global.h"
 #include "option_menu.h"
+#include "bg.h"
 #include "gpu_regs.h"
 #include "international_string_util.h"
 #include "main.h"
@@ -11,7 +12,9 @@
 #include "task.h"
 #include "text.h"
 #include "text_window.h"
+#include "window.h"
 #include "gba/m4a_internal.h"
+#include "constants/rgb.h"
 
 #define tMenuSelection data[0]
 #define tBattleSceneOff data[1]
@@ -37,7 +40,6 @@ enum
 #define YPOS_SOUND        (MENUITEM_SOUND * 16)
 #define YPOS_BUTTONMODE   (MENUITEM_BUTTONMODE * 16)
 #define YPOS_FRAMETYPE    (MENUITEM_FRAMETYPE * 16)
-#define YPOS_SPEEDOPTIONS (MENUITEM_SPEEDOPTIONS * 16)
 
 static void Task_OptionMenuFadeIn(u8 taskId);
 static void Task_OptionMenuProcessInput(u8 taskId);
@@ -74,8 +76,9 @@ static const u8 gText_ButtonTypeNormal[]   = _("{COLOR GREEN}{SHADOW LIGHT_GREEN
 static const u8 gText_ButtonTypeLR[]       = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}LR");
 static const u8 gText_ButtonTypeLEqualsA[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}L=A");
 
+const u16 sOptionMenuText_Pal[] = INCGFX_U16("graphics/interface/option_menu_text.pal", ".gbapal");
 // note: this is only used in the Japanese release
-static const u8 sEqualSignGfx[] = INCBIN_U8("graphics/interface/option_menu_equals_sign.4bpp");
+static const u8 sEqualSignGfx[] = INCGFX_U8("graphics/interface/option_menu_equals_sign.png", ".4bpp");
 
 static const u8 *const sOptionMenuItemsNames[MENUITEM_COUNT] =
 {
@@ -87,6 +90,53 @@ static const u8 *const sOptionMenuItemsNames[MENUITEM_COUNT] =
     [MENUITEM_SPEEDOPTIONS] = COMPOUND_STRING("SPEED OPTIONS"),
     [MENUITEM_CANCEL]       = COMPOUND_STRING("CANCEL"),
 };
+
+const struct WindowTemplate sOptionMenuWinTemplates[] =
+{
+    [WIN_HEADER] = {
+        .bg = 1,
+        .tilemapLeft = 2,
+        .tilemapTop = 1,
+        .width = 26,
+        .height = 2,
+        .paletteNum = 1,
+        .baseBlock = 2
+    },
+    [WIN_OPTIONS] = {
+        .bg = 0,
+        .tilemapLeft = 2,
+        .tilemapTop = 5,
+        .width = 26,
+        .height = 14,
+        .paletteNum = 1,
+        .baseBlock = 0x36
+    },
+    DUMMY_WIN_TEMPLATE
+};
+
+const struct BgTemplate sOptionMenuBgTemplates[] =
+{
+    {
+        .bg = 1,
+        .charBaseIndex = 1,
+        .mapBaseIndex = 30,
+        .screenSize = 0,
+        .paletteMode = 0,
+        .priority = 0,
+        .baseTile = 0
+    },
+    {
+        .bg = 0,
+        .charBaseIndex = 1,
+        .mapBaseIndex = 31,
+        .screenSize = 0,
+        .paletteMode = 0,
+        .priority = 1,
+        .baseTile = 0
+    }
+};
+
+const u16 sOptionMenuBg_Pal[] = {RGB(17, 18, 31)};
 
 static void MainCB2(void)
 {
@@ -101,24 +151,6 @@ static void VBlankCB(void)
     LoadOam();
     ProcessSpriteCopyRequests();
     TransferPlttBuffer();
-}
-
-void DrawOptionMenuChoice(const u8 *text, u8 x, u8 y, u8 style)
-{
-    u8 dst[16];
-    u16 i;
-
-    for (i = 0; *text != EOS && i < ARRAY_COUNT(dst) - 1; i++)
-        dst[i] = *(text++);
-
-    if (style != 0)
-    {
-        dst[2] = TEXT_COLOR_RED;
-        dst[5] = TEXT_COLOR_LIGHT_RED;
-    }
-
-    dst[i] = EOS;
-    AddTextPrinterParameterized(WIN_OPTIONS, FONT_NORMAL, dst, x, y + 1, TEXT_SKIP_DRAW, NULL);
 }
 
 void CB2_InitOptionMenu(void)
@@ -239,14 +271,12 @@ static void Task_OptionMenuProcessInput(u8 taskId)
             gTasks[taskId].func = Task_OptionMenuSave;
         else if (gTasks[taskId].tMenuSelection == MENUITEM_SPEEDOPTIONS)
         {
-            // Save current options first
+            // Save the main options before entering the submenu.
             gSaveBlock2Ptr->optionsBattleSceneOff = gTasks[taskId].tBattleSceneOff;
             gSaveBlock2Ptr->optionsBattleStyle = gTasks[taskId].tBattleStyle;
             gSaveBlock2Ptr->optionsSound = gTasks[taskId].tSound;
             gSaveBlock2Ptr->optionsButtonMode = gTasks[taskId].tButtonMode;
             gSaveBlock2Ptr->optionsWindowFrameType = gTasks[taskId].tWindowFrameType;
-            
-            // Fade out and go to speed options menu
             BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
             gTasks[taskId].func = Task_OptionMenuToSpeedOptions;
         }
@@ -360,6 +390,24 @@ static void HighlightOptionMenuItem(u8 index)
 {
     SetGpuReg(REG_OFFSET_WIN0H, WIN_RANGE(16, DISPLAY_WIDTH - 16));
     SetGpuReg(REG_OFFSET_WIN0V, WIN_RANGE(index * 16 + 40, index * 16 + 56));
+}
+
+void DrawOptionMenuChoice(const u8 *text, u8 x, u8 y, u8 style)
+{
+    u8 dst[16];
+    u16 i;
+
+    for (i = 0; *text != EOS && i < ARRAY_COUNT(dst) - 1; i++)
+        dst[i] = *(text++);
+
+    if (style != 0)
+    {
+        dst[2] = TEXT_COLOR_RED;
+        dst[5] = TEXT_COLOR_LIGHT_RED;
+    }
+
+    dst[i] = EOS;
+    AddTextPrinterParameterized(WIN_OPTIONS, FONT_NORMAL, dst, x, y + 1, TEXT_SKIP_DRAW, NULL);
 }
 
 static u8 BattleScene_ProcessInput(u8 selection)
