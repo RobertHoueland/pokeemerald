@@ -2476,6 +2476,13 @@ static const u16 sKyuremVFormSpeciesIdTable[] = {
     FORM_SPECIES_END,
 };
 
+static const u16 sNecrozmaVFormSpeciesIdTable[] = {
+    SPECIES_NECROZMA_V,
+    SPECIES_NECROZMA_V_DUSK_MANE,
+    SPECIES_NECROZMA_V_DAWN_WINGS,
+    FORM_SPECIES_END,
+};
+
 static const u16 sXerneasVFormSpeciesIdTable[] = {
     SPECIES_XERNEAS_V_NEUTRAL,
     SPECIES_XERNEAS_V_ACTIVE,

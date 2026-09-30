@@ -4398,6 +4398,140 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .isFrontierBanned = FALSE,
         .levelUpLearnset = sNecrozmaLevelUpLearnset,
         .teachableLearnset = sNecrozmaTeachableLearnset,
+        .formSpeciesIdTable = sNecrozmaVFormSpeciesIdTable,
+    },
+
+    [SPECIES_NECROZMA_V_DUSK_MANE] =
+    {
+        // BST was 680, lowered by 30%
+        .baseHP        = 68,  // was 97
+        .baseAttack    = 109, // was 157
+        .baseDefense   = 89,  // was 127
+        .baseSpeed     = 54,  // was 77
+        .baseSpAttack  = 79,  // was 113
+        .baseSpDefense = 76,  // was 109
+        .types = MON_TYPES(TYPE_PSYCHIC, TYPE_STEEL),
+        .catchRate = 3,
+        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_8) ? 340 : 306,
+        .evYield_Attack = 3,
+        .genderRatio = MON_GENDERLESS,
+        .eggCycles = 120,
+        .friendship = 0,
+        .growthRate = GROWTH_SLOW,
+        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
+        .abilities = { ABILITY_PRISM_ARMOR, ABILITY_NONE, ABILITY_NONE },
+        .bodyColor = BODY_COLOR_YELLOW,
+        .noFlip = TRUE,
+        .speciesName = _("Necrozma-V"),
+        .cryId = CRY_NECROZMA_DUSK_MANE,
+        .natDexNum = NATIONAL_DEX_NECROZMA_V,
+        .categoryName = _("Prism"),
+        .height = 27,   // was 38
+        .weight = 3220, // was 4600
+        .description = COMPOUND_STRING(
+            "Solgaleo-V's light awakens dormant genes\n"
+            "in Necrozma-V's prism-like body.\n"
+            "This unstable fusion's golden armor\n"
+            "flickers as it charges at its foes."),
+        .pokemonScale = 256,
+        .pokemonOffset = 3,
+        .trainerScale = 369,
+        .trainerOffset = 7,
+        .frontPic = gMonFrontPic_NecrozmaDuskMane,
+        .frontPicSize = MON_COORDS_SIZE(64, 64),
+        .frontPicYOffset = 0,
+        .frontAnimFrames = sAnims_SingleFramePlaceHolder,
+        .backPic = gMonBackPic_NecrozmaDuskMane,
+        .backPicSize = MON_COORDS_SIZE(64, 64),
+        .backPicYOffset = 1,
+        .palette = gMonPalette_NecrozmaDuskMane,
+        .shinyPalette = gMonShinyPalette_NecrozmaDuskMane,
+        .iconSprite = gMonIcon_NecrozmaDuskMane,
+        .iconPalIndex = 0,
+        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
+        SHADOW(-3, 11, SHADOW_SIZE_XL_BATTLE_ONLY)
+        FOOTPRINT(Necrozma)
+        OVERWORLD(
+            sPicTable_NecrozmaDuskMane,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            sAnimTable_Following,
+            gOverworldPalette_NecrozmaDuskMane,
+            gShinyOverworldPalette_NecrozmaDuskMane
+        )
+        .cannotBeTraded = TRUE,
+        .isFrontierBanned = FALSE,
+        .levelUpLearnset = sNecrozmaLevelUpLearnset,
+        .teachableLearnset = sNecrozmaTeachableLearnset,
+        .formSpeciesIdTable = sNecrozmaVFormSpeciesIdTable,
+    },
+
+    [SPECIES_NECROZMA_V_DAWN_WINGS] =
+    {
+        // BST was 680, lowered by 30%
+        .baseHP        = 68,  // was 97
+        .baseAttack    = 79,  // was 113
+        .baseDefense   = 76,  // was 109
+        .baseSpeed     = 54,  // was 77
+        .baseSpAttack  = 109, // was 157
+        .baseSpDefense = 89,  // was 127
+        .types = MON_TYPES(TYPE_PSYCHIC, TYPE_GHOST),
+        .catchRate = 3,
+        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_8) ? 340 : 306,
+        .evYield_SpAttack = 3,
+        .genderRatio = MON_GENDERLESS,
+        .eggCycles = 120,
+        .friendship = 0,
+        .growthRate = GROWTH_SLOW,
+        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
+        .abilities = { ABILITY_PRISM_ARMOR, ABILITY_NONE, ABILITY_NONE },
+        .bodyColor = BODY_COLOR_BLUE,
+        .noFlip = TRUE,
+        .speciesName = _("Necrozma-V"),
+        .cryId = CRY_NECROZMA_DAWN_WINGS,
+        .natDexNum = NATIONAL_DEX_NECROZMA_V,
+        .categoryName = _("Prism"),
+        .height = 29,   // was 42
+        .weight = 2450, // was 3500
+        .description = COMPOUND_STRING(
+            "Lunala-V's starlight resonates with\n"
+            "Necrozma-V's prismatic cells.\n"
+            "The unstable fusion spreads its wings\n"
+            "to scatter a pale, wavering glow."),
+        .pokemonScale = 256,
+        .pokemonOffset = 3,
+        .trainerScale = 369,
+        .trainerOffset = 7,
+        .frontPic = gMonFrontPic_NecrozmaDawnWings,
+        .frontPicSize = MON_COORDS_SIZE(64, 64),
+        .frontPicYOffset = 0,
+        .frontAnimFrames = sAnims_SingleFramePlaceHolder,
+        .enemyMonElevation = 6,
+        .backPic = gMonBackPic_NecrozmaDawnWings,
+        .backPicSize = MON_COORDS_SIZE(64, 64),
+        .backPicYOffset = 2,
+        .palette = gMonPalette_NecrozmaDawnWings,
+        .shinyPalette = gMonShinyPalette_NecrozmaDawnWings,
+        .iconSprite = gMonIcon_NecrozmaDawnWings,
+        .iconPalIndex = 0,
+        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
+        SHADOW(3, 17, SHADOW_SIZE_L)
+        FOOTPRINT(Necrozma)
+        OVERWORLD(
+            sPicTable_NecrozmaDawnWings,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            sAnimTable_Following,
+            gOverworldPalette_NecrozmaDawnWings,
+            gShinyOverworldPalette_NecrozmaDawnWings
+        )
+        .cannotBeTraded = TRUE,
+        .isFrontierBanned = FALSE,
+        .levelUpLearnset = sNecrozmaLevelUpLearnset,
+        .teachableLearnset = sNecrozmaTeachableLearnset,
+        .formSpeciesIdTable = sNecrozmaVFormSpeciesIdTable,
     },
 
     [SPECIES_TYPE_NULL_V] =

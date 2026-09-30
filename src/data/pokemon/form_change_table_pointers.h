@@ -14,10 +14,15 @@ const struct Fusion *const gFusionTablePointers[NUM_SPECIES] =
 #endif //P_FAMILY_KYUREM
 #if P_FAMILY_NECROZMA
     [SPECIES_NECROZMA] = sNecrozmaFusionTable,
-#if P_FAMILY_COSMOG
-    [SPECIES_NECROZMA_DAWN_WINGS] = sNecrozmaFusionTable,
-    [SPECIES_SOLGALEO] = sNecrozmaFusionTable,
+    [SPECIES_NECROZMA_V] = sNecrozmaFusionTable,
     [SPECIES_NECROZMA_DUSK_MANE] = sNecrozmaFusionTable,
+    [SPECIES_NECROZMA_DAWN_WINGS] = sNecrozmaFusionTable,
+    [SPECIES_NECROZMA_V_DUSK_MANE] = sNecrozmaFusionTable,
+    [SPECIES_NECROZMA_V_DAWN_WINGS] = sNecrozmaFusionTable,
+    [SPECIES_SOLGALEO_V] = sNecrozmaFusionTable,
+    [SPECIES_LUNALA_V] = sNecrozmaFusionTable,
+#if P_FAMILY_COSMOG
+    [SPECIES_SOLGALEO] = sNecrozmaFusionTable,
     [SPECIES_LUNALA] = sNecrozmaFusionTable,
 #endif //P_FAMILY_COSMOG
 #endif //P_FAMILY_NECROZMA

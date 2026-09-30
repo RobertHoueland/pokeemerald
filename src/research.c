@@ -319,7 +319,9 @@ static enum ResearchProtoLine GetProtoLineForSpecies(u16 species)
         return RESEARCH_PROTO_LINE_TYPE_NULL;
     if (species >= SPECIES_COSMOG_V && species <= SPECIES_LUNALA_V)
         return RESEARCH_PROTO_LINE_COSMOG;
-    if (species == SPECIES_NECROZMA_V)
+    if (species == SPECIES_NECROZMA_V
+     || species == SPECIES_NECROZMA_V_DUSK_MANE
+     || species == SPECIES_NECROZMA_V_DAWN_WINGS)
         return RESEARCH_PROTO_LINE_NECROZMA;
     return RESEARCH_PROTO_LINE_COUNT;
 }
