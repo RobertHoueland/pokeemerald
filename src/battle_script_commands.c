@@ -18132,14 +18132,8 @@ void BS_LvlUpMutationCheck(void)
 
     if (totalMutations < MAX_MUTATIONS && item != ITEM_GENE_LOCK)
     {
-        u8 hasMutShard = FALSE;
-        if (item == ITEM_MUTATION_SHARD)
-        {
-            hasMutShard = TRUE;
-        }
-
         u8 denominator = 8;  // default 25% chance
-        u8 chance = CalculateMutationChances(mon, hasMutShard);
+        u8 chance = CalculateMutationChances(mon, item == ITEM_MUTATION_SHARD);
 
         if (Random32() % denominator <= min(chance, 8))
         {
