@@ -5855,7 +5855,14 @@ bool8 FollowablePlayerMovement_Step(struct ObjectEvent *objectEvent, struct Spri
     {
         ObjectEventSetSingleMovement(objectEvent, sprite, GetWalkSlowMovementAction(direction));
     }
-    else if (gSprites[gPlayerAvatar.spriteId].data[4] == MOVE_SPEED_FAST_1)
+    else if (gSprites[gPlayerAvatar.spriteId].data[4] == MOVE_SPEED_FASTER ||
+            (IsPlayerMoveSpeedFast() && playerAction >= MOVEMENT_ACTION_PLAYER_RUN_DOWN && playerAction <= MOVEMENT_ACTION_PLAYER_RUN_RIGHT))
+    {
+        objectEvent->movementActionId = GetWalkFasterMovementAction(direction);
+    }
+    else if (gSprites[gPlayerAvatar.spriteId].data[4] == MOVE_SPEED_FAST_1 ||
+            (IsPlayerMoveSpeedFast() && ((playerAction >= MOVEMENT_ACTION_WALK_NORMAL_DOWN && playerAction <= MOVEMENT_ACTION_WALK_NORMAL_RIGHT)
+            || playerAction == MOVEMENT_ACTION_WALK_NORMAL_DIAGONAL_DOWN_LEFT || playerAction == MOVEMENT_ACTION_WALK_NORMAL_DIAGONAL_DOWN_RIGHT)))
     {
         objectEvent->movementActionId = GetWalkFastMovementAction(direction);
     }
@@ -7740,9 +7747,9 @@ bool8 MovementAction_ExitPokeball_Step0(struct ObjectEvent *objectEvent, struct 
     objectEvent->invisible = FALSE;
     if (TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_DASH))
     {
-        // If player is dashing, the Pokémon must come out faster
+        // If player is dashing, shorten the emergence animation so the Pokémon can catch up sooner
         StartSpriteAnimInDirection(objectEvent, sprite, direction, GetJumpSpecialDirectionAnimNum(direction));
-        sprite->sDuration = 8;
+        sprite->sDuration = 4;
         sprite->sSpeedFlip = 0; // fast speed
     }
     else
