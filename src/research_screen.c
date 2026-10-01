@@ -92,6 +92,9 @@ static const u8 sText_Separator[] = _(" - ");
 static const u8 sText_UnknownTime[] = _("--:--");
 static const u8 sText_LevelPrefix[] = _(" Lv.");
 static const u8 sText_UnknownLevel[] = _("??");
+static const u8 sText_LogNameColor[] = _("{COLOR BLUE}{SHADOW LIGHT_BLUE}");
+static const u8 sText_LogMutationColor[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}");
+static const u8 sText_LogNeutralColor[] = _("{COLOR DARK_GRAY}{SHADOW LIGHT_GRAY}");
 static const u8 sText_TotalMutations[] = _("TOTAL MUTATIONS");
 static const u8 sText_TypesDiscovered[] = _("TYPES DISCOVERED");
 static const u8 sText_StatsDiscovered[] = _("STATS DISCOVERED");
@@ -459,6 +462,7 @@ static void DrawMutationLogPage(void)
         FormatMutationTimestamp(Research_GetRecentMutationTimestamp(row));
         StringCopy(gStringVar4, gStringVar1);
         StringAppend(gStringVar4, sText_Space);
+        StringAppend(gStringVar4, sText_LogNameColor);
         if (entry->species > SPECIES_NONE && entry->species < NUM_SPECIES)
         {
             speciesName = GetSpeciesName(entry->species);
@@ -473,6 +477,7 @@ static void DrawMutationLogPage(void)
         }
         else
             StringAppend(gStringVar4, entry->nickname);
+        StringAppend(gStringVar4, sText_LogNeutralColor);
         StringAppend(gStringVar4, sText_LevelPrefix);
         if (Research_GetRecentMutationLevel(row) == RESEARCH_LEVEL_UNKNOWN)
             StringAppend(gStringVar4, sText_UnknownLevel);
@@ -483,6 +488,7 @@ static void DrawMutationLogPage(void)
             StringAppend(gStringVar4, gStringVar2);
         }
         StringAppend(gStringVar4, sText_Space);
+        StringAppend(gStringVar4, sText_LogMutationColor);
         if (entry->mutation <= MUTATION_CHOSEN_POKERUS)
             StringAppend(gStringVar4, sMutationResultNames[entry->mutation]);
         else
